@@ -1,0 +1,54 @@
+# This file is to deploy to Github pages.
+
+name: "Jekyll: Render website"
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master-ready ]
+
+# Make sure jobs cannot overlap (e.g. one from push and one from schedule).
+concurrency:
+  group: published-ci
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build and deploy to the master-published branch
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        ref: 'master-ready'
+
+    # Configure the build environment.
+
+    - name: Install Ruby 3.2
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2'
+        # Runs 'bundle install' and caches installed gems automatically.
+        bundler-cache: true
+
+    # Clean up the target directory.
+
+    - name: Clean up the target directory
+      run: bundle exec jekyll clean
+
+    # Build the website.
+
+    - name: Build the static website
+      run: bundle exec jekyll build
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/master-ready'
+      with:
+        publish_branch: master-published
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: _site/
