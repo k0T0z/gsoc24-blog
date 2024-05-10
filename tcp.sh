@@ -46,5 +46,7 @@ fi
 echo "Pushing to $current_branch branch..."
 git push origin "$current_branch"
 
-echo "Switching to master branch..."
-git switch master
+if [[ "$current_branch" != "master" ]]; then
+    echo "Switching to master branch..."
+    git switch master
+fi
