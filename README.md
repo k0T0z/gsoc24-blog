@@ -1,1 +1,0 @@
-# gsoc24-blog
