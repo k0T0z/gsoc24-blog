@@ -23,7 +23,7 @@ title: k0T0z
 description: >- # this means to ignore newlines until "baseurl:"
   Just a place for me to dump my thoughts
 
-baseurl: "/" # the subpath of your site, e.g. /blog
+baseurl: "/gsoc24-blog" # the subpath of your site, e.g. /blog
 url: "https://k0t0z.github.io/gsoc24-blog/" # the base hostname & protocol for your site, e.g. http://example.com
 
 github_username:  k0T0z
