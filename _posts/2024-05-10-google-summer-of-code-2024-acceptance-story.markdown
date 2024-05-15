@@ -2,7 +2,7 @@
 layout: post
 title:  "Google Summer of Code 2024 Acceptance Story"
 date:   2024-05-16 17:36:15 +0300
-categories: Google Summer of Code 2024 program
+categories: blog
 ---
 My accepted proposal [Procedural Fragment Shader Generation Using Classic Machine Learning](/gsoc24-blog/assets/procedural-fragment-shader-generation-using-classic-machine-learning-GSoC-2024-proposal.pdf).
 
