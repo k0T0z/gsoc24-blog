@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Google Summer of Code 2024 Bonding Period"
-date:   2024-05-16 17:36:15 +0300
+date:   2024-05-16 00:00:00 +0300
 categories: blog
 ---
 
@@ -21,6 +21,8 @@ After installing Arch Linux, I can build RGM, just to do something in this perio
 
 Even with my Arch Linux machine, I can't build RGM. Last time, I built eveything from scratch including gRPC and protobuf but didn't work. I thought the problem is with the manual build of gRPC and protobuf, so I tried to build them using `pacman` but it didn't work either.
 
+I found a problem with the current CMakeLists.txt file. It doesn't link all required Qt5 libraries. The one that is missing is `qscintilla-qt5`. Hmmmm, I don't think this lib has a CMake configuration files for ``find_package`` command to work. To be continued...
+
 Anyway, thanks god this is not a high priority task. I guess I am gonna switch tasks now. If at any chance you read my proposal, you will know that this project is splitted into 2 parts:
 
 1. The backend, including the graph and the generator.
@@ -28,6 +30,8 @@ Anyway, thanks god this is not a high priority task. I guess I am gonna switch t
 
 In order for this to go without problems, I need to see the output shader, which mean I will have to implement a shader renderer that I can use to render the output shader. It has to be separated from the engine as it must has a GUI stuff in order to see the animated shader.
 
-For now, I am gonna start implementing the graph functionalities.
+For now, I am gonna start implementing the graph functionalities. Where is the location in the codebase? Well let's figure this out before the coding period starts.
+
+The graph backend is not related to the ``Graphics_Systems``, although, it will require a system to render the generated shader. I think the most suitable location is inside ``Universal_System``.
 
 [my-google-summer-of-code-2024-project]: https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA

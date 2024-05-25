@@ -29,11 +29,30 @@ url: "https://k0t0z.github.io/gsoc24-blog/" # the base hostname & protocol for y
 github_username:  k0T0z
 
 # Build settings
-theme: minima
+# theme: minima
+remote_theme: samarsault/plainwhite-jekyll
 plugins:
   - jekyll-feed
 
 future: true # Build posts with a future date
+
+plainwhite:
+  name: Saif Kandil
+  tagline: Just a place for me to dump my thoughts about my Google Summer of Code 2024 project
+
+  date_format: "%b %-d, %Y"
+
+  social_links:
+    github: k0T0z
+  
+  portfolio_image:  "assets/portfolio.png"
+
+  sitemap: true
+  show_excerpts: true
+
+  dark_mode: true
+
+  search: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
