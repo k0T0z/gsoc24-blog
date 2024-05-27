@@ -34,4 +34,33 @@ For now, I am gonna start implementing the graph functionalities. Where is the l
 
 The graph backend is not related to the ``Graphics_Systems``, although, it will require a system to render the generated shader. I think the most suitable location is inside ``Universal_System``.
 
+The expected structure of my files will be:
+    
+```
+enigma-dev
+├── ...
+├── CommandLine
+│   ├── ...
+│   └── emake-tests
+│       ├── ...
+│       └── ShaderGraphTests
+│           ├── ...
+│           ├── GraphTests.cpp
+│           └── NodeTests.cpp
+└── ENIGMAsystem
+    └── SHELL
+        ├── ...
+        └── Universal_System
+            ├── ...
+            └── ShaderGraph
+                ├── ...
+                ├── Graph.cpp
+                ├── Graph.h
+                ├── Node.cpp
+                └── Node.h
+```
+
+When the graph is implemented, I will start implementing the generator although I am not sure how I am gonna visualize the output shader. I will talk to my mentor about this however maybe I will have to integrate the node editor with RGM which is something I don't want to do.
+
+
 [my-google-summer-of-code-2024-project]: https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA
