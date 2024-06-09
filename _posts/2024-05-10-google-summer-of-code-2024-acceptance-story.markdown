@@ -27,6 +27,8 @@ After these messages, there was a long discussion about the project idea and the
 
 Anyway, I am gonna setup my development environment by installing arch linux as ENIGMA is mainly developed on it.
 
+NOTE: You can find the example game using Godot that showcases the final result of the project here: [godot_visual_shader_editor_showcase.zip](/gsoc24-blog/assets/godot_visual_shader_editor_showcase.zip).
+
 <blockquote style="border-left: 6px solid #ff3e3e;">
     <p>
         وَمَا بِكُم مِّن نِّعْمَةٍۢ فَمِنَ ٱللَّهِ ۖ ثُمَّ إِذَا مَسَّكُمُ ٱلضُّرُّ فَإِلَيْهِ

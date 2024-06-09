@@ -21,8 +21,6 @@ After installing Arch Linux, I can build RGM, just to do something in this perio
 
 Even with my Arch Linux machine, I can't build RGM. Last time, I built eveything from scratch including gRPC and protobuf but didn't work. I thought the problem is with the manual build of gRPC and protobuf, so I tried to build them using `pacman` but it didn't work either.
 
-I found a problem with the current CMakeLists.txt file. It doesn't link all required Qt5 libraries. The one that is missing is `qscintilla-qt5`. Hmmmm, I don't think this lib has a CMake configuration files for ``find_package`` command to work. To be continued...
-
 Anyway, thanks god this is not a high priority task. I guess I am gonna switch tasks now. If at any chance you read my proposal, you will know that this project is splitted into 2 parts:
 
 1. The backend, including the graph and the generator.
@@ -32,7 +30,9 @@ In order for this to go without problems, I need to see the output shader, which
 
 For now, I am gonna start implementing the graph functionalities. Where is the location in the codebase? Well let's figure this out before the coding period starts.
 
-The graph backend is not related to the ``Graphics_Systems``, although, it will require a system to render the generated shader. I think the most suitable location is inside ``Universal_System``.
+By the way, I found a problem with the current CMakeLists.txt file. It doesn't link all required Qt5 libraries. The one that is missing is `qscintilla-qt5`. Hmmmm, I don't think this lib has a CMake configuration files for ``find_package`` command to work. To be continued...
+
+Anyway, The graph backend is not related to the ``Graphics_Systems``, although, it will require a system to render the generated shader. I think the most suitable location is inside ``Universal_System``.
 
 The expected structure of my files will be:
     
