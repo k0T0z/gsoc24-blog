@@ -81,8 +81,6 @@
 
 <p>Even with my Arch Linux machine, I can’t build RGM. Last time, I built eveything from scratch including gRPC and protobuf but didn’t work. I thought the problem is with the manual build of gRPC and protobuf, so I tried to build them using <code class="language-plaintext highlighter-rouge">pacman</code> but it didn’t work either.</p>
 
-<p>I found a problem with the current CMakeLists.txt file. It doesn’t link all required Qt5 libraries. The one that is missing is <code class="language-plaintext highlighter-rouge">qscintilla-qt5</code>. Hmmmm, I don’t think this lib has a CMake configuration files for <code class="language-plaintext highlighter-rouge">find_package</code> command to work. To be continued…</p>
-
 <p>Anyway, thanks god this is not a high priority task. I guess I am gonna switch tasks now. If at any chance you read my proposal, you will know that this project is splitted into 2 parts:</p>
 
 <ol>
@@ -94,7 +92,36 @@
 
 <p>For now, I am gonna start implementing the graph functionalities. Where is the location in the codebase? Well let’s figure this out before the coding period starts.</p>
 
-<p>The graph backend is not related to the <code class="language-plaintext highlighter-rouge">Graphics_Systems</code>, although, it will require a system to render the generated shader. I think the most suitable location is inside <code class="language-plaintext highlighter-rouge">Universal_System</code>.</p>
+<p>By the way, I found a problem with the current CMakeLists.txt file. It doesn’t link all required Qt5 libraries. The one that is missing is <code class="language-plaintext highlighter-rouge">qscintilla-qt5</code>. Hmmmm, I don’t think this lib has a CMake configuration files for <code class="language-plaintext highlighter-rouge">find_package</code> command to work. To be continued…</p>
+
+<p>Anyway, The graph backend is not related to the <code class="language-plaintext highlighter-rouge">Graphics_Systems</code>, although, it will require a system to render the generated shader. I think the most suitable location is inside <code class="language-plaintext highlighter-rouge">Universal_System</code>.</p>
+
+<p>The expected structure of my files will be:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>enigma-dev
+├── ...
+├── CommandLine
+│   ├── ...
+│   └── emake-tests
+│       ├── ...
+│       └── ShaderGraphTests
+│           ├── ...
+│           ├── GraphTests.cpp
+│           └── NodeTests.cpp
+└── ENIGMAsystem
+    └── SHELL
+        ├── ...
+        └── Universal_System
+            ├── ...
+            └── ShaderGraph
+                ├── ...
+                ├── Graph.cpp
+                ├── Graph.h
+                ├── Node.cpp
+                └── Node.h
+</code></pre></div></div>
+
+<p>When the graph is implemented, I will start implementing the generator although I am not sure how I am gonna visualize the output shader. I will talk to my mentor about this however maybe I will have to integrate the node editor with RGM which is something I don’t want to do.</p>
 
 
   </div></div>

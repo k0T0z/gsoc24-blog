@@ -1,4 +1,87 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/" rel="alternate" type="text/html" /><updated>2024-05-25T19:37:27+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml</id><title type="html">k0T0z</title><subtitle>Just a place for me to dump my thoughts</subtitle><entry><title type="html">Google Summer of Code 2024 Bonding Period</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Bonding Period" /><published>2024-05-15T21:00:00+00:00</published><updated>2024-05-15T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/" rel="alternate" type="text/html" /><updated>2024-06-27T01:15:36+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml</id><title type="html">k0T0z</title><subtitle>Just a place for me to dump my thoughts</subtitle><entry><title type="html">Google Summer of Code 2024 Week 5: Here we go!</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/23/google-summer-of-code-2024-week-5-here-we-go.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 5: Here we go!" /><published>2024-06-23T21:00:00+00:00</published><updated>2024-06-23T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/23/google-summer-of-code-2024-week-5-here-we-go</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/23/google-summer-of-code-2024-week-5-here-we-go.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+
+<p>Now my mentor Greg increased my project period to 18 weeks, so I can have more time before the midterms. So my new midterm deadline is Aug 02, 2024 which gives me enough time to implement a proper solution for the project.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 3 &amp;amp; 4: Red Black Trees</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/09/google-summer-of-code-2024-week-3-and-4-red-black-trees.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 3 &amp;amp; 4: Red Black Trees" /><published>2024-06-09T21:00:00+00:00</published><updated>2024-06-09T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/09/google-summer-of-code-2024-week-3-and-4-red-black-trees</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/09/google-summer-of-code-2024-week-3-and-4-red-black-trees.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+
+<p>on 16th of June, I officially started looking into the project. After a quick search, I found out that Godot uses something called Red Black Trees for the visual shader graph. So let’s understand and implement this data structure as a start point.</p>
+
+<p>Oh boi, it is the std::map in C++! Hmmm, Godot developers have their own implementation of the Red Black Trees. I made a converstation with one of them once about why they are not using the standard template library or STD.</p>
+
+<blockquote>
+  <p>December 29, 2023</p>
+</blockquote>
+
+<blockquote>
+  <p>k0T0z 12:55 AM
+guys, i have a question in mind, i know that godot doesn’t require any installation setup and wondered what the installation setup gives? I mean why just not every program out there use the same approach there must be something</p>
+</blockquote>
+
+<blockquote>
+  <p>Calinou 1:50 AM
+installers allow for better system integration like desktop icons, start menu entries, entries in Add/Remove Programs
+that’s why there is still some demand for them. It is possible to do this stuff manually or with external tools like Scoop, but some people (companies in particular) value a built-in solution for large-scale deployments</p>
+
+  <p>it is possible to create installers that work without administrator privileges if the app is installed for a single user only</p>
+</blockquote>
+
+<blockquote>
+  <p>AThousandShips 12:56 AM
+Godot is self contained in a single file, many programs aren’t, that’s generally why they require installers, and have libraries they depend on etc.</p>
+</blockquote>
+
+<blockquote>
+  <p>k0T0z 12:57 AM
+wait a minute, Godot doesn’t depend on any library?</p>
+</blockquote>
+
+<blockquote>
+  <p>AThousandShips 12:58 AM
+Not any other than system ones, it contains all the third party things</p>
+</blockquote>
+
+<blockquote>
+  <p>k0T0z 12:58 AM
+also what do u mean by self-contained in a single file?</p>
+</blockquote>
+
+<blockquote>
+  <p>AThousandShips 12:58 AM
+It is a single file? It doesn’t have a lot of extra files like many programs have, it embeds all the data of it in the executable</p>
+</blockquote>
+
+<blockquote>
+  <p>k0T0z 12:59 AM
+hmmm, interesting, I guess &lt;std::string&gt; is from system as well, why not use it?</p>
+</blockquote>
+
+<blockquote>
+  <p>AThousandShips 12:59 AM
+Look at any one software on your computer, in for example Program Files on Windows
+See <a href="https://docs.godotengine.org/en/stable/about/faq.html#doc-faq-why-not-stl">here</a> 🙂</p>
+</blockquote>
+
+<blockquote>
+  <p>AThousandShips 1:00 AM
+We use our custom String type, as the one provided by STL is too basic and lacks proper internationalization support.
+STL templates create very large symbols, which results in huge debug binaries. We use few templates with very short names instead.</p>
+</blockquote>
+
+<blockquote>
+  <p>Also the STL library is infamous for standards iffyness
+With various, quite serious, inconsistencies between different implementations
+Some areas of the STL doesn’t provide any guarantees or details on things like performance, or safety, it leaves it entirely up to the implementation
+Came across a case of it some time ago when discussing this very topic but forget what it was now, but it was pretty glaring
+Even trivial things like exception handling is weird in some libraries, see <a href="https://github.com/godotengine/godot-cpp/issues/1326">here</a>, where one implementation of the library on Arch Linux is broken with exceptions disabled</p>
+</blockquote>
+
+<p>There are many things to learn btw from this conversation, however, at the moment, I think it is not a big deal to use the std::map inside ENIGMA.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 2</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/02/google-summer-of-code-2024-week-2.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 2" /><published>2024-06-02T21:00:00+00:00</published><updated>2024-06-02T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/02/google-summer-of-code-2024-week-2</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/02/google-summer-of-code-2024-week-2.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 1</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/26/google-summer-of-code-2024-week-1.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 1" /><published>2024-05-26T21:00:00+00:00</published><updated>2024-05-26T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/26/google-summer-of-code-2024-week-1</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/26/google-summer-of-code-2024-week-1.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+
+<p>Time flies so fast. It’s already the first week of the coding period. Actually, I am very buzy with my university final exams and I don’t have much time to work on my project. Maybe I will work with a low pace until the exams are over.</p>
+
+<p>I think it is better to talk about theories and implementation aspects of the graph algorithms that I will implement in the project rather than implementing them as I am not sure I can do much due to my finals and graduation project.</p>
+
+<p>I take my inspiration from Godot Game Engine as I want to reach the Machine Learning part of the project. I think Godot implements the Visual Shader using the <a href="https://web.archive.org/web/20120507164830/https://web.mit.edu/~emin/www/source_code/red_black_tree/index.html">Red-Black Tree C Code</a> and can be found at <a href="https://github.com/godotengine/godot/blob/705b7a0b0bd535c95e4e8fb439f3d84b3fb4f427/scene/resources/visual_shader.h#L129-L132">Godot Visual Shader H 129-132</a>.</p>
+
+<p>Anyway, I will look into it more in the next week ISA.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Bonding Period</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Bonding Period" /><published>2024-05-15T21:00:00+00:00</published><updated>2024-05-15T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
 
 <p>After installing Arch Linux, I can build RGM, just to do something in this period. The problem is that I tried to build RGM on my Ubuntu machine and it failed. It gives me this error:</p>
 
@@ -13,8 +96,6 @@
 
 <p>Even with my Arch Linux machine, I can’t build RGM. Last time, I built eveything from scratch including gRPC and protobuf but didn’t work. I thought the problem is with the manual build of gRPC and protobuf, so I tried to build them using <code class="language-plaintext highlighter-rouge">pacman</code> but it didn’t work either.</p>
 
-<p>I found a problem with the current CMakeLists.txt file. It doesn’t link all required Qt5 libraries. The one that is missing is <code class="language-plaintext highlighter-rouge">qscintilla-qt5</code>. Hmmmm, I don’t think this lib has a CMake configuration files for <code class="language-plaintext highlighter-rouge">find_package</code> command to work. To be continued…</p>
-
 <p>Anyway, thanks god this is not a high priority task. I guess I am gonna switch tasks now. If at any chance you read my proposal, you will know that this project is splitted into 2 parts:</p>
 
 <ol>
@@ -26,7 +107,36 @@
 
 <p>For now, I am gonna start implementing the graph functionalities. Where is the location in the codebase? Well let’s figure this out before the coding period starts.</p>
 
-<p>The graph backend is not related to the <code class="language-plaintext highlighter-rouge">Graphics_Systems</code>, although, it will require a system to render the generated shader. I think the most suitable location is inside <code class="language-plaintext highlighter-rouge">Universal_System</code>.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Acceptance Story</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/14/google-summer-of-code-2024-acceptance-story.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Acceptance Story" /><published>2024-05-14T21:00:00+00:00</published><updated>2024-05-14T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/14/google-summer-of-code-2024-acceptance-story</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/14/google-summer-of-code-2024-acceptance-story.html"><![CDATA[<p>My accepted proposal <a href="/gsoc24-blog/assets/procedural-fragment-shader-generation-using-classic-machine-learning-GSoC-2024-proposal.pdf">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
+<p>By the way, I found a problem with the current CMakeLists.txt file. It doesn’t link all required Qt5 libraries. The one that is missing is <code class="language-plaintext highlighter-rouge">qscintilla-qt5</code>. Hmmmm, I don’t think this lib has a CMake configuration files for <code class="language-plaintext highlighter-rouge">find_package</code> command to work. To be continued…</p>
+
+<p>Anyway, The graph backend is not related to the <code class="language-plaintext highlighter-rouge">Graphics_Systems</code>, although, it will require a system to render the generated shader. I think the most suitable location is inside <code class="language-plaintext highlighter-rouge">Universal_System</code>.</p>
+
+<p>The expected structure of my files will be:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>enigma-dev
+├── ...
+├── CommandLine
+│   ├── ...
+│   └── emake-tests
+│       ├── ...
+│       └── ShaderGraphTests
+│           ├── ...
+│           ├── GraphTests.cpp
+│           └── NodeTests.cpp
+└── ENIGMAsystem
+    └── SHELL
+        ├── ...
+        └── Universal_System
+            ├── ...
+            └── ShaderGraph
+                ├── ...
+                ├── Graph.cpp
+                ├── Graph.h
+                ├── Node.cpp
+                └── Node.h
+</code></pre></div></div>
+
+<p>When the graph is implemented, I will start implementing the generator although I am not sure how I am gonna visualize the output shader. I will talk to my mentor about this however maybe I will have to integrate the node editor with RGM which is something I don’t want to do.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Acceptance Story</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/14/google-summer-of-code-2024-acceptance-story.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Acceptance Story" /><published>2024-05-14T21:00:00+00:00</published><updated>2024-05-14T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/14/google-summer-of-code-2024-acceptance-story</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/14/google-summer-of-code-2024-acceptance-story.html"><![CDATA[<p>My accepted proposal <a href="/gsoc24-blog/assets/procedural-fragment-shader-generation-using-classic-machine-learning-GSoC-2024-proposal.pdf">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
 <p>Hmmmmm … At the time of writing this, I can’t think of a way to describe my acceptance into Google Summer of Code 2024 program so let’s jump into project idea’s author.</p>
 
@@ -54,6 +164,8 @@ we need a procedural texture editor; there are some open-source ones we could in
 <p>After these messages, there was a long discussion about the project idea and then I decided to apply for it.</p>
 
 <p>Anyway, I am gonna setup my development environment by installing arch linux as ENIGMA is mainly developed on it.</p>
+
+<p>NOTE: You can find the example game using Godot that showcases the final result of the project here: <a href="/gsoc24-blog/assets/godot_visual_shader_editor_showcase.zip">godot_visual_shader_editor_showcase.zip</a>.</p>
 
 <blockquote style="border-left: 6px solid #ff3e3e;">
     <p>
