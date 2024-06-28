@@ -15,6 +15,16 @@ Now for the first important question: What are my inputs and outputs?
 
 ## Inputs and Outputs
 
+In my unit test, I will create a bunch of Nodes and Connections to build a graph and then I will have a function that converts this graph to a shader code and another function that will serialize this graph to JSON. The problem is I know nothing about how I am gonna run this shader code for preview or how I am gonna apply it to a resource. That said, it is not a big deal now. What I need to do now is to finish all these implementations as I am off schedule and I need to catch up. I think I see how Godot devs did it first then implmenet my own.
 
+## Godot Visual Shader
+
+I will need to debug the project I linked in my proposal using this:
+    
+    ```bash
+    ./bin/godot.linuxbsd.editor.x86_64 -e --path ~/Desktop/godot_visual_shader_editor_showcase
+    ```
+
+It is very easy to compile Godot as it doesn't have any dependencies.
 
 [my-google-summer-of-code-2024-project]: https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA
