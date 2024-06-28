@@ -27,4 +27,8 @@ I will need to debug the project I linked in my proposal using this:
 
 It is very easy to compile Godot as it doesn't have any dependencies.
 
+## First Clue: The shader graph must serialized and saved with the project file to be loaded when the project is loaded.
+
+
+
 [my-google-summer-of-code-2024-project]: https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA
