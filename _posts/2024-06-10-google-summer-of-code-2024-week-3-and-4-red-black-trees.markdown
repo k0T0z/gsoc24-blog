@@ -14,37 +14,47 @@ Oh boi, it is the std::map in C++! Hmmm, Godot developers have their own impleme
 > December 29, 2023
  
 > k0T0z 12:55 AM
+
 > guys, i have a question in mind, i know that godot doesn't require any installation setup and wondered what the installation setup gives? I mean why just not every program out there use the same approach there must be something
 
 > Calinou 1:50 AM
+
 > installers allow for better system integration like desktop icons, start menu entries, entries in Add/Remove Programs
 > that's why there is still some demand for them. It is possible to do this stuff manually or with external tools like Scoop, but some people (companies in particular) value a built-in solution for large-scale deployments
 >
 > it is possible to create installers that work without administrator privileges if the app is installed for a single user only
 
 > AThousandShips 12:56 AM
+
 > Godot is self contained in a single file, many programs aren't, that's generally why they require installers, and have libraries they depend on etc.
 
 > k0T0z 12:57 AM
+
 > wait a minute, Godot doesn't depend on any library?
 
 > AThousandShips 12:58 AM
+
 > Not any other than system ones, it contains all the third party things
 
 > k0T0z 12:58 AM
+
 > also what do u mean by self-contained in a single file?
 
 > AThousandShips 12:58 AM
+
 > It is a single file? It doesn't have a lot of extra files like many programs have, it embeds all the data of it in the executable
 
 > k0T0z 12:59 AM
+
 > hmmm, interesting, I guess <std::string> is from system as well, why not use it?
 
 > AThousandShips 12:59 AM
+
 > Look at any one software on your computer, in for example Program Files on Windows
 See [here](https://docs.godotengine.org/en/stable/about/faq.html#doc-faq-why-not-stl) 🙂
 
 > AThousandShips 1:00 AM
+
 > We use our custom String type, as the one provided by STL is too basic and lacks proper internationalization support.
 > STL templates create very large symbols, which results in huge debug binaries. We use few templates with very short names instead.
 

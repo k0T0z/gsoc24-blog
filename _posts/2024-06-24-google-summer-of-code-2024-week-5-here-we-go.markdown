@@ -27,7 +27,11 @@ I will need to debug the project I linked in my proposal using this:
 
 It is very easy to compile Godot as it doesn't have any dependencies.
 
-## First Clue: The shader graph must serialized and saved with the project file to be loaded when the project is loaded.
+## The plan
+
+I figured out my next steps now after talking to Josh, I will start by creating my graph and the generator. I will try to make it work for the simple example I used in my proposal and then extend it over time. I decided also to work in parallel on Godot's Visual Shader Editor to improve my implementations. This PR is the one [#93791](https://github.com/godotengine/godot/pull/93791).
+
+
 
 
 
