@@ -31,8 +31,42 @@ It is very easy to compile Godot as it doesn't have any dependencies.
 
 I figured out my next steps now after talking to Josh, I will start by creating my graph and the generator. I will try to make it work for the simple example I used in my proposal and then extend it over time. I decided also to work in parallel on Godot's Visual Shader Editor to improve my implementations. This PR is the one [#93791](https://github.com/godotengine/godot/pull/93791).
 
+## Debugging ENIGMA emake-tests inside VSCode
 
+I always wanted to run the debug session from vscode instead of doing it manually and here are the task and launch objects:
 
+{% highlight json %}
+// task object:
+{
+    "label": "build emake-tests",
+    "group": "build",
+    "type": "shell",
+    "command": "make emake-tests", // ENIGMA uses make (not CMake) at the time of writing this.
+}
+{% endhighlight %}
 
+{% highlight json %}
+// launch configuration object:
+{
+    "name": "Launch emake-tests",
+    "type": "cppdbg",
+    "request": "launch",
+    "program": "${workspaceFolder}/emake-tests",
+    "args": [ "--gtest_filter=" ], // TODO: Add your filter here.
+    "stopAtEntry": false,
+    "cwd": "${workspaceFolder}",
+    "environment": [],
+    "externalConsole": false,
+    "setupCommands":
+    [
+        {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+        }
+    ],
+    "preLaunchTask": "build emake-tests"
+}
+{% endhighlight %}
 
 [my-google-summer-of-code-2024-project]: https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA
