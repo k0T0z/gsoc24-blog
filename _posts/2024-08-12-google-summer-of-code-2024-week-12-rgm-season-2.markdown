@@ -179,7 +179,23 @@ ldd RadialGM
 The not found libraries are all engima-dev libraries. I need to export the path to the libraries by adding this line to my ``.bashrc`` file:
 
 ```bash
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/RadialGM/Submodules/enigma-dev
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:path/to/RadialGM/build/Submodules/enigma-dev/CommandLine/emake
+```
+
+```bash
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:path/to/RadialGM/build/Submodules/enigma-dev/CommandLine/libEGM
+```
+
+```bash
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:path/to/RadialGM/build/Submodules/enigma-dev/CompilerSource
+```
+
+```bash
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:path/to/RadialGM/build/Submodules/enigma-dev/shared
+```
+
+```bash
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:path/to/RadialGM/build/Submodules/enigma-dev/shared/protos
 ```
 
 Note: Add your own path to the libraries.
