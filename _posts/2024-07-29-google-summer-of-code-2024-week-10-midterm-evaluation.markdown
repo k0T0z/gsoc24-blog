@@ -11,7 +11,7 @@ As I said in my previous blog post, I am running at a low pace due to my master'
 
 ## Midterm 2024 Evaluation Feedback
 
-![Midterm 2024 Evaluation Feedback](assets/midterm-2024-evaluation-feedback.png)
+![Midterm 2024 Evaluation Feedback](../assets/midterm-2024-evaluation-feedback.png)
 
 ## Work Done So Far
 
