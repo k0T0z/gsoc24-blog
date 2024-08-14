@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/gsoc24-blog/assets/css/style.css">
+<title>Google Summer of Code 2024 Week 10: Midterm Evaluation</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Google Summer of Code 2024 Week 10: Midterm Evaluation | k0T0z</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Google Summer of Code 2024 Week 10: Midterm Evaluation" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This blog post is related to my Google Summer of Code 2024 project." />
+<meta property="og:description" content="This blog post is related to my Google Summer of Code 2024 project." />
+<link rel="canonical" href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/28/google-summer-of-code-2024-week-10-midterm-evaluation.html" />
+<meta property="og:url" content="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/28/google-summer-of-code-2024-week-10-midterm-evaluation.html" />
+<meta property="og:site_name" content="k0T0z" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-07-28T21:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Google Summer of Code 2024 Week 10: Midterm Evaluation" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-07-28T21:00:00+00:00","datePublished":"2024-07-28T21:00:00+00:00","description":"This blog post is related to my Google Summer of Code 2024 project.","headline":"Google Summer of Code 2024 Week 10: Midterm Evaluation","mainEntityOfPage":{"@type":"WebPage","@id":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/28/google-summer-of-code-2024-week-10-midterm-evaluation.html"},"url":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/28/google-summer-of-code-2024-week-10-midterm-evaluation.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/gsoc24-blog/">
+        
+        <img src="/gsoc24-blog/assets/portfolio.png" alt="Saif Kandil" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/gsoc24-blog/">Saif Kandil</a>
+      </h2>
+      </div><p class="tagline">Just a place for me to dump my thoughts about my Google Summer of Code 2024 project</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2024</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/gsoc24-blog/blog/2024/07/28/google-summer-of-code-2024-week-10-midterm-evaluation.html">
+    <h2 class="post-title">Google Summer of Code 2024 Week 10: Midterm Evaluation</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Jul 28, 2024</div><ul class="post-categories"><li>blog</li></ul></div>
+  <div class="post">
+    <p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+
+<p>As I said in my previous blog post, I am running at a low pace due to my master’s preparation as well as the army service. Josh and Greg gave me a pass even though I didn’t do much. Anyway, thanks to them for their understanding. Here is my midterm feedback and the work done so far and why.</p>
+
+<h2 id="midterm-2024-evaluation-feedback">Midterm 2024 Evaluation Feedback</h2>
+
+<p><img src="assets/midterm-2024-evaluation-feedback.png" alt="Midterm 2024 Evaluation Feedback" /></p>
+
+<h2 id="work-done-so-far">Work Done So Far</h2>
+
+<p>The generator is now finished and it has the following features:</p>
+<ul>
+  <li>Input node: Foe example, if you want to use a UV.</li>
+  <li>Output node: The implementation is finished, however, there is no intergartion with ENIGMA’s Graphics System yet.</li>
+  <li>Constants: You can use a constant value in your shader code. This includes float, int, uint, vec2, vec3, and vec4.</li>
+  <li>Operators: Many operations are supported for float, int, uint, vec2, vec3, and vec4 types. Color operations are also supported.</li>
+  <li>Functions: Many functions are supported such as sin, cos, tan, … etc.</li>
+  <li>UV with parameters: You can use UV with parameters such as scale, offset, and rotation. Polar coordinates are also supported.</li>
+  <li>Dot product is supported.</li>
+  <li>Others: <code class="language-plaintext highlighter-rouge">Length()</code>, <code class="language-plaintext highlighter-rouge">Clamp()</code>, … etc are supported.</li>
+</ul>
+
+<h3 id="filters">Filters</h3>
+
+<ul>
+  <li>Noise: You can use noise functions such as simplex, perlin, and worley.</li>
+</ul>
+
+<h2 id="todo">TODO</h2>
+
+<ul>
+  <li>I need to support comments in the shader code.</li>
+  <li>I need to integrate a node editor into RGM to be able to create large graphs.</li>
+  <li>I need to work with Robert to integrate the VisualShader with ENIGMA’s Graphics System.</li>
+  <li>After all the previous TODOs are done, I am ready to design a Genetic approach to modify the parameters of the shader code (as a start only, later on, the Genetic Algorithm will be able to add/delete nodes and connections).</li>
+</ul>
+
+<h2 id="notes">Notes</h2>
+
+<p>The generator is implemented for creating a shader code manually, however, the integration with a Genetic Algorithm will require a lot of changes to the generator. For example, the Clamp function must be modified so that I can say for this range use this filter and for this range use this filter and so on.</p>
+
+<p>The midterm work exists in PR <a href="https://github.com/enigma-dev/enigma-dev/pull/2397">#2397</a>.</p>
+
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2024</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+  
+  <script src="/gsoc24-blog/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/gsoc24-blog/assets/js/search.js"></script>
+  
+</body>
+
+</html>

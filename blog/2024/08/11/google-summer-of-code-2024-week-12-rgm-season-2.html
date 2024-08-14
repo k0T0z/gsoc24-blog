@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/gsoc24-blog/assets/css/style.css">
+<title>Google Summer of Code 2024 Week 12: RGM, Season 2</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Google Summer of Code 2024 Week 12: RGM, Season 2 | k0T0z</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Google Summer of Code 2024 Week 12: RGM, Season 2" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This blog post is related to my Google Summer of Code 2024 project." />
+<meta property="og:description" content="This blog post is related to my Google Summer of Code 2024 project." />
+<link rel="canonical" href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/11/google-summer-of-code-2024-week-12-rgm-season-2.html" />
+<meta property="og:url" content="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/11/google-summer-of-code-2024-week-12-rgm-season-2.html" />
+<meta property="og:site_name" content="k0T0z" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-08-11T21:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Google Summer of Code 2024 Week 12: RGM, Season 2" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-08-11T21:00:00+00:00","datePublished":"2024-08-11T21:00:00+00:00","description":"This blog post is related to my Google Summer of Code 2024 project.","headline":"Google Summer of Code 2024 Week 12: RGM, Season 2","mainEntityOfPage":{"@type":"WebPage","@id":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/11/google-summer-of-code-2024-week-12-rgm-season-2.html"},"url":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/11/google-summer-of-code-2024-week-12-rgm-season-2.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/gsoc24-blog/">
+        
+        <img src="/gsoc24-blog/assets/portfolio.png" alt="Saif Kandil" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/gsoc24-blog/">Saif Kandil</a>
+      </h2>
+      </div><p class="tagline">Just a place for me to dump my thoughts about my Google Summer of Code 2024 project</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2024</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/gsoc24-blog/blog/2024/08/11/google-summer-of-code-2024-week-12-rgm-season-2.html">
+    <h2 class="post-title">Google Summer of Code 2024 Week 12: RGM, Season 2</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Aug 11, 2024</div><ul class="post-categories"><li>blog</li></ul></div>
+  <div class="post">
+    <p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+
+<p>All fixes done last week didn’t solve the link issue because as I said we need to link according to new absl library.</p>
+
+<p>After clean build, this error showed up:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ld: .eobjs/Server.o: undefined reference to symbol 'gpr_inf_future'
+/usr/bin/ld: /usr/local/lib/libgpr.so.42: error adding symbols: DSO missing from command line
+</code></pre></div></div>
+
+<p>It is too clear to see that the <code class="language-plaintext highlighter-rouge">-lgpr</code> is missing from <code class="language-plaintext highlighter-rouge">LDFLAGS</code> variable. After adding it, the next error is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ld: .eobjs/EnigmaPlugin.o: undefined reference to symbol '_ZN4absl12lts_2024072212log_internal15LogMessageFatalC1EPKciSt17basic_string_viewIcSt11char_traitsIcEE'
+/usr/bin/ld: /usr/local/lib/libabseil_dll.so.2407.0.0: error adding symbols: DSO missing from command line
+</code></pre></div></div>
+
+<p>I gave too much time to this error but I realized that may be the new absl has a new target to add it to the linker as well. That new target is <code class="language-plaintext highlighter-rouge">-labseil_dll</code>.</p>
+
+<p>These changes to <code class="language-plaintext highlighter-rouge">enigma-dev/CommandLine/emake/Makefile</code> fixed the linking issues and now my tests which I wrote on Ubuntu machine are passing.</p>
+
+<h2 id="grpc_cpp_plugin-path"><code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code> path</h2>
+
+<p>If you take a look at this line here: <a href="https://github.com/enigma-dev/enigma-dev/blob/3590b681f20174ccf24156769d2bbb94b10673e3/shared/protos/CMakeLists.txt#L30">shared/protos/CMakeLists.txt#L30</a>, you will see that the path to <code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code> is hardcoded. As we installed the libraries to <code class="language-plaintext highlighter-rouge">/usr/local</code>, we need to change this path to <code class="language-plaintext highlighter-rouge">/usr/local/bin/grpc_cpp_plugin</code>.</p>
+
+<p>I provided this PR <a href="https://github.com/enigma-dev/enigma-dev/pull/2387">#2387</a> to fix this issue.</p>
+
+<p>Now you can add this line in <code class="language-plaintext highlighter-rouge">RadialGM/CMakeLists.txt</code>:</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">set</span><span class="p">(</span>GRPC_EXE <span class="s2">"/usr/local/bin/grpc_cpp_plugin"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="moving-to-rgm">Moving to RGM</h2>
+
+<p>The next step is RGM. RGM uses CMake build system and powered by Qt5. When running CMake, I got this error:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ 76%] Linking CXX executable emake
+/usr/bin/ld: CMakeFiles/emake.dir/EnigmaPlugin.cpp.o: undefined reference to symbol '_ZN4absl12lts_2024072212log_internal15LogMessageFatalC1EPKciSt17basic_string_viewIcSt11char_traitsIcEE'
+/usr/bin/ld: /usr/local/lib/libabseil_dll.so.2407.0.0: error adding symbols: DSO missing from command line
+</code></pre></div></div>
+
+<p>That’s the absl again. The same change I did to <code class="language-plaintext highlighter-rouge">enigma-dev/CommandLine/emake/Makefile</code> should be done to <code class="language-plaintext highlighter-rouge">RadialGM/Submodules/enigma-dev/CommandLine/emake/CMakeLists.txt</code>, however, I need to do it CMake style.</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Find absl</span>
+<span class="nb">find_package</span><span class="p">(</span>absl CONFIG REQUIRED<span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="si">${</span><span class="nv">CLI_TARGET</span><span class="si">}</span> PRIVATE absl::base absl::strings absl::synchronization absl::time absl::status absl::statusor<span class="p">)</span>
+</code></pre></div></div>
+
+<p>This change fixed the linking issues and now we a have last task to do.</p>
+
+<p>As Robert merged a last PR without checking the CI, there are a lot of cleanup that must be done in order for RGM to build properly. I provided this PR <a href="https://github.com/enigma-dev/RadialGM/pull/238">#238</a> to fix this issue.</p>
+
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2024</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+  
+  <script src="/gsoc24-blog/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/gsoc24-blog/assets/js/search.js"></script>
+  
+</body>
+
+</html>

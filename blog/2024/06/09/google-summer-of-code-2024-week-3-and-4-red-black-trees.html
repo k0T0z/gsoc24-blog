@@ -77,57 +77,87 @@
 </blockquote>
 
 <blockquote>
-  <p>k0T0z 12:55 AM
-guys, i have a question in mind, i know that godot doesn’t require any installation setup and wondered what the installation setup gives? I mean why just not every program out there use the same approach there must be something</p>
+  <p>k0T0z 12:55 AM</p>
 </blockquote>
 
 <blockquote>
-  <p>Calinou 1:50 AM
-installers allow for better system integration like desktop icons, start menu entries, entries in Add/Remove Programs
+  <p>guys, i have a question in mind, i know that godot doesn’t require any installation setup and wondered what the installation setup gives? I mean why just not every program out there use the same approach there must be something</p>
+</blockquote>
+
+<blockquote>
+  <p>Calinou 1:50 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>installers allow for better system integration like desktop icons, start menu entries, entries in Add/Remove Programs
 that’s why there is still some demand for them. It is possible to do this stuff manually or with external tools like Scoop, but some people (companies in particular) value a built-in solution for large-scale deployments</p>
 
   <p>it is possible to create installers that work without administrator privileges if the app is installed for a single user only</p>
 </blockquote>
 
 <blockquote>
-  <p>AThousandShips 12:56 AM
-Godot is self contained in a single file, many programs aren’t, that’s generally why they require installers, and have libraries they depend on etc.</p>
+  <p>AThousandShips 12:56 AM</p>
 </blockquote>
 
 <blockquote>
-  <p>k0T0z 12:57 AM
-wait a minute, Godot doesn’t depend on any library?</p>
+  <p>Godot is self contained in a single file, many programs aren’t, that’s generally why they require installers, and have libraries they depend on etc.</p>
 </blockquote>
 
 <blockquote>
-  <p>AThousandShips 12:58 AM
-Not any other than system ones, it contains all the third party things</p>
+  <p>k0T0z 12:57 AM</p>
 </blockquote>
 
 <blockquote>
-  <p>k0T0z 12:58 AM
-also what do u mean by self-contained in a single file?</p>
+  <p>wait a minute, Godot doesn’t depend on any library?</p>
 </blockquote>
 
 <blockquote>
-  <p>AThousandShips 12:58 AM
-It is a single file? It doesn’t have a lot of extra files like many programs have, it embeds all the data of it in the executable</p>
+  <p>AThousandShips 12:58 AM</p>
 </blockquote>
 
 <blockquote>
-  <p>k0T0z 12:59 AM
-hmmm, interesting, I guess &lt;std::string&gt; is from system as well, why not use it?</p>
+  <p>Not any other than system ones, it contains all the third party things</p>
 </blockquote>
 
 <blockquote>
-  <p>AThousandShips 12:59 AM
-Look at any one software on your computer, in for example Program Files on Windows
+  <p>k0T0z 12:58 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>also what do u mean by self-contained in a single file?</p>
+</blockquote>
+
+<blockquote>
+  <p>AThousandShips 12:58 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>It is a single file? It doesn’t have a lot of extra files like many programs have, it embeds all the data of it in the executable</p>
+</blockquote>
+
+<blockquote>
+  <p>k0T0z 12:59 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>hmmm, interesting, I guess &lt;std::string&gt; is from system as well, why not use it?</p>
+</blockquote>
+
+<blockquote>
+  <p>AThousandShips 12:59 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>Look at any one software on your computer, in for example Program Files on Windows
 See <a href="https://docs.godotengine.org/en/stable/about/faq.html#doc-faq-why-not-stl">here</a> 🙂</p>
 </blockquote>
 
 <blockquote>
-  <p>AThousandShips 1:00 AM
-We use our custom String type, as the one provided by STL is too basic and lacks proper internationalization support.
+  <p>AThousandShips 1:00 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>We use our custom String type, as the one provided by STL is too basic and lacks proper internationalization support.
 STL templates create very large symbols, which results in huge debug binaries. We use few templates with very short names instead.</p>
 </blockquote>
 

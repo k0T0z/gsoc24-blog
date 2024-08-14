@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/gsoc24-blog/assets/css/style.css">
+<title>Google Summer of Code 2024 Week 6: The Rush Summer</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Google Summer of Code 2024 Week 6: The Rush Summer | k0T0z</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Google Summer of Code 2024 Week 6: The Rush Summer" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This blog post is related to my Google Summer of Code 2024 project." />
+<meta property="og:description" content="This blog post is related to my Google Summer of Code 2024 project." />
+<link rel="canonical" href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer.html" />
+<meta property="og:url" content="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer.html" />
+<meta property="og:site_name" content="k0T0z" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-06-30T21:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Google Summer of Code 2024 Week 6: The Rush Summer" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-06-30T21:00:00+00:00","datePublished":"2024-06-30T21:00:00+00:00","description":"This blog post is related to my Google Summer of Code 2024 project.","headline":"Google Summer of Code 2024 Week 6: The Rush Summer","mainEntityOfPage":{"@type":"WebPage","@id":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer.html"},"url":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/gsoc24-blog/">
+        
+        <img src="/gsoc24-blog/assets/portfolio.png" alt="Saif Kandil" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/gsoc24-blog/">Saif Kandil</a>
+      </h2>
+      </div><p class="tagline">Just a place for me to dump my thoughts about my Google Summer of Code 2024 project</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2024</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer.html">
+    <h2 class="post-title">Google Summer of Code 2024 Week 6: The Rush Summer</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Jun 30, 2024</div><ul class="post-categories"><li>blog</li></ul></div>
+  <div class="post">
+    <p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+
+<p>This week I had clearer view of what I need to do, thanks to Josh of course.</p>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 08:14</p>
+</blockquote>
+
+<blockquote>
+  <p>you can eliminate a lot of that boilerplate using proto, @Saif
+in fact, I recommend it, as you’ll need proto on hand to serialize to EGM etc</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 08:26</p>
+</blockquote>
+
+<blockquote>
+  <p>@Josh what boilerplate code? I have written only the model class:
+graph, add_node, …etc
+also, how proto can be beneficial? If u can send some article to read or something, i would really appreciate it
+Lastly, is it better to complete the generator this way (Testing a GTest unit test) or use another approach?</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 08:55</p>
+</blockquote>
+
+<blockquote>
+  <p>add_node is a great example
+of boilerplate, I mean; literally that is a function that protobuf would generate
+check out the other resource messages
+just search RGM for proto files</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:06</p>
+</blockquote>
+
+<blockquote>
+  <p>interesting, so because the add_node is a button in RGM, protobuf is used instead</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:13</p>
+</blockquote>
+
+<blockquote>
+  <p>u said you want the generation to be transparent
+then why we would need the nodeeditor for example?</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:15</p>
+</blockquote>
+
+<blockquote>
+  <p>the generation of the shader script from the nodes, not the generation of the nodes
+the nodes are the main representation of these shaders now, is all I was saying
+these particular shaders
+we don’t want to store generated code alongside them
+it’s the parameters of the nodes we’re tuning with AI</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:17</p>
+</blockquote>
+
+<blockquote>
+  <p>okay it becomes clearer now, so why u said here it’s an extra effort?
+oh u mean the generated shader itself, kinda make sense now
+okay so my plan was to implement that editor and finish it (not planing to implement all features of shaders inside) and the start writing the shader generation algorithm from that specific graph</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:20</p>
+</blockquote>
+
+<blockquote>
+  <p>yeah, generating the shader from the nodes should be extremely easy</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:20</p>
+</blockquote>
+
+<blockquote>
+  <p>which means the graph itself won’t be generated, however it will be written by the user</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:20</p>
+</blockquote>
+
+<blockquote>
+  <p>the node graph editor is a good chunk of work, and then the hard part is genetic recombination of node graphs
+your first prototype should probably use a fixed node layout</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:21</p>
+</blockquote>
+
+<blockquote>
+  <p>yeah that’s right however finding the best parameters is the tricky part</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:21</p>
+</blockquote>
+
+<blockquote>
+  <p>i.e. users select the nodes and their types, then the ML selects the parameters</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:21</p>
+</blockquote>
+
+<blockquote>
+  <p>fixed node layout?</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:22</p>
+</blockquote>
+
+<blockquote>
+  <p>got it</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:23</p>
+</blockquote>
+
+<blockquote>
+  <p>you can absolutely implement one that allows the ML to add or delete nodes, but then you need rules for handling recombination and crossover</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:23</p>
+</blockquote>
+
+<blockquote>
+  <p>okay so that was my plan and I was implementing the backend code until you said that the protobuf is a shortcut</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:23</p>
+</blockquote>
+
+<blockquote>
+  <p>interesting, let’s keep it simple for now and i can this it looks interesting</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:24</p>
+</blockquote>
+
+<blockquote>
+  <p>yes—like I said, prototype can and probably should use a fixed graph layout</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:25</p>
+</blockquote>
+
+<blockquote>
+  <p>there will be another files inside RGM itself to handle the add_node code so why you me to remove the code inside ENIGMA?</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:25</p>
+</blockquote>
+
+<blockquote>
+  <p>a fixed graph is for the parameters only right? or you mean a whole fixed graph with also nodes already specified?</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:25</p>
+</blockquote>
+
+<blockquote>
+  <p>I suspect some of what I’ve written will still be necessary, but I suggest you try writing these node classes as protobuf messages and see where that gets you</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:26</p>
+</blockquote>
+
+<blockquote>
+  <p>as we always do, alright got it</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:26</p>
+</blockquote>
+
+<blockquote>
+  <p>not sure I understand, but I do mean a graph where all the nodes are specified, and the ML only changes the values, not the node counts or connections
+changing the counts and connections is simple enough, but leads to problems when cross-breeding two specimens with different graph structures</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:28</p>
+</blockquote>
+
+<blockquote>
+  <p>okay just a second, i can let the user choose the graph nodes without any parameter tuning, so for example a “color” node or a “add” node, and the values of the color or the addition operation will be determined by the AI</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:28</p>
+</blockquote>
+
+<blockquote>
+  <p>correct</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:29</p>
+</blockquote>
+
+<blockquote>
+  <p>okay so the AI will also change connections, this is new</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:29</p>
+</blockquote>
+
+<blockquote>
+  <p>in the end, the AI should generate the whole graph
+but it’s totally okay if you don’t get that far</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:29</p>
+</blockquote>
+
+<blockquote>
+  <p>cross-breeding is a well known problem? I am not I know what that is</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:29</p>
+</blockquote>
+
+<blockquote>
+  <p>I am pushing for a genetic algorithm
+you have not heard the end of genetic algorithms
+they are old school but will once again revolutionize artificial intelligence in the next ten years
+in particular they will become important to avoid overfitting in DNN training</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:31</p>
+</blockquote>
+
+<blockquote>
+  <p>okay got it so actually we can say:
+fixed nodes, fixed parameters, fixed connections
+variable nodes, fixed parameters, fixed connections
+…etc</p>
+
+  <p>until
+variable nodes, variable parameters, variable connections</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:32</p>
+</blockquote>
+
+<blockquote>
+  <p>yeah, though the parameters will probably be the first thing your ML tweaks, not nodes
+you have not heard the end of genetic algorithms</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:32</p>
+</blockquote>
+
+<blockquote>
+  <p>I have learned it in my AI course and also learned about it to write the proposal but didn’t dig this deeper though</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:32</p>
+</blockquote>
+
+<blockquote>
+  <p>their importance is about to skyrocket</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:32</p>
+</blockquote>
+
+<blockquote>
+  <p>yeah, it looks easier that way
+and the importance of course</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:33</p>
+</blockquote>
+
+<blockquote>
+  <p>genetic algorithms are due for a Renaissance, is what I’m saying</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:33</p>
+</blockquote>
+
+<blockquote>
+  <p>so I will continue as I was working trying to finish the generator but this time I will in parallel with protobuf</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:33</p>
+</blockquote>
+
+<blockquote>
+  <p>sounds good
+proto should save you a lot of effort here</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:34</p>
+</blockquote>
+
+<blockquote>
+  <p>Sounds perfect</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:34</p>
+</blockquote>
+
+<blockquote>
+  <p>hmmm, the effort or the must of doing it?</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:35</p>
+</blockquote>
+
+<blockquote>
+  <p>both?</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:35</p>
+</blockquote>
+
+<blockquote>
+  <p>I mean when to use protobuf and when not to use it, it depends maybe on what is protobuf
+i will see what i can do</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:35</p>
+</blockquote>
+
+<blockquote>
+  <p>proto is just what C++ classes should look like</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:35</p>
+</blockquote>
+
+<blockquote>
+  <p>hmmm, truly i have no idea</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:35</p>
+</blockquote>
+
+<blockquote>
+  <p>well, sorry; as a storage layer, proto is certainly not what C++ classes should look like
+but in terms of the features that a proto message offers….
+there is absolutely no reason a modern programming language should not offer these features for its classes
+proto just lets you do things like serialize and deserialize, use reflection, etc</p>
+</blockquote>
+
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2024</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+  
+  <script src="/gsoc24-blog/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/gsoc24-blog/assets/js/search.js"></script>
+  
+</body>
+
+</html>

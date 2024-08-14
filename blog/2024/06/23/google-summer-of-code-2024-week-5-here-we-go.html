@@ -70,6 +70,63 @@
 
 <p>Now my mentor Greg increased my project period to 18 weeks, so I can have more time before the midterms. So my new midterm deadline is Aug 02, 2024 which gives me enough time to implement a proper solution for the project.</p>
 
+<p>I will use a GTest unit test for testing my code and I will keep this https://google.github.io/googletest/advanced.html#running-a-subset-of-the-tests as a reference because I always forget about it.</p>
+
+<p>Now for the first important question: What are my inputs and outputs?</p>
+
+<h2 id="inputs-and-outputs">Inputs and Outputs</h2>
+
+<p>In my unit test, I will create a bunch of Nodes and Connections to build a graph and then I will have a function that converts this graph to a shader code and another function that will serialize this graph to JSON. The problem is I know nothing about how I am gonna run this shader code for preview or how I am gonna apply it to a resource. That said, it is not a big deal now. What I need to do now is to finish all these implementations as I am off schedule and I need to catch up. I think I see how Godot devs did it first then implmenet my own.</p>
+
+<h2 id="godot-visual-shader">Godot Visual Shader</h2>
+
+<p>I will need to debug the project I linked in my proposal using this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```bash
+./bin/godot.linuxbsd.editor.x86_64 -e --path ~/Desktop/godot_visual_shader_editor_showcase
+```
+</code></pre></div></div>
+
+<p>It is very easy to compile Godot as it doesn’t have any dependencies.</p>
+
+<h2 id="the-plan">The plan</h2>
+
+<p>I figured out my next steps now after talking to Josh, I will start by creating my graph and the generator. I will try to make it work for the simple example I used in my proposal and then extend it over time. I decided also to work in parallel on Godot’s Visual Shader Editor to improve my implementations. This PR is the one <a href="https://github.com/godotengine/godot/pull/93791">#93791</a>.</p>
+
+<h2 id="debugging-enigma-emake-tests-inside-vscode">Debugging ENIGMA emake-tests inside VSCode</h2>
+
+<p>I always wanted to run the debug session from vscode instead of doing it manually and here are the task and launch objects:</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="err">//</span><span class="w"> </span><span class="err">task</span><span class="w"> </span><span class="err">object:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build emake-tests"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shell"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"make emake-tests"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">ENIGMA</span><span class="w"> </span><span class="err">uses</span><span class="w"> </span><span class="err">make</span><span class="w"> </span><span class="err">(not</span><span class="w"> </span><span class="err">CMake)</span><span class="w"> </span><span class="err">at</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">writing</span><span class="w"> </span><span class="err">this.</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="err">//</span><span class="w"> </span><span class="err">launch</span><span class="w"> </span><span class="err">configuration</span><span class="w"> </span><span class="err">object:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Launch emake-tests"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cppdbg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"program"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/emake-tests"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"--gtest_filter="</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">TODO:</span><span class="w"> </span><span class="err">Add</span><span class="w"> </span><span class="err">your</span><span class="w"> </span><span class="err">filter</span><span class="w"> </span><span class="err">here.</span><span class="w">
+    </span><span class="nl">"stopAtEntry"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cwd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"environment"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"externalConsole"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"setupCommands"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enable pretty-printing for gdb"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-enable-pretty-printing"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ignoreFailures"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"preLaunchTask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build emake-tests"</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
 
   </div></div>
 

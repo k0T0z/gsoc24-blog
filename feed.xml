@@ -1,6 +1,887 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/" rel="alternate" type="text/html" /><updated>2024-06-27T01:15:36+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml</id><title type="html">k0T0z</title><subtitle>Just a place for me to dump my thoughts</subtitle><entry><title type="html">Google Summer of Code 2024 Week 5: Here we go!</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/23/google-summer-of-code-2024-week-5-here-we-go.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 5: Here we go!" /><published>2024-06-23T21:00:00+00:00</published><updated>2024-06-23T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/23/google-summer-of-code-2024-week-5-here-we-go</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/23/google-summer-of-code-2024-week-5-here-we-go.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/" rel="alternate" type="text/html" /><updated>2024-08-14T12:34:27+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml</id><title type="html">k0T0z</title><subtitle>Just a place for me to dump my thoughts</subtitle><entry><title type="html">Google Summer of Code 2024 Week 12: RGM, Season 2</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/11/google-summer-of-code-2024-week-12-rgm-season-2.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 12: RGM, Season 2" /><published>2024-08-11T21:00:00+00:00</published><updated>2024-08-11T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/11/google-summer-of-code-2024-week-12-rgm-season-2</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/11/google-summer-of-code-2024-week-12-rgm-season-2.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
 
-<p>Now my mentor Greg increased my project period to 18 weeks, so I can have more time before the midterms. So my new midterm deadline is Aug 02, 2024 which gives me enough time to implement a proper solution for the project.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 3 &amp;amp; 4: Red Black Trees</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/09/google-summer-of-code-2024-week-3-and-4-red-black-trees.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 3 &amp;amp; 4: Red Black Trees" /><published>2024-06-09T21:00:00+00:00</published><updated>2024-06-09T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/09/google-summer-of-code-2024-week-3-and-4-red-black-trees</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/09/google-summer-of-code-2024-week-3-and-4-red-black-trees.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+<p>All fixes done last week didn’t solve the link issue because as I said we need to link according to new absl library.</p>
+
+<p>After clean build, this error showed up:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ld: .eobjs/Server.o: undefined reference to symbol 'gpr_inf_future'
+/usr/bin/ld: /usr/local/lib/libgpr.so.42: error adding symbols: DSO missing from command line
+</code></pre></div></div>
+
+<p>It is too clear to see that the <code class="language-plaintext highlighter-rouge">-lgpr</code> is missing from <code class="language-plaintext highlighter-rouge">LDFLAGS</code> variable. After adding it, the next error is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ld: .eobjs/EnigmaPlugin.o: undefined reference to symbol '_ZN4absl12lts_2024072212log_internal15LogMessageFatalC1EPKciSt17basic_string_viewIcSt11char_traitsIcEE'
+/usr/bin/ld: /usr/local/lib/libabseil_dll.so.2407.0.0: error adding symbols: DSO missing from command line
+</code></pre></div></div>
+
+<p>I gave too much time to this error but I realized that may be the new absl has a new target to add it to the linker as well. That new target is <code class="language-plaintext highlighter-rouge">-labseil_dll</code>.</p>
+
+<p>These changes to <code class="language-plaintext highlighter-rouge">enigma-dev/CommandLine/emake/Makefile</code> fixed the linking issues and now my tests which I wrote on Ubuntu machine are passing.</p>
+
+<h2 id="grpc_cpp_plugin-path"><code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code> path</h2>
+
+<p>If you take a look at this line here: <a href="https://github.com/enigma-dev/enigma-dev/blob/3590b681f20174ccf24156769d2bbb94b10673e3/shared/protos/CMakeLists.txt#L30">shared/protos/CMakeLists.txt#L30</a>, you will see that the path to <code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code> is hardcoded. As we installed the libraries to <code class="language-plaintext highlighter-rouge">/usr/local</code>, we need to change this path to <code class="language-plaintext highlighter-rouge">/usr/local/bin/grpc_cpp_plugin</code>.</p>
+
+<p>I provided this PR <a href="https://github.com/enigma-dev/enigma-dev/pull/2387">#2387</a> to fix this issue.</p>
+
+<p>Now you can add this line in <code class="language-plaintext highlighter-rouge">RadialGM/CMakeLists.txt</code>:</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">set</span><span class="p">(</span>GRPC_EXE <span class="s2">"/usr/local/bin/grpc_cpp_plugin"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="moving-to-rgm">Moving to RGM</h2>
+
+<p>The next step is RGM. RGM uses CMake build system and powered by Qt5. When running CMake, I got this error:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ 76%] Linking CXX executable emake
+/usr/bin/ld: CMakeFiles/emake.dir/EnigmaPlugin.cpp.o: undefined reference to symbol '_ZN4absl12lts_2024072212log_internal15LogMessageFatalC1EPKciSt17basic_string_viewIcSt11char_traitsIcEE'
+/usr/bin/ld: /usr/local/lib/libabseil_dll.so.2407.0.0: error adding symbols: DSO missing from command line
+</code></pre></div></div>
+
+<p>That’s the absl again. The same change I did to <code class="language-plaintext highlighter-rouge">enigma-dev/CommandLine/emake/Makefile</code> should be done to <code class="language-plaintext highlighter-rouge">RadialGM/Submodules/enigma-dev/CommandLine/emake/CMakeLists.txt</code>, however, I need to do it CMake style.</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Find absl</span>
+<span class="nb">find_package</span><span class="p">(</span>absl CONFIG REQUIRED<span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="si">${</span><span class="nv">CLI_TARGET</span><span class="si">}</span> PRIVATE absl::base absl::strings absl::synchronization absl::time absl::status absl::statusor<span class="p">)</span>
+</code></pre></div></div>
+
+<p>This change fixed the linking issues and now we a have last task to do.</p>
+
+<p>As Robert merged a last PR without checking the CI, there are a lot of cleanup that must be done in order for RGM to build properly. I provided this PR <a href="https://github.com/enigma-dev/RadialGM/pull/238">#238</a> to fix this issue.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 11: RGM</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-rgm.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 11: RGM" /><published>2024-08-04T21:00:00+00:00</published><updated>2024-08-04T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-rgm</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-rgm.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+
+<p>Building RGM is a very interesting task, but before building it, I need to make be able to build emake properly. emake is the way to build games without a GUI. Remember that I couldn’t build emake in the bonding period? the error was as follows:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="o">[</span> 76%] Linking CXX executable emake
+    /usr/bin/ld: CMakeFiles/emake.dir/EnigmaPlugin.cpp.o: undefined reference to symbol <span class="s1">'_ZN4absl12lts_2024011612log_internal21CheckOpMessageBuilderC1EPKc'</span>
+    /usr/bin/ld: /usr/lib/libabsl_log_internal_check_op.so.2401.0.0: error adding symbols: DSO missing from <span class="nb">command </span>line
+    collect2: error: ld returned 1 <span class="nb">exit </span>status
+    make[2]: <span class="k">***</span> <span class="o">[</span>Submodules/enigma-dev/CommandLine/emake/CMakeFiles/emake.dir/build.make:203: Submodules/enigma-dev/CommandLine/emake/emake] Error 1
+    make[1]: <span class="k">***</span> <span class="o">[</span>CMakeFiles/Makefile2:625: Submodules/enigma-dev/CommandLine/emake/CMakeFiles/emake.dir/all] Error 2
+    make: <span class="k">***</span> <span class="o">[</span>Makefile:136: all] Error 2
+</code></pre></div></div>
+
+<p>This error appears only on Arch linux, not Ubuntu. I guess that’s because of the differences between old and new absl. I think the new absl has new targets that we need to link as well. Anyway, I asked Fares to give me the versions of Absl, Protobuf, and gRPC that he is using on Ubuntu. I will try to use the same versions on Arch.</p>
+
+<p>Absl: 20210324.2
+Protobuf: 3.12.4
+gRPC: 1.30.2</p>
+
+<p>I cloned these versions using -b option and found out that Absl doesn’t have a CMake system yet. So let’s change plans and try to build a proper versions of Absl, Protobuf, and gRPC from scratch.</p>
+
+<p>I created this solution to do this task for me, <a href="https://github.com/k0T0z/absl-proto-grpc-ci">absl-proto-grpc-ci</a>, you can get the working verions from the README file. Also, you can take the commands from the scripts and run them on your machine.</p>
+
+<p>Before installing them to your local, try to empty these dirs first:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> <span class="nt">-rf</span> /usr/local/lib/<span class="k">*</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> <span class="nt">-rf</span> /usr/local/include/<span class="k">*</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> <span class="nt">-rf</span> /usr/local/bin/<span class="k">*</span>
+</code></pre></div></div>
+
+<p>This is to get rid of the old versions of the libraries (if any).</p>
+
+<p>Now, building those libraries is very easy, as well as installing them.</p>
+
+<h2 id="prioritizing-local-over-system">Prioritizing local over system</h2>
+
+<p>When trying to build emake, this warning shows up:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ld: warning: libprotobuf.so.27.3.0, needed by /usr/local/lib/libgrpc++.so, may conflict with libprotobuf.so.27
+</code></pre></div></div>
+
+<p>This is because the system has a version of Protobuf already installed. When trying to remove it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>pacman <span class="nt">-Rns</span> protobuf
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>checking dependencies...
+error: failed to prepare transaction (could not satisfy dependencies)
+:: removing protobuf breaks dependency 'protobuf' required by libphonenumber
+:: removing protobuf breaks dependency 'libprotobuf.so=27-64' required by libphonenumber
+:: removing protobuf breaks dependency 'protobuf' required by protobuf-c
+</code></pre></div></div>
+
+<p>I can’t remove it as it is required by other packages. So I need to prioritize the local version over the system version. I did this by adding these simple lines to <code class="language-plaintext highlighter-rouge">enigma-dev/Config.mk</code> file:</p>
+
+<div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Which search priority to use for libraries (system or local)
+</span><span class="nv">CUSTOM_LIB_SEARCH_PRIORITY</span> <span class="o">:=</span> <span class="nb">local</span>
+
+<span class="k">ifeq</span> <span class="nv">($(CUSTOM_LIB_SEARCH_PRIORITY), local)</span>
+    <span class="nv">LDFLAGS</span> <span class="o">+=</span> <span class="nt">-L</span>/usr/local/lib
+<span class="k">endif</span>
+</code></pre></div></div>
+
+<p>Now, you can set the search priority to local by changing the value of <code class="language-plaintext highlighter-rouge">CUSTOM_LIB_SEARCH_PRIORITY</code> to <code class="language-plaintext highlighter-rouge">local</code>.</p>
+
+<h2 id="export-issue">Export Issue</h2>
+
+<p>Other error show up that <code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code> is unable to load some packages.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ldd <span class="si">$(</span>which grpc_cpp_plugin<span class="si">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>linux-vdso.so.1 (0x000071154c52f000)
+libsystemd.so.0 =&gt; /usr/lib/libsystemd.so.0 (0x000071154c3f5000)
+libgrpc_plugin_support.so.1.65 =&gt; not found
+libm.so.6 =&gt; /usr/lib/libm.so.6 (0x000071154c30a000)
+libprotoc.so.27.3.0 =&gt; not found
+libprotobuf.so.27.3.0 =&gt; not found
+libabseil_dll.so.2407.0.0 =&gt; not found
+libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0x000071154c000000)
+libgcc_s.so.1 =&gt; /usr/lib/libgcc_s.so.1 (0x000071154c2db000)
+libc.so.6 =&gt; /usr/lib/libc.so.6 (0x000071154be14000)
+libcap.so.2 =&gt; /usr/lib/libcap.so.2 (0x000071154c2cf000)
+/lib64/ld-linux-x86-64.so.2 =&gt; /usr/lib64/ld-linux-x86-64.so.2 (0x000071154c531000)
+</code></pre></div></div>
+
+<p>There are <code class="language-plaintext highlighter-rouge">not found</code> libraries as you can see. If you used <code class="language-plaintext highlighter-rouge">which</code> with any of the nof founded libs, you will find it inside <code class="language-plaintext highlighter-rouge">/usr/local/lib</code>. The solution is to export the path to the libraries by adding this line to your <code class="language-plaintext highlighter-rouge">.bashrc</code> file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/usr/local/lib
+</code></pre></div></div>
+
+<p>Now, you can run the command again:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ldd <span class="si">$(</span>which grpc_cpp_plugin<span class="si">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>linux-vdso.so.1 (0x0000765352968000)
+libsystemd.so.0 =&gt; /usr/lib/libsystemd.so.0 (0x000076535282d000)
+libgrpc_plugin_support.so.1.65 =&gt; /usr/local/lib/libgrpc_plugin_support.so.1.65 (0x00007653527a6000)
+libm.so.6 =&gt; /usr/lib/libm.so.6 (0x00007653526bb000)
+libprotoc.so.27.3.0 =&gt; /usr/local/lib/libprotoc.so.27.3.0 (0x0000765352200000)
+libprotobuf.so.27.3.0 =&gt; /usr/local/lib/libprotobuf.so.27.3.0 (0x0000765351e00000)
+libabseil_dll.so.2407.0.0 =&gt; /usr/local/lib/libabseil_dll.so.2407.0.0 (0x0000765351cc7000)
+libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0x0000765351a00000)
+libgcc_s.so.1 =&gt; /usr/lib/libgcc_s.so.1 (0x00007653521d3000)
+libc.so.6 =&gt; /usr/lib/libc.so.6 (0x0000765351814000)
+libcap.so.2 =&gt; /usr/lib/libcap.so.2 (0x00007653521c7000)
+/lib64/ld-linux-x86-64.so.2 =&gt; /usr/lib64/ld-linux-x86-64.so.2 (0x000076535296a000)
+libz.so.1 =&gt; /usr/local/lib/libz.so.1 (0x00007653521a6000)
+</code></pre></div></div>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 10: Midterm Evaluation</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/28/google-summer-of-code-2024-week-10-midterm-evaluation.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 10: Midterm Evaluation" /><published>2024-07-28T21:00:00+00:00</published><updated>2024-07-28T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/28/google-summer-of-code-2024-week-10-midterm-evaluation</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/28/google-summer-of-code-2024-week-10-midterm-evaluation.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+
+<p>As I said in my previous blog post, I am running at a low pace due to my master’s preparation as well as the army service. Josh and Greg gave me a pass even though I didn’t do much. Anyway, thanks to them for their understanding. Here is my midterm feedback and the work done so far and why.</p>
+
+<h2 id="midterm-2024-evaluation-feedback">Midterm 2024 Evaluation Feedback</h2>
+
+<p><img src="assets/midterm-2024-evaluation-feedback.png" alt="Midterm 2024 Evaluation Feedback" /></p>
+
+<h2 id="work-done-so-far">Work Done So Far</h2>
+
+<p>The generator is now finished and it has the following features:</p>
+<ul>
+  <li>Input node: Foe example, if you want to use a UV.</li>
+  <li>Output node: The implementation is finished, however, there is no intergartion with ENIGMA’s Graphics System yet.</li>
+  <li>Constants: You can use a constant value in your shader code. This includes float, int, uint, vec2, vec3, and vec4.</li>
+  <li>Operators: Many operations are supported for float, int, uint, vec2, vec3, and vec4 types. Color operations are also supported.</li>
+  <li>Functions: Many functions are supported such as sin, cos, tan, … etc.</li>
+  <li>UV with parameters: You can use UV with parameters such as scale, offset, and rotation. Polar coordinates are also supported.</li>
+  <li>Dot product is supported.</li>
+  <li>Others: <code class="language-plaintext highlighter-rouge">Length()</code>, <code class="language-plaintext highlighter-rouge">Clamp()</code>, … etc are supported.</li>
+</ul>
+
+<h3 id="filters">Filters</h3>
+
+<ul>
+  <li>Noise: You can use noise functions such as simplex, perlin, and worley.</li>
+</ul>
+
+<h2 id="todo">TODO</h2>
+
+<ul>
+  <li>I need to support comments in the shader code.</li>
+  <li>I need to integrate a node editor into RGM to be able to create large graphs.</li>
+  <li>I need to work with Robert to integrate the VisualShader with ENIGMA’s Graphics System.</li>
+  <li>After all the previous TODOs are done, I am ready to design a Genetic approach to modify the parameters of the shader code (as a start only, later on, the Genetic Algorithm will be able to add/delete nodes and connections).</li>
+</ul>
+
+<h2 id="notes">Notes</h2>
+
+<p>The generator is implemented for creating a shader code manually, however, the integration with a Genetic Algorithm will require a lot of changes to the generator. For example, the Clamp function must be modified so that I can say for this range use this filter and for this range use this filter and so on.</p>
+
+<p>The midterm work exists in PR <a href="https://github.com/enigma-dev/enigma-dev/pull/2397">#2397</a>.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 9: For after the midterms</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/21/google-summer-of-code-2024-week-9.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 9: For after the midterms" /><published>2024-07-21T21:00:00+00:00</published><updated>2024-07-21T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/21/google-summer-of-code-2024-week-9</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/21/google-summer-of-code-2024-week-9.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+
+<p>After my conversation with Josh last week, I have talked with Robert as he contributed to ENIGMA’s Graphics System.</p>
+
+<blockquote>
+  <p>Saif — 29/07/2024 19:58</p>
+</blockquote>
+
+<blockquote>
+  <p>I also favor the cmake route
+I need to talk to u about how to create a ShaderProgram that visualizes a shader code in a game?
+i have a shader code in a string, and I want to firstly get an image and then apply that shader on it and then viewing the output somehow (not necessarily in a game)</p>
+</blockquote>
+
+<blockquote>
+  <p>R0bert — 29/07/2024 20:03</p>
+</blockquote>
+
+<blockquote>
+  <p>enigma should have shader_add which is not in GM i think
+or you can create the shader resource in GMX or LGM
+i know the shaders in LGM work i’ve used them before</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 30/07/2024 06:16</p>
+</blockquote>
+
+<blockquote>
+  <p>interesting!!
+i will try that
+can apply this shader resource on some other resource? like textures, meshes, …</p>
+</blockquote>
+
+<blockquote>
+  <p>R0bert — 30/07/2024 11:33</p>
+</blockquote>
+
+<blockquote>
+  <p>you can apply it to any polygon/primitive yeah
+to apply it to a texture you have to use render-to-texture via surface_create and surface_set and background_add_from_surface or surface_get_texture (edited)</p>
+</blockquote>
+
+<blockquote>
+  <p>R0bert — 30/07/2024 13:36</p>
+</blockquote>
+
+<blockquote>
+  <p>if you get stuck making it work, let me know, i guarantee 100% we can get a shader working</p>
+</blockquote>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 8: GUI is a necessary overhead?</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/14/google-summer-of-code-2024-week-8.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 8: GUI is a necessary overhead?" /><published>2024-07-14T21:00:00+00:00</published><updated>2024-07-14T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/14/google-summer-of-code-2024-week-8</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/14/google-summer-of-code-2024-week-8.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+
+<p>I had a long talk with Josh about whether we should use a GUI or not as I think the generator is enough for start writing the Genetic Algorithm.</p>
+
+<blockquote>
+  <p>Saif — 28/07/2024 21:13</p>
+</blockquote>
+
+<blockquote>
+  <p>a better way? I will be able to see the output but theo problem is I won’t be able to evaluate it if it is a small graph with for example 5 nodes
+5 nodes won’t be able to create a grass
+so we need more nodes like 100
+a 100 nodes using my way means very very large numer of lines</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 28/07/2024 21:14</p>
+</blockquote>
+
+<blockquote>
+  <p>my guess is that grass would need more like 25, rust would need 12-18</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 28/07/2024 21:15</p>
+</blockquote>
+
+<blockquote>
+  <p>still large enough
+btw i am talking about an AI that modifies only parameters as a start
+the AI won’t be able to add/delete nodes</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 28/07/2024 21:15</p>
+</blockquote>
+
+<blockquote>
+  <p>yeah, I think you’ll max out its capability pretty quick
+and you’ll either find yourself building ever more complicated graphs yourself, by hand, wanting an editor, or else letting the AI build them and wanting a way to visualize</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 28/07/2024 21:16</p>
+</blockquote>
+
+<blockquote>
+  <p>yeah, maybe 25 nodes can be created manually without a GUI and then test its output</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 28/07/2024 21:17</p>
+</blockquote>
+
+<blockquote>
+  <p>all roads leads to this yeah
+alright then, i will complete the GUI work myself before the AI</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 28/07/2024 21:17</p>
+</blockquote>
+
+<blockquote>
+  <p>I think the only road that prolongs it enough is using graphviz instead, but even then it’s not really my recommendation
+well, don’t take my word for it; explore and let necessity guide you
+you’ll enjoy the project a lot more that way
+like, don’t do things just to have them done</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 28/07/2024 21:18</p>
+</blockquote>
+
+<blockquote>
+  <p>because I am afraid to achieve nothing in the AI part due to lack of a GUI though</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 28/07/2024 21:18</p>
+</blockquote>
+
+<blockquote>
+  <p>do as little as possible while still exploring this problem space</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 28/07/2024 21:19</p>
+</blockquote>
+
+<blockquote>
+  <p>I don’t need to see the graph itself</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 28/07/2024 21:19</p>
+</blockquote>
+
+<blockquote>
+  <p>that will lead to a better product</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 28/07/2024 21:19</p>
+</blockquote>
+
+<blockquote>
+  <p>i am only intersetd in the outpuut</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 28/07/2024 21:19</p>
+</blockquote>
+
+<blockquote>
+  <p>eh… I think you’ll be surprised, especially if you hand AI the reigns, there
+but like I said, play around
+I’m just explaining why I expect you to need a UI 
+and the tooling I recommend for creating one, of course</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 28/07/2024 21:20</p>
+</blockquote>
+
+<blockquote>
+  <p>Cool, Josh, I understood, I tthink I will need to talk about that with Robert then</p>
+</blockquote>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 7: The Testing Week</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-the-testing-week.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 7: The Testing Week" /><published>2024-07-07T21:00:00+00:00</published><updated>2024-07-07T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-the-testing-week</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-the-testing-week.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+
+<p>After I finished writing the generator outside the main codebase, Josh and Greg told me to change the project structure. This is because the engine provides only user functions to the user and the generator is just a class that will be used by RGM (no user functions at all). Anyway here is the new project structure:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+enigma-dev
+├── ...
+├── CommandLine
+│   ├── ...
+│   └── testing
+│       ├── ...
+│       └── Tests
+│           ├── ...
+│           ├── visual_shader_tests.cpp
+│           └── visual_shader_nodes_tests.cpp
+│
+└── shared
+    └── ResourceTransformations
+        └── VisualShader
+            ├── ...
+            ├── visual_shader.h
+            ├── visual_shader.cpp
+            ├── visual_shader_nodes.h
+            └── visual_shader_nodes.cpp
+
+</code></pre></div></div>
+
+<h2 id="weird-dso-linking-error">Weird DSO linking error</h2>
+
+<p>Before anything, I hate Google’s technologies including gRPC, Protobuf, Abseil because Google doesn’t care about you facing issues as long as it is working inside their pipelines. Remember the issue I faced in the bonding period while trying to build RGM? The one that presists on my Ubuntu installation and 2 Arch installations? Well, I can’t build the <code class="language-plaintext highlighter-rouge">test-runner</code> because of it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ld: .eobjs/EnigmaPlugin.o: undefined reference to symbol <span class="s1">'_ZN4absl12lts_2024011612log_internal21CheckOpMessageBuilderC1EPKc'</span>
+/usr/bin/ld: /usr/lib/libabsl_log_internal_check_op.so.2401.0.0: error adding symbols: DSO missing from <span class="nb">command </span>line
+collect2: error: ld returned 1 <span class="nb">exit </span>status
+make[1]: <span class="k">***</span> <span class="o">[</span>../../Default.mk:23: ../../emake] Error 1
+make[1]: Leaving directory <span class="s1">'/home/k0t0z/Desktop/gsoc24/enigma-dev/CommandLine/emake'</span>
+make: <span class="k">***</span> <span class="o">[</span>Makefile:51: emake] Error 2
+</code></pre></div></div>
+
+<p>I am not the only genius trying to work this around, it is everywhere:</p>
+
+<ul>
+  <li>https://bbs.archlinux.org/viewtopic.php?id=289986</li>
+  <li>https://github.com/protocolbuffers/protobuf/issues/14500#issuecomment-1781292098</li>
+  <li>https://github.com/qgis/QGIS/issues/55114</li>
+  <li>https://github.com/protocolbuffers/protobuf/issues/15604#issuecomment-1929929148</li>
+</ul>
+
+<p>By combining all the solutions, here is the output:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ld: .eobjs/Server.o: undefined reference to symbol <span class="s1">'gpr_inf_future'</span>
+/usr/bin/ld: /usr/lib/libgpr.so.41: error adding symbols: DSO missing from <span class="nb">command </span>line
+collect2: error: ld returned 1 <span class="nb">exit </span>status
+make[1]: <span class="k">***</span> <span class="o">[</span>../../Default.mk:23: ../../emake] Error 1
+make[1]: Leaving directory <span class="s1">'/home/k0t0z/Desktop/gsoc24/enigma-dev/CommandLine/emake'</span>
+make: <span class="k">***</span> <span class="o">[</span>Makefile:51: emake] Error 2
+</code></pre></div></div>
+
+<p>That’s great another dead end. These two errors above are twins and they are here to finish me.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 6: The Rush Summer</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 6: The Rush Summer" /><published>2024-06-30T21:00:00+00:00</published><updated>2024-06-30T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+
+<p>This week I had clearer view of what I need to do, thanks to Josh of course.</p>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 08:14</p>
+</blockquote>
+
+<blockquote>
+  <p>you can eliminate a lot of that boilerplate using proto, @Saif
+in fact, I recommend it, as you’ll need proto on hand to serialize to EGM etc</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 08:26</p>
+</blockquote>
+
+<blockquote>
+  <p>@Josh what boilerplate code? I have written only the model class:
+graph, add_node, …etc
+also, how proto can be beneficial? If u can send some article to read or something, i would really appreciate it
+Lastly, is it better to complete the generator this way (Testing a GTest unit test) or use another approach?</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 08:55</p>
+</blockquote>
+
+<blockquote>
+  <p>add_node is a great example
+of boilerplate, I mean; literally that is a function that protobuf would generate
+check out the other resource messages
+just search RGM for proto files</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:06</p>
+</blockquote>
+
+<blockquote>
+  <p>interesting, so because the add_node is a button in RGM, protobuf is used instead</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:13</p>
+</blockquote>
+
+<blockquote>
+  <p>u said you want the generation to be transparent
+then why we would need the nodeeditor for example?</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:15</p>
+</blockquote>
+
+<blockquote>
+  <p>the generation of the shader script from the nodes, not the generation of the nodes
+the nodes are the main representation of these shaders now, is all I was saying
+these particular shaders
+we don’t want to store generated code alongside them
+it’s the parameters of the nodes we’re tuning with AI</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:17</p>
+</blockquote>
+
+<blockquote>
+  <p>okay it becomes clearer now, so why u said here it’s an extra effort?
+oh u mean the generated shader itself, kinda make sense now
+okay so my plan was to implement that editor and finish it (not planing to implement all features of shaders inside) and the start writing the shader generation algorithm from that specific graph</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:20</p>
+</blockquote>
+
+<blockquote>
+  <p>yeah, generating the shader from the nodes should be extremely easy</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:20</p>
+</blockquote>
+
+<blockquote>
+  <p>which means the graph itself won’t be generated, however it will be written by the user</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:20</p>
+</blockquote>
+
+<blockquote>
+  <p>the node graph editor is a good chunk of work, and then the hard part is genetic recombination of node graphs
+your first prototype should probably use a fixed node layout</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:21</p>
+</blockquote>
+
+<blockquote>
+  <p>yeah that’s right however finding the best parameters is the tricky part</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:21</p>
+</blockquote>
+
+<blockquote>
+  <p>i.e. users select the nodes and their types, then the ML selects the parameters</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:21</p>
+</blockquote>
+
+<blockquote>
+  <p>fixed node layout?</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:22</p>
+</blockquote>
+
+<blockquote>
+  <p>got it</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:23</p>
+</blockquote>
+
+<blockquote>
+  <p>you can absolutely implement one that allows the ML to add or delete nodes, but then you need rules for handling recombination and crossover</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:23</p>
+</blockquote>
+
+<blockquote>
+  <p>okay so that was my plan and I was implementing the backend code until you said that the protobuf is a shortcut</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:23</p>
+</blockquote>
+
+<blockquote>
+  <p>interesting, let’s keep it simple for now and i can this it looks interesting</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:24</p>
+</blockquote>
+
+<blockquote>
+  <p>yes—like I said, prototype can and probably should use a fixed graph layout</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:25</p>
+</blockquote>
+
+<blockquote>
+  <p>there will be another files inside RGM itself to handle the add_node code so why you me to remove the code inside ENIGMA?</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:25</p>
+</blockquote>
+
+<blockquote>
+  <p>a fixed graph is for the parameters only right? or you mean a whole fixed graph with also nodes already specified?</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:25</p>
+</blockquote>
+
+<blockquote>
+  <p>I suspect some of what I’ve written will still be necessary, but I suggest you try writing these node classes as protobuf messages and see where that gets you</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:26</p>
+</blockquote>
+
+<blockquote>
+  <p>as we always do, alright got it</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:26</p>
+</blockquote>
+
+<blockquote>
+  <p>not sure I understand, but I do mean a graph where all the nodes are specified, and the ML only changes the values, not the node counts or connections
+changing the counts and connections is simple enough, but leads to problems when cross-breeding two specimens with different graph structures</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:28</p>
+</blockquote>
+
+<blockquote>
+  <p>okay just a second, i can let the user choose the graph nodes without any parameter tuning, so for example a “color” node or a “add” node, and the values of the color or the addition operation will be determined by the AI</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:28</p>
+</blockquote>
+
+<blockquote>
+  <p>correct</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:29</p>
+</blockquote>
+
+<blockquote>
+  <p>okay so the AI will also change connections, this is new</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:29</p>
+</blockquote>
+
+<blockquote>
+  <p>in the end, the AI should generate the whole graph
+but it’s totally okay if you don’t get that far</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:29</p>
+</blockquote>
+
+<blockquote>
+  <p>cross-breeding is a well known problem? I am not I know what that is</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:29</p>
+</blockquote>
+
+<blockquote>
+  <p>I am pushing for a genetic algorithm
+you have not heard the end of genetic algorithms
+they are old school but will once again revolutionize artificial intelligence in the next ten years
+in particular they will become important to avoid overfitting in DNN training</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:31</p>
+</blockquote>
+
+<blockquote>
+  <p>okay got it so actually we can say:
+fixed nodes, fixed parameters, fixed connections
+variable nodes, fixed parameters, fixed connections
+…etc</p>
+
+  <p>until
+variable nodes, variable parameters, variable connections</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:32</p>
+</blockquote>
+
+<blockquote>
+  <p>yeah, though the parameters will probably be the first thing your ML tweaks, not nodes
+you have not heard the end of genetic algorithms</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:32</p>
+</blockquote>
+
+<blockquote>
+  <p>I have learned it in my AI course and also learned about it to write the proposal but didn’t dig this deeper though</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:32</p>
+</blockquote>
+
+<blockquote>
+  <p>their importance is about to skyrocket</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:32</p>
+</blockquote>
+
+<blockquote>
+  <p>yeah, it looks easier that way
+and the importance of course</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:33</p>
+</blockquote>
+
+<blockquote>
+  <p>genetic algorithms are due for a Renaissance, is what I’m saying</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:33</p>
+</blockquote>
+
+<blockquote>
+  <p>so I will continue as I was working trying to finish the generator but this time I will in parallel with protobuf</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:33</p>
+</blockquote>
+
+<blockquote>
+  <p>sounds good
+proto should save you a lot of effort here</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:34</p>
+</blockquote>
+
+<blockquote>
+  <p>Sounds perfect</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:34</p>
+</blockquote>
+
+<blockquote>
+  <p>hmmm, the effort or the must of doing it?</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:35</p>
+</blockquote>
+
+<blockquote>
+  <p>both?</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:35</p>
+</blockquote>
+
+<blockquote>
+  <p>I mean when to use protobuf and when not to use it, it depends maybe on what is protobuf
+i will see what i can do</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:35</p>
+</blockquote>
+
+<blockquote>
+  <p>proto is just what C++ classes should look like</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 01/07/2024 at 09:35</p>
+</blockquote>
+
+<blockquote>
+  <p>hmmm, truly i have no idea</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 01/07/2024 at 09:35</p>
+</blockquote>
+
+<blockquote>
+  <p>well, sorry; as a storage layer, proto is certainly not what C++ classes should look like
+but in terms of the features that a proto message offers….
+there is absolutely no reason a modern programming language should not offer these features for its classes
+proto just lets you do things like serialize and deserialize, use reflection, etc</p>
+</blockquote>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 5: Here we go!</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/23/google-summer-of-code-2024-week-5-here-we-go.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 5: Here we go!" /><published>2024-06-23T21:00:00+00:00</published><updated>2024-06-23T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/23/google-summer-of-code-2024-week-5-here-we-go</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/23/google-summer-of-code-2024-week-5-here-we-go.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+
+<p>Now my mentor Greg increased my project period to 18 weeks, so I can have more time before the midterms. So my new midterm deadline is Aug 02, 2024 which gives me enough time to implement a proper solution for the project.</p>
+
+<p>I will use a GTest unit test for testing my code and I will keep this https://google.github.io/googletest/advanced.html#running-a-subset-of-the-tests as a reference because I always forget about it.</p>
+
+<p>Now for the first important question: What are my inputs and outputs?</p>
+
+<h2 id="inputs-and-outputs">Inputs and Outputs</h2>
+
+<p>In my unit test, I will create a bunch of Nodes and Connections to build a graph and then I will have a function that converts this graph to a shader code and another function that will serialize this graph to JSON. The problem is I know nothing about how I am gonna run this shader code for preview or how I am gonna apply it to a resource. That said, it is not a big deal now. What I need to do now is to finish all these implementations as I am off schedule and I need to catch up. I think I see how Godot devs did it first then implmenet my own.</p>
+
+<h2 id="godot-visual-shader">Godot Visual Shader</h2>
+
+<p>I will need to debug the project I linked in my proposal using this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```bash
+./bin/godot.linuxbsd.editor.x86_64 -e --path ~/Desktop/godot_visual_shader_editor_showcase
+```
+</code></pre></div></div>
+
+<p>It is very easy to compile Godot as it doesn’t have any dependencies.</p>
+
+<h2 id="the-plan">The plan</h2>
+
+<p>I figured out my next steps now after talking to Josh, I will start by creating my graph and the generator. I will try to make it work for the simple example I used in my proposal and then extend it over time. I decided also to work in parallel on Godot’s Visual Shader Editor to improve my implementations. This PR is the one <a href="https://github.com/godotengine/godot/pull/93791">#93791</a>.</p>
+
+<h2 id="debugging-enigma-emake-tests-inside-vscode">Debugging ENIGMA emake-tests inside VSCode</h2>
+
+<p>I always wanted to run the debug session from vscode instead of doing it manually and here are the task and launch objects:</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="err">//</span><span class="w"> </span><span class="err">task</span><span class="w"> </span><span class="err">object:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build emake-tests"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shell"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"make emake-tests"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">ENIGMA</span><span class="w"> </span><span class="err">uses</span><span class="w"> </span><span class="err">make</span><span class="w"> </span><span class="err">(not</span><span class="w"> </span><span class="err">CMake)</span><span class="w"> </span><span class="err">at</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">writing</span><span class="w"> </span><span class="err">this.</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="err">//</span><span class="w"> </span><span class="err">launch</span><span class="w"> </span><span class="err">configuration</span><span class="w"> </span><span class="err">object:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Launch emake-tests"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cppdbg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"program"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/emake-tests"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"--gtest_filter="</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">TODO:</span><span class="w"> </span><span class="err">Add</span><span class="w"> </span><span class="err">your</span><span class="w"> </span><span class="err">filter</span><span class="w"> </span><span class="err">here.</span><span class="w">
+    </span><span class="nl">"stopAtEntry"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cwd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"environment"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"externalConsole"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"setupCommands"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enable pretty-printing for gdb"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-enable-pretty-printing"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ignoreFailures"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"preLaunchTask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build emake-tests"</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 3 &amp;amp; 4: Red Black Trees</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/09/google-summer-of-code-2024-week-3-and-4-red-black-trees.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 3 &amp;amp; 4: Red Black Trees" /><published>2024-06-09T21:00:00+00:00</published><updated>2024-06-09T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/09/google-summer-of-code-2024-week-3-and-4-red-black-trees</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/09/google-summer-of-code-2024-week-3-and-4-red-black-trees.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
 
 <p>on 16th of June, I officially started looking into the project. After a quick search, I found out that Godot uses something called Red Black Trees for the visual shader graph. So let’s understand and implement this data structure as a start point.</p>
 
@@ -11,57 +892,87 @@
 </blockquote>
 
 <blockquote>
-  <p>k0T0z 12:55 AM
-guys, i have a question in mind, i know that godot doesn’t require any installation setup and wondered what the installation setup gives? I mean why just not every program out there use the same approach there must be something</p>
+  <p>k0T0z 12:55 AM</p>
 </blockquote>
 
 <blockquote>
-  <p>Calinou 1:50 AM
-installers allow for better system integration like desktop icons, start menu entries, entries in Add/Remove Programs
+  <p>guys, i have a question in mind, i know that godot doesn’t require any installation setup and wondered what the installation setup gives? I mean why just not every program out there use the same approach there must be something</p>
+</blockquote>
+
+<blockquote>
+  <p>Calinou 1:50 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>installers allow for better system integration like desktop icons, start menu entries, entries in Add/Remove Programs
 that’s why there is still some demand for them. It is possible to do this stuff manually or with external tools like Scoop, but some people (companies in particular) value a built-in solution for large-scale deployments</p>
 
   <p>it is possible to create installers that work without administrator privileges if the app is installed for a single user only</p>
 </blockquote>
 
 <blockquote>
-  <p>AThousandShips 12:56 AM
-Godot is self contained in a single file, many programs aren’t, that’s generally why they require installers, and have libraries they depend on etc.</p>
+  <p>AThousandShips 12:56 AM</p>
 </blockquote>
 
 <blockquote>
-  <p>k0T0z 12:57 AM
-wait a minute, Godot doesn’t depend on any library?</p>
+  <p>Godot is self contained in a single file, many programs aren’t, that’s generally why they require installers, and have libraries they depend on etc.</p>
 </blockquote>
 
 <blockquote>
-  <p>AThousandShips 12:58 AM
-Not any other than system ones, it contains all the third party things</p>
+  <p>k0T0z 12:57 AM</p>
 </blockquote>
 
 <blockquote>
-  <p>k0T0z 12:58 AM
-also what do u mean by self-contained in a single file?</p>
+  <p>wait a minute, Godot doesn’t depend on any library?</p>
 </blockquote>
 
 <blockquote>
-  <p>AThousandShips 12:58 AM
-It is a single file? It doesn’t have a lot of extra files like many programs have, it embeds all the data of it in the executable</p>
+  <p>AThousandShips 12:58 AM</p>
 </blockquote>
 
 <blockquote>
-  <p>k0T0z 12:59 AM
-hmmm, interesting, I guess &lt;std::string&gt; is from system as well, why not use it?</p>
+  <p>Not any other than system ones, it contains all the third party things</p>
 </blockquote>
 
 <blockquote>
-  <p>AThousandShips 12:59 AM
-Look at any one software on your computer, in for example Program Files on Windows
+  <p>k0T0z 12:58 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>also what do u mean by self-contained in a single file?</p>
+</blockquote>
+
+<blockquote>
+  <p>AThousandShips 12:58 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>It is a single file? It doesn’t have a lot of extra files like many programs have, it embeds all the data of it in the executable</p>
+</blockquote>
+
+<blockquote>
+  <p>k0T0z 12:59 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>hmmm, interesting, I guess &lt;std::string&gt; is from system as well, why not use it?</p>
+</blockquote>
+
+<blockquote>
+  <p>AThousandShips 12:59 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>Look at any one software on your computer, in for example Program Files on Windows
 See <a href="https://docs.godotengine.org/en/stable/about/faq.html#doc-faq-why-not-stl">here</a> 🙂</p>
 </blockquote>
 
 <blockquote>
-  <p>AThousandShips 1:00 AM
-We use our custom String type, as the one provided by STL is too basic and lacks proper internationalization support.
+  <p>AThousandShips 1:00 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>We use our custom String type, as the one provided by STL is too basic and lacks proper internationalization support.
 STL templates create very large symbols, which results in huge debug binaries. We use few templates with very short names instead.</p>
 </blockquote>
 
@@ -73,125 +984,4 @@ Came across a case of it some time ago when discussing this very topic but forge
 Even trivial things like exception handling is weird in some libraries, see <a href="https://github.com/godotengine/godot-cpp/issues/1326">here</a>, where one implementation of the library on Arch Linux is broken with exceptions disabled</p>
 </blockquote>
 
-<p>There are many things to learn btw from this conversation, however, at the moment, I think it is not a big deal to use the std::map inside ENIGMA.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 2</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/02/google-summer-of-code-2024-week-2.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 2" /><published>2024-06-02T21:00:00+00:00</published><updated>2024-06-02T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/02/google-summer-of-code-2024-week-2</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/02/google-summer-of-code-2024-week-2.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 1</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/26/google-summer-of-code-2024-week-1.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 1" /><published>2024-05-26T21:00:00+00:00</published><updated>2024-05-26T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/26/google-summer-of-code-2024-week-1</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/26/google-summer-of-code-2024-week-1.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
-
-<p>Time flies so fast. It’s already the first week of the coding period. Actually, I am very buzy with my university final exams and I don’t have much time to work on my project. Maybe I will work with a low pace until the exams are over.</p>
-
-<p>I think it is better to talk about theories and implementation aspects of the graph algorithms that I will implement in the project rather than implementing them as I am not sure I can do much due to my finals and graduation project.</p>
-
-<p>I take my inspiration from Godot Game Engine as I want to reach the Machine Learning part of the project. I think Godot implements the Visual Shader using the <a href="https://web.archive.org/web/20120507164830/https://web.mit.edu/~emin/www/source_code/red_black_tree/index.html">Red-Black Tree C Code</a> and can be found at <a href="https://github.com/godotengine/godot/blob/705b7a0b0bd535c95e4e8fb439f3d84b3fb4f427/scene/resources/visual_shader.h#L129-L132">Godot Visual Shader H 129-132</a>.</p>
-
-<p>Anyway, I will look into it more in the next week ISA.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Bonding Period</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Bonding Period" /><published>2024-05-15T21:00:00+00:00</published><updated>2024-05-15T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
-
-<p>After installing Arch Linux, I can build RGM, just to do something in this period. The problem is that I tried to build RGM on my Ubuntu machine and it failed. It gives me this error:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="o">[</span> 76%] Linking CXX executable emake
-    /usr/bin/ld: CMakeFiles/emake.dir/EnigmaPlugin.cpp.o: undefined reference to symbol <span class="s1">'_ZN4absl12lts_2024011612log_internal21CheckOpMessageBuilderC1EPKc'</span>
-    /usr/bin/ld: /usr/lib/libabsl_log_internal_check_op.so.2401.0.0: error adding symbols: DSO missing from <span class="nb">command </span>line
-    collect2: error: ld returned 1 <span class="nb">exit </span>status
-    make[2]: <span class="k">***</span> <span class="o">[</span>Submodules/enigma-dev/CommandLine/emake/CMakeFiles/emake.dir/build.make:203: Submodules/enigma-dev/CommandLine/emake/emake] Error 1
-    make[1]: <span class="k">***</span> <span class="o">[</span>CMakeFiles/Makefile2:625: Submodules/enigma-dev/CommandLine/emake/CMakeFiles/emake.dir/all] Error 2
-    make: <span class="k">***</span> <span class="o">[</span>Makefile:136: all] Error 2
-</code></pre></div></div>
-
-<p>Even with my Arch Linux machine, I can’t build RGM. Last time, I built eveything from scratch including gRPC and protobuf but didn’t work. I thought the problem is with the manual build of gRPC and protobuf, so I tried to build them using <code class="language-plaintext highlighter-rouge">pacman</code> but it didn’t work either.</p>
-
-<p>Anyway, thanks god this is not a high priority task. I guess I am gonna switch tasks now. If at any chance you read my proposal, you will know that this project is splitted into 2 parts:</p>
-
-<ol>
-  <li>The backend, including the graph and the generator.</li>
-  <li>The frontend, including the editor (both the visual and the code editor).</li>
-</ol>
-
-<p>In order for this to go without problems, I need to see the output shader, which mean I will have to implement a shader renderer that I can use to render the output shader. It has to be separated from the engine as it must has a GUI stuff in order to see the animated shader.</p>
-
-<p>For now, I am gonna start implementing the graph functionalities. Where is the location in the codebase? Well let’s figure this out before the coding period starts.</p>
-
-<p>By the way, I found a problem with the current CMakeLists.txt file. It doesn’t link all required Qt5 libraries. The one that is missing is <code class="language-plaintext highlighter-rouge">qscintilla-qt5</code>. Hmmmm, I don’t think this lib has a CMake configuration files for <code class="language-plaintext highlighter-rouge">find_package</code> command to work. To be continued…</p>
-
-<p>Anyway, The graph backend is not related to the <code class="language-plaintext highlighter-rouge">Graphics_Systems</code>, although, it will require a system to render the generated shader. I think the most suitable location is inside <code class="language-plaintext highlighter-rouge">Universal_System</code>.</p>
-
-<p>The expected structure of my files will be:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>enigma-dev
-├── ...
-├── CommandLine
-│   ├── ...
-│   └── emake-tests
-│       ├── ...
-│       └── ShaderGraphTests
-│           ├── ...
-│           ├── GraphTests.cpp
-│           └── NodeTests.cpp
-└── ENIGMAsystem
-    └── SHELL
-        ├── ...
-        └── Universal_System
-            ├── ...
-            └── ShaderGraph
-                ├── ...
-                ├── Graph.cpp
-                ├── Graph.h
-                ├── Node.cpp
-                └── Node.h
-</code></pre></div></div>
-
-<p>When the graph is implemented, I will start implementing the generator although I am not sure how I am gonna visualize the output shader. I will talk to my mentor about this however maybe I will have to integrate the node editor with RGM which is something I don’t want to do.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Acceptance Story</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/14/google-summer-of-code-2024-acceptance-story.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Acceptance Story" /><published>2024-05-14T21:00:00+00:00</published><updated>2024-05-14T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/14/google-summer-of-code-2024-acceptance-story</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/14/google-summer-of-code-2024-acceptance-story.html"><![CDATA[<p>My accepted proposal <a href="/gsoc24-blog/assets/procedural-fragment-shader-generation-using-classic-machine-learning-GSoC-2024-proposal.pdf">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
-
-<p>Hmmmmm … At the time of writing this, I can’t think of a way to describe my acceptance into Google Summer of Code 2024 program so let’s jump into project idea’s author.</p>
-
-<blockquote>
-  <p>my thoughts on the future are cloudy; ENIGMA hasn’t really embraced ML tools, so it’s heading for obsolescence</p>
-
-  <p>Josh — 19/01/2024 17:21</p>
-</blockquote>
-
-<blockquote>
-  <p>do u have anything in mind?</p>
-
-  <p>Seif — 19/01/2024 17:51</p>
-</blockquote>
-
-<blockquote>
-  <p>a lot of things
-I think we really need procedural generation for placeholder graphics
-…
-we need a procedural texture editor; there are some open-source ones we could integrate</p>
-
-  <p>Josh — 19/01/2024 17:51</p>
-</blockquote>
-
-<p>After these messages, there was a long discussion about the project idea and then I decided to apply for it.</p>
-
-<p>Anyway, I am gonna setup my development environment by installing arch linux as ENIGMA is mainly developed on it.</p>
-
-<p>NOTE: You can find the example game using Godot that showcases the final result of the project here: <a href="/gsoc24-blog/assets/godot_visual_shader_editor_showcase.zip">godot_visual_shader_editor_showcase.zip</a>.</p>
-
-<blockquote style="border-left: 6px solid #ff3e3e;">
-    <p>
-        وَمَا بِكُم مِّن نِّعْمَةٍۢ فَمِنَ ٱللَّهِ ۖ ثُمَّ إِذَا مَسَّكُمُ ٱلضُّرُّ فَإِلَيْهِ
-        تَجْـَٔرُونَ
-    </p>
-    <p>
-        Whatever blessings you have are from Allah. Then whenever hardship touches you, to Him
-        ˹alone˺
-        you cry ˹for help˺.
-    </p>
-    <cite>The Noble Qur'an, An-Nahl 53</cite>
-</blockquote>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[My accepted proposal Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/jekyll/update/2024/05/10/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2024-05-10T14:36:15+00:00</published><updated>2024-05-10T14:36:15+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/jekyll/update/2024/05/10/welcome-to-jekyll</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/jekyll/update/2024/05/10/welcome-to-jekyll.html"><![CDATA[<p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
-
-<p>Jekyll requires blog post files to be named according to the following format:</p>
-
-<p><code class="language-plaintext highlighter-rouge">YEAR-MONTH-DAY-title.MARKUP</code></p>
-
-<p>Where <code class="language-plaintext highlighter-rouge">YEAR</code> is a four-digit number, <code class="language-plaintext highlighter-rouge">MONTH</code> and <code class="language-plaintext highlighter-rouge">DAY</code> are both two-digit numbers, and <code class="language-plaintext highlighter-rouge">MARKUP</code> is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
-
-<p>Jekyll also offers powerful support for code snippets:</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
-<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
-
-<p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.]]></summary></entry></feed>
+<p>There are many things to learn btw from this conversation, however, at the moment, I think it is not a big deal to use the std::map inside ENIGMA.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 2</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/02/google-summer-of-code-2024-week-2.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 2" /><published>2024-06-02T21:00:00+00:00</published><updated>2024-06-02T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/02/google-summer-of-code-2024-week-2</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/02/google-summer-of-code-2024-week-2.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry></feed>

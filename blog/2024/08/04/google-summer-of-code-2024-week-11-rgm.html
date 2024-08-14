@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/gsoc24-blog/assets/css/style.css">
+<title>Google Summer of Code 2024 Week 11: RGM</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Google Summer of Code 2024 Week 11: RGM | k0T0z</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Google Summer of Code 2024 Week 11: RGM" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This blog post is related to my Google Summer of Code 2024 project." />
+<meta property="og:description" content="This blog post is related to my Google Summer of Code 2024 project." />
+<link rel="canonical" href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-rgm.html" />
+<meta property="og:url" content="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-rgm.html" />
+<meta property="og:site_name" content="k0T0z" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-08-04T21:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Google Summer of Code 2024 Week 11: RGM" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-08-04T21:00:00+00:00","datePublished":"2024-08-04T21:00:00+00:00","description":"This blog post is related to my Google Summer of Code 2024 project.","headline":"Google Summer of Code 2024 Week 11: RGM","mainEntityOfPage":{"@type":"WebPage","@id":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-rgm.html"},"url":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-rgm.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/gsoc24-blog/">
+        
+        <img src="/gsoc24-blog/assets/portfolio.png" alt="Saif Kandil" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/gsoc24-blog/">Saif Kandil</a>
+      </h2>
+      </div><p class="tagline">Just a place for me to dump my thoughts about my Google Summer of Code 2024 project</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2024</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-rgm.html">
+    <h2 class="post-title">Google Summer of Code 2024 Week 11: RGM</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Aug 4, 2024</div><ul class="post-categories"><li>blog</li></ul></div>
+  <div class="post">
+    <p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+
+<p>Building RGM is a very interesting task, but before building it, I need to make be able to build emake properly. emake is the way to build games without a GUI. Remember that I couldn’t build emake in the bonding period? the error was as follows:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="o">[</span> 76%] Linking CXX executable emake
+    /usr/bin/ld: CMakeFiles/emake.dir/EnigmaPlugin.cpp.o: undefined reference to symbol <span class="s1">'_ZN4absl12lts_2024011612log_internal21CheckOpMessageBuilderC1EPKc'</span>
+    /usr/bin/ld: /usr/lib/libabsl_log_internal_check_op.so.2401.0.0: error adding symbols: DSO missing from <span class="nb">command </span>line
+    collect2: error: ld returned 1 <span class="nb">exit </span>status
+    make[2]: <span class="k">***</span> <span class="o">[</span>Submodules/enigma-dev/CommandLine/emake/CMakeFiles/emake.dir/build.make:203: Submodules/enigma-dev/CommandLine/emake/emake] Error 1
+    make[1]: <span class="k">***</span> <span class="o">[</span>CMakeFiles/Makefile2:625: Submodules/enigma-dev/CommandLine/emake/CMakeFiles/emake.dir/all] Error 2
+    make: <span class="k">***</span> <span class="o">[</span>Makefile:136: all] Error 2
+</code></pre></div></div>
+
+<p>This error appears only on Arch linux, not Ubuntu. I guess that’s because of the differences between old and new absl. I think the new absl has new targets that we need to link as well. Anyway, I asked Fares to give me the versions of Absl, Protobuf, and gRPC that he is using on Ubuntu. I will try to use the same versions on Arch.</p>
+
+<p>Absl: 20210324.2
+Protobuf: 3.12.4
+gRPC: 1.30.2</p>
+
+<p>I cloned these versions using -b option and found out that Absl doesn’t have a CMake system yet. So let’s change plans and try to build a proper versions of Absl, Protobuf, and gRPC from scratch.</p>
+
+<p>I created this solution to do this task for me, <a href="https://github.com/k0T0z/absl-proto-grpc-ci">absl-proto-grpc-ci</a>, you can get the working verions from the README file. Also, you can take the commands from the scripts and run them on your machine.</p>
+
+<p>Before installing them to your local, try to empty these dirs first:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> <span class="nt">-rf</span> /usr/local/lib/<span class="k">*</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> <span class="nt">-rf</span> /usr/local/include/<span class="k">*</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> <span class="nt">-rf</span> /usr/local/bin/<span class="k">*</span>
+</code></pre></div></div>
+
+<p>This is to get rid of the old versions of the libraries (if any).</p>
+
+<p>Now, building those libraries is very easy, as well as installing them.</p>
+
+<h2 id="prioritizing-local-over-system">Prioritizing local over system</h2>
+
+<p>When trying to build emake, this warning shows up:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ld: warning: libprotobuf.so.27.3.0, needed by /usr/local/lib/libgrpc++.so, may conflict with libprotobuf.so.27
+</code></pre></div></div>
+
+<p>This is because the system has a version of Protobuf already installed. When trying to remove it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>pacman <span class="nt">-Rns</span> protobuf
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>checking dependencies...
+error: failed to prepare transaction (could not satisfy dependencies)
+:: removing protobuf breaks dependency 'protobuf' required by libphonenumber
+:: removing protobuf breaks dependency 'libprotobuf.so=27-64' required by libphonenumber
+:: removing protobuf breaks dependency 'protobuf' required by protobuf-c
+</code></pre></div></div>
+
+<p>I can’t remove it as it is required by other packages. So I need to prioritize the local version over the system version. I did this by adding these simple lines to <code class="language-plaintext highlighter-rouge">enigma-dev/Config.mk</code> file:</p>
+
+<div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Which search priority to use for libraries (system or local)
+</span><span class="nv">CUSTOM_LIB_SEARCH_PRIORITY</span> <span class="o">:=</span> <span class="nb">local</span>
+
+<span class="k">ifeq</span> <span class="nv">($(CUSTOM_LIB_SEARCH_PRIORITY), local)</span>
+    <span class="nv">LDFLAGS</span> <span class="o">+=</span> <span class="nt">-L</span>/usr/local/lib
+<span class="k">endif</span>
+</code></pre></div></div>
+
+<p>Now, you can set the search priority to local by changing the value of <code class="language-plaintext highlighter-rouge">CUSTOM_LIB_SEARCH_PRIORITY</code> to <code class="language-plaintext highlighter-rouge">local</code>.</p>
+
+<h2 id="export-issue">Export Issue</h2>
+
+<p>Other error show up that <code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code> is unable to load some packages.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ldd <span class="si">$(</span>which grpc_cpp_plugin<span class="si">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>linux-vdso.so.1 (0x000071154c52f000)
+libsystemd.so.0 =&gt; /usr/lib/libsystemd.so.0 (0x000071154c3f5000)
+libgrpc_plugin_support.so.1.65 =&gt; not found
+libm.so.6 =&gt; /usr/lib/libm.so.6 (0x000071154c30a000)
+libprotoc.so.27.3.0 =&gt; not found
+libprotobuf.so.27.3.0 =&gt; not found
+libabseil_dll.so.2407.0.0 =&gt; not found
+libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0x000071154c000000)
+libgcc_s.so.1 =&gt; /usr/lib/libgcc_s.so.1 (0x000071154c2db000)
+libc.so.6 =&gt; /usr/lib/libc.so.6 (0x000071154be14000)
+libcap.so.2 =&gt; /usr/lib/libcap.so.2 (0x000071154c2cf000)
+/lib64/ld-linux-x86-64.so.2 =&gt; /usr/lib64/ld-linux-x86-64.so.2 (0x000071154c531000)
+</code></pre></div></div>
+
+<p>There are <code class="language-plaintext highlighter-rouge">not found</code> libraries as you can see. If you used <code class="language-plaintext highlighter-rouge">which</code> with any of the nof founded libs, you will find it inside <code class="language-plaintext highlighter-rouge">/usr/local/lib</code>. The solution is to export the path to the libraries by adding this line to your <code class="language-plaintext highlighter-rouge">.bashrc</code> file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/usr/local/lib
+</code></pre></div></div>
+
+<p>Now, you can run the command again:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ldd <span class="si">$(</span>which grpc_cpp_plugin<span class="si">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>linux-vdso.so.1 (0x0000765352968000)
+libsystemd.so.0 =&gt; /usr/lib/libsystemd.so.0 (0x000076535282d000)
+libgrpc_plugin_support.so.1.65 =&gt; /usr/local/lib/libgrpc_plugin_support.so.1.65 (0x00007653527a6000)
+libm.so.6 =&gt; /usr/lib/libm.so.6 (0x00007653526bb000)
+libprotoc.so.27.3.0 =&gt; /usr/local/lib/libprotoc.so.27.3.0 (0x0000765352200000)
+libprotobuf.so.27.3.0 =&gt; /usr/local/lib/libprotobuf.so.27.3.0 (0x0000765351e00000)
+libabseil_dll.so.2407.0.0 =&gt; /usr/local/lib/libabseil_dll.so.2407.0.0 (0x0000765351cc7000)
+libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0x0000765351a00000)
+libgcc_s.so.1 =&gt; /usr/lib/libgcc_s.so.1 (0x00007653521d3000)
+libc.so.6 =&gt; /usr/lib/libc.so.6 (0x0000765351814000)
+libcap.so.2 =&gt; /usr/lib/libcap.so.2 (0x00007653521c7000)
+/lib64/ld-linux-x86-64.so.2 =&gt; /usr/lib64/ld-linux-x86-64.so.2 (0x000076535296a000)
+libz.so.1 =&gt; /usr/local/lib/libz.so.1 (0x00007653521a6000)
+</code></pre></div></div>
+
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2024</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+  
+  <script src="/gsoc24-blog/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/gsoc24-blog/assets/js/search.js"></script>
+  
+</body>
+
+</html>

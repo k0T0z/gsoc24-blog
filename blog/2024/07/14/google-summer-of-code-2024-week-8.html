@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/gsoc24-blog/assets/css/style.css">
+<title>Google Summer of Code 2024 Week 8: GUI is a necessary overhead?</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Google Summer of Code 2024 Week 8: GUI is a necessary overhead? | k0T0z</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Google Summer of Code 2024 Week 8: GUI is a necessary overhead?" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This blog post is related to my Google Summer of Code 2024 project." />
+<meta property="og:description" content="This blog post is related to my Google Summer of Code 2024 project." />
+<link rel="canonical" href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/14/google-summer-of-code-2024-week-8.html" />
+<meta property="og:url" content="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/14/google-summer-of-code-2024-week-8.html" />
+<meta property="og:site_name" content="k0T0z" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-07-14T21:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Google Summer of Code 2024 Week 8: GUI is a necessary overhead?" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-07-14T21:00:00+00:00","datePublished":"2024-07-14T21:00:00+00:00","description":"This blog post is related to my Google Summer of Code 2024 project.","headline":"Google Summer of Code 2024 Week 8: GUI is a necessary overhead?","mainEntityOfPage":{"@type":"WebPage","@id":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/14/google-summer-of-code-2024-week-8.html"},"url":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/14/google-summer-of-code-2024-week-8.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/gsoc24-blog/">
+        
+        <img src="/gsoc24-blog/assets/portfolio.png" alt="Saif Kandil" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/gsoc24-blog/">Saif Kandil</a>
+      </h2>
+      </div><p class="tagline">Just a place for me to dump my thoughts about my Google Summer of Code 2024 project</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2024</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/gsoc24-blog/blog/2024/07/14/google-summer-of-code-2024-week-8.html">
+    <h2 class="post-title">Google Summer of Code 2024 Week 8: GUI is a necessary overhead?</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Jul 14, 2024</div><ul class="post-categories"><li>blog</li></ul></div>
+  <div class="post">
+    <p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+
+<p>I had a long talk with Josh about whether we should use a GUI or not as I think the generator is enough for start writing the Genetic Algorithm.</p>
+
+<blockquote>
+  <p>Saif — 28/07/2024 21:13</p>
+</blockquote>
+
+<blockquote>
+  <p>a better way? I will be able to see the output but theo problem is I won’t be able to evaluate it if it is a small graph with for example 5 nodes
+5 nodes won’t be able to create a grass
+so we need more nodes like 100
+a 100 nodes using my way means very very large numer of lines</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 28/07/2024 21:14</p>
+</blockquote>
+
+<blockquote>
+  <p>my guess is that grass would need more like 25, rust would need 12-18</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 28/07/2024 21:15</p>
+</blockquote>
+
+<blockquote>
+  <p>still large enough
+btw i am talking about an AI that modifies only parameters as a start
+the AI won’t be able to add/delete nodes</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 28/07/2024 21:15</p>
+</blockquote>
+
+<blockquote>
+  <p>yeah, I think you’ll max out its capability pretty quick
+and you’ll either find yourself building ever more complicated graphs yourself, by hand, wanting an editor, or else letting the AI build them and wanting a way to visualize</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 28/07/2024 21:16</p>
+</blockquote>
+
+<blockquote>
+  <p>yeah, maybe 25 nodes can be created manually without a GUI and then test its output</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 28/07/2024 21:17</p>
+</blockquote>
+
+<blockquote>
+  <p>all roads leads to this yeah
+alright then, i will complete the GUI work myself before the AI</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 28/07/2024 21:17</p>
+</blockquote>
+
+<blockquote>
+  <p>I think the only road that prolongs it enough is using graphviz instead, but even then it’s not really my recommendation
+well, don’t take my word for it; explore and let necessity guide you
+you’ll enjoy the project a lot more that way
+like, don’t do things just to have them done</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 28/07/2024 21:18</p>
+</blockquote>
+
+<blockquote>
+  <p>because I am afraid to achieve nothing in the AI part due to lack of a GUI though</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 28/07/2024 21:18</p>
+</blockquote>
+
+<blockquote>
+  <p>do as little as possible while still exploring this problem space</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 28/07/2024 21:19</p>
+</blockquote>
+
+<blockquote>
+  <p>I don’t need to see the graph itself</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 28/07/2024 21:19</p>
+</blockquote>
+
+<blockquote>
+  <p>that will lead to a better product</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 28/07/2024 21:19</p>
+</blockquote>
+
+<blockquote>
+  <p>i am only intersetd in the outpuut</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 28/07/2024 21:19</p>
+</blockquote>
+
+<blockquote>
+  <p>eh… I think you’ll be surprised, especially if you hand AI the reigns, there
+but like I said, play around
+I’m just explaining why I expect you to need a UI 
+and the tooling I recommend for creating one, of course</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 28/07/2024 21:20</p>
+</blockquote>
+
+<blockquote>
+  <p>Cool, Josh, I understood, I tthink I will need to talk about that with Robert then</p>
+</blockquote>
+
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2024</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+  
+  <script src="/gsoc24-blog/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/gsoc24-blog/assets/js/search.js"></script>
+  
+</body>
+
+</html>
