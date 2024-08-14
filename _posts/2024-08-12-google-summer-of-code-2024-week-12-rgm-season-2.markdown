@@ -189,7 +189,58 @@ Note: Add your own path to the libraries.
 Even though we fixed emake, if we used vscode tasks to build emake, I got this error:
 
 ```
+/usr/local/bin/grpc_cpp_plugin: error while loading shared libraries: libgrpc_plugin_support.so.1.65: cannot open shared object file: No such file or directory
+--grpc_out: protoc-gen-grpc: Plugin failed with status code 127.
+```
 
+So weird issue because if I ran the same command from terminal, it runs without problems. I can't see anything wrong with my files:
+
+```json
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+          "name": "Launch test-runner",
+          "type": "cppdbg",
+          "request": "launch",
+          "program": "${workspaceFolder}/test-runner",
+          "args": [ "--gtest_filter=VisualShaderTest.*" ],
+          "stopAtEntry": false,
+          "cwd": "${workspaceFolder}",
+          "environment": [],
+          "externalConsole": false,
+          "setupCommands":
+          [
+            {
+              "description": "Enable pretty-printing for gdb",
+              "text": "-enable-pretty-printing",
+              "ignoreFailures": true
+            }
+          ],
+          "preLaunchTask": "build"
+      }
+    ]
+}
+```
+
+```json
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "group": "build",
+            "type": "shell",
+            "command": "make",
+            "args": [ "test-runner" ],
+        }
+    ]
+}
 ```
 
 [my-google-summer-of-code-2024-project]: https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA
