@@ -93,11 +93,11 @@ ldd $(which grpc_cpp_plugin)
 ```
 linux-vdso.so.1 (0x000071154c52f000)
 libsystemd.so.0 => /usr/lib/libsystemd.so.0 (0x000071154c3f5000)
-libgrpc_plugin_support.so.1.65 => not found
+<span style="color: red;">libgrpc_plugin_support.so.1.65 => not found</span>
 libm.so.6 => /usr/lib/libm.so.6 (0x000071154c30a000)
-libprotoc.so.27.3.0 => not found
-libprotobuf.so.27.3.0 => not found
-libabseil_dll.so.2407.0.0 => not found
+<span style="color: red;">libprotoc.so.27.3.0 => not found</span>
+<span style="color: red;">libprotobuf.so.27.3.0 => not found</span>
+<span style="color: red;">libabseil_dll.so.2407.0.0 => not found</span>
 libstdc++.so.6 => /usr/lib/libstdc++.so.6 (0x000071154c000000)
 libgcc_s.so.1 => /usr/lib/libgcc_s.so.1 (0x000071154c2db000)
 libc.so.6 => /usr/lib/libc.so.6 (0x000071154be14000)
@@ -120,11 +120,12 @@ ldd $(which grpc_cpp_plugin)
 ```
 linux-vdso.so.1 (0x0000765352968000)
 libsystemd.so.0 => /usr/lib/libsystemd.so.0 (0x000076535282d000)
-libgrpc_plugin_support.so.1.65 => /usr/local/lib/libgrpc_plugin_support.so.1.65 (0x00007653527a6000)
+
+<span style="color: blue;">libgrpc_plugin_support.so.1.65 => /usr/local/lib/libgrpc_plugin_support.so.1.65 (0x00007653527a6000)</span>
 libm.so.6 => /usr/lib/libm.so.6 (0x00007653526bb000)
-libprotoc.so.27.3.0 => /usr/local/lib/libprotoc.so.27.3.0 (0x0000765352200000)
-libprotobuf.so.27.3.0 => /usr/local/lib/libprotobuf.so.27.3.0 (0x0000765351e00000)
-libabseil_dll.so.2407.0.0 => /usr/local/lib/libabseil_dll.so.2407.0.0 (0x0000765351cc7000)
+<span style="color: blue;">libprotoc.so.27.3.0 => /usr/local/lib/libprotoc.so.27.3.0 (0x0000765352200000)</span>
+<span style="color: blue;">libprotobuf.so.27.3.0 => /usr/local/lib/libprotobuf.so.27.3.0 (0x0000765351e00000)</span>
+<span style="color: blue;">libabseil_dll.so.2407.0.0 => /usr/local/lib/libabseil_dll.so.2407.0.0 (0x0000765351cc7000)</span>
 libstdc++.so.6 => /usr/lib/libstdc++.so.6 (0x0000765351a00000)
 libgcc_s.so.1 => /usr/lib/libgcc_s.so.1 (0x00007653521d3000)
 libc.so.6 => /usr/lib/libc.so.6 (0x0000765351814000)
