@@ -120,7 +120,6 @@ ldd $(which grpc_cpp_plugin)
 ```
 linux-vdso.so.1 (0x0000765352968000)
 libsystemd.so.0 => /usr/lib/libsystemd.so.0 (0x000076535282d000)
-
 <span style="color: blue;">libgrpc_plugin_support.so.1.65 => /usr/local/lib/libgrpc_plugin_support.so.1.65 (0x00007653527a6000)</span>
 libm.so.6 => /usr/lib/libm.so.6 (0x00007653526bb000)
 <span style="color: blue;">libprotoc.so.27.3.0 => /usr/local/lib/libprotoc.so.27.3.0 (0x0000765352200000)</span>
