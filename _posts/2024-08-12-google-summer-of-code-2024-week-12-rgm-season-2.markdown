@@ -87,8 +87,8 @@ ldd RadialGM
 	libcrypto.so.3 => /usr/lib/libcrypto.so.3 (0x0000796336c00000)
 	libQt5PrintSupport.so.5 => /usr/lib/libQt5PrintSupport.so.5 (0x0000796337571000)
 	libQt5Multimedia.so.5 => /usr/lib/libQt5Multimedia.so.5 (0x0000796337104000)
-	libEGM.so => not found
-	libENIGMAShared.so => not found
+	<span style="color: red;">libEGM.so => not found</span>
+	<span style="color: red;">libENIGMAShared.so => not found</span>
 	libfreetype.so.6 => /usr/lib/libfreetype.so.6 (0x0000796336b37000)
 	libjpeg.so.8 => /usr/lib/libjpeg.so.8 (0x0000796336a9b000)
 	libharfbuzz.so.0 => /usr/lib/libharfbuzz.so.0 (0x0000796336981000)
@@ -112,7 +112,7 @@ ldd RadialGM
 	libQt5Gui.so.5 => /usr/lib/libQt5Gui.so.5 (0x0000796334a00000)
 	libQt5Network.so.5 => /usr/lib/libQt5Network.so.5 (0x0000796335094000)
 	libQt5Core.so.5 => /usr/lib/libQt5Core.so.5 (0x0000796334400000)
-	libProtocols.so => not found
+	<span style="color: red;">libProtocols.so => not found</span>
 	libstdc++.so.6 => /usr/lib/libstdc++.so.6 (0x0000796334000000)
 	libm.so.6 => /usr/lib/libm.so.6 (0x0000796334315000)
 	libgcc_s.so.1 => /usr/lib/libgcc_s.so.1 (0x0000796335c70000)
