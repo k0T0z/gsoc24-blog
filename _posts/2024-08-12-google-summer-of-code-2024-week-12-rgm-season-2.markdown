@@ -200,6 +200,127 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:path/to/RadialGM/build/Submodules/enigma
 
 Note: Add your own path to the libraries.
 
+Now everything is fine:
+
+```
+	linux-vdso.so.1 (0x000078394efc5000)
+	libpugixml.so.1 => /usr/lib/libpugixml.so.1 (0x000078394ef5f000)
+	libyaml-cpp.so.0.8 => /usr/lib/libyaml-cpp.so.0.8 (0x000078394ef10000)
+	libgrpc++.so.1.65 => /usr/local/lib/libgrpc++.so.1.65 (0x000078394eb08000)
+	libprotobuf.so.27.3.0 => /usr/local/lib/libprotobuf.so.27.3.0 (0x000078394e800000)
+	libssl.so.3 => /usr/lib/libssl.so.3 (0x000078394e726000)
+	libcrypto.so.3 => /usr/lib/libcrypto.so.3 (0x000078394e200000)
+	libQt5PrintSupport.so.5 => /usr/lib/libQt5PrintSupport.so.5 (0x000078394eea0000)
+	libQt5Multimedia.so.5 => /usr/lib/libQt5Multimedia.so.5 (0x000078394e104000)
+	<span style="color: blue;">libEGM.so => /home/k0t0z/Desktop/gsoc24/RadialGM/build/Submodules/enigma-dev/CommandLine/libEGM/libEGM.so (0x000078394de00000)</span>
+	<span style="color: blue;">libENIGMAShared.so => /home/k0t0z/Desktop/gsoc24/RadialGM/build/Submodules/enigma-dev/shared/libENIGMAShared.so (0x000078394dd39000)</span>
+	libfreetype.so.6 => /usr/lib/libfreetype.so.6 (0x000078394dc70000)
+	libjpeg.so.8 => /usr/lib/libjpeg.so.8 (0x000078394dbd4000)
+	libharfbuzz.so.0 => /usr/lib/libharfbuzz.so.0 (0x000078394daba000)
+	libpcre2-16.so.0 => /usr/lib/libpcre2-16.so.0 (0x000078394da28000)
+	libdouble-conversion.so.3 => /usr/lib/libdouble-conversion.so.3 (0x000078394ee87000)
+	libgrpc.so.42 => /usr/local/lib/libgrpc.so.42 (0x000078394ce00000)
+	libgpr.so.42 => /usr/local/lib/libgpr.so.42 (0x000078394e708000)
+	libupb_json_lib.so.42 => /usr/local/lib/libupb_json_lib.so.42 (0x000078394e6db000)
+	libupb_textformat_lib.so.42 => /usr/local/lib/libupb_textformat_lib.so.42 (0x000078394da03000)
+	libutf8_range_lib.so.42 => /usr/local/lib/libutf8_range_lib.so.42 (0x000078394ee80000)
+	libupb_message_lib.so.42 => /usr/local/lib/libupb_message_lib.so.42 (0x000078394e6d0000)
+	libupb_base_lib.so.42 => /usr/local/lib/libupb_base_lib.so.42 (0x000078394e0ff000)
+	libupb_mem_lib.so.42 => /usr/local/lib/libupb_mem_lib.so.42 (0x000078394e0fa000)
+	libre2.so.9 => /usr/local/lib/libre2.so.9 (0x000078394d976000)
+	libssl.so => /usr/local/lib/libssl.so (0x000078394d906000)
+	libcrypto.so => /usr/local/lib/libcrypto.so (0x000078394ca00000)
+	libaddress_sorting.so.42 => /usr/local/lib/libaddress_sorting.so.42 (0x000078394e0f5000)
+	libsystemd.so.0 => /usr/lib/libsystemd.so.0 (0x000078394cd0d000)
+	libabseil_dll.so.2407.0.0 => /usr/local/lib/libabseil_dll.so.2407.0.0 (0x000078394c8c7000)
+	libQt5Widgets.so.5 => /usr/lib/libQt5Widgets.so.5 (0x000078394c200000)
+	libQt5Gui.so.5 => /usr/lib/libQt5Gui.so.5 (0x000078394ba00000)
+	libQt5Network.so.5 => /usr/lib/libQt5Network.so.5 (0x000078394c094000)
+	libQt5Core.so.5 => /usr/lib/libQt5Core.so.5 (0x000078394b400000)
+	<span style="color: blue;">libProtocols.so => /home/k0t0z/Desktop/gsoc24/RadialGM/build/Submodules/enigma-dev/shared/protos/libProtocols.so (0x000078394b000000)</span>
+	libstdc++.so.6 => /usr/lib/libstdc++.so.6 (0x000078394ac00000)
+	libm.so.6 => /usr/lib/libm.so.6 (0x000078394cc22000)
+	libgcc_s.so.1 => /usr/lib/libgcc_s.so.1 (0x000078394d8d9000)
+	libc.so.6 => /usr/lib/libc.so.6 (0x000078394aa14000)
+	/lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x000078394efc7000)
+	libz.so.1 => /usr/local/lib/libz.so.1 (0x000078394d8ba000)
+	libpulse.so.0 => /usr/lib/libpulse.so.0 (0x000078394d863000)
+	libpng16.so.16 => /usr/lib/libpng16.so.16 (0x000078394b9c6000)
+	libbz2.so.1.0 => /usr/lib/libbz2.so.1.0 (0x000078394d850000)
+	libbrotlidec.so.1 => /usr/lib/libbrotlidec.so.1 (0x000078394d841000)
+	libglib-2.0.so.0 => /usr/lib/libglib-2.0.so.0 (0x000078394b2b2000)
+	libgraphite2.so.3 => /usr/lib/libgraphite2.so.3 (0x000078394c8a5000)
+	libcap.so.2 => /usr/lib/libcap.so.2 (0x000078394cc16000)
+	libGL.so.1 => /usr/lib/libGL.so.1 (0x000078394b940000)
+	libmd4c.so.0 => /usr/lib/libmd4c.so.0 (0x000078394b29c000)
+	libgssapi_krb5.so.2 => /usr/lib/libgssapi_krb5.so.2 (0x000078394b248000)
+	libproxy.so.1 => /usr/lib/libproxy.so.1 (0x000078394cc11000)
+	libicui18n.so.75 => /usr/lib/libicui18n.so.75 (0x000078394a600000)
+	libicuuc.so.75 => /usr/lib/libicuuc.so.75 (0x000078394a406000)
+	libzstd.so.1 => /usr/lib/libzstd.so.1 (0x000078394af21000)
+	libgrpc++_unsecure.so.1.65 => /usr/local/lib/libgrpc++_unsecure.so.1.65 (0x000078394ae94000)
+	libpulsecommon-17.0.so => /usr/lib/pulseaudio/libpulsecommon-17.0.so (0x000078394a98d000)
+	libdbus-1.so.3 => /usr/lib/libdbus-1.so.3 (0x000078394a3b5000)
+	libbrotlicommon.so.1 => /usr/lib/libbrotlicommon.so.1 (0x000078394b225000)
+	libpcre2-8.so.0 => /usr/lib/libpcre2-8.so.0 (0x000078394a316000)
+	libGLdispatch.so.0 => /usr/lib/libGLdispatch.so.0 (0x000078394a25e000)
+	libGLX.so.0 => /usr/lib/libGLX.so.0 (0x000078394a22c000)
+	libkrb5.so.3 => /usr/lib/libkrb5.so.3 (0x000078394a154000)
+	libk5crypto.so.3 => /usr/lib/libk5crypto.so.3 (0x000078394a126000)
+	libcom_err.so.2 => /usr/lib/libcom_err.so.2 (0x000078394c89f000)
+	libkrb5support.so.0 => /usr/lib/libkrb5support.so.0 (0x000078394c086000)
+	libkeyutils.so.1 => /usr/lib/libkeyutils.so.1 (0x000078394b939000)
+	libresolv.so.2 => /usr/lib/libresolv.so.2 (0x000078394a114000)
+	libpxbackend-1.0.so => /usr/lib/libproxy/libpxbackend-1.0.so (0x000078394ae85000)
+	libgobject-2.0.so.0 => /usr/lib/libgobject-2.0.so.0 (0x000078394a0b5000)
+	libicudata.so.75 => /usr/lib/libicudata.so.75 (0x0000783948200000)
+	libgrpc_unsecure.so.42 => /usr/local/lib/libgrpc_unsecure.so.42 (0x0000783947a00000)
+	libsndfile.so.1 => /usr/lib/libsndfile.so.1 (0x000078394a02e000)
+	libxcb.so.1 => /usr/lib/libxcb.so.1 (0x000078394a003000)
+	libasyncns.so.0 => /usr/lib/libasyncns.so.0 (0x000078394a985000)
+	libX11.so.6 => /usr/lib/libX11.so.6 (0x00007839480c2000)
+	libcurl.so.4 => /usr/lib/libcurl.so.4 (0x0000783947939000)
+	libgio-2.0.so.0 => /usr/lib/libgio-2.0.so.0 (0x000078394776c000)
+	libduktape.so.207 => /usr/lib/libduktape.so.207 (0x0000783949fb6000)
+	libffi.so.8 => /usr/lib/libffi.so.8 (0x0000783949fab000)
+	libogg.so.0 => /usr/lib/libogg.so.0 (0x0000783949fa1000)
+	libvorbisenc.so.2 => /usr/lib/libvorbisenc.so.2 (0x00007839476c1000)
+	libFLAC.so.12 => /usr/lib/libFLAC.so.12 (0x0000783949f5b000)
+	libopus.so.0 => /usr/lib/libopus.so.0 (0x0000783947000000)
+	libmpg123.so.0 => /usr/lib/libmpg123.so.0 (0x0000783947666000)
+	libmp3lame.so.0 => /usr/lib/libmp3lame.so.0 (0x00007839475ee000)
+	libvorbis.so.0 => /usr/lib/libvorbis.so.0 (0x00007839475c0000)
+	libXau.so.6 => /usr/lib/libXau.so.6 (0x000078394a980000)
+	libXdmcp.so.6 => /usr/lib/libXdmcp.so.6 (0x0000783949f53000)
+	libnghttp3.so.9 => /usr/lib/libnghttp3.so.9 (0x000078394759d000)
+	libnghttp2.so.14 => /usr/lib/libnghttp2.so.14 (0x0000783947573000)
+	libidn2.so.0 => /usr/lib/libidn2.so.0 (0x0000783947551000)
+	libssh2.so.1 => /usr/lib/libssh2.so.1 (0x0000783946fb7000)
+	libpsl.so.5 => /usr/lib/libpsl.so.5 (0x00007839480ae000)
+	libgmodule-2.0.so.0 => /usr/lib/libgmodule-2.0.so.0 (0x00007839480a7000)
+	libmount.so.1 => /usr/lib/libmount.so.1 (0x0000783946f68000)
+	libunistring.so.5 => /usr/lib/libunistring.so.5 (0x0000783946db8000)
+	libblkid.so.1 => /usr/lib/libblkid.so.1 (0x0000783946d7f000)
+```
+
+## Runtime story
+
+Building RGM and running it are two different things. When I run RGM, I got this error:
+
+```
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1723829087.769865   68641 metrics.cc:49] Metric name grpc.lb.wrr.rr_fallback has already been registered.
+Aborted (core dumped)
+```
+
+That error is because of grpc not loading correctly. Anyway, I thought at first that this is due to the manually built packages so let's clean them up and use ``pacman``. I already know what to do.
+
+Back to the absl link error, just like linking ``-labseil_dll`` worked, after using trail and error, I found that linking ``-labsl_log_internal_message -labsl_log_internal_check_op`` fixed the issue. Anyway, I can now run RGM with the pacman installed packages, however, the same error is still there.
+
+Robert suggested that not linking gRPC and proceed to work on the UI part without the engine. Of course, RGM built correctly without gRPC but I need to fix the gRPC issue to be able to send and receive messages between RGM and the engine.
+
+![GSoC 2024 RGM Without gRPC](/assets/gsoc24-rgm-without-grpc.png)
+
 ## Weird stuff
 
 Even though we fixed emake, if we used vscode tasks to build emake, I got this error:
