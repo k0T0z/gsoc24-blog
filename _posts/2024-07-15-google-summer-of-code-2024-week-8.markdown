@@ -5,7 +5,7 @@ date:   2024-07-15 00:00:00 +0300
 categories: blog
 ---
 
-This blog post is related to my [Google Summer of Code 2024 project][my-google-summer-of-code-2024-project].
+This blog post is related to my Google Summer of Code 2024 project: [Procedural Fragment Shader Generation Using Classic Machine Learning][my-google-summer-of-code-2024-project].
 
 I had a long talk with Josh about whether we should use a GUI or not as I think the generator is enough for start writing the Genetic Algorithm.
 

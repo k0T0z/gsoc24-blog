@@ -5,7 +5,7 @@ date:   2024-08-05 00:00:00 +0300
 categories: blog
 ---
 
-This blog post is related to my [Google Summer of Code 2024 project][my-google-summer-of-code-2024-project].
+This blog post is related to my Google Summer of Code 2024 project: [Procedural Fragment Shader Generation Using Classic Machine Learning][my-google-summer-of-code-2024-project].
 
 ```
 Note: Before trying to build gRPC from scratch, see this: [google-summer-of-code-2024-week-12-rgm-season-2.html#runtime-story](https://k0t0z.github.io/gsoc24-blog/blog/2024/08/11/google-summer-of-code-2024-week-12-rgm-season-2.html#runtime-story).

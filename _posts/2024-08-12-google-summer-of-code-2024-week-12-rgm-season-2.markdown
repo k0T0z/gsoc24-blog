@@ -5,7 +5,7 @@ date:   2024-08-12 00:00:00 +0300
 categories: blog
 ---
 
-This blog post is related to my [Google Summer of Code 2024 project][my-google-summer-of-code-2024-project].
+This blog post is related to my Google Summer of Code 2024 project: [Procedural Fragment Shader Generation Using Classic Machine Learning][my-google-summer-of-code-2024-project].
 
 All fixes done last week didn't solve the link issue because as I said we need to link according to new absl library.
 

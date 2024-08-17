@@ -5,7 +5,7 @@ date:   2024-07-29 00:00:00 +0300
 categories: blog
 ---
 
-This blog post is related to my [Google Summer of Code 2024 project][my-google-summer-of-code-2024-project].
+This blog post is related to my Google Summer of Code 2024 project: [Procedural Fragment Shader Generation Using Classic Machine Learning][my-google-summer-of-code-2024-project].
 
 As I said in my previous blog post, I am running at a low pace due to my master's preparation as well as the army service. Josh and Greg gave me a pass even though I didn't do much. Anyway, thanks to them for their understanding. Here is my midterm feedback and the work done so far and why.
 

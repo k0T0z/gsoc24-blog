@@ -5,7 +5,7 @@ date:   2024-07-22 00:00:00 +0300
 categories: blog
 ---
 
-This blog post is related to my [Google Summer of Code 2024 project][my-google-summer-of-code-2024-project].
+This blog post is related to my Google Summer of Code 2024 project: [Procedural Fragment Shader Generation Using Classic Machine Learning][my-google-summer-of-code-2024-project].
 
 After my conversation with Josh last week, I have talked with Robert as he contributed to ENIGMA's Graphics System.
 

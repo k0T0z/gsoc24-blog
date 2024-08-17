@@ -5,7 +5,7 @@ date:   2024-05-16 00:00:00 +0300
 categories: blog
 ---
 
-This blog post is related to my [Google Summer of Code 2024 project][my-google-summer-of-code-2024-project].
+This blog post is related to my Google Summer of Code 2024 project: [Procedural Fragment Shader Generation Using Classic Machine Learning][my-google-summer-of-code-2024-project].
 
 After installing Arch Linux, I can build RGM, just to do something in this period. The problem is that I tried to build RGM on my Ubuntu machine and it failed. It gives me this error:
     

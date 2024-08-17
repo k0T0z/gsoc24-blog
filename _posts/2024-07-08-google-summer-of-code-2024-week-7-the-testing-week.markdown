@@ -5,7 +5,7 @@ date:   2024-07-08 00:00:00 +0300
 categories: blog
 ---
 
-This blog post is related to my [Google Summer of Code 2024 project][my-google-summer-of-code-2024-project].
+This blog post is related to my Google Summer of Code 2024 project: [Procedural Fragment Shader Generation Using Classic Machine Learning][my-google-summer-of-code-2024-project].
 
 After I finished writing the generator outside the main codebase, Josh and Greg told me to change the project structure. This is because the engine provides only user functions to the user and the generator is just a class that will be used by RGM (no user functions at all). Anyway here is the new project structure:
 
