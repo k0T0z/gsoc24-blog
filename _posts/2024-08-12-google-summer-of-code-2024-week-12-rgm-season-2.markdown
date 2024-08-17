@@ -321,6 +321,63 @@ Robert suggested that not linking gRPC and proceed to work on the UI part withou
 
 ![GSoC 2024 RGM Without gRPC](/assets/gsoc24-rgm-without-grpc.png)
 
+On 17th August 2024, I managed to fix the runtime issue by luck (الحمدلله). Now let me explain and wrap up this whole thing.
+
+In CMake, we have two ways for finding a package or in other words, two files to use for finding a package. The first one is ``Find<package>.cmake`` and the second one is ``<package>Config.cmake``. What I know about these files at this point is that the second one is the modern way to find a package, however, as ENIGMA is 16 years old, it finds packages using the first way.
+
+I worked on RGM and fixed some issues inside its CMake files and one of them is the way for finding gRPC and protobuf. The thing is that I didn't check other CMakes. More specifically, I didn't check ``enigma-dev/shared/CMakeLists.txt``, ``enigma-dev/shared/protos/CMakeLists.txt``, ``enigma-dev/CommandLine/emake/CMakeLists.txt``, and ``enigma-dev/CommandLine/libEGM/CMakeLists.txt``. All these files were using the following way to find gRPC and protobuf:
+
+```cmake
+include(FindProtobuf)
+target_link_libraries(${LIB_EGM} PRIVATE ${Protobuf_LIBRARY})
+```
+
+or
+
+```cmake
+include_directories(${Protobuf_INCLUDE_DIRS})
+target_link_libraries(${LIB_PROTO} PRIVATE ${Protobuf_LIBRARIES})
+```
+
+I replaced these lines with the following:
+
+```cmake
+find_package(Protobuf CONFIG REQUIRED)
+target_link_libraries(${LIB_PROTO} PRIVATE protobuf::libprotobuf)
+```
+
+The new lines are working fine if you used the system packages or the local ones.
+
+Now, how is this related to this runtime issue? The thing is that I don't know what are the differences between these two files however, I do know that mixing them up will cause this runtime issue. This is not a predictable issue because everything was fine, linking completed successfully, nothing wrong and if you take a look at the error above, I bet that you will be able to find the issue. Even by debugging the code, take a look at the stack trace:
+
+```
+[k0t0z@archlinux build]$ gdb ./RadialGM
+
+(gdb) run
+Starting program: /home/k0t0z/Desktop/gsoc24/RadialGM/build/RadialGM 
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR                                                                                                                       
+E0000 00:00:1723739441.404244    1995 metrics.cc:49] Metric name grpc.lb.pick_first.disconnections has already been registered.
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff3ea8e44 in ?? () from /usr/lib/libc.so.6
+(gdb) bt
+#0  0x00007ffff3ea8e44 in ?? () from /usr/lib/libc.so.6
+#1  0x00007ffff3e50a30 in raise () from /usr/lib/libc.so.6
+#2  0x00007ffff3e384c3 in abort () from /usr/lib/libc.so.6
+#3  0x00007ffff7d123ed in grpc_core::Crash(std::basic_string_view<char, std::char_traits<char> >, grpc_core::SourceLocation) () from /usr/local/lib/libgpr.so.42
+#4  0x00007ffff6931c1a in grpc_core::GlobalInstrumentsRegistry::RegisterInstrument(grpc_core::GlobalInstrumentsRegistry::ValueType, grpc_core::GlobalInstrumentsRegistry::InstrumentType, std::basic_string_view<char, std::char_traits<char> >, std::basic_string_view<char, std::char_traits<char> >, std::basic_string_view<char, std::char_traits<char> >, bool, absl::lts_20240722::Span<std::basic_string_view<char, std::char_traits<char> > const>, absl::lts_20240722::Span<std::basic_string_view<char, std::char_traits<char> > const>) () from /usr/local/lib/libgrpc.so.42
+#5  0x00007ffff6830452 in grpc_core::GlobalInstrumentsRegistry::RegistrationBuilder<(grpc_core::GlobalInstrumentsRegistry::ValueType)2, (grpc_core::GlobalInstrumentsRegistry::InstrumentType)1, 1ul, 0ul>::Build() () from /usr/local/lib/libgrpc.so.42
+#6  0x00007ffff64c25ef in _GLOBAL__sub_I_pick_first.cc () from /usr/local/lib/libgrpc.so.42
+#7  0x00007ffff7fce2e7 in ?? () from /lib64/ld-linux-x86-64.so.2
+#8  0x00007ffff7fce3dd in ?? () from /lib64/ld-linux-x86-64.so.2
+#9  0x00007ffff7fe57a0 in ?? () from /lib64/ld-linux-x86-64.so.2
+#10 0x0000000000000001 in ?? ()
+#11 0x00007fffffffe85b in ?? ()
+#12 0x0000000000000000 in ?? ()
+```
+
+Found the issue? I bet you won't and I fixed this issue by luck. Anyway, building RGM is done now and I am ready to work on the UI part.
+
 ## Weird stuff
 
 Even though we fixed emake, if we used vscode tasks to build emake, I got this error:
