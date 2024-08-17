@@ -319,7 +319,7 @@ Back to the absl link error, just like linking ``-labseil_dll`` worked, after us
 
 Robert suggested that not linking gRPC and proceed to work on the UI part without the engine. Of course, RGM built correctly without gRPC but I need to fix the gRPC issue to be able to send and receive messages between RGM and the engine.
 
-![GSoC 2024 RGM Without gRPC](/assets/gsoc24-rgm-without-grpc.png)
+![GSoC 2024 RGM Without gRPC](/gsoc24-blog/assets/gsoc24-rgm-without-grpc.png)
 
 On 17th August 2024, I managed to fix the runtime issue by luck (الحمدلله). Now let me explain and wrap up this whole thing.
 
