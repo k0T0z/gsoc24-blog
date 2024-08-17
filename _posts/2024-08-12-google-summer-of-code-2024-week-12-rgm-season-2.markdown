@@ -378,6 +378,8 @@ Program received signal SIGABRT, Aborted.
 
 Found the issue? I bet you won't and I fixed this issue by luck. Anyway, building RGM is done now and I am ready to work on the UI part.
 
+By the way, I want to note that, these changes won't work on Ubuntu as Ubuntu is 1000 versions behind Arch Linux. This means you will have to build absl, protobuf, and gRPC manually if you are using Ubuntu.
+
 ## Weird stuff
 
 Even though we fixed emake, if we used vscode tasks to build emake, I got this error:
