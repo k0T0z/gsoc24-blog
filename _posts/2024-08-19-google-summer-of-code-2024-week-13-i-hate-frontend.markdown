@@ -42,4 +42,24 @@ I tried to run a game now but it failed as expected haha. Robert just told me th
 
 Anyway, the shader editor integration doesn't require emake to be up and running, it is all about GUI stuff. I will try to add tests to the shader editor as well, just to make sure that it is working as expected.
 
+## Draft - Don't bother reading this section :)
+
+> R0bert — 25/08/2024 19:29
+
+> there's one more thing, there's a layer above your project that could be future project
+> @Saif generating 3d models from images...
+> seems complicated but i assure itd just be what youve done plus a few more layers of surfaces and shaders and abstraction
+
+
+> R0bert — 25/08/2024 19:36
+
+> you might mean signed distance fonts by valve, which are similar in concept yes
+> but they are are for making vectorized fonts
+> but yes, i know what you mean
+> i was studying that for enigma too that might be useful later on because im curious if we could vectorize sprites
+> a huge issue i have is that older games which were sprite based dont scale well on our modern 16:9 and hidpi displays and stuff
+> vectorizing them could fix a lot of problems
+> but for ENIGMA, i suck at making sprites, so if there were a tool that could take my poor low-resolution handmade sprites and turn them into beautiful 3d vectors, i would USE IT
+
+
 [my-google-summer-of-code-2024-project]: https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA
