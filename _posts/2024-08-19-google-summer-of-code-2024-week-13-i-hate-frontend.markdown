@@ -24,6 +24,8 @@ to
 process->start(emakeFileInfo.filePath(), arguments);
 ```
 
+You can try my playground project [qprocesstest.zip](/gsoc24-blog/assets/qprocesstest.zip).
+
 I made also multiple improvements in this commit related to some memory leaks and some other issues. For example, I fixed the search paths for the emake executable and I added a little bit a hack to the build system to move all built files to ENIGMA's submodule root, as emake depends on those files. The fix for this is here: [3ef991e31893e89bfa868a259142f5502afac6fa](https://github.com/enigma-dev/RadialGM/pull/238/commits/3ef991e31893e89bfa868a259142f5502afac6fa) and by the way, i generalized it afterwords.
 
 I tried to run a game now but it failed as expected haha. Robert just told me that he was able to build an empty game with RGM and that's true. Additionally, he told me that RGM only missing the extensions support that must be passed as a csv data to the server (emake).
@@ -53,6 +55,8 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/RadialGM/build/lib
 > wow, that looks quite beautiful
 
 ![QtNodes Finally Integrated](/gsoc24-blog/assets/qtnodes-finally-integrated.png)
+
+The project I used to test the integration is [qtnodestest.zip](/gsoc24-blog/assets/qtnodestest.zip).
 
 ## Draft - Don't bother reading this section :)
 
