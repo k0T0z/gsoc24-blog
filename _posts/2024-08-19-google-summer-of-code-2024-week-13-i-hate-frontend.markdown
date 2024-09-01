@@ -48,6 +48,10 @@ I managed to integrate the ``QtNodes`` library into RGM without issues. Just to 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/RadialGM/build/lib
 ```
 
+> Josh — 01/09/2024 at 18:26
+
+> wow, that looks quite beautiful
+
 ![QtNodes Finally Integrated](/gsoc24-blog/assets/qtnodes-finally-integrated.png)
 
 ## Draft - Don't bother reading this section :)
