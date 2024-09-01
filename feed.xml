@@ -1,4 +1,82 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/" rel="alternate" type="text/html" /><updated>2024-08-17T18:49:38+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml</id><title type="html">k0T0z</title><subtitle>Just a place for me to dump my thoughts</subtitle><entry><title type="html">Google Summer of Code 2024 Week 12: RGM, Season 2</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/11/google-summer-of-code-2024-week-12-rgm-season-2.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 12: RGM, Season 2" /><published>2024-08-11T21:00:00+00:00</published><updated>2024-08-11T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/11/google-summer-of-code-2024-week-12-rgm-season-2</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/11/google-summer-of-code-2024-week-12-rgm-season-2.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/" rel="alternate" type="text/html" /><updated>2024-09-01T15:57:07+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml</id><title type="html">k0T0z</title><subtitle>Just a place for me to dump my thoughts</subtitle><entry><title type="html">Google Summer of Code 2024 Week 15: The Rush Month</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/01/google-summer-of-code-2024-week-15-the-rush-month.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 15: The Rush Month" /><published>2024-09-01T21:00:00+00:00</published><updated>2024-09-01T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/01/google-summer-of-code-2024-week-15-the-rush-month</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/01/google-summer-of-code-2024-week-15-the-rush-month.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 14: No Extension Allowed</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/25/google-summer-of-code-2024-week-14-no-extension-allowed.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 14: No Extension Allowed" /><published>2024-08-25T21:00:00+00:00</published><updated>2024-08-25T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/25/google-summer-of-code-2024-week-14-no-extension-allowed</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/25/google-summer-of-code-2024-week-14-no-extension-allowed.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
+
+<p>This week my mentors told me that I am not allowed to extend the deadline anymore, Ouch!!</p>
+
+<p>I was planning to add the extension to be able to dig into the Genetic Algorithm part. I may still be able to do that, but I need to hurry up.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 13: I Hate Frontend</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/18/google-summer-of-code-2024-week-13-i-hate-frontend.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 13: I Hate Frontend" /><published>2024-08-18T21:00:00+00:00</published><updated>2024-08-18T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/18/google-summer-of-code-2024-week-13-i-hate-frontend</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/18/google-summer-of-code-2024-week-13-i-hate-frontend.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
+
+<h2 id="debugging-rgm">Debugging RGM</h2>
+
+<p>Before talking about the UI integration, let’s talk about how to set breakpoints in RGM. The only way I found easy is to use Microsoft Visual Studio Code’s ability with CMake power. All I had to do is adding this commit <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/fc9a84a78f6d43e24a3edf43917bcf8054b90b16">fc9a84a78f6d43e24a3edf43917bcf8054b90b16</a> and <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/ebc4031dbf0ef4b883a6de1a1835d19c0e330ce0">ebc4031dbf0ef4b883a6de1a1835d19c0e330ce0</a>, then using CMake extension from the left panel, set the build variant to <code class="language-plaintext highlighter-rouge">Debug</code> and then <code class="language-plaintext highlighter-rouge">configure</code> and <code class="language-plaintext highlighter-rouge">build</code>. After the build is done, you can then debug the <code class="language-plaintext highlighter-rouge">RadialGM-Debug</code> executable.</p>
+
+<h2 id="emake-is-not-found">EMake is not found</h2>
+
+<p>While working on this issue, I decided to refactor the whole CMake build system and improve it. These two commits specifically <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/b01c765404fb91a4d8db3dfe79195b2fc4041af0">b01c765404fb91a4d8db3dfe79195b2fc4041af0</a> and <a href="https://github.com/enigma-dev/enigma-dev/pull/2399/commits/4774b30cc96ef7f993945fa831990b45630d7461">4774b30cc96ef7f993945fa831990b45630d7461</a>.</p>
+
+<p>It is very studpid that I was trying to <code class="language-plaintext highlighter-rouge">start</code> a directory not an executable haha. The fix to EMake not found is provided here in this commit <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/5ec507b1d8ba82d763ad9e09f9ae9d93f8bff98e">5ec507b1d8ba82d763ad9e09f9ae9d93f8bff98e</a>. I just modified:</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">process</span><span class="o">-&gt;</span><span class="n">start</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="n">arguments</span><span class="p">);</span>
+</code></pre></div></div>
+<p>to</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">process</span><span class="o">-&gt;</span><span class="n">start</span><span class="p">(</span><span class="n">emakeFileInfo</span><span class="p">.</span><span class="n">filePath</span><span class="p">(),</span> <span class="n">arguments</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>I made also multiple improvements in this commit related to some memory leaks and some other issues. For example, I fixed the search paths for the emake executable and I added a little bit a hack to the build system to move all built files to ENIGMA’s submodule root, as emake depends on those files. The fix for this is here: <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/3ef991e31893e89bfa868a259142f5502afac6fa">3ef991e31893e89bfa868a259142f5502afac6fa</a> and by the way, i generalized it afterwords.</p>
+
+<p>I tried to run a game now but it failed as expected haha. Robert just told me that he was able to build an empty game with RGM and that’s true. Additionally, he told me that RGM only missing the extensions support that must be passed as a csv data to the server (emake).</p>
+
+<blockquote>
+  <p>R0bert — 24/08/2024 20:10</p>
+</blockquote>
+
+<blockquote>
+  <p>i was able to build an empty game only when i last built the infrastructure
+that’s all i can tell ya</p>
+</blockquote>
+
+<blockquote>
+  <p>R0bert — 25/08/2024 01:23</p>
+</blockquote>
+
+<blockquote>
+  <p>it should be able to handle real games you just need to add the settings panel for what extensions to enable
+i believe i already did the UI for it, just need to convert it to csv string and pass it i think
+through plugin api ofc, dont have the server plugin directly read the settings panel, add some signals/slots to the RGMPlugin API class
+so it’s decoupled</p>
+</blockquote>
+
+<p>Anyway, the shader editor integration doesn’t require emake to be up and running, it is all about GUI stuff. I will try to add tests to the shader editor as well, just to make sure that it is working as expected.</p>
+
+<p>I managed to integrate the <code class="language-plaintext highlighter-rouge">QtNodes</code> library into RGM without issues. Just to note at the time of writing this there was an issue: <a href="https://github.com/k0T0z/nodeeditor/issues/1">#1</a>, where the path to the shared library is unknown, so keep in mind that you might need to export the path to the shared library in your <code class="language-plaintext highlighter-rouge">LD_LIBRARY_PATH</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/path/to/RadialGM/build/lib
+</code></pre></div></div>
+
+<p><img src="/gsoc24-blog/assets/qtnodes-finally-integrated.png" alt="QtNodes Finally Integrated" /></p>
+
+<h2 id="draft---dont-bother-reading-this-section-">Draft - Don’t bother reading this section :)</h2>
+
+<blockquote>
+  <p>R0bert — 25/08/2024 19:29</p>
+</blockquote>
+
+<blockquote>
+  <p>there’s one more thing, there’s a layer above your project that could be future project
+@Saif generating 3d models from images…
+seems complicated but i assure itd just be what youve done plus a few more layers of surfaces and shaders and abstraction</p>
+</blockquote>
+
+<blockquote>
+  <p>R0bert — 25/08/2024 19:36</p>
+</blockquote>
+
+<blockquote>
+  <p>you might mean signed distance fonts by valve, which are similar in concept yes
+but they are are for making vectorized fonts
+but yes, i know what you mean
+i was studying that for enigma too that might be useful later on because im curious if we could vectorize sprites
+a huge issue i have is that older games which were sprite based dont scale well on our modern 16:9 and hidpi displays and stuff
+vectorizing them could fix a lot of problems
+but for ENIGMA, i suck at making sprites, so if there were a tool that could take my poor low-resolution handmade sprites and turn them into beautiful 3d vectors, i would USE IT</p>
+</blockquote>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 12: RGM, Season 2</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/11/google-summer-of-code-2024-week-12-rgm-season-2.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 12: RGM, Season 2" /><published>2024-08-11T21:00:00+00:00</published><updated>2024-08-11T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/11/google-summer-of-code-2024-week-12-rgm-season-2</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/11/google-summer-of-code-2024-week-12-rgm-season-2.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
 <p>All fixes done last week didn’t solve the link issue because as I said we need to link according to new absl library.</p>
 
@@ -163,19 +241,19 @@
 
 <p>The not found libraries are all engima-dev libraries. I need to export the path to the libraries by adding this line to my <code class="language-plaintext highlighter-rouge">.bashrc</code> file:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:path/to/RadialGM/build/Submodules/enigma-dev/CommandLine/emake
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/path/to/RadialGM/build/Submodules/enigma-dev/CommandLine/emake
 </code></pre></div></div>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:path/to/RadialGM/build/Submodules/enigma-dev/CommandLine/libEGM
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/path/to/RadialGM/build/Submodules/enigma-dev/CommandLine/libEGM
 </code></pre></div></div>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:path/to/RadialGM/build/Submodules/enigma-dev/CompilerSource
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/path/to/RadialGM/build/Submodules/enigma-dev/CompilerSource
 </code></pre></div></div>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:path/to/RadialGM/build/Submodules/enigma-dev/shared
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/path/to/RadialGM/build/Submodules/enigma-dev/shared
 </code></pre></div></div>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:path/to/RadialGM/build/Submodules/enigma-dev/shared/protos
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/path/to/RadialGM/build/Submodules/enigma-dev/shared/protos
 </code></pre></div></div>
 
 <p>Note: Add your own path to the libraries.</p>
@@ -280,6 +358,11 @@
 	libmount.so.1 =&gt; /usr/lib/libmount.so.1 (0x0000783946f68000)
 	libunistring.so.5 =&gt; /usr/lib/libunistring.so.5 (0x0000783946db8000)
 	libblkid.so.1 =&gt; /usr/lib/libblkid.so.1 (0x0000783946d7f000)
+</code></pre></div></div>
+
+<p>Note (1st September 2024): You now need to export only one path to the libraries as the post build script will copy the libraries to that path:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/path/to/RadialGM/Submodules/enigma-dev
 </code></pre></div></div>
 
 <h2 id="runtime-story">Runtime story</h2>
@@ -408,7 +491,7 @@ Program received signal SIGABRT, Aborted.
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 11: RGM</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-rgm.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 11: RGM" /><published>2024-08-04T21:00:00+00:00</published><updated>2024-08-04T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-rgm</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-rgm.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+</span></code></pre></div></div>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 11: RGM</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-rgm.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 11: RGM" /><published>2024-08-04T21:00:00+00:00</published><updated>2024-08-04T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-rgm</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-rgm.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Note: Before trying to build gRPC from scratch, see this: [google-summer-of-code-2024-week-12-rgm-season-2.html#runtime-story](https://k0t0z.github.io/gsoc24-blog/blog/2024/08/11/google-summer-of-code-2024-week-12-rgm-season-2.html#runtime-story).
 </code></pre></div></div>
@@ -524,7 +607,7 @@ libc.so.6 =&gt; /usr/lib/libc.so.6 (0x0000765351814000)
 libcap.so.2 =&gt; /usr/lib/libcap.so.2 (0x00007653521c7000)
 /lib64/ld-linux-x86-64.so.2 =&gt; /usr/lib64/ld-linux-x86-64.so.2 (0x000076535296a000)
 libz.so.1 =&gt; /usr/local/lib/libz.so.1 (0x00007653521a6000)
-</code></pre></div></div>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 10: Midterm Evaluation</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/28/google-summer-of-code-2024-week-10-midterm-evaluation.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 10: Midterm Evaluation" /><published>2024-07-28T21:00:00+00:00</published><updated>2024-07-28T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/28/google-summer-of-code-2024-week-10-midterm-evaluation</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/28/google-summer-of-code-2024-week-10-midterm-evaluation.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+</code></pre></div></div>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 10: Midterm Evaluation</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/28/google-summer-of-code-2024-week-10-midterm-evaluation.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 10: Midterm Evaluation" /><published>2024-07-28T21:00:00+00:00</published><updated>2024-07-28T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/28/google-summer-of-code-2024-week-10-midterm-evaluation</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/28/google-summer-of-code-2024-week-10-midterm-evaluation.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
 <p>As I said in my previous blog post, I am running at a low pace due to my master’s preparation as well as the army service. Josh and Greg gave me a pass even though I didn’t do much. Anyway, thanks to them for their understanding. Here is my midterm feedback and the work done so far and why.</p>
 
@@ -565,7 +648,7 @@ libz.so.1 =&gt; /usr/local/lib/libz.so.1 (0x00007653521a6000)
 
 <p>The generator is implemented for creating a shader code manually, however, the integration with a Genetic Algorithm will require a lot of changes to the generator. For example, the Clamp function must be modified so that I can say for this range use this filter and for this range use this filter and so on.</p>
 
-<p>The midterm work exists in PR <a href="https://github.com/enigma-dev/enigma-dev/pull/2397">#2397</a>.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 9: For after the midterms</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/21/google-summer-of-code-2024-week-9.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 9: For after the midterms" /><published>2024-07-21T21:00:00+00:00</published><updated>2024-07-21T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/21/google-summer-of-code-2024-week-9</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/21/google-summer-of-code-2024-week-9.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+<p>The midterm work exists in PR <a href="https://github.com/enigma-dev/enigma-dev/pull/2397">#2397</a>.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 9: For after the midterms</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/21/google-summer-of-code-2024-week-9.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 9: For after the midterms" /><published>2024-07-21T21:00:00+00:00</published><updated>2024-07-21T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/21/google-summer-of-code-2024-week-9</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/21/google-summer-of-code-2024-week-9.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
 <p>After my conversation with Josh last week, I have talked with Robert as he contributed to ENIGMA’s Graphics System.</p>
 
@@ -614,7 +697,7 @@ to apply it to a texture you have to use render-to-texture via surface_create an
 
 <blockquote>
   <p>if you get stuck making it work, let me know, i guarantee 100% we can get a shader working</p>
-</blockquote>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 8: GUI is a necessary overhead?</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/14/google-summer-of-code-2024-week-8.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 8: GUI is a necessary overhead?" /><published>2024-07-14T21:00:00+00:00</published><updated>2024-07-14T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/14/google-summer-of-code-2024-week-8</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/14/google-summer-of-code-2024-week-8.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+</blockquote>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 8: GUI is a necessary overhead?</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/14/google-summer-of-code-2024-week-8.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 8: GUI is a necessary overhead?" /><published>2024-07-14T21:00:00+00:00</published><updated>2024-07-14T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/14/google-summer-of-code-2024-week-8</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/14/google-summer-of-code-2024-week-8.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
 <p>I had a long talk with Josh about whether we should use a GUI or not as I think the generator is enough for start writing the Genetic Algorithm.</p>
 
@@ -741,7 +824,7 @@ and the tooling I recommend for creating one, of course</p>
 
 <blockquote>
   <p>Cool, Josh, I understood, I tthink I will need to talk about that with Robert then</p>
-</blockquote>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 7: The Testing Week</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-the-testing-week.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 7: The Testing Week" /><published>2024-07-07T21:00:00+00:00</published><updated>2024-07-07T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-the-testing-week</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-the-testing-week.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+</blockquote>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 7: The Testing Week</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-the-testing-week.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 7: The Testing Week" /><published>2024-07-07T21:00:00+00:00</published><updated>2024-07-07T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-the-testing-week</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-the-testing-week.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
 <p>After I finished writing the generator outside the main codebase, Josh and Greg told me to change the project structure. This is because the engine provides only user functions to the user and the generator is just a class that will be used by RGM (no user functions at all). Anyway here is the new project structure:</p>
 
@@ -799,7 +882,7 @@ make[1]: Leaving directory <span class="s1">'/home/k0t0z/Desktop/gsoc24/enigma-d
 make: <span class="k">***</span> <span class="o">[</span>Makefile:51: emake] Error 2
 </code></pre></div></div>
 
-<p>That’s great another dead end. These two errors above are twins and they are here to finish me.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 6: The Rush Summer</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 6: The Rush Summer" /><published>2024-06-30T21:00:00+00:00</published><updated>2024-06-30T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
+<p>That’s great another dead end. These two errors above are twins and they are here to finish me.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 6: The Rush Summer</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 6: The Rush Summer" /><published>2024-06-30T21:00:00+00:00</published><updated>2024-06-30T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
 <p>This week I had clearer view of what I need to do, thanks to Josh of course.</p>
 
@@ -1186,166 +1269,4 @@ i will see what i can do</p>
 but in terms of the features that a proto message offers….
 there is absolutely no reason a modern programming language should not offer these features for its classes
 proto just lets you do things like serialize and deserialize, use reflection, etc</p>
-</blockquote>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 5: Here we go!</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/23/google-summer-of-code-2024-week-5-here-we-go.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 5: Here we go!" /><published>2024-06-23T21:00:00+00:00</published><updated>2024-06-23T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/23/google-summer-of-code-2024-week-5-here-we-go</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/23/google-summer-of-code-2024-week-5-here-we-go.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
-
-<p>Now my mentor Greg increased my project period to 18 weeks, so I can have more time before the midterms. So my new midterm deadline is Aug 02, 2024 which gives me enough time to implement a proper solution for the project.</p>
-
-<p>I will use a GTest unit test for testing my code and I will keep this https://google.github.io/googletest/advanced.html#running-a-subset-of-the-tests as a reference because I always forget about it.</p>
-
-<p>Now for the first important question: What are my inputs and outputs?</p>
-
-<h2 id="inputs-and-outputs">Inputs and Outputs</h2>
-
-<p>In my unit test, I will create a bunch of Nodes and Connections to build a graph and then I will have a function that converts this graph to a shader code and another function that will serialize this graph to JSON. The problem is I know nothing about how I am gonna run this shader code for preview or how I am gonna apply it to a resource. That said, it is not a big deal now. What I need to do now is to finish all these implementations as I am off schedule and I need to catch up. I think I see how Godot devs did it first then implmenet my own.</p>
-
-<h2 id="godot-visual-shader">Godot Visual Shader</h2>
-
-<p>I will need to debug the project I linked in my proposal using this:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```bash
-./bin/godot.linuxbsd.editor.x86_64 -e --path ~/Desktop/godot_visual_shader_editor_showcase
-```
-</code></pre></div></div>
-
-<p>It is very easy to compile Godot as it doesn’t have any dependencies.</p>
-
-<h2 id="the-plan">The plan</h2>
-
-<p>I figured out my next steps now after talking to Josh, I will start by creating my graph and the generator. I will try to make it work for the simple example I used in my proposal and then extend it over time. I decided also to work in parallel on Godot’s Visual Shader Editor to improve my implementations. This PR is the one <a href="https://github.com/godotengine/godot/pull/93791">#93791</a>.</p>
-
-<h2 id="debugging-enigma-emake-tests-inside-vscode">Debugging ENIGMA emake-tests inside VSCode</h2>
-
-<p>I always wanted to run the debug session from vscode instead of doing it manually and here are the task and launch objects:</p>
-
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="err">//</span><span class="w"> </span><span class="err">task</span><span class="w"> </span><span class="err">object:</span><span class="w">
-</span><span class="p">{</span><span class="w">
-    </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build emake-tests"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shell"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"make emake-tests"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">ENIGMA</span><span class="w"> </span><span class="err">uses</span><span class="w"> </span><span class="err">make</span><span class="w"> </span><span class="err">(not</span><span class="w"> </span><span class="err">CMake)</span><span class="w"> </span><span class="err">at</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">writing</span><span class="w"> </span><span class="err">this.</span><span class="w">
-</span><span class="p">}</span></code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="err">//</span><span class="w"> </span><span class="err">launch</span><span class="w"> </span><span class="err">configuration</span><span class="w"> </span><span class="err">object:</span><span class="w">
-</span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Launch emake-tests"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cppdbg"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"program"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/emake-tests"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"--gtest_filter="</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">TODO:</span><span class="w"> </span><span class="err">Add</span><span class="w"> </span><span class="err">your</span><span class="w"> </span><span class="err">filter</span><span class="w"> </span><span class="err">here.</span><span class="w">
-    </span><span class="nl">"stopAtEntry"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cwd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"environment"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="nl">"externalConsole"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"setupCommands"</span><span class="p">:</span><span class="w">
-    </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enable pretty-printing for gdb"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-enable-pretty-printing"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ignoreFailures"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"preLaunchTask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build emake-tests"</span><span class="w">
-</span><span class="p">}</span></code></pre></figure>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 3 &amp;amp; 4: Red Black Trees</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/09/google-summer-of-code-2024-week-3-and-4-red-black-trees.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 3 &amp;amp; 4: Red Black Trees" /><published>2024-06-09T21:00:00+00:00</published><updated>2024-06-09T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/09/google-summer-of-code-2024-week-3-and-4-red-black-trees</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/09/google-summer-of-code-2024-week-3-and-4-red-black-trees.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>
-
-<p>on 16th of June, I officially started looking into the project. After a quick search, I found out that Godot uses something called Red Black Trees for the visual shader graph. So let’s understand and implement this data structure as a start point.</p>
-
-<p>Oh boi, it is the std::map in C++! Hmmm, Godot developers have their own implementation of the Red Black Trees. I made a converstation with one of them once about why they are not using the standard template library or STD.</p>
-
-<blockquote>
-  <p>December 29, 2023</p>
-</blockquote>
-
-<blockquote>
-  <p>k0T0z 12:55 AM</p>
-</blockquote>
-
-<blockquote>
-  <p>guys, i have a question in mind, i know that godot doesn’t require any installation setup and wondered what the installation setup gives? I mean why just not every program out there use the same approach there must be something</p>
-</blockquote>
-
-<blockquote>
-  <p>Calinou 1:50 AM</p>
-</blockquote>
-
-<blockquote>
-  <p>installers allow for better system integration like desktop icons, start menu entries, entries in Add/Remove Programs
-that’s why there is still some demand for them. It is possible to do this stuff manually or with external tools like Scoop, but some people (companies in particular) value a built-in solution for large-scale deployments</p>
-
-  <p>it is possible to create installers that work without administrator privileges if the app is installed for a single user only</p>
-</blockquote>
-
-<blockquote>
-  <p>AThousandShips 12:56 AM</p>
-</blockquote>
-
-<blockquote>
-  <p>Godot is self contained in a single file, many programs aren’t, that’s generally why they require installers, and have libraries they depend on etc.</p>
-</blockquote>
-
-<blockquote>
-  <p>k0T0z 12:57 AM</p>
-</blockquote>
-
-<blockquote>
-  <p>wait a minute, Godot doesn’t depend on any library?</p>
-</blockquote>
-
-<blockquote>
-  <p>AThousandShips 12:58 AM</p>
-</blockquote>
-
-<blockquote>
-  <p>Not any other than system ones, it contains all the third party things</p>
-</blockquote>
-
-<blockquote>
-  <p>k0T0z 12:58 AM</p>
-</blockquote>
-
-<blockquote>
-  <p>also what do u mean by self-contained in a single file?</p>
-</blockquote>
-
-<blockquote>
-  <p>AThousandShips 12:58 AM</p>
-</blockquote>
-
-<blockquote>
-  <p>It is a single file? It doesn’t have a lot of extra files like many programs have, it embeds all the data of it in the executable</p>
-</blockquote>
-
-<blockquote>
-  <p>k0T0z 12:59 AM</p>
-</blockquote>
-
-<blockquote>
-  <p>hmmm, interesting, I guess &lt;std::string&gt; is from system as well, why not use it?</p>
-</blockquote>
-
-<blockquote>
-  <p>AThousandShips 12:59 AM</p>
-</blockquote>
-
-<blockquote>
-  <p>Look at any one software on your computer, in for example Program Files on Windows
-See <a href="https://docs.godotengine.org/en/stable/about/faq.html#doc-faq-why-not-stl">here</a> 🙂</p>
-</blockquote>
-
-<blockquote>
-  <p>AThousandShips 1:00 AM</p>
-</blockquote>
-
-<blockquote>
-  <p>We use our custom String type, as the one provided by STL is too basic and lacks proper internationalization support.
-STL templates create very large symbols, which results in huge debug binaries. We use few templates with very short names instead.</p>
-</blockquote>
-
-<blockquote>
-  <p>Also the STL library is infamous for standards iffyness
-With various, quite serious, inconsistencies between different implementations
-Some areas of the STL doesn’t provide any guarantees or details on things like performance, or safety, it leaves it entirely up to the implementation
-Came across a case of it some time ago when discussing this very topic but forget what it was now, but it was pretty glaring
-Even trivial things like exception handling is weird in some libraries, see <a href="https://github.com/godotengine/godot-cpp/issues/1326">here</a>, where one implementation of the library on Arch Linux is broken with exceptions disabled</p>
-</blockquote>
-
-<p>There are many things to learn btw from this conversation, however, at the moment, I think it is not a big deal to use the std::map inside ENIGMA.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 2</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/02/google-summer-of-code-2024-week-2.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 2" /><published>2024-06-02T21:00:00+00:00</published><updated>2024-06-02T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/02/google-summer-of-code-2024-week-2</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/02/google-summer-of-code-2024-week-2.html"><![CDATA[<p>This blog post is related to my <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Google Summer of Code 2024 project</a>.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project.]]></summary></entry></feed>
+</blockquote>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry></feed>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/gsoc24-blog/assets/css/style.css">
+<title>Google Summer of Code 2024 Week 13: I Hate Frontend</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Google Summer of Code 2024 Week 13: I Hate Frontend | k0T0z</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Google Summer of Code 2024 Week 13: I Hate Frontend" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning." />
+<meta property="og:description" content="This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning." />
+<link rel="canonical" href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/18/google-summer-of-code-2024-week-13-i-hate-frontend.html" />
+<meta property="og:url" content="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/18/google-summer-of-code-2024-week-13-i-hate-frontend.html" />
+<meta property="og:site_name" content="k0T0z" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-08-18T21:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Google Summer of Code 2024 Week 13: I Hate Frontend" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-08-18T21:00:00+00:00","datePublished":"2024-08-18T21:00:00+00:00","description":"This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.","headline":"Google Summer of Code 2024 Week 13: I Hate Frontend","mainEntityOfPage":{"@type":"WebPage","@id":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/18/google-summer-of-code-2024-week-13-i-hate-frontend.html"},"url":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/18/google-summer-of-code-2024-week-13-i-hate-frontend.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/gsoc24-blog/">
+        
+        <img src="/gsoc24-blog/assets/portfolio.png" alt="Saif Kandil" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/gsoc24-blog/">Saif Kandil</a>
+      </h2>
+      </div><p class="tagline">Just a place for me to dump my thoughts about my Google Summer of Code 2024 project</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2024</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/gsoc24-blog/blog/2024/08/18/google-summer-of-code-2024-week-13-i-hate-frontend.html">
+    <h2 class="post-title">Google Summer of Code 2024 Week 13: I Hate Frontend</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Aug 18, 2024</div><ul class="post-categories"><li>blog</li></ul></div>
+  <div class="post">
+    <p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
+
+<h2 id="debugging-rgm">Debugging RGM</h2>
+
+<p>Before talking about the UI integration, let’s talk about how to set breakpoints in RGM. The only way I found easy is to use Microsoft Visual Studio Code’s ability with CMake power. All I had to do is adding this commit <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/fc9a84a78f6d43e24a3edf43917bcf8054b90b16">fc9a84a78f6d43e24a3edf43917bcf8054b90b16</a> and <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/ebc4031dbf0ef4b883a6de1a1835d19c0e330ce0">ebc4031dbf0ef4b883a6de1a1835d19c0e330ce0</a>, then using CMake extension from the left panel, set the build variant to <code class="language-plaintext highlighter-rouge">Debug</code> and then <code class="language-plaintext highlighter-rouge">configure</code> and <code class="language-plaintext highlighter-rouge">build</code>. After the build is done, you can then debug the <code class="language-plaintext highlighter-rouge">RadialGM-Debug</code> executable.</p>
+
+<h2 id="emake-is-not-found">EMake is not found</h2>
+
+<p>While working on this issue, I decided to refactor the whole CMake build system and improve it. These two commits specifically <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/b01c765404fb91a4d8db3dfe79195b2fc4041af0">b01c765404fb91a4d8db3dfe79195b2fc4041af0</a> and <a href="https://github.com/enigma-dev/enigma-dev/pull/2399/commits/4774b30cc96ef7f993945fa831990b45630d7461">4774b30cc96ef7f993945fa831990b45630d7461</a>.</p>
+
+<p>It is very studpid that I was trying to <code class="language-plaintext highlighter-rouge">start</code> a directory not an executable haha. The fix to EMake not found is provided here in this commit <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/5ec507b1d8ba82d763ad9e09f9ae9d93f8bff98e">5ec507b1d8ba82d763ad9e09f9ae9d93f8bff98e</a>. I just modified:</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">process</span><span class="o">-&gt;</span><span class="n">start</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="n">arguments</span><span class="p">);</span>
+</code></pre></div></div>
+<p>to</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">process</span><span class="o">-&gt;</span><span class="n">start</span><span class="p">(</span><span class="n">emakeFileInfo</span><span class="p">.</span><span class="n">filePath</span><span class="p">(),</span> <span class="n">arguments</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>I made also multiple improvements in this commit related to some memory leaks and some other issues. For example, I fixed the search paths for the emake executable and I added a little bit a hack to the build system to move all built files to ENIGMA’s submodule root, as emake depends on those files. The fix for this is here: <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/3ef991e31893e89bfa868a259142f5502afac6fa">3ef991e31893e89bfa868a259142f5502afac6fa</a> and by the way, i generalized it afterwords.</p>
+
+<p>I tried to run a game now but it failed as expected haha. Robert just told me that he was able to build an empty game with RGM and that’s true. Additionally, he told me that RGM only missing the extensions support that must be passed as a csv data to the server (emake).</p>
+
+<blockquote>
+  <p>R0bert — 24/08/2024 20:10</p>
+</blockquote>
+
+<blockquote>
+  <p>i was able to build an empty game only when i last built the infrastructure
+that’s all i can tell ya</p>
+</blockquote>
+
+<blockquote>
+  <p>R0bert — 25/08/2024 01:23</p>
+</blockquote>
+
+<blockquote>
+  <p>it should be able to handle real games you just need to add the settings panel for what extensions to enable
+i believe i already did the UI for it, just need to convert it to csv string and pass it i think
+through plugin api ofc, dont have the server plugin directly read the settings panel, add some signals/slots to the RGMPlugin API class
+so it’s decoupled</p>
+</blockquote>
+
+<p>Anyway, the shader editor integration doesn’t require emake to be up and running, it is all about GUI stuff. I will try to add tests to the shader editor as well, just to make sure that it is working as expected.</p>
+
+<p>I managed to integrate the <code class="language-plaintext highlighter-rouge">QtNodes</code> library into RGM without issues. Just to note at the time of writing this there was an issue: <a href="https://github.com/k0T0z/nodeeditor/issues/1">#1</a>, where the path to the shared library is unknown, so keep in mind that you might need to export the path to the shared library in your <code class="language-plaintext highlighter-rouge">LD_LIBRARY_PATH</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/path/to/RadialGM/build/lib
+</code></pre></div></div>
+
+<p><img src="/gsoc24-blog/assets/qtnodes-finally-integrated.png" alt="QtNodes Finally Integrated" /></p>
+
+<h2 id="draft---dont-bother-reading-this-section-">Draft - Don’t bother reading this section :)</h2>
+
+<blockquote>
+  <p>R0bert — 25/08/2024 19:29</p>
+</blockquote>
+
+<blockquote>
+  <p>there’s one more thing, there’s a layer above your project that could be future project
+@Saif generating 3d models from images…
+seems complicated but i assure itd just be what youve done plus a few more layers of surfaces and shaders and abstraction</p>
+</blockquote>
+
+<blockquote>
+  <p>R0bert — 25/08/2024 19:36</p>
+</blockquote>
+
+<blockquote>
+  <p>you might mean signed distance fonts by valve, which are similar in concept yes
+but they are are for making vectorized fonts
+but yes, i know what you mean
+i was studying that for enigma too that might be useful later on because im curious if we could vectorize sprites
+a huge issue i have is that older games which were sprite based dont scale well on our modern 16:9 and hidpi displays and stuff
+vectorizing them could fix a lot of problems
+but for ENIGMA, i suck at making sprites, so if there were a tool that could take my poor low-resolution handmade sprites and turn them into beautiful 3d vectors, i would USE IT</p>
+</blockquote>
+
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2024</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+  
+  <script src="/gsoc24-blog/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/gsoc24-blog/assets/js/search.js"></script>
+  
+</body>
+
+</html>
