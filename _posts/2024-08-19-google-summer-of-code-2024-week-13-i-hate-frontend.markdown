@@ -42,6 +42,14 @@ I tried to run a game now but it failed as expected haha. Robert just told me th
 
 Anyway, the shader editor integration doesn't require emake to be up and running, it is all about GUI stuff. I will try to add tests to the shader editor as well, just to make sure that it is working as expected.
 
+I managed to integrate the ``QtNodes`` library into RGM without issues. Just to note at the time of writing this there was an issue: [#1](https://github.com/k0T0z/nodeeditor/issues/1), where the path to the shared library is unknown, so keep in mind that you might need to export the path to the shared library in your ``LD_LIBRARY_PATH``:
+
+```bash
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/RadialGM/build/lib
+```
+
+![QtNodes Finally Integrated](/gsoc24-blog/assets/qtnodes-finally-integrated.png)
+
 ## Draft - Don't bother reading this section :)
 
 > R0bert — 25/08/2024 19:29

@@ -179,23 +179,23 @@ ldd RadialGM
 The not found libraries are all engima-dev libraries. I need to export the path to the libraries by adding this line to my ``.bashrc`` file:
 
 ```bash
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:path/to/RadialGM/build/Submodules/enigma-dev/CommandLine/emake
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/RadialGM/build/Submodules/enigma-dev/CommandLine/emake
 ```
 
 ```bash
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:path/to/RadialGM/build/Submodules/enigma-dev/CommandLine/libEGM
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/RadialGM/build/Submodules/enigma-dev/CommandLine/libEGM
 ```
 
 ```bash
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:path/to/RadialGM/build/Submodules/enigma-dev/CompilerSource
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/RadialGM/build/Submodules/enigma-dev/CompilerSource
 ```
 
 ```bash
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:path/to/RadialGM/build/Submodules/enigma-dev/shared
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/RadialGM/build/Submodules/enigma-dev/shared
 ```
 
 ```bash
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:path/to/RadialGM/build/Submodules/enigma-dev/shared/protos
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/RadialGM/build/Submodules/enigma-dev/shared/protos
 ```
 
 Note: Add your own path to the libraries.
@@ -301,6 +301,12 @@ Now everything is fine:
 	libmount.so.1 => /usr/lib/libmount.so.1 (0x0000783946f68000)
 	libunistring.so.5 => /usr/lib/libunistring.so.5 (0x0000783946db8000)
 	libblkid.so.1 => /usr/lib/libblkid.so.1 (0x0000783946d7f000)
+```
+
+Note (1st September 2024): You now need to export only one path to the libraries as the post build script will copy the libraries to that path:
+
+```bash
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/RadialGM/Submodules/enigma-dev
 ```
 
 ## Runtime story
