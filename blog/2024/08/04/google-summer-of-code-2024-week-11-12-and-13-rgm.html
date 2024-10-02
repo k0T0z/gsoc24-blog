@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/gsoc24-blog/assets/css/style.css">
+<title>Google Summer of Code 2024 Week 11, 12, and 13: RGM</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Google Summer of Code 2024 Week 11, 12, and 13: RGM | k0T0z</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Google Summer of Code 2024 Week 11, 12, and 13: RGM" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning." />
+<meta property="og:description" content="This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning." />
+<link rel="canonical" href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-12-and-13-rgm.html" />
+<meta property="og:url" content="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-12-and-13-rgm.html" />
+<meta property="og:site_name" content="k0T0z" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-08-04T21:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Google Summer of Code 2024 Week 11, 12, and 13: RGM" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-08-04T21:00:00+00:00","datePublished":"2024-08-04T21:00:00+00:00","description":"This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.","headline":"Google Summer of Code 2024 Week 11, 12, and 13: RGM","mainEntityOfPage":{"@type":"WebPage","@id":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-12-and-13-rgm.html"},"url":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-12-and-13-rgm.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/gsoc24-blog/">
+        
+        <img src="/gsoc24-blog/assets/portfolio.png" alt="Saif Kandil" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/gsoc24-blog/">Saif Kandil</a>
+      </h2>
+      </div><p class="tagline">Just a place for me to dump my thoughts about my Google Summer of Code 2024 project</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2024</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-12-and-13-rgm.html">
+    <h2 class="post-title">Google Summer of Code 2024 Week 11, 12, and 13: RGM</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Aug 4, 2024</div><ul class="post-categories"><li>blog</li></ul></div>
+  <div class="post">
+    <p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Note: Before trying to build gRPC from scratch, see this: [Google Summer of Code 2024 Week 12: RGM, Season 2]().
+</code></pre></div></div>
+
+<p>The Final evaluation work will be inside <a href="https://github.com/enigma-dev/enigma-dev/pull/2399">#2399</a>.</p>
+
+<h2 id="back-to-test-runner-issue-on-arch-linux">Back To <code class="language-plaintext highlighter-rouge">test-runner</code> Issue On Arch Linux</h2>
+
+<p>Remember that I am working on my Ubuntu VM as <code class="language-plaintext highlighter-rouge">test-runner</code> gives a link error on Arch Linux. However, RGM gives a linking error on both Ubuntu and Arch Linux. Because of this, I have decided to make <code class="language-plaintext highlighter-rouge">test-runner</code> work on Arch Linux.</p>
+
+<p>As I explained in <a href="">Google Summer of Code 2024 Bonding Period</a> post, the error is about linking <code class="language-plaintext highlighter-rouge">emake</code> failed. <code class="language-plaintext highlighter-rouge">emake</code> is the way to build games without a GUI as explained by Greg.</p>
+
+<p>This error appears only on Arch linux, not Ubuntu. I guess that’s because of the differences between old and new absl. I think the new absl has new targets that we need to link as well. Anyway, I asked Fares to give me the versions of Absl, Protobuf, and gRPC that he is using on Ubuntu. I will try to use the same versions on Arch.</p>
+
+<p>Absl: 20210324.2
+Protobuf: 3.12.4
+gRPC: 1.30.2</p>
+
+<p>I cloned these versions using -b option and found out that Absl doesn’t have a CMake system yet. So let’s change plans and try to build a proper versions of Absl, Protobuf, and gRPC from scratch.</p>
+
+<p>I created this solution to do this task for me, <a href="https://github.com/k0T0z/absl-proto-grpc-ci">absl-proto-grpc-ci</a>, you can get the working verions from the README file. Also, you can take the commands from the scripts and run them on your machine.</p>
+
+<p>Before installing them to your local, try to empty these dirs first:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> <span class="nt">-rf</span> /usr/local/lib/<span class="k">*</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> <span class="nt">-rf</span> /usr/local/include/<span class="k">*</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> <span class="nt">-rf</span> /usr/local/bin/<span class="k">*</span>
+</code></pre></div></div>
+
+<p>This is to get rid of the old versions of the libraries (if any). If you have any locally installed libraries, be careful with the above commands.</p>
+
+<p>Now, building those libraries is very easy, as well as installing them. It took me a couple of days to polish it off however, it is fine now. Maybe the only missing thing for this example is to build <code class="language-plaintext highlighter-rouge">emake</code> with it.</p>
+
+<h2 id="prioritizing-local-over-system">Prioritizing local over system</h2>
+
+<p>After installing all libraries to my local and build <code class="language-plaintext highlighter-rouge">emake</code>, this warning shows up:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ld: warning: libprotobuf.so.27.3.0, needed by /usr/local/lib/libgrpc++.so, may conflict with libprotobuf.so.27
+</code></pre></div></div>
+
+<p>This is because the system has a version of Protobuf already installed. When trying to remove it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>pacman <span class="nt">-Rns</span> protobuf
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>checking dependencies...
+error: failed to prepare transaction (could not satisfy dependencies)
+:: removing protobuf breaks dependency 'protobuf' required by libphonenumber
+:: removing protobuf breaks dependency 'libprotobuf.so=27-64' required by libphonenumber
+:: removing protobuf breaks dependency 'protobuf' required by protobuf-c
+</code></pre></div></div>
+
+<p>I can’t remove it as it is required by other packages. So I need to prioritize the local version over the system version. I did this by adding these simple lines to <code class="language-plaintext highlighter-rouge">enigma-dev/Config.mk</code> file:</p>
+
+<div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Which search priority to use for libraries (system or local)
+</span><span class="nv">CUSTOM_LIB_SEARCH_PRIORITY</span> <span class="o">:=</span> <span class="nb">local</span>
+
+<span class="k">ifeq</span> <span class="nv">($(CUSTOM_LIB_SEARCH_PRIORITY), local)</span>
+    <span class="nv">LDFLAGS</span> <span class="o">+=</span> <span class="nt">-L</span>/usr/local/lib
+<span class="k">endif</span>
+</code></pre></div></div>
+
+<p>Now, you can set the search priority to local by changing the value of <code class="language-plaintext highlighter-rouge">CUSTOM_LIB_SEARCH_PRIORITY</code> to <code class="language-plaintext highlighter-rouge">local</code>.</p>
+
+<h2 id="export-issue">Export Issue</h2>
+
+<p>Other error show up that <code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code> is unable to load some packages.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ldd <span class="si">$(</span>which grpc_cpp_plugin<span class="si">)</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>linux-vdso.so.1 (0x000071154c52f000)
+libsystemd.so.0 =&gt; /usr/lib/libsystemd.so.0 (0x000071154c3f5000)
+<span style="color: red;">libgrpc_plugin_support.so.1.65 =&gt; not found</span>
+libm.so.6 =&gt; /usr/lib/libm.so.6 (0x000071154c30a000)
+<span style="color: red;">libprotoc.so.27.3.0 =&gt; not found</span>
+<span style="color: red;">libprotobuf.so.27.3.0 =&gt; not found</span>
+<span style="color: red;">libabseil_dll.so.2407.0.0 =&gt; not found</span>
+libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0x000071154c000000)
+libgcc_s.so.1 =&gt; /usr/lib/libgcc_s.so.1 (0x000071154c2db000)
+libc.so.6 =&gt; /usr/lib/libc.so.6 (0x000071154be14000)
+libcap.so.2 =&gt; /usr/lib/libcap.so.2 (0x000071154c2cf000)
+/lib64/ld-linux-x86-64.so.2 =&gt; /usr/lib64/ld-linux-x86-64.so.2 (0x000071154c531000)</p>
+</blockquote>
+
+<p>There are <code class="language-plaintext highlighter-rouge">not found</code> libraries as you can see. If you used <code class="language-plaintext highlighter-rouge">which</code> with any of the nof founded libs, you will find it inside <code class="language-plaintext highlighter-rouge">/usr/local/lib</code>. The solution is to export the path to the libraries by adding this line to your <code class="language-plaintext highlighter-rouge">.bashrc</code> file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/usr/local/lib
+</code></pre></div></div>
+
+<p>Now, you can run the command again:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ldd <span class="si">$(</span>which grpc_cpp_plugin<span class="si">)</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>linux-vdso.so.1 (0x0000765352968000)
+libsystemd.so.0 =&gt; /usr/lib/libsystemd.so.0 (0x000076535282d000)
+<span style="color: blue;">libgrpc_plugin_support.so.1.65 =&gt; /usr/local/lib/libgrpc_plugin_support.so.1.65 (0x00007653527a6000)</span>
+libm.so.6 =&gt; /usr/lib/libm.so.6 (0x00007653526bb000)
+<span style="color: blue;">libprotoc.so.27.3.0 =&gt; /usr/local/lib/libprotoc.so.27.3.0 (0x0000765352200000)</span>
+<span style="color: blue;">libprotobuf.so.27.3.0 =&gt; /usr/local/lib/libprotobuf.so.27.3.0 (0x0000765351e00000)</span>
+<span style="color: blue;">libabseil_dll.so.2407.0.0 =&gt; /usr/local/lib/libabseil_dll.so.2407.0.0 (0x0000765351cc7000)</span>
+libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0x0000765351a00000)
+libgcc_s.so.1 =&gt; /usr/lib/libgcc_s.so.1 (0x00007653521d3000)
+libc.so.6 =&gt; /usr/lib/libc.so.6 (0x0000765351814000)
+libcap.so.2 =&gt; /usr/lib/libcap.so.2 (0x00007653521c7000)
+/lib64/ld-linux-x86-64.so.2 =&gt; /usr/lib64/ld-linux-x86-64.so.2 (0x000076535296a000)
+libz.so.1 =&gt; /usr/local/lib/libz.so.1 (0x00007653521a6000)</p>
+</blockquote>
+
+<p>All fixes done above didn’t solve the link issue because as I said we need to link according to new absl library.</p>
+
+<p>After clean build, this error showed up:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ld: .eobjs/Server.o: undefined reference to symbol 'gpr_inf_future'
+/usr/bin/ld: /usr/local/lib/libgpr.so.42: error adding symbols: DSO missing from command line
+</code></pre></div></div>
+
+<p>It is too clear to see that the <code class="language-plaintext highlighter-rouge">-lgpr</code> is missing from <code class="language-plaintext highlighter-rouge">LDFLAGS</code> variable. After adding it, the next error is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ld: .eobjs/EnigmaPlugin.o: undefined reference to symbol '_ZN4absl12lts_2024072212log_internal15LogMessageFatalC1EPKciSt17basic_string_viewIcSt11char_traitsIcEE'
+/usr/bin/ld: /usr/local/lib/libabseil_dll.so.2407.0.0: error adding symbols: DSO missing from command line
+</code></pre></div></div>
+
+<p>I gave too much time to this error but I realized that may be the new absl has a new target to add it to the linker as well. That new target is <code class="language-plaintext highlighter-rouge">-labseil_dll</code>.</p>
+
+<p>On 9th August 2024, The changes to <code class="language-plaintext highlighter-rouge">enigma-dev/CommandLine/emake/Makefile</code> fixed the linking issues and now my tests which I wrote on Ubuntu VM are passing on my Arch Linux machine.</p>
+
+<h2 id="grpc_cpp_plugin-path"><code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code> path</h2>
+
+<p>If you take a look at this line here: <a href="https://github.com/enigma-dev/enigma-dev/blob/3590b681f20174ccf24156769d2bbb94b10673e3/shared/protos/CMakeLists.txt#L30">shared/protos/CMakeLists.txt#L30</a>, you will see that the path to <code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code> is hardcoded. As we installed the libraries to <code class="language-plaintext highlighter-rouge">/usr/local</code>, we need to change this path to <code class="language-plaintext highlighter-rouge">/usr/local/bin/grpc_cpp_plugin</code>.</p>
+
+<p>I provided this PR <a href="https://github.com/enigma-dev/enigma-dev/pull/2387">#2387</a> to fix this issue.</p>
+
+<p>Now you can add this line in <code class="language-plaintext highlighter-rouge">RadialGM/CMakeLists.txt</code>:</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">set</span><span class="p">(</span>GRPC_EXE <span class="s2">"/usr/local/bin/grpc_cpp_plugin"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="moving-to-rgm">Moving To RGM</h2>
+
+<p>The next step is RGM. RGM uses CMake build system and powered by Qt5. When running CMake, I got this error:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ 76%] Linking CXX executable emake
+/usr/bin/ld: CMakeFiles/emake.dir/EnigmaPlugin.cpp.o: undefined reference to symbol '_ZN4absl12lts_2024072212log_internal15LogMessageFatalC1EPKciSt17basic_string_viewIcSt11char_traitsIcEE'
+/usr/bin/ld: /usr/local/lib/libabseil_dll.so.2407.0.0: error adding symbols: DSO missing from command line
+</code></pre></div></div>
+
+<p>That’s the absl again. The same change I did to <code class="language-plaintext highlighter-rouge">enigma-dev/CommandLine/emake/Makefile</code> should be done to <code class="language-plaintext highlighter-rouge">RadialGM/Submodules/enigma-dev/CommandLine/emake/CMakeLists.txt</code>, however, I need to do it CMake style.</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Find absl</span>
+<span class="nb">find_package</span><span class="p">(</span>absl CONFIG REQUIRED<span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="si">${</span><span class="nv">CLI_TARGET</span><span class="si">}</span> PRIVATE absl::base absl::strings absl::synchronization absl::time absl::status absl::statusor<span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="rgm-build">RGM Build</h2>
+
+<p>Now, build and linking <code class="language-plaintext highlighter-rouge">emake</code> is done. I can now leave my Ubuntu VM and move back to my Arch Linux machine. The next step is to build RGM.</p>
+
+<p>As Robert merged a last PR without checking the CI, there are a lot of cleanup that must be done in order for RGM to build properly. I provided this PR <a href="https://github.com/enigma-dev/RadialGM/pull/238">#238</a> to fix this issue.</p>
+
+<p>The above PR contains many changes as follows:</p>
+
+<ul>
+  <li>Linking <a href="https://github.com/k0T0z/nodeeditor">nodeeditor</a> library to RGM.</li>
+  <li>Multiple fixes to the Room Editor.</li>
+  <li>Fixed and improved the Server Plugin.</li>
+  <li>Multiple fixes to the CMake build system.</li>
+</ul>
+
+<p>On 13th August 2024, RGM can be built without any issues.</p>
+
+<h2 id="runtime-nightmare">Runtime Nightmare</h2>
+
+<p>Now, RGM can be built without issues. However, life still doesn’t want to surrender. When running RGM, I got this error:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./RadialGM: error while loading shared libraries: libEGM.so: cannot open shared object file: No such file or directory
+</code></pre></div></div>
+
+<p>Let’s see the ldd result:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ldd RadialGM
+</code></pre></div></div>
+
+<blockquote>
+  <p>linux-vdso.so.1 (0x0000796337afc000)
+libpugixml.so.1 =&gt; /usr/lib/libpugixml.so.1 (0x0000796337a96000)
+libyaml-cpp.so.0.8 =&gt; /usr/lib/libyaml-cpp.so.0.8 (0x00007963377b1000)
+libgrpc++.so.1.65 =&gt; /usr/local/lib/libgrpc++.so.1.65 (0x00007963376b9000)
+libprotobuf.so.27.3.0 =&gt; /usr/local/lib/libprotobuf.so.27.3.0 (0x0000796337200000)
+libssl.so.3 =&gt; /usr/lib/libssl.so.3 (0x00007963375df000)
+libcrypto.so.3 =&gt; /usr/lib/libcrypto.so.3 (0x0000796336c00000)
+libQt5PrintSupport.so.5 =&gt; /usr/lib/libQt5PrintSupport.so.5 (0x0000796337571000)
+libQt5Multimedia.so.5 =&gt; /usr/lib/libQt5Multimedia.so.5 (0x0000796337104000)
+<span style="color: red;">libEGM.so =&gt; not found</span>
+<span style="color: red;">libENIGMAShared.so =&gt; not found</span>
+libfreetype.so.6 =&gt; /usr/lib/libfreetype.so.6 (0x0000796336b37000)
+libjpeg.so.8 =&gt; /usr/lib/libjpeg.so.8 (0x0000796336a9b000)
+libharfbuzz.so.0 =&gt; /usr/lib/libharfbuzz.so.0 (0x0000796336981000)
+libpcre2-16.so.0 =&gt; /usr/lib/libpcre2-16.so.0 (0x00007963368ef000)
+libdouble-conversion.so.3 =&gt; /usr/lib/libdouble-conversion.so.3 (0x000079633755a000)
+libgrpc.so.42 =&gt; /usr/local/lib/libgrpc.so.42 (0x0000796335e00000)
+libgpr.so.42 =&gt; /usr/local/lib/libgpr.so.42 (0x000079633753c000)
+libupb_json_lib.so.42 =&gt; /usr/local/lib/libupb_json_lib.so.42 (0x000079633750f000)
+libupb_textformat_lib.so.42 =&gt; /usr/local/lib/libupb_textformat_lib.so.42 (0x00007963370df000)
+libutf8_range_lib.so.42 =&gt; /usr/local/lib/libutf8_range_lib.so.42 (0x0000796337a8b000)
+libupb_message_lib.so.42 =&gt; /usr/local/lib/libupb_message_lib.so.42 (0x0000796337a80000)
+libupb_base_lib.so.42 =&gt; /usr/local/lib/libupb_base_lib.so.42 (0x000079633750a000)
+libupb_mem_lib.so.42 =&gt; /usr/local/lib/libupb_mem_lib.so.42 (0x0000796337505000)
+libre2.so.9 =&gt; /usr/local/lib/libre2.so.9 (0x0000796336862000)
+libssl.so =&gt; /usr/local/lib/libssl.so (0x0000796335d90000)
+libcrypto.so =&gt; /usr/local/lib/libcrypto.so (0x0000796335a00000)
+libaddress_sorting.so.42 =&gt; /usr/local/lib/libaddress_sorting.so.42 (0x00007963370da000)
+libsystemd.so.0 =&gt; /usr/lib/libsystemd.so.0 (0x0000796335c9d000)
+libabseil_dll.so.2407.0.0 =&gt; /usr/local/lib/libabseil_dll.so.2407.0.0 (0x00007963358c7000)
+libQt5Widgets.so.5 =&gt; /usr/lib/libQt5Widgets.so.5 (0x0000796335200000)
+libQt5Gui.so.5 =&gt; /usr/lib/libQt5Gui.so.5 (0x0000796334a00000)
+libQt5Network.so.5 =&gt; /usr/lib/libQt5Network.so.5 (0x0000796335094000)
+libQt5Core.so.5 =&gt; /usr/lib/libQt5Core.so.5 (0x0000796334400000)
+<span style="color: red;">libProtocols.so =&gt; not found</span>
+libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0x0000796334000000)
+libm.so.6 =&gt; /usr/lib/libm.so.6 (0x0000796334315000)
+libgcc_s.so.1 =&gt; /usr/lib/libgcc_s.so.1 (0x0000796335c70000)
+libc.so.6 =&gt; /usr/lib/libc.so.6 (0x0000796333e14000)
+/lib64/ld-linux-x86-64.so.2 =&gt; /usr/lib64/ld-linux-x86-64.so.2 (0x0000796337afe000)
+libz.so.1 =&gt; /usr/local/lib/libz.so.1 (0x0000796336843000)
+libpulse.so.0 =&gt; /usr/lib/libpulse.so.0 (0x0000796335c1b000)
+libbz2.so.1.0 =&gt; /usr/lib/libbz2.so.1.0 (0x00007963358b4000)
+libpng16.so.16 =&gt; /usr/lib/libpng16.so.16 (0x00007963349c6000)
+libbrotlidec.so.1 =&gt; /usr/lib/libbrotlidec.so.1 (0x0000796335c0c000)
+libglib-2.0.so.0 =&gt; /usr/lib/libglib-2.0.so.0 (0x0000796333cc6000)
+libgraphite2.so.3 =&gt; /usr/lib/libgraphite2.so.3 (0x00007963349a4000)
+libcap.so.2 =&gt; /usr/lib/libcap.so.2 (0x00007963358a8000)
+libGL.so.1 =&gt; /usr/lib/libGL.so.1 (0x000079633428f000)
+libmd4c.so.0 =&gt; /usr/lib/libmd4c.so.0 (0x000079633498e000)
+libgssapi_krb5.so.2 =&gt; /usr/lib/libgssapi_krb5.so.2 (0x000079633493a000)
+libproxy.so.1 =&gt; /usr/lib/libproxy.so.1 (0x000079633683e000)
+libicui18n.so.75 =&gt; /usr/lib/libicui18n.so.75 (0x0000796333800000)
+libicuuc.so.75 =&gt; /usr/lib/libicuuc.so.75 (0x0000796333606000)
+libzstd.so.1 =&gt; /usr/lib/libzstd.so.1 (0x0000796333be7000)
+libpulsecommon-17.0.so =&gt; /usr/lib/pulseaudio/libpulsecommon-17.0.so (0x000079633357f000)
+libdbus-1.so.3 =&gt; /usr/lib/libdbus-1.so.3 (0x0000796333b96000)
+libbrotlicommon.so.1 =&gt; /usr/lib/libbrotlicommon.so.1 (0x000079633355c000)
+libpcre2-8.so.0 =&gt; /usr/lib/libpcre2-8.so.0 (0x00007963334bd000)
+libGLdispatch.so.0 =&gt; /usr/lib/libGLdispatch.so.0 (0x0000796333405000)
+libGLX.so.0 =&gt; /usr/lib/libGLX.so.0 (0x00007963333d3000)
+libkrb5.so.3 =&gt; /usr/lib/libkrb5.so.3 (0x00007963332fb000)
+libk5crypto.so.3 =&gt; /usr/lib/libk5crypto.so.3 (0x00007963332cd000)
+libcom_err.so.2 =&gt; /usr/lib/libcom_err.so.2 (0x00007963358a2000)
+libkrb5support.so.0 =&gt; /usr/lib/libkrb5support.so.0 (0x0000796335086000)
+libkeyutils.so.1 =&gt; /usr/lib/libkeyutils.so.1 (0x0000796334288000)
+libresolv.so.2 =&gt; /usr/lib/libresolv.so.2 (0x0000796333b84000)
+libpxbackend-1.0.so =&gt; /usr/lib/libproxy/libpxbackend-1.0.so (0x00007963332be000)
+libgobject-2.0.so.0 =&gt; /usr/lib/libgobject-2.0.so.0 (0x000079633325f000)
+libicudata.so.75 =&gt; /usr/lib/libicudata.so.75 (0x0000796331400000)
+libsndfile.so.1 =&gt; /usr/lib/libsndfile.so.1 (0x00007963331d8000)
+libxcb.so.1 =&gt; /usr/lib/libxcb.so.1 (0x00007963331ad000)
+libasyncns.so.0 =&gt; /usr/lib/libasyncns.so.0 (0x0000796333b7c000)
+libX11.so.6 =&gt; /usr/lib/libX11.so.6 (0x00007963312c2000)
+libcurl.so.4 =&gt; /usr/lib/libcurl.so.4 (0x00007963311fb000)
+libgio-2.0.so.0 =&gt; /usr/lib/libgio-2.0.so.0 (0x000079633102e000)
+libduktape.so.207 =&gt; /usr/lib/libduktape.so.207 (0x0000796333160000)
+libffi.so.8 =&gt; /usr/lib/libffi.so.8 (0x0000796333155000)
+libogg.so.0 =&gt; /usr/lib/libogg.so.0 (0x0000796331024000)
+libvorbisenc.so.2 =&gt; /usr/lib/libvorbisenc.so.2 (0x0000796330f79000)
+libFLAC.so.12 =&gt; /usr/lib/libFLAC.so.12 (0x0000796330f33000)
+libopus.so.0 =&gt; /usr/lib/libopus.so.0 (0x0000796330a00000)
+libmpg123.so.0 =&gt; /usr/lib/libmpg123.so.0 (0x00007963309a5000)
+libmp3lame.so.0 =&gt; /usr/lib/libmp3lame.so.0 (0x000079633092d000)
+libvorbis.so.0 =&gt; /usr/lib/libvorbis.so.0 (0x00007963308ff000)
+libXau.so.6 =&gt; /usr/lib/libXau.so.6 (0x0000796335081000)
+libXdmcp.so.6 =&gt; /usr/lib/libXdmcp.so.6 (0x0000796330f2b000)
+libnghttp3.so.9 =&gt; /usr/lib/libnghttp3.so.9 (0x00007963308dc000)
+libnghttp2.so.14 =&gt; /usr/lib/libnghttp2.so.14 (0x00007963308b2000)
+libidn2.so.0 =&gt; /usr/lib/libidn2.so.0 (0x0000796330890000)
+libssh2.so.1 =&gt; /usr/lib/libssh2.so.1 (0x0000796330847000)
+libpsl.so.5 =&gt; /usr/lib/libpsl.so.5 (0x0000796330833000)
+libgmodule-2.0.so.0 =&gt; /usr/lib/libgmodule-2.0.so.0 (0x0000796330f24000)
+libmount.so.1 =&gt; /usr/lib/libmount.so.1 (0x00007963307e4000)
+libunistring.so.5 =&gt; /usr/lib/libunistring.so.5 (0x0000796330634000)
+libblkid.so.1 =&gt; /usr/lib/libblkid.so.1 (0x00007963305fb000)</p>
+</blockquote>
+
+<p>The not found libraries are all engima-dev libraries. I need to export the path to the libraries by adding this line to my <code class="language-plaintext highlighter-rouge">.bashrc</code> file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/path/to/RadialGM/Submodules/enigma-dev
+</code></pre></div></div>
+
+<p>Note: Add your own path to the libraries.</p>
+
+<p>Now everything is fine:</p>
+
+<blockquote>
+  <p>linux-vdso.so.1 (0x000078394efc5000)
+libpugixml.so.1 =&gt; /usr/lib/libpugixml.so.1 (0x000078394ef5f000)
+libyaml-cpp.so.0.8 =&gt; /usr/lib/libyaml-cpp.so.0.8 (0x000078394ef10000)
+libgrpc++.so.1.65 =&gt; /usr/local/lib/libgrpc++.so.1.65 (0x000078394eb08000)
+libprotobuf.so.27.3.0 =&gt; /usr/local/lib/libprotobuf.so.27.3.0 (0x000078394e800000)
+libssl.so.3 =&gt; /usr/lib/libssl.so.3 (0x000078394e726000)
+libcrypto.so.3 =&gt; /usr/lib/libcrypto.so.3 (0x000078394e200000)
+libQt5PrintSupport.so.5 =&gt; /usr/lib/libQt5PrintSupport.so.5 (0x000078394eea0000)
+libQt5Multimedia.so.5 =&gt; /usr/lib/libQt5Multimedia.so.5 (0x000078394e104000)
+<span style="color: blue;">libEGM.so =&gt; /home/k0t0z/Desktop/gsoc24/RadialGM/build/Submodules/enigma-dev/CommandLine/libEGM/libEGM.so (0x000078394de00000)</span>
+<span style="color: blue;">libENIGMAShared.so =&gt; /home/k0t0z/Desktop/gsoc24/RadialGM/build/Submodules/enigma-dev/shared/libENIGMAShared.so (0x000078394dd39000)</span>
+libfreetype.so.6 =&gt; /usr/lib/libfreetype.so.6 (0x000078394dc70000)
+libjpeg.so.8 =&gt; /usr/lib/libjpeg.so.8 (0x000078394dbd4000)
+libharfbuzz.so.0 =&gt; /usr/lib/libharfbuzz.so.0 (0x000078394daba000)
+libpcre2-16.so.0 =&gt; /usr/lib/libpcre2-16.so.0 (0x000078394da28000)
+libdouble-conversion.so.3 =&gt; /usr/lib/libdouble-conversion.so.3 (0x000078394ee87000)
+libgrpc.so.42 =&gt; /usr/local/lib/libgrpc.so.42 (0x000078394ce00000)
+libgpr.so.42 =&gt; /usr/local/lib/libgpr.so.42 (0x000078394e708000)
+libupb_json_lib.so.42 =&gt; /usr/local/lib/libupb_json_lib.so.42 (0x000078394e6db000)
+libupb_textformat_lib.so.42 =&gt; /usr/local/lib/libupb_textformat_lib.so.42 (0x000078394da03000)
+libutf8_range_lib.so.42 =&gt; /usr/local/lib/libutf8_range_lib.so.42 (0x000078394ee80000)
+libupb_message_lib.so.42 =&gt; /usr/local/lib/libupb_message_lib.so.42 (0x000078394e6d0000)
+libupb_base_lib.so.42 =&gt; /usr/local/lib/libupb_base_lib.so.42 (0x000078394e0ff000)
+libupb_mem_lib.so.42 =&gt; /usr/local/lib/libupb_mem_lib.so.42 (0x000078394e0fa000)
+libre2.so.9 =&gt; /usr/local/lib/libre2.so.9 (0x000078394d976000)
+libssl.so =&gt; /usr/local/lib/libssl.so (0x000078394d906000)
+libcrypto.so =&gt; /usr/local/lib/libcrypto.so (0x000078394ca00000)
+libaddress_sorting.so.42 =&gt; /usr/local/lib/libaddress_sorting.so.42 (0x000078394e0f5000)
+libsystemd.so.0 =&gt; /usr/lib/libsystemd.so.0 (0x000078394cd0d000)
+libabseil_dll.so.2407.0.0 =&gt; /usr/local/lib/libabseil_dll.so.2407.0.0 (0x000078394c8c7000)
+libQt5Widgets.so.5 =&gt; /usr/lib/libQt5Widgets.so.5 (0x000078394c200000)
+libQt5Gui.so.5 =&gt; /usr/lib/libQt5Gui.so.5 (0x000078394ba00000)
+libQt5Network.so.5 =&gt; /usr/lib/libQt5Network.so.5 (0x000078394c094000)
+libQt5Core.so.5 =&gt; /usr/lib/libQt5Core.so.5 (0x000078394b400000)
+<span style="color: blue;">libProtocols.so =&gt; /home/k0t0z/Desktop/gsoc24/RadialGM/build/Submodules/enigma-dev/shared/protos/libProtocols.so (0x000078394b000000)</span>
+libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0x000078394ac00000)
+libm.so.6 =&gt; /usr/lib/libm.so.6 (0x000078394cc22000)
+libgcc_s.so.1 =&gt; /usr/lib/libgcc_s.so.1 (0x000078394d8d9000)
+libc.so.6 =&gt; /usr/lib/libc.so.6 (0x000078394aa14000)
+/lib64/ld-linux-x86-64.so.2 =&gt; /usr/lib64/ld-linux-x86-64.so.2 (0x000078394efc7000)
+libz.so.1 =&gt; /usr/local/lib/libz.so.1 (0x000078394d8ba000)
+libpulse.so.0 =&gt; /usr/lib/libpulse.so.0 (0x000078394d863000)
+libpng16.so.16 =&gt; /usr/lib/libpng16.so.16 (0x000078394b9c6000)
+libbz2.so.1.0 =&gt; /usr/lib/libbz2.so.1.0 (0x000078394d850000)
+libbrotlidec.so.1 =&gt; /usr/lib/libbrotlidec.so.1 (0x000078394d841000)
+libglib-2.0.so.0 =&gt; /usr/lib/libglib-2.0.so.0 (0x000078394b2b2000)
+libgraphite2.so.3 =&gt; /usr/lib/libgraphite2.so.3 (0x000078394c8a5000)
+libcap.so.2 =&gt; /usr/lib/libcap.so.2 (0x000078394cc16000)
+libGL.so.1 =&gt; /usr/lib/libGL.so.1 (0x000078394b940000)
+libmd4c.so.0 =&gt; /usr/lib/libmd4c.so.0 (0x000078394b29c000)
+libgssapi_krb5.so.2 =&gt; /usr/lib/libgssapi_krb5.so.2 (0x000078394b248000)
+libproxy.so.1 =&gt; /usr/lib/libproxy.so.1 (0x000078394cc11000)
+libicui18n.so.75 =&gt; /usr/lib/libicui18n.so.75 (0x000078394a600000)
+libicuuc.so.75 =&gt; /usr/lib/libicuuc.so.75 (0x000078394a406000)
+libzstd.so.1 =&gt; /usr/lib/libzstd.so.1 (0x000078394af21000)
+libgrpc++_unsecure.so.1.65 =&gt; /usr/local/lib/libgrpc++_unsecure.so.1.65 (0x000078394ae94000)
+libpulsecommon-17.0.so =&gt; /usr/lib/pulseaudio/libpulsecommon-17.0.so (0x000078394a98d000)
+libdbus-1.so.3 =&gt; /usr/lib/libdbus-1.so.3 (0x000078394a3b5000)
+libbrotlicommon.so.1 =&gt; /usr/lib/libbrotlicommon.so.1 (0x000078394b225000)
+libpcre2-8.so.0 =&gt; /usr/lib/libpcre2-8.so.0 (0x000078394a316000)
+libGLdispatch.so.0 =&gt; /usr/lib/libGLdispatch.so.0 (0x000078394a25e000)
+libGLX.so.0 =&gt; /usr/lib/libGLX.so.0 (0x000078394a22c000)
+libkrb5.so.3 =&gt; /usr/lib/libkrb5.so.3 (0x000078394a154000)
+libk5crypto.so.3 =&gt; /usr/lib/libk5crypto.so.3 (0x000078394a126000)
+libcom_err.so.2 =&gt; /usr/lib/libcom_err.so.2 (0x000078394c89f000)
+libkrb5support.so.0 =&gt; /usr/lib/libkrb5support.so.0 (0x000078394c086000)
+libkeyutils.so.1 =&gt; /usr/lib/libkeyutils.so.1 (0x000078394b939000)
+libresolv.so.2 =&gt; /usr/lib/libresolv.so.2 (0x000078394a114000)
+libpxbackend-1.0.so =&gt; /usr/lib/libproxy/libpxbackend-1.0.so (0x000078394ae85000)
+libgobject-2.0.so.0 =&gt; /usr/lib/libgobject-2.0.so.0 (0x000078394a0b5000)
+libicudata.so.75 =&gt; /usr/lib/libicudata.so.75 (0x0000783948200000)
+libgrpc_unsecure.so.42 =&gt; /usr/local/lib/libgrpc_unsecure.so.42 (0x0000783947a00000)
+libsndfile.so.1 =&gt; /usr/lib/libsndfile.so.1 (0x000078394a02e000)
+libxcb.so.1 =&gt; /usr/lib/libxcb.so.1 (0x000078394a003000)
+libasyncns.so.0 =&gt; /usr/lib/libasyncns.so.0 (0x000078394a985000)
+libX11.so.6 =&gt; /usr/lib/libX11.so.6 (0x00007839480c2000)
+libcurl.so.4 =&gt; /usr/lib/libcurl.so.4 (0x0000783947939000)
+libgio-2.0.so.0 =&gt; /usr/lib/libgio-2.0.so.0 (0x000078394776c000)
+libduktape.so.207 =&gt; /usr/lib/libduktape.so.207 (0x0000783949fb6000)
+libffi.so.8 =&gt; /usr/lib/libffi.so.8 (0x0000783949fab000)
+libogg.so.0 =&gt; /usr/lib/libogg.so.0 (0x0000783949fa1000)
+libvorbisenc.so.2 =&gt; /usr/lib/libvorbisenc.so.2 (0x00007839476c1000)
+libFLAC.so.12 =&gt; /usr/lib/libFLAC.so.12 (0x0000783949f5b000)
+libopus.so.0 =&gt; /usr/lib/libopus.so.0 (0x0000783947000000)
+libmpg123.so.0 =&gt; /usr/lib/libmpg123.so.0 (0x0000783947666000)
+libmp3lame.so.0 =&gt; /usr/lib/libmp3lame.so.0 (0x00007839475ee000)
+libvorbis.so.0 =&gt; /usr/lib/libvorbis.so.0 (0x00007839475c0000)
+libXau.so.6 =&gt; /usr/lib/libXau.so.6 (0x000078394a980000)
+libXdmcp.so.6 =&gt; /usr/lib/libXdmcp.so.6 (0x0000783949f53000)
+libnghttp3.so.9 =&gt; /usr/lib/libnghttp3.so.9 (0x000078394759d000)
+libnghttp2.so.14 =&gt; /usr/lib/libnghttp2.so.14 (0x0000783947573000)
+libidn2.so.0 =&gt; /usr/lib/libidn2.so.0 (0x0000783947551000)
+libssh2.so.1 =&gt; /usr/lib/libssh2.so.1 (0x0000783946fb7000)
+libpsl.so.5 =&gt; /usr/lib/libpsl.so.5 (0x00007839480ae000)
+libgmodule-2.0.so.0 =&gt; /usr/lib/libgmodule-2.0.so.0 (0x00007839480a7000)
+libmount.so.1 =&gt; /usr/lib/libmount.so.1 (0x0000783946f68000)
+libunistring.so.5 =&gt; /usr/lib/libunistring.so.5 (0x0000783946db8000)
+libblkid.so.1 =&gt; /usr/lib/libblkid.so.1 (0x0000783946d7f000)</p>
+</blockquote>
+
+<p>Now, another issue appeared when trying to run RGM:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1723829087.769865   68641 metrics.cc:49] Metric name grpc.lb.wrr.rr_fallback has already been registered.
+Aborted (core dumped)
+</code></pre></div></div>
+
+<p>The above error doesn’t help much anyway. Robert suggested that not linking gRPC and proceed to work on the UI part without the engine. Of course, RGM built correctly without gRPC but I need to fix the gRPC issue to be able to send and receive messages between RGM and <code class="language-plaintext highlighter-rouge">emake</code>.</p>
+
+<p><img src="/gsoc24-blog/assets/gsoc24-rgm-without-grpc.png" alt="GSoC 2024 RGM Without gRPC" /></p>
+
+<h2 id="local-not-needed">Local Not Needed</h2>
+
+<p>That error is because of grpc not loading correctly. Anyway, I thought at first that this is due to the manually built packages so let’s clean them up and use <code class="language-plaintext highlighter-rouge">pacman</code>. I already know what to do.</p>
+
+<p>Back to the absl link error, just like linking <code class="language-plaintext highlighter-rouge">-labseil_dll</code> worked, after using trail and error, I found that linking <code class="language-plaintext highlighter-rouge">-labsl_log_internal_message -labsl_log_internal_check_op</code> fixed the issue. Anyway, I can now run RGM with the pacman installed packages, however, the same error is still there.</p>
+
+<h2 id="back-to-the-runtime-issue">Back To The Runtime Issue</h2>
+
+<p>When I face a problem, I can’t get it out of my brain. Although, Robert told me to continue my work and not worry about it now, I kept trying on it. On 17th August 2024, I managed to fix the runtime issue by luck (الحمدلله). Now let me explain and wrap up this whole thing.</p>
+
+<p>In CMake, we have two ways for finding a package or in other words, two files to use for finding a package. The first one is <code class="language-plaintext highlighter-rouge">Find&lt;package&gt;.cmake</code> and the second one is <code class="language-plaintext highlighter-rouge">&lt;package&gt;Config.cmake</code>. What I know about these files at this point is that the second one is the modern way to find a package, however, as ENIGMA is 16 years old, it finds packages using the first way.</p>
+
+<p>I worked on RGM and fixed some issues inside its CMake files and one of them is the way for finding gRPC and protobuf. The thing is that I didn’t check other CMakes. More specifically, I didn’t check <code class="language-plaintext highlighter-rouge">enigma-dev/shared/CMakeLists.txt</code>, <code class="language-plaintext highlighter-rouge">enigma-dev/shared/protos/CMakeLists.txt</code>, <code class="language-plaintext highlighter-rouge">enigma-dev/CommandLine/emake/CMakeLists.txt</code>, and <code class="language-plaintext highlighter-rouge">enigma-dev/CommandLine/libEGM/CMakeLists.txt</code>. All these files were using the following way to find gRPC and protobuf:</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">include</span><span class="p">(</span>FindProtobuf<span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="si">${</span><span class="nv">LIB_EGM</span><span class="si">}</span> PRIVATE <span class="si">${</span><span class="nv">Protobuf_LIBRARY</span><span class="si">}</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>or</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">include_directories</span><span class="p">(</span><span class="si">${</span><span class="nv">Protobuf_INCLUDE_DIRS</span><span class="si">}</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="si">${</span><span class="nv">LIB_PROTO</span><span class="si">}</span> PRIVATE <span class="si">${</span><span class="nv">Protobuf_LIBRARIES</span><span class="si">}</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>I replaced these lines with the following:</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">find_package</span><span class="p">(</span>Protobuf CONFIG REQUIRED<span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="si">${</span><span class="nv">LIB_PROTO</span><span class="si">}</span> PRIVATE protobuf::libprotobuf<span class="p">)</span>
+</code></pre></div></div>
+
+<p>The new lines are working fine if you used the system packages or the local ones.</p>
+
+<p>Now, how is this related to this runtime issue? The thing is that I don’t know what are the differences between these two files however, I do know that mixing them up will cause this runtime issue. This is not a predictable issue because everything was fine, linking completed successfully, nothing wrong and if you take a look at the error above, I bet that you will be able to find the issue. Even by debugging the code, take a look at the stack trace:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[k0t0z@archlinux build]$ gdb ./RadialGM
+
+(gdb) run
+Starting program: /home/k0t0z/Desktop/gsoc24/RadialGM/build/RadialGM 
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR                                                                                                                       
+E0000 00:00:1723739441.404244    1995 metrics.cc:49] Metric name grpc.lb.pick_first.disconnections has already been registered.
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff3ea8e44 in ?? () from /usr/lib/libc.so.6
+(gdb) bt
+#0  0x00007ffff3ea8e44 in ?? () from /usr/lib/libc.so.6
+#1  0x00007ffff3e50a30 in raise () from /usr/lib/libc.so.6
+#2  0x00007ffff3e384c3 in abort () from /usr/lib/libc.so.6
+#3  0x00007ffff7d123ed in grpc_core::Crash(std::basic_string_view&lt;char, std::char_traits&lt;char&gt; &gt;, grpc_core::SourceLocation) () from /usr/local/lib/libgpr.so.42
+#4  0x00007ffff6931c1a in grpc_core::GlobalInstrumentsRegistry::RegisterInstrument(grpc_core::GlobalInstrumentsRegistry::ValueType, grpc_core::GlobalInstrumentsRegistry::InstrumentType, std::basic_string_view&lt;char, std::char_traits&lt;char&gt; &gt;, std::basic_string_view&lt;char, std::char_traits&lt;char&gt; &gt;, std::basic_string_view&lt;char, std::char_traits&lt;char&gt; &gt;, bool, absl::lts_20240722::Span&lt;std::basic_string_view&lt;char, std::char_traits&lt;char&gt; &gt; const&gt;, absl::lts_20240722::Span&lt;std::basic_string_view&lt;char, std::char_traits&lt;char&gt; &gt; const&gt;) () from /usr/local/lib/libgrpc.so.42
+#5  0x00007ffff6830452 in grpc_core::GlobalInstrumentsRegistry::RegistrationBuilder&lt;(grpc_core::GlobalInstrumentsRegistry::ValueType)2, (grpc_core::GlobalInstrumentsRegistry::InstrumentType)1, 1ul, 0ul&gt;::Build() () from /usr/local/lib/libgrpc.so.42
+#6  0x00007ffff64c25ef in _GLOBAL__sub_I_pick_first.cc () from /usr/local/lib/libgrpc.so.42
+#7  0x00007ffff7fce2e7 in ?? () from /lib64/ld-linux-x86-64.so.2
+#8  0x00007ffff7fce3dd in ?? () from /lib64/ld-linux-x86-64.so.2
+#9  0x00007ffff7fe57a0 in ?? () from /lib64/ld-linux-x86-64.so.2
+#10 0x0000000000000001 in ?? ()
+#11 0x00007fffffffe85b in ?? ()
+#12 0x0000000000000000 in ?? ()
+</code></pre></div></div>
+
+<p>Found the issue? I bet you won’t and I fixed this issue by luck. Robert, Kartik, and I tried many many solutions and options but nothing worked until I fixed it on 17th August 2024. Robert gave a thumbs up to every message I posted this day. It was challenging but fun.</p>
+
+<blockquote>
+  <p>kartik — 17/08/2024 20:23</p>
+</blockquote>
+
+<blockquote>
+  <p>nope never seen this before, but glad that you’re able to build the rgm</p>
+</blockquote>
+
+<blockquote>
+  <p>R0bert — 17/08/2024 20:26</p>
+</blockquote>
+
+<blockquote>
+  <p>this is beautiful and im not surprised at all
+based on the debugging from yesterday i was suspecting something was going wrong with linking
+i suspect the old way was linking twice as you said and the static initialization was called twice
+so this is great, this is excellent
+im giving every comment here a thumbs up because that is some good stuff!
+now onward and upward with the project</p>
+</blockquote>
+
+<p>Anyway, building RGM is done now and I am ready to work on the UI part.</p>
+
+<p>By the way, I want to note that, these changes won’t work on Ubuntu as Ubuntu is 1000 versions behind Arch Linux. This means you will have to build absl, protobuf, and gRPC manually if you are using Ubuntu.</p>
+
+<p>Inside here, I have decided also to refactor the whole CMake build system. All the changes now can be found inside these two PRs:</p>
+
+<ul>
+  <li><a href="https://github.com/enigma-dev/RadialGM/pull/238">#238</a></li>
+  <li><a href="https://github.com/enigma-dev/enigma-dev/pull/2399">#2399</a></li>
+</ul>
+
+<p>Now you know why I called it <a href="">Google Summer of Code 2024 Week 7, 8, and 9: My Boogeyperiod</a>. This is because I spent nearly 1.5 months on this issue.</p>
+
+<h2 id="weird-stuff">Weird stuff</h2>
+
+<p>Even though we fixed emake, if we used vscode tasks to build emake, I got this error:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/local/bin/grpc_cpp_plugin: error while loading shared libraries: libgrpc_plugin_support.so.1.65: cannot open shared object file: No such file or directory
+--grpc_out: protoc-gen-grpc: Plugin failed with status code 127.
+</code></pre></div></div>
+
+<p>So weird issue because if I ran the same command from terminal, it runs without problems. I can’t see anything wrong with my files:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">Use</span><span class="w"> </span><span class="err">IntelliSense</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">learn</span><span class="w"> </span><span class="err">about</span><span class="w"> </span><span class="err">possible</span><span class="w"> </span><span class="err">attributes.</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">Hover</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">view</span><span class="w"> </span><span class="err">descriptions</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">existing</span><span class="w"> </span><span class="err">attributes.</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">For</span><span class="w"> </span><span class="err">more</span><span class="w"> </span><span class="err">information</span><span class="p">,</span><span class="w"> </span><span class="err">visit:</span><span class="w"> </span><span class="err">https://go.microsoft.com/fwlink/?linkid=</span><span class="mi">830387</span><span class="w">
+    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Launch test-runner"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cppdbg"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"program"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/test-runner"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"--gtest_filter=VisualShaderTest.*"</span><span class="w"> </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"stopAtEntry"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"cwd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"environment"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nl">"externalConsole"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"setupCommands"</span><span class="p">:</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enable pretty-printing for gdb"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-enable-pretty-printing"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"ignoreFailures"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"preLaunchTask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">See</span><span class="w"> </span><span class="err">https://go.microsoft.com/fwlink/?LinkId=</span><span class="mi">733558</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">documentation</span><span class="w"> </span><span class="err">about</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">tasks.json</span><span class="w"> </span><span class="err">format</span><span class="w">
+    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shell"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"make"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"test-runner"</span><span class="w"> </span><span class="p">],</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="debugging-rgm-238">Debugging RGM: <a href="https://github.com/enigma-dev/RadialGM/pull/238">#238</a></h2>
+
+<p>Before talking about the UI integration, let’s talk about how to set breakpoints in RGM. The only way I found easy is to use Microsoft Visual Studio Code’s ability with CMake power. All I had to do is adding this commit <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/fc9a84a78f6d43e24a3edf43917bcf8054b90b16">fc9a84a78f6d43e24a3edf43917bcf8054b90b16</a> and <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/ebc4031dbf0ef4b883a6de1a1835d19c0e330ce0">ebc4031dbf0ef4b883a6de1a1835d19c0e330ce0</a>, then using CMake extension from the left panel, set the build variant to <code class="language-plaintext highlighter-rouge">Debug</code> and then <code class="language-plaintext highlighter-rouge">configure</code> and <code class="language-plaintext highlighter-rouge">build</code>. After the build is done, you can then debug the <code class="language-plaintext highlighter-rouge">RadialGM-Debug</code> executable.</p>
+
+<h2 id="emake-not-found-238">EMake Not Found: <a href="https://github.com/enigma-dev/RadialGM/pull/238">#238</a></h2>
+
+<p>While working on this issue, I decided to refactor the whole CMake build system and improve it. These two commits specifically <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/b01c765404fb91a4d8db3dfe79195b2fc4041af0">b01c765404fb91a4d8db3dfe79195b2fc4041af0</a> and <a href="https://github.com/enigma-dev/enigma-dev/pull/2399/commits/4774b30cc96ef7f993945fa831990b45630d7461">4774b30cc96ef7f993945fa831990b45630d7461</a>.</p>
+
+<p>It is very studpid that I was trying to <code class="language-plaintext highlighter-rouge">start</code> a directory not an executable haha. The fix to EMake not found is provided here in this commit <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/5ec507b1d8ba82d763ad9e09f9ae9d93f8bff98e">5ec507b1d8ba82d763ad9e09f9ae9d93f8bff98e</a>. I just modified:</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">process</span><span class="o">-&gt;</span><span class="n">start</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="n">arguments</span><span class="p">);</span>
+</code></pre></div></div>
+<p>to</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">process</span><span class="o">-&gt;</span><span class="n">start</span><span class="p">(</span><span class="n">emakeFileInfo</span><span class="p">.</span><span class="n">filePath</span><span class="p">(),</span> <span class="n">arguments</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>You can try my playground project <a href="/gsoc24-blog/assets/qprocesstest.zip">qprocesstest.zip</a>.</p>
+
+<p>I made also multiple improvements in this commit related to some memory leaks and some other issues. For example, I fixed the search paths for the emake executable and I added a little bit a hack to the build system to move all built files to ENIGMA’s submodule root, as emake depends on those files. The fix for this is here: <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/3ef991e31893e89bfa868a259142f5502afac6fa">3ef991e31893e89bfa868a259142f5502afac6fa</a> and by the way, i generalized it afterwords.</p>
+
+<p>I tried to run a game now but it failed as expected haha. Robert just told me that he was able to build an empty game with RGM and that’s true. Additionally, he told me that RGM only missing the extensions support that must be passed as a csv data to the server (emake).</p>
+
+<blockquote>
+  <p>R0bert — 24/08/2024 20:10</p>
+</blockquote>
+
+<blockquote>
+  <p>i was able to build an empty game only when i last built the infrastructure
+that’s all i can tell ya</p>
+</blockquote>
+
+<blockquote>
+  <p>R0bert — 25/08/2024 01:23</p>
+</blockquote>
+
+<blockquote>
+  <p>it should be able to handle real games you just need to add the settings panel for what extensions to enable
+i believe i already did the UI for it, just need to convert it to csv string and pass it i think
+through plugin api ofc, dont have the server plugin directly read the settings panel, add some signals/slots to the RGMPlugin API class
+so it’s decoupled</p>
+</blockquote>
+
+<h2 id="nodeeditor-integration-238"><a href="https://github.com/k0T0z/nodeeditor">nodeeditor</a> Integration: <a href="https://github.com/enigma-dev/RadialGM/pull/238">#238</a></h2>
+
+<p>Anyway, the shader editor integration doesn’t require emake to be up and running, it is all about GUI stuff. I will try to add tests to the shader editor as well, just to make sure that it is working as expected.</p>
+
+<p>I managed to integrate the <code class="language-plaintext highlighter-rouge">QtNodes</code> library into RGM without issues. Just to note at the time of writing this there was an issue where the path to the shared library is unknown, so keep in mind that you might need to export the path to the shared library in your <code class="language-plaintext highlighter-rouge">LD_LIBRARY_PATH</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/path/to/RadialGM/build/lib
+</code></pre></div></div>
+
+<blockquote>
+  <p>Josh — 01/09/2024 at 18:26</p>
+</blockquote>
+
+<blockquote>
+  <p>wow, that looks quite beautiful</p>
+</blockquote>
+
+<p><img src="/gsoc24-blog/assets/qtnodes-finally-integrated.png" alt="QtNodes Finally Integrated" /></p>
+
+<p>The project I used to test the integration is <a href="/gsoc24-blog/assets/qtnodestest.zip">qtnodestest.zip</a>.</p>
+
+<h2 id="draft---dont-bother-reading-this-section-">Draft - Don’t bother reading this section :)</h2>
+
+<blockquote>
+  <p>R0bert — 25/08/2024 19:29</p>
+</blockquote>
+
+<blockquote>
+  <p>there’s one more thing, there’s a layer above your project that could be future project
+@Saif generating 3d models from images…
+seems complicated but i assure itd just be what youve done plus a few more layers of surfaces and shaders and abstraction</p>
+</blockquote>
+
+<blockquote>
+  <p>R0bert — 25/08/2024 19:36</p>
+</blockquote>
+
+<blockquote>
+  <p>you might mean signed distance fonts by valve, which are similar in concept yes
+but they are are for making vectorized fonts
+but yes, i know what you mean
+i was studying that for enigma too that might be useful later on because im curious if we could vectorize sprites
+a huge issue i have is that older games which were sprite based dont scale well on our modern 16:9 and hidpi displays and stuff
+vectorizing them could fix a lot of problems
+but for ENIGMA, i suck at making sprites, so if there were a tool that could take my poor low-resolution handmade sprites and turn them into beautiful 3d vectors, i would USE IT</p>
+</blockquote>
+
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2024</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+  
+  <script src="/gsoc24-blog/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/gsoc24-blog/assets/js/search.js"></script>
+  
+</body>
+
+</html>

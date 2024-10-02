@@ -68,7 +68,7 @@
   <div class="post">
     <p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
-<p>After installing Arch Linux, I can build RGM, just to do something in this period. The problem is that I tried to build RGM on my Ubuntu machine and it failed. It gives me this error:</p>
+<p>After installing Arch Linux, I can build RGM, just to do something in this period. Of courcse, it won’t run from the first time and I am gonna leave the error here for future reference:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="o">[</span> 76%] Linking CXX executable emake
     /usr/bin/ld: CMakeFiles/emake.dir/EnigmaPlugin.cpp.o: undefined reference to symbol <span class="s1">'_ZN4absl12lts_2024011612log_internal21CheckOpMessageBuilderC1EPKc'</span>
@@ -79,22 +79,13 @@
     make: <span class="k">***</span> <span class="o">[</span>Makefile:136: all] Error 2
 </code></pre></div></div>
 
-<p>Even with my Arch Linux machine, I can’t build RGM. Last time, I built eveything from scratch including gRPC and protobuf but didn’t work. I thought the problem is with the manual build of gRPC and protobuf, so I tried to build them using <code class="language-plaintext highlighter-rouge">pacman</code> but it didn’t work either.</p>
+<p>Before installing Arch Linux, I tried to build RGM using my Ubuntu machine but same error. That was before being accepted in GSoC.</p>
 
-<p>Anyway, thanks god this is not a high priority task. I guess I am gonna switch tasks now. If at any chance you read my proposal, you will know that this project is splitted into 2 parts:</p>
+<p>In this bonding period, I didn’t do much as I was busy with my final exams.</p>
 
-<ol>
-  <li>The backend, including the graph and the generator.</li>
-  <li>The frontend, including the editor (both the visual and the code editor).</li>
-</ol>
+<p>Late in the bonding period, specifically on May 24th, I want to start writing some code so started wondering where to put it. The whole organization of the project is still unclear.</p>
 
-<p>In order for this to go without problems, I need to see the output shader, which mean I will have to implement a shader renderer that I can use to render the output shader. It has to be separated from the engine as it must has a GUI stuff in order to see the animated shader.</p>
-
-<p>For now, I am gonna start implementing the graph functionalities. Where is the location in the codebase? Well let’s figure this out before the coding period starts.</p>
-
-<p>By the way, I found a problem with the current CMakeLists.txt file. It doesn’t link all required Qt5 libraries. The one that is missing is <code class="language-plaintext highlighter-rouge">qscintilla-qt5</code>. Hmmmm, I don’t think this lib has a CMake configuration files for <code class="language-plaintext highlighter-rouge">find_package</code> command to work. To be continued…</p>
-
-<p>Anyway, The graph backend is not related to the <code class="language-plaintext highlighter-rouge">Graphics_Systems</code>, although, it will require a system to render the generated shader. I think the most suitable location is inside <code class="language-plaintext highlighter-rouge">Universal_System</code>.</p>
+<p>Anyway, The graph backend is not related to the <code class="language-plaintext highlighter-rouge">Graphics_Systems</code>, although, it will require a system to render the generated shader. I think the most suitable location is inside <code class="language-plaintext highlighter-rouge">Universal_System</code>. Josh was also fine with this location.</p>
 
 <p>The expected structure of my files will be:</p>
 

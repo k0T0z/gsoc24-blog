@@ -74,40 +74,178 @@
 
 <p><img src="/gsoc24-blog/assets/midterm-2024-evaluation-feedback.png" alt="Midterm 2024 Evaluation Feedback" /></p>
 
-<h2 id="work-done-so-far">Work Done So Far</h2>
+<h2 id="summary">Summary</h2>
 
-<p>The generator is now finished and it has the following features:</p>
+<p>The midterm work exists in PR <a href="https://github.com/enigma-dev/enigma-dev/pull/2397">#2397</a>.</p>
+
+<p>In my proposal, I said that I will make the generator ready by the midterm evaluation. It is in a good shape now. It will be refactored during the Rendering and Machine Learning phases. In these two next phases, I will make the generator more for ENIGMA’s Graphics System and the Genetic Algorithm (Machine Learning) respectively. The work done in the generator can be presented as follows:</p>
+
+<h3 id="constants-operators-and-functions">Constants, Operators, and Functions</h3>
+
+<p>All constants, operators, and functions are supported. Constants include <code class="language-plaintext highlighter-rouge">float</code>, <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">uint</code>, <code class="language-plaintext highlighter-rouge">vec2</code>, <code class="language-plaintext highlighter-rouge">vec3</code>, and <code class="language-plaintext highlighter-rouge">vec4</code>. Operators include arithmetic, logical, and bitwise operations. Functions include trigonometric, exponential, logarithmic, and other functions. Both scalar and vector operations are supported. Both Operations and Functions types depend on the type of the operands.</p>
+
+<p>Operations for <code class="language-plaintext highlighter-rouge">float</code> types: <code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">/</code>, <code class="language-plaintext highlighter-rouge">mod</code>, <code class="language-plaintext highlighter-rouge">pow</code>, <code class="language-plaintext highlighter-rouge">max</code>, <code class="language-plaintext highlighter-rouge">min</code>, <code class="language-plaintext highlighter-rouge">atan</code>, and <code class="language-plaintext highlighter-rouge">step</code>.
+Operations for <code class="language-plaintext highlighter-rouge">int</code> types: <code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">/</code>, <code class="language-plaintext highlighter-rouge">%</code>, <code class="language-plaintext highlighter-rouge">max</code>, <code class="language-plaintext highlighter-rouge">min</code>, <code class="language-plaintext highlighter-rouge">&amp;</code>, <code class="language-plaintext highlighter-rouge">|</code>, <code class="language-plaintext highlighter-rouge">^</code>, <code class="language-plaintext highlighter-rouge">&lt;&lt;</code>, and <code class="language-plaintext highlighter-rouge">&gt;&gt;</code>.
+Operations for <code class="language-plaintext highlighter-rouge">uint</code> types: Same as <code class="language-plaintext highlighter-rouge">int</code> types.
+Operations for <code class="language-plaintext highlighter-rouge">vec2</code>, <code class="language-plaintext highlighter-rouge">vec3</code>, and <code class="language-plaintext highlighter-rouge">vec4</code> types: <code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">/</code>, <code class="language-plaintext highlighter-rouge">mod</code>, <code class="language-plaintext highlighter-rouge">pow</code>, <code class="language-plaintext highlighter-rouge">max</code>, <code class="language-plaintext highlighter-rouge">min</code>, <code class="language-plaintext highlighter-rouge">cross</code>, <code class="language-plaintext highlighter-rouge">atan2</code>, and <code class="language-plaintext highlighter-rouge">reflect</code>. Note that <code class="language-plaintext highlighter-rouge">cross</code> is only for <code class="language-plaintext highlighter-rouge">vec3</code> types.</p>
+
+<p>Functions for <code class="language-plaintext highlighter-rouge">float</code> types: <code class="language-plaintext highlighter-rouge">sin</code>, <code class="language-plaintext highlighter-rouge">cos</code>, <code class="language-plaintext highlighter-rouge">tan</code>, <code class="language-plaintext highlighter-rouge">asin</code>, <code class="language-plaintext highlighter-rouge">acos</code>, <code class="language-plaintext highlighter-rouge">atan</code>, <code class="language-plaintext highlighter-rouge">sinh</code>, <code class="language-plaintext highlighter-rouge">cosh</code>, <code class="language-plaintext highlighter-rouge">tanh</code>, <code class="language-plaintext highlighter-rouge">log</code>, <code class="language-plaintext highlighter-rouge">exp</code>, <code class="language-plaintext highlighter-rouge">sqrt</code>, <code class="language-plaintext highlighter-rouge">abs</code>, <code class="language-plaintext highlighter-rouge">sign</code>, <code class="language-plaintext highlighter-rouge">floor</code>, <code class="language-plaintext highlighter-rouge">round</code>, <code class="language-plaintext highlighter-rouge">ceil</code>, <code class="language-plaintext highlighter-rouge">fract</code>, <code class="language-plaintext highlighter-rouge">saturate</code>, <code class="language-plaintext highlighter-rouge">negate</code>, <code class="language-plaintext highlighter-rouge">acosh</code>, <code class="language-plaintext highlighter-rouge">asinh</code>, <code class="language-plaintext highlighter-rouge">atanh</code>, <code class="language-plaintext highlighter-rouge">degrees</code>, <code class="language-plaintext highlighter-rouge">exp2</code>, <code class="language-plaintext highlighter-rouge">inverse_sqrt</code>, <code class="language-plaintext highlighter-rouge">log2</code>, <code class="language-plaintext highlighter-rouge">radians</code>, <code class="language-plaintext highlighter-rouge">reciprocal</code>, <code class="language-plaintext highlighter-rouge">roundeven</code>, <code class="language-plaintext highlighter-rouge">trunc</code>, and <code class="language-plaintext highlighter-rouge">oneminus</code>.
+Functions for <code class="language-plaintext highlighter-rouge">int</code> types: <code class="language-plaintext highlighter-rouge">abs</code>, <code class="language-plaintext highlighter-rouge">-1 *</code>, <code class="language-plaintext highlighter-rouge">sign</code> and <code class="language-plaintext highlighter-rouge">~</code>.
+Functions for <code class="language-plaintext highlighter-rouge">uint</code> types: <code class="language-plaintext highlighter-rouge">-1 *</code> and <code class="language-plaintext highlighter-rouge">~</code>.
+Functions for <code class="language-plaintext highlighter-rouge">vec2</code>, <code class="language-plaintext highlighter-rouge">vec3</code>, and <code class="language-plaintext highlighter-rouge">vec4</code> types: <code class="language-plaintext highlighter-rouge">normalize</code>, <code class="language-plaintext highlighter-rouge">saturate</code>, <code class="language-plaintext highlighter-rouge">negate</code>, <code class="language-plaintext highlighter-rouge">reciprocal</code>, <code class="language-plaintext highlighter-rouge">abs</code>, <code class="language-plaintext highlighter-rouge">acos</code>, <code class="language-plaintext highlighter-rouge">acosh</code>, <code class="language-plaintext highlighter-rouge">asin</code>, <code class="language-plaintext highlighter-rouge">asinh</code>, <code class="language-plaintext highlighter-rouge">atan</code>, <code class="language-plaintext highlighter-rouge">atanh</code>, <code class="language-plaintext highlighter-rouge">ceil</code>, <code class="language-plaintext highlighter-rouge">cos</code>, <code class="language-plaintext highlighter-rouge">cosh</code>, <code class="language-plaintext highlighter-rouge">degrees</code>, <code class="language-plaintext highlighter-rouge">exp</code>, <code class="language-plaintext highlighter-rouge">exp2</code>, <code class="language-plaintext highlighter-rouge">floor</code>, <code class="language-plaintext highlighter-rouge">fract</code>, <code class="language-plaintext highlighter-rouge">inverse_sqrt</code>, <code class="language-plaintext highlighter-rouge">log</code>, <code class="language-plaintext highlighter-rouge">log2</code>, <code class="language-plaintext highlighter-rouge">radians</code>, <code class="language-plaintext highlighter-rouge">round</code>, <code class="language-plaintext highlighter-rouge">roundeven</code>, <code class="language-plaintext highlighter-rouge">sign</code>, <code class="language-plaintext highlighter-rouge">sin</code>, <code class="language-plaintext highlighter-rouge">sinh</code>, <code class="language-plaintext highlighter-rouge">sqrt</code>, <code class="language-plaintext highlighter-rouge">tan</code>, <code class="language-plaintext highlighter-rouge">tanh</code>, <code class="language-plaintext highlighter-rouge">trunc</code>, and <code class="language-plaintext highlighter-rouge">oneminus</code>.</p>
+
+<h3 id="special-nodes">Special Nodes</h3>
+
+<p>Some important nodes are also implemented for the AI Agent such as:</p>
 <ul>
-  <li>Input node: Foe example, if you want to use a UV.</li>
-  <li>Output node: The implementation is finished, however, there is no intergartion with ENIGMA’s Graphics System yet.</li>
-  <li>Constants: You can use a constant value in your shader code. This includes float, int, uint, vec2, vec3, and vec4.</li>
-  <li>Operators: Many operations are supported for float, int, uint, vec2, vec3, and vec4 types. Color operations are also supported.</li>
-  <li>Functions: Many functions are supported such as sin, cos, tan, … etc.</li>
-  <li>UV with parameters: You can use UV with parameters such as scale, offset, and rotation. Polar coordinates are also supported.</li>
-  <li>Dot product is supported.</li>
-  <li>Others: <code class="language-plaintext highlighter-rouge">Length()</code>, <code class="language-plaintext highlighter-rouge">Clamp()</code>, … etc are supported.</li>
+  <li><code class="language-plaintext highlighter-rouge">dot</code>: The dot product of two vectors.</li>
+  <li><code class="language-plaintext highlighter-rouge">length</code>: The length of a vector.</li>
+  <li><code class="language-plaintext highlighter-rouge">clamp</code>: Clamps a value between a minimum and maximum value.</li>
+  <li><code class="language-plaintext highlighter-rouge">derivative</code>: The derivative of a value.</li>
+  <li><code class="language-plaintext highlighter-rouge">step</code>: The step function.</li>
+  <li><code class="language-plaintext highlighter-rouge">smoothstep</code>: The smoothstep function.</li>
+  <li><code class="language-plaintext highlighter-rouge">distance</code>: The distance between two points.</li>
+  <li><code class="language-plaintext highlighter-rouge">mix</code>: Linearly interpolates between two values.</li>
 </ul>
+
+<h3 id="logic-nodes">Logic Nodes</h3>
+
+<p>Some logic nodes are also implemented for the AI Agent such as: <code class="language-plaintext highlighter-rouge">if</code>, <code class="language-plaintext highlighter-rouge">switch</code>, <code class="language-plaintext highlighter-rouge">is</code>, and <code class="language-plaintext highlighter-rouge">compare</code>.</p>
 
 <h3 id="filters">Filters</h3>
 
-<ul>
-  <li>Noise: You can use noise functions such as simplex, perlin, and worley.</li>
-</ul>
+<p>Most importantly, the generator supports filters such as noise filters. The noise filters include <code class="language-plaintext highlighter-rouge">Value</code> Noise for now.</p>
 
-<h2 id="todo">TODO</h2>
+<h2 id="work-to-be-done">Work To Be Done</h2>
 
-<ul>
-  <li>I need to support comments in the shader code.</li>
-  <li>I need to integrate a node editor into RGM to be able to create large graphs.</li>
-  <li>I need to work with Robert to integrate the VisualShader with ENIGMA’s Graphics System.</li>
-  <li>After all the previous TODOs are done, I am ready to design a Genetic approach to modify the parameters of the shader code (as a start only, later on, the Genetic Algorithm will be able to add/delete nodes and connections).</li>
-</ul>
+<p>As I explained in <a href="">Google Summer of Code 2024 Week 7, 8, and 9: My Boogeyperiod## Most Important Operations In The Generator</a>, many nodes will be modified during the Rendering and Machine Learning phases.</p>
 
-<h2 id="notes">Notes</h2>
+<p>There are a couple of tasks as well that will be nice if we had. Supporting comments in the shader code is one of them as well as loops.</p>
 
-<p>The generator is implemented for creating a shader code manually, however, the integration with a Genetic Algorithm will require a lot of changes to the generator. For example, the Clamp function must be modified so that I can say for this range use this filter and for this range use this filter and so on.</p>
+<p>The integration of a node editor library into RGM is also a must task to be done. This will help in creating large graphs.</p>
 
-<p>The midterm work exists in PR <a href="https://github.com/enigma-dev/enigma-dev/pull/2397">#2397</a>.</p>
+<h2 id="working-example">Working Example</h2>
+
+<p>I have created a working example for the Value Noise filter. This is the same example that I have used in my proposal. The graph and the generated code are as follows:</p>
+
+<p><img src="/gsoc24-blog/assets/godot-visual-shader-value-noise-filter-graph-example.png" alt="Godot Visual Shader Value Noise Filter Graph Example" /></p>
+
+<figure class="highlight"><pre><code class="language-glsl" data-lang="glsl"><span class="k">in</span> <span class="kt">vec2</span> <span class="n">TexCoord</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">float</span> <span class="n">uTime</span><span class="p">;</span>
+<span class="kt">float</span> <span class="nf">noise_random_value</span><span class="p">(</span><span class="kt">vec2</span> <span class="n">uv</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="n">fract</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">uv</span><span class="p">,</span> <span class="kt">vec2</span><span class="p">(</span><span class="mi">12</span><span class="p">.</span><span class="mi">9898</span><span class="p">,</span> <span class="mi">78</span><span class="p">.</span><span class="mi">233</span><span class="p">)))</span><span class="o">*</span><span class="mi">43758</span><span class="p">.</span><span class="mi">5453</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">float</span> <span class="nf">noise_interpolate</span><span class="p">(</span><span class="kt">float</span> <span class="n">a</span><span class="p">,</span> <span class="kt">float</span> <span class="n">b</span><span class="p">,</span> <span class="kt">float</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="n">a</span> <span class="o">+</span> <span class="p">(</span><span class="n">t</span><span class="o">*</span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">float</span> <span class="nf">value_noise</span><span class="p">(</span><span class="kt">vec2</span> <span class="n">uv</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kt">vec2</span> <span class="n">i</span> <span class="o">=</span> <span class="n">floor</span><span class="p">(</span><span class="n">uv</span><span class="p">);</span>
+	<span class="kt">vec2</span> <span class="n">f</span> <span class="o">=</span> <span class="n">fract</span><span class="p">(</span><span class="n">uv</span><span class="p">);</span>
+	<span class="n">f</span> <span class="o">=</span> <span class="n">f</span> <span class="o">*</span> <span class="n">f</span> <span class="o">*</span> <span class="p">(</span><span class="mi">3</span><span class="p">.</span><span class="mi">0</span> <span class="o">-</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span> <span class="o">*</span> <span class="n">f</span><span class="p">);</span>
+	
+	<span class="n">uv</span> <span class="o">=</span> <span class="n">abs</span><span class="p">(</span><span class="n">fract</span><span class="p">(</span><span class="n">uv</span><span class="p">)</span> <span class="o">-</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">);</span>
+	<span class="kt">vec2</span> <span class="n">c0</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="kt">vec2</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">);</span>
+	<span class="kt">vec2</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="kt">vec2</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">);</span>
+	<span class="kt">vec2</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="kt">vec2</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">);</span>
+	<span class="kt">vec2</span> <span class="n">c3</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="kt">vec2</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">);</span>
+	<span class="kt">float</span> <span class="n">r0</span> <span class="o">=</span> <span class="n">noise_random_value</span><span class="p">(</span><span class="n">c0</span><span class="p">);</span>
+	<span class="kt">float</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">noise_random_value</span><span class="p">(</span><span class="n">c1</span><span class="p">);</span>
+	<span class="kt">float</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">noise_random_value</span><span class="p">(</span><span class="n">c2</span><span class="p">);</span>
+	<span class="kt">float</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">noise_random_value</span><span class="p">(</span><span class="n">c3</span><span class="p">);</span>
+	
+	<span class="kt">float</span> <span class="n">bottom_of_grid</span> <span class="o">=</span> <span class="n">noise_interpolate</span><span class="p">(</span><span class="n">r0</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">f</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+	<span class="kt">float</span> <span class="n">top_of_grid</span> <span class="o">=</span> <span class="n">noise_interpolate</span><span class="p">(</span><span class="n">r2</span><span class="p">,</span> <span class="n">r3</span><span class="p">,</span> <span class="n">f</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+	<span class="kt">float</span> <span class="n">t</span> <span class="o">=</span> <span class="n">noise_interpolate</span><span class="p">(</span><span class="n">bottom_of_grid</span><span class="p">,</span> <span class="n">top_of_grid</span><span class="p">,</span> <span class="n">f</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+	<span class="k">return</span> <span class="n">t</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">generate_value_noise_float</span><span class="p">(</span><span class="kt">vec2</span> <span class="n">uv</span><span class="p">,</span> <span class="kt">float</span> <span class="n">scale</span><span class="p">,</span> <span class="k">out</span> <span class="kt">float</span> <span class="n">out_buffer</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kt">float</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+	
+	<span class="kt">float</span> <span class="n">freq</span> <span class="o">=</span> <span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="kt">float</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+	<span class="kt">float</span> <span class="n">amp</span> <span class="o">=</span> <span class="n">pow</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="kt">float</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">0</span><span class="p">));</span>
+	<span class="n">t</span> <span class="o">+=</span> <span class="n">value_noise</span><span class="p">(</span><span class="kt">vec2</span><span class="p">(</span><span class="n">uv</span><span class="p">.</span><span class="n">x</span><span class="o">*</span><span class="n">scale</span><span class="o">/</span><span class="n">freq</span><span class="p">,</span> <span class="n">uv</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">scale</span><span class="o">/</span><span class="n">freq</span><span class="p">))</span><span class="o">*</span><span class="n">amp</span><span class="p">;</span>
+	
+	<span class="n">freq</span> <span class="o">=</span> <span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="kt">float</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+	<span class="n">amp</span> <span class="o">=</span> <span class="n">pow</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="kt">float</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
+	<span class="n">t</span> <span class="o">+=</span> <span class="n">value_noise</span><span class="p">(</span><span class="kt">vec2</span><span class="p">(</span><span class="n">uv</span><span class="p">.</span><span class="n">x</span><span class="o">*</span><span class="n">scale</span><span class="o">/</span><span class="n">freq</span><span class="p">,</span> <span class="n">uv</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">scale</span><span class="o">/</span><span class="n">freq</span><span class="p">))</span><span class="o">*</span><span class="n">amp</span><span class="p">;</span>
+	
+	<span class="n">freq</span> <span class="o">=</span> <span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="kt">float</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+	<span class="n">amp</span> <span class="o">=</span> <span class="n">pow</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="kt">float</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">2</span><span class="p">));</span>
+	<span class="n">t</span> <span class="o">+=</span> <span class="n">value_noise</span><span class="p">(</span><span class="kt">vec2</span><span class="p">(</span><span class="n">uv</span><span class="p">.</span><span class="n">x</span><span class="o">*</span><span class="n">scale</span><span class="o">/</span><span class="n">freq</span><span class="p">,</span> <span class="n">uv</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">scale</span><span class="o">/</span><span class="n">freq</span><span class="p">))</span><span class="o">*</span><span class="n">amp</span><span class="p">;</span>
+	
+	<span class="n">out_buffer</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">out</span> <span class="kt">vec4</span> <span class="n">FragColor</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="c1">// Input:1</span>
+	<span class="kt">vec2</span> <span class="n">var_from_n1_p0</span> <span class="o">=</span> <span class="n">TexCoord</span><span class="p">;</span>
+
+<span class="c1">// ValueNoise:4</span>
+	<span class="c1">// Value Noise</span>
+	<span class="kt">float</span> <span class="n">out_buffer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+	<span class="n">generate_value_noise_float</span><span class="p">(</span><span class="n">var_from_n1_p0</span><span class="p">,</span> <span class="mi">100</span><span class="p">.</span><span class="mo">000000</span><span class="p">,</span> <span class="n">out_buffer</span><span class="p">);</span>
+	<span class="kt">vec4</span> <span class="n">var_from_n4_p0</span> <span class="o">=</span> <span class="kt">vec4</span><span class="p">(</span><span class="n">out_buffer</span><span class="p">,</span> <span class="n">out_buffer</span><span class="p">,</span> <span class="n">out_buffer</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">);</span>
+	
+<span class="c1">// Input:2</span>
+	<span class="kt">float</span> <span class="n">var_from_n2_p0</span> <span class="o">=</span> <span class="n">uTime</span><span class="p">;</span>
+
+<span class="c1">// FloatFunc:3</span>
+	<span class="kt">float</span> <span class="n">var_from_n3_p0</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">var_from_n2_p0</span><span class="p">);</span>
+
+<span class="c1">// FloatOp:5</span>
+	<span class="kt">float</span> <span class="n">var_from_n5_p0</span> <span class="o">=</span> <span class="n">var_from_n4_p0</span><span class="p">.</span><span class="n">x</span> <span class="o">/</span> <span class="n">var_from_n3_p0</span><span class="p">;</span>
+
+<span class="c1">// Output:0</span>
+	<span class="n">FragColor</span> <span class="o">=</span> <span class="kt">vec3</span><span class="p">(</span><span class="n">var_from_n5_p0</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Of course I can’t show you any GUI work because I am not there yet. The above picture is from Godot Engine’s Visual Shader Editor. Also, note that Godot uses a noise library that is not the same as the one I am using. As requested by Josh, I am creating my noise using shader code. No texture is included as Godot does.</p>
+
+<blockquote>
+  <p>Josh — 01/09/2024 19:28</p>
+</blockquote>
+
+<blockquote>
+  <p>admittedly unity’s is pretty nice, except this: the FIRST TIME I can see perlin noise in that view is in the FloatOp
+this is infuriating, because by inspection, it CLEARLY comes from the Texture2D op before it
+which, hilariously, is loading perlin noise as a texture.
+literally they have taken the simplest possible noise kernel and loaded it from a PNG image instead of just generating it live at a fixed resolution
+<em>barf</em>
+so my chief technical complaint is the extreme inefficiency resulting from not providing noise kernels as a generator op
+and my chief UX complaint is that I can’t even fucking tell where that noise is coming from! because they don’t even preview it!
+it’s just so bad.
+do they offer a noise source? i.e. did you just decide to load that perlin turbulence texture from a file? or were you forced to?
+another point of feedback on the Unity editor: float func “round” is ugly; we should use a layercake method instead
+what I mean is, we want a “step function” multiplexer node that takes an input float, and then divides that float into ranges to choose inputs to combine
+so round() would be this step function node with black and white as its texture inputs, float value as its mux input
+similarly, you could do a “heat map” by instantiating this with blue, yellow, red, and white as texture inputs, the floating value remaining as the mux input, but cutoff values of [0, .25, .5, .75, 1]
+for this idea, the interpolation range to also be configurable; for round(), you don’t want interpolation, because anything up to 0.5 should be pure black, and anything above that should be pure white
+for the heatmap, you’d use interpolation for every step of the way; only the exact values in that array would return [black, blue, yellow, red, white]
+everything else would be an interpolation of the two nearest neighbors</p>
+</blockquote>
+
+<blockquote>
+  <p>Saif — 02/09/2024 07:48</p>
+</blockquote>
+
+<blockquote>
+  <p>Black and white = noise?</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh — 02/09/2024 08:53</p>
+</blockquote>
+
+<blockquote>
+  <p>no; one full-black RGB channel source “image” (infinite pixels, all sampling black), and another for white; you then pipe those two images into the multiplexer
+set a single threshold point at 0.5
+otherwise it works just like the heat map</p>
+</blockquote>
 
 
   </div></div>

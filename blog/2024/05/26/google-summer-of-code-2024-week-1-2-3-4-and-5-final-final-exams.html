@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/gsoc24-blog/assets/css/style.css">
+<title>Google Summer of Code 2024 Week 1, 2, 3, 4, and 5: Final Final Exams</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Google Summer of Code 2024 Week 1, 2, 3, 4, and 5: Final Final Exams | k0T0z</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Google Summer of Code 2024 Week 1, 2, 3, 4, and 5: Final Final Exams" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning." />
+<meta property="og:description" content="This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning." />
+<link rel="canonical" href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/26/google-summer-of-code-2024-week-1-2-3-4-and-5-final-final-exams.html" />
+<meta property="og:url" content="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/26/google-summer-of-code-2024-week-1-2-3-4-and-5-final-final-exams.html" />
+<meta property="og:site_name" content="k0T0z" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-05-26T21:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Google Summer of Code 2024 Week 1, 2, 3, 4, and 5: Final Final Exams" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-05-26T21:00:00+00:00","datePublished":"2024-05-26T21:00:00+00:00","description":"This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.","headline":"Google Summer of Code 2024 Week 1, 2, 3, 4, and 5: Final Final Exams","mainEntityOfPage":{"@type":"WebPage","@id":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/26/google-summer-of-code-2024-week-1-2-3-4-and-5-final-final-exams.html"},"url":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/26/google-summer-of-code-2024-week-1-2-3-4-and-5-final-final-exams.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/gsoc24-blog/">
+        
+        <img src="/gsoc24-blog/assets/portfolio.png" alt="Saif Kandil" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/gsoc24-blog/">Saif Kandil</a>
+      </h2>
+      </div><p class="tagline">Just a place for me to dump my thoughts about my Google Summer of Code 2024 project</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2024</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/gsoc24-blog/blog/2024/05/26/google-summer-of-code-2024-week-1-2-3-4-and-5-final-final-exams.html">
+    <h2 class="post-title">Google Summer of Code 2024 Week 1, 2, 3, 4, and 5: Final Final Exams</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>May 26, 2024</div><ul class="post-categories"><li>blog</li></ul></div>
+  <div class="post">
+    <p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
+
+<p>I want to note that currently, I am working with a low pace as I am very buzy with my final exams and graduation stuff.</p>
+
+<p>I take my inspiration from Godot Game Engine as I want to reach the Machine Learning part of the project. on 16th of June, I noticed that Godot implements the Visual Shader using the <a href="https://web.archive.org/web/20120507164830/https://web.mit.edu/~emin/www/source_code/red_black_tree/index.html">Red-Black Tree C Code</a> and can be found at <a href="https://github.com/godotengine/godot/blob/705b7a0b0bd535c95e4e8fb439f3d84b3fb4f427/scene/resources/visual_shader.h#L129-L132">Godot Visual Shader H 129-132</a>. As Josh replied, <code class="language-plaintext highlighter-rouge">std::map</code> is a red black tree. I didn’t know it earleir.</p>
+
+<p>An interesting fact that I have learned is why Godot developers have their own implementation of the Red Black Trees. Actually, I made a converstation with one of them once about why they are not using the standard template library or STL.</p>
+
+<blockquote>
+  <p>December 29, 2023</p>
+</blockquote>
+
+<blockquote>
+  <p>k0T0z 12:55 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>guys, i have a question in mind, i know that godot doesn’t require any installation setup and wondered what the installation setup gives? I mean why just not every program out there use the same approach there must be something</p>
+</blockquote>
+
+<blockquote>
+  <p>Calinou 1:50 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>installers allow for better system integration like desktop icons, start menu entries, entries in Add/Remove Programs
+that’s why there is still some demand for them. It is possible to do this stuff manually or with external tools like Scoop, but some people (companies in particular) value a built-in solution for large-scale deployments</p>
+
+  <p>it is possible to create installers that work without administrator privileges if the app is installed for a single user only</p>
+</blockquote>
+
+<blockquote>
+  <p>AThousandShips 12:56 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>Godot is self contained in a single file, many programs aren’t, that’s generally why they require installers, and have libraries they depend on etc.</p>
+</blockquote>
+
+<blockquote>
+  <p>k0T0z 12:57 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>wait a minute, Godot doesn’t depend on any library?</p>
+</blockquote>
+
+<blockquote>
+  <p>AThousandShips 12:58 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>Not any other than system ones, it contains all the third party things</p>
+</blockquote>
+
+<blockquote>
+  <p>k0T0z 12:58 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>also what do u mean by self-contained in a single file?</p>
+</blockquote>
+
+<blockquote>
+  <p>AThousandShips 12:58 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>It is a single file? It doesn’t have a lot of extra files like many programs have, it embeds all the data of it in the executable</p>
+</blockquote>
+
+<blockquote>
+  <p>k0T0z 12:59 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>hmmm, interesting, I guess &lt;std::string&gt; is from system as well, why not use it?</p>
+</blockquote>
+
+<blockquote>
+  <p>AThousandShips 12:59 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>Look at any one software on your computer, in for example Program Files on Windows
+See <a href="https://docs.godotengine.org/en/stable/about/faq.html#doc-faq-why-not-stl">here</a> 🙂</p>
+</blockquote>
+
+<blockquote>
+  <p>AThousandShips 1:00 AM</p>
+</blockquote>
+
+<blockquote>
+  <p>We use our custom String type, as the one provided by STL is too basic and lacks proper internationalization support.
+STL templates create very large symbols, which results in huge debug binaries. We use few templates with very short names instead.</p>
+</blockquote>
+
+<blockquote>
+  <p>Also the STL library is infamous for standards iffyness
+With various, quite serious, inconsistencies between different implementations
+Some areas of the STL doesn’t provide any guarantees or details on things like performance, or safety, it leaves it entirely up to the implementation
+Came across a case of it some time ago when discussing this very topic but forget what it was now, but it was pretty glaring
+Even trivial things like exception handling is weird in some libraries, see <a href="https://github.com/godotengine/godot-cpp/issues/1326">here</a>, where one implementation of the library on Arch Linux is broken with exceptions disabled</p>
+</blockquote>
+
+<p>It shouldn’t be a problem for ENIGMA 🤣. Actually, unlike Godot, ENIGMA is meant to be simple to use and developed so I don’t see any problem of using STL in ENIGMA. Also, I don’t want to forget that in order to reach the AI part, I need to finish the whole editor as soon as possible which is a large chunk of work.</p>
+
+<p>Oh by the way, I planned already to extend my project to 22 weeks. That the maximum number of weeks you can ever extend to. I want to implement the Matching Machine Learning algorithm as well.</p>
+
+<blockquote>
+  <p>gfundies — 25/06/2024 21:44</p>
+</blockquote>
+
+<blockquote>
+  <p>@Josh @Saif https://developers.google.com/open-source/gsoc/help/project-dates what date did you want?
+need to pick from those</p>
+</blockquote>
+
+<p>Now, beside the implementation of the graph, I needed to know more about the use case of this project. How the game developers are going to use it. Then I can decide what can be done. Thanks to Josh he explained it very well.</p>
+
+<blockquote>
+  <p>Josh — 29/06/2024 17:34</p>
+</blockquote>
+
+<blockquote>
+  <p>converting textures to this is just a way to prime it; few people would start with a sprite and convert it to a shader. Instead, they’d obtain a photograph of something—grass, wood, rust—and use your tool to convert that photograph into a seamless (infinite) artistic representation that can be tweaked for stylistic consistency with the rest of their game
+the shaders would then be used to color objects, obviously, whether that’s a skybox or background texture that doesn’t end or just a way to color boxes so that no two boxes look the same
+the goal is largely to avoid repetition and predictability by taking an example and mathematically generalizing it
+clearly the predictability remains high since you’ve literally found a mathematical way of creating it, but artistically your eyes won’t go “wow it’s the same thing over and over again”</p>
+</blockquote>
+
+<h2 id="graph-lifecycle">Graph Lifecycle</h2>
+
+<p>I am gonna explain more about this approach just for future contributors who will take on this project and hopefully, I am mentoring them.</p>
+
+<p>First of all, the game developer will load a resource into the Visual Shader Editor. The game developer will have the choice between Backgrounds and Sprites. Currently, let’s keep it simple and focus of Backgrounds. The game developer can now match the loaded resource using a <code class="language-plaintext highlighter-rouge">Match Image</code> button that will be created.</p>
+
+<p>The AI Agent take over and start generating the graph and matching the best parameters according to the resource image loaded until it converge.</p>
+
+<p>At this point, the compiler will take over and writes a resource ID to the generated shader from this graph.</p>
+
+<p>This is how the graph editor and the graph will be used while developing a game. The thing is that if I want to make a volcano surface for example, I will only need a volcano background image and the AI Agent will take care of all other stuff.</p>
+
+<h2 id="godots-role">Godot’s Role</h2>
+
+<p>In order to implement an excellent approach for the Visual Shader, I decided to work in parallel on Godot’s Visual Shader Editor to improve my implementations. See <a href="https://github.com/godotengine/godot/pull/93791">#93791</a>, <a href="https://github.com/godotengine/godot/pull/93988">#93988</a>, and <a href="https://github.com/godotengine/godot/pull/93992">#93992</a>.</p>
+
+<h2 id="debugging-enigma-emake-tests-inside-vscode">Debugging ENIGMA <code class="language-plaintext highlighter-rouge">emake-tests</code> inside VSCode</h2>
+
+<p>I always wanted to run the debug session from vscode instead of doing it manually and here are the task and launch objects:</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="err">//</span><span class="w"> </span><span class="err">task</span><span class="w"> </span><span class="err">object:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build emake-tests"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shell"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"make emake-tests"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">ENIGMA</span><span class="w"> </span><span class="err">uses</span><span class="w"> </span><span class="err">make</span><span class="w"> </span><span class="err">(not</span><span class="w"> </span><span class="err">CMake)</span><span class="w"> </span><span class="err">at</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">writing</span><span class="w"> </span><span class="err">this.</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="err">//</span><span class="w"> </span><span class="err">launch</span><span class="w"> </span><span class="err">configuration</span><span class="w"> </span><span class="err">object:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Launch emake-tests"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cppdbg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"program"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/emake-tests"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"--gtest_filter="</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">TODO:</span><span class="w"> </span><span class="err">Add</span><span class="w"> </span><span class="err">your</span><span class="w"> </span><span class="err">filter</span><span class="w"> </span><span class="err">here.</span><span class="w">
+    </span><span class="nl">"stopAtEntry"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cwd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"environment"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"externalConsole"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"setupCommands"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enable pretty-printing for gdb"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-enable-pretty-printing"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ignoreFailures"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"preLaunchTask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build emake-tests"</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2024</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+  
+  <script src="/gsoc24-blog/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/gsoc24-blog/assets/js/search.js"></script>
+  
+</body>
+
+</html>

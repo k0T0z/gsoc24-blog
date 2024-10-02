@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/gsoc24-blog/assets/css/style.css">
+<title>Google Summer of Code 2024 Week 14, 15, 16, and 17: I Hate Frontend</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Google Summer of Code 2024 Week 14, 15, 16, and 17: I Hate Frontend | k0T0z</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Google Summer of Code 2024 Week 14, 15, 16, and 17: I Hate Frontend" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning." />
+<meta property="og:description" content="This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning." />
+<link rel="canonical" href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/25/google-summer-of-code-2024-week-14-15-16-and-17-i-hate-frontend.html" />
+<meta property="og:url" content="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/25/google-summer-of-code-2024-week-14-15-16-and-17-i-hate-frontend.html" />
+<meta property="og:site_name" content="k0T0z" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-08-25T21:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Google Summer of Code 2024 Week 14, 15, 16, and 17: I Hate Frontend" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-08-25T21:00:00+00:00","datePublished":"2024-08-25T21:00:00+00:00","description":"This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.","headline":"Google Summer of Code 2024 Week 14, 15, 16, and 17: I Hate Frontend","mainEntityOfPage":{"@type":"WebPage","@id":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/25/google-summer-of-code-2024-week-14-15-16-and-17-i-hate-frontend.html"},"url":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/25/google-summer-of-code-2024-week-14-15-16-and-17-i-hate-frontend.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/gsoc24-blog/">
+        
+        <img src="/gsoc24-blog/assets/portfolio.png" alt="Saif Kandil" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/gsoc24-blog/">Saif Kandil</a>
+      </h2>
+      </div><p class="tagline">Just a place for me to dump my thoughts about my Google Summer of Code 2024 project</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2024</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/gsoc24-blog/blog/2024/08/25/google-summer-of-code-2024-week-14-15-16-and-17-i-hate-frontend.html">
+    <h2 class="post-title">Google Summer of Code 2024 Week 14, 15, 16, and 17: I Hate Frontend</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Aug 25, 2024</div><ul class="post-categories"><li>blog</li></ul></div>
+  <div class="post">
+    <p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
+
+<p>After experiencing many problems with the <a href="https://github.com/k0T0z/nodeeditor">nodeeditor</a> package, I have decided to write my own code. I want to make everything right because it will be very annoying to fix the bugs later. This project isn’t intended for a Visual Shader Editor annyway but for a Machine Learning approach to generate shaders.</p>
+
+<h2 id="cons-of-nodeeditor-package">Cons Of nodeeditor Package</h2>
+
+<ol>
+  <li>The nodeeditor library contains the backend that I have already implemented before the midterm evaluation. It is not a fully GUI Library, it is something bigger.</li>
+  <li>There are many bugs inside the library that I will waste a lot of time to fix.</li>
+  <li>I tried integrating the library with my midterm evaluation code, and it was a mess. I don’t even know if it is possible to integrate them together because I stopped trying after a couple of days.</li>
+  <li>… and many other reasons.</li>
+</ol>
+
+<h2 id="pros-of-writing-my-own-code">Pros Of Writing My Own Code</h2>
+
+<p>In the nodeeditor library, I think they are drawing the ports and using an algorithm to detect if the press event is done inside the port area. In my opinion, this results in a lot of complex code that is hard to maintain. I have decided to draw the ports as separate objects and make them children of the node. This will make the code simpler and easier to maintain. Using my approach, only 3 functions will take care of all thw work:</p>
+
+<h3 id="on_port_pressed-function"><code class="language-plaintext highlighter-rouge">on_port_pressed</code> Function</h3>
+
+<p>This function resets the <code class="language-plaintext highlighter-rouge">temporary</code> connection object. A connection is called temporary when it is inside the dragging state. This means it is not connected and can be deleted or ignored at any time.</p>
+
+<h3 id="on_port_dragged-function"><code class="language-plaintext highlighter-rouge">on_port_dragged</code> Function</h3>
+
+<p>This function is the one that is called continuously when the mouse is moving. The code inside it is very straightforward. It is just creates/updates the temporary connection object.</p>
+
+<h3 id="on_port_dropped-function"><code class="language-plaintext highlighter-rouge">on_port_dropped</code> Function</h3>
+
+<p>This function is called when the mouse is released. It is easy to detect if the mouse is released inside a port area or not as the port is a separate object.</p>
+
+<p>It took me very long to finish it by the way 🙂. I even was about to give up many times because it seemed a very big chunk of work at first.</p>
+
+<h2 id="visual-shader-editor-testing">Visual Shader Editor Testing</h2>
+
+<p>I have added a new subdirectory to RGM called <code class="language-plaintext highlighter-rouge">Tests</code>. I have added the basis for testing <code class="language-plaintext highlighter-rouge">MainWindow</code> and <code class="language-plaintext highlighter-rouge">VisualShaderEditor</code> classes. I have also encountered this webiste: <a href="http://xunitpatterns.com/Mocks,%20Fakes,%20Stubs%20and%20Dummies.html">Difference between Mocks, Fakes, Stubs and Dummies</a>, it has a nicely explained many types of testing objects. Note: SUT = System Under Test.</p>
+
+<p>I tried many approachs regarding the testing but actually nothing worked. I wanted to create a dummy objects for anything related to Protobuf and the Model. By the way, Robert did a great job with RGM, it is based on the Model-View-Controller pattern. I only want to test the View and the Controller.</p>
+
+<p>The problem is that I couldn’t mock the <code class="language-plaintext highlighter-rouge">MessageModel</code> or <code class="language-plaintext highlighter-rouge">ProtoModel</code> classes. Also, I want to use the real class when testing the whole system and the mocked one when testing the <code class="language-plaintext highlighter-rouge">VisualShaderEditor</code> alone. I tried to use MACROS from the CMake build system but nothing worked.</p>
+
+<p>I came up with a work around, which is to create a new constructor for the <code class="language-plaintext highlighter-rouge">VisualShaderEditor</code> class that takes nothing. It worked fine.</p>
+
+<p>Writing unit tests for a UI is very hard and I don’t think it is worth it. It is fine for now that I wrote the <code class="language-plaintext highlighter-rouge">Tests</code> directory and the tests for the <code class="language-plaintext highlighter-rouge">VisualShader</code> class.</p>
+
+<h2 id="no-extension-again">No Extension Again</h2>
+
+<p>I actually wanted to extend my project again this year, but Robert shocked me with the news that I can’t extend anymore, it was too late. I wanted to implement the Machine Learning part of the project as well as testing this thing requires a very long time because this will be an integration between many things: Qt5, Protobuf, gRPC, <code class="language-plaintext highlighter-rouge">VisualShader</code>, <code class="language-plaintext highlighter-rouge">VisualShaderEditor</code>, JDI, ENIGMA’s Graphics System.</p>
+
+<blockquote>
+  <p>R0bert — 30/08/2024 17:58</p>
+</blockquote>
+
+<blockquote>
+  <p>be careful im not sure if we can extend yours again this year, so dont count on it
+i saw mentor thread talking about that</p>
+</blockquote>
+
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2024</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+  
+  <script src="/gsoc24-blog/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/gsoc24-blog/assets/js/search.js"></script>
+  
+</body>
+
+</html>

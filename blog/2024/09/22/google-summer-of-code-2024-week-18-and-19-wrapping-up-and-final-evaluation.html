@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/gsoc24-blog/assets/css/style.css">
+<title>Google Summer of Code 2024 Week 18 and 19: Wrapping Up and Final Evaluation</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Google Summer of Code 2024 Week 18 and 19: Wrapping Up and Final Evaluation | k0T0z</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Google Summer of Code 2024 Week 18 and 19: Wrapping Up and Final Evaluation" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning." />
+<meta property="og:description" content="This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning." />
+<link rel="canonical" href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation.html" />
+<meta property="og:url" content="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation.html" />
+<meta property="og:site_name" content="k0T0z" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-09-22T21:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Google Summer of Code 2024 Week 18 and 19: Wrapping Up and Final Evaluation" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-09-22T21:00:00+00:00","datePublished":"2024-09-22T21:00:00+00:00","description":"This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.","headline":"Google Summer of Code 2024 Week 18 and 19: Wrapping Up and Final Evaluation","mainEntityOfPage":{"@type":"WebPage","@id":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation.html"},"url":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/gsoc24-blog/">
+        
+        <img src="/gsoc24-blog/assets/portfolio.png" alt="Saif Kandil" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/gsoc24-blog/">Saif Kandil</a>
+      </h2>
+      </div><p class="tagline">Just a place for me to dump my thoughts about my Google Summer of Code 2024 project</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2024</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation.html">
+    <h2 class="post-title">Google Summer of Code 2024 Week 18 and 19: Wrapping Up and Final Evaluation</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Sep 22, 2024</div><ul class="post-categories"><li>blog</li></ul></div>
+  <div class="post">
+    <p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
+
+<p>What a project! I can say that I would be happier if I had more time to work on it. I have learned a lot of things, and I have implemented a lot of things. This is another reason for me to continue working on this project after the Google Summer of Code program. I will actaully do that. What I loved about working on this project is that I faced a couple of issues that I overcame after a hackup long time. I will walk through each one now.</p>
+
+<h2 id="the-first-issue-test-runner-doesnt-work-on-arch-linux">The first issue: <code class="language-plaintext highlighter-rouge">test-runner</code> doesn’t work on Arch Linux</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">test-runner</code> which will include my tests doesn’t work on my main machine however, it is worked on an Ubuntu VM. That’s why I moved to an Ubuntu VM for a couple of weeks. I was unsatisfied to look the other way and pretend that there are no issues so I decided to fix it. The issue first shown up before getting accepted to the Google Summer of Code program when I tried building RGM on my Ubuntu machine. I first explained it here: <a href="https://k0t0z.github.io/gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period.html">Google Summer of Code 2024 Bonding Period</a>. It was first appeared with the CMake build system with RGM on an Ubuntu machine. It is also appeared in week 7: <a href="https://k0t0z.github.io/gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-the-testing-week.html#weird-dso-linking-error">google-summer-of-code-2024-week-7-the-testing-week.html#weird-dso-linking-error</a>. I thought at first that this is because of a problem between Abseil, Protobuf, and gRPC packages. I asked my friend Fares to tell what versions he was using on his Ubuntu machine so that I use them but I found out that these versions are too old to have a CMake build system. That’s why I created this solution: <a href="https://github.com/k0T0z/absl-proto-grpc-ci">absl-proto-grpc-ci</a> to find the working three versions of all packages together. I graped these 3 versions and cloned, built, and installed the three packages locally to me <code class="language-plaintext highlighter-rouge">/usr/local/</code> but the same problem presisted.</p>
+
+<p>I started working on it after the midterm evaluation when it is the time to build RGM: <a href="https://k0t0z.github.io/gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-rgm.html">google-summer-of-code-2024-week-11-rgm.html</a>. Remember that this same problem appeared when building RGM on both Arch and Ubuntu Linux machines. I managed to solve it the week after: <a href="https://k0t0z.github.io/gsoc24-blog/blog/2024/08/11/google-summer-of-code-2024-week-12-rgm-season-2.html">google-summer-of-code-2024-week-12-rgm-season-2.html</a>, it was a simple missing library to the <code class="language-plaintext highlighter-rouge">LD</code> variable: <code class="language-plaintext highlighter-rouge">-lgpr</code> and <code class="language-plaintext highlighter-rouge">-labseil_dll</code>/<code class="language-plaintext highlighter-rouge">-labsl_log_internal_message -labsl_log_internal_check_op</code>.</p>
+
+<h2 id="the-second-issue-rgm-runtime-error">The second issue: RGM Runtime Error</h2>
+
+<p>For solving this issue, I took the chance to refactor the whole RGM’s CMake build system. I made a lot of improvements. This issue is explained well inside: <a href="https://k0t0z.github.io/gsoc24-blog/blog/2024/08/11/google-summer-of-code-2024-week-12-rgm-season-2.html#runtime-story">google-summer-of-code-2024-week-12-rgm-season-2.html#runtime-story</a>.</p>
+
+<h2 id="the-renderer">The Renderer</h2>
+
+<p>I started implementing the Renderer while wrapping up as well. I wanted to implement a simple solution because I got a very small time here. Of course the best solution will be to use ENIGMA’s Graphics System and this is because the generated shader will then be used by ENIGMA’s Graphics System itself so it makes very sense to preview using it. If not, I will have to generate two shader codes, one for the preview and one for the final render. This is because ENIGMA’s Graphics System requires a specific format for writing shaders. This is not a good solution because it will be very hard to maintain.</p>
+
+<p>In my proposal, I mentioned that the Renderer will be done after the generator is done. The thing is I need a context to render the shader on, this could be <a href="https://www.glfw.org/">GLFW</a> or Qt. I decided it will be Qt so moved finishing the Renderer AFTER the <code class="language-plaintext highlighter-rouge">Visual Shader Editor</code> is done.</p>
+
+<p>Robert talked to me about that in <a href="">Google Summer of Code 2024 Week 7, 8, and 9: My Boogeyperiod</a> by the way.</p>
+
+<blockquote>
+  <p>R0bert — 25/08/2024 18:48</p>
+</blockquote>
+
+<blockquote>
+  <p>are you saying you want to have  a “Preview” window on your shader editor?
+that might be more difficult then if you want to do a live preview of that but we can talk about it</p>
+</blockquote>
+
+<p>I have implemented a standalone very simple class for preiewing my shaders and modified the <code class="language-plaintext highlighter-rouge">VisualShader</code> class accordingly. Why I modified the <code class="language-plaintext highlighter-rouge">VisualShader</code> class? because I need to generate a specific lines of code for the header for the shader to be compiled.</p>
+
+<p>The Renderer is very simple. It has a <code class="language-plaintext highlighter-rouge">void set_code(const std::string&amp; code);</code> function to set the shader code on each change in the graph. The shader code is set as follows:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">shader_program</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="k">new</span> <span class="nf">QOpenGLShaderProgram</span><span class="p">());</span>
+
+<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">vertex_shader_source</span> <span class="o">=</span> <span class="s">R"(
+    #version 330 core
+    layout(location = 0) in vec2 aPos;
+    layout(location = 1) in vec2 aTexCoord;
+
+    out vec2 TexCoord;
+
+    void main() {
+    gl_Position = vec4(aPos, 0.0, 1.0);
+    TexCoord = aTexCoord;
+    }
+)"</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">fragment_shader_source</span> <span class="p">{</span><span class="n">code</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">?</span> <span class="s">R"(
+    #version 330 core
+    out vec4 FragColor;
+    in vec2 TexCoord;
+
+    uniform float uTime;
+
+    void main() {
+    FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+    }
+)"</span> <span class="o">:</span> <span class="s">"#version 330 core</span><span class="se">\n\n</span><span class="s">"</span> <span class="o">+</span> <span class="n">code</span><span class="p">};</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">shader_program</span><span class="o">-&gt;</span><span class="n">addShaderFromSourceCode</span><span class="p">(</span><span class="n">QOpenGLShader</span><span class="o">::</span><span class="n">Vertex</span><span class="p">,</span> <span class="n">vertex_shader_source</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">qWarning</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">"Vertex shader compilation failed:"</span> <span class="o">&lt;&lt;</span> <span class="n">shader_program</span><span class="o">-&gt;</span><span class="n">log</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">shader_program</span><span class="o">-&gt;</span><span class="n">addShaderFromSourceCode</span><span class="p">(</span><span class="n">QOpenGLShader</span><span class="o">::</span><span class="n">Fragment</span><span class="p">,</span> <span class="n">fragment_shader_source</span><span class="p">.</span><span class="n">c_str</span><span class="p">()))</span> <span class="p">{</span>
+    <span class="n">qWarning</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">"Fragment shader compilation failed:"</span> <span class="o">&lt;&lt;</span> <span class="n">shader_program</span><span class="o">-&gt;</span><span class="n">log</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">shader_program</span><span class="o">-&gt;</span><span class="n">link</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">qWarning</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">"Shader program linking failed:"</span> <span class="o">&lt;&lt;</span> <span class="n">shader_program</span><span class="o">-&gt;</span><span class="n">log</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="n">shader_needs_update</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span></code></pre></figure>
+
+<p>See the <code class="language-plaintext highlighter-rouge">#version 330 core</code> line in the header, this line is not required by ENIGMA’s Graphics System. This means when it comes to integrate the Renderer with ENIGMA’s Graphics System, some modifications will be made for sure.</p>
+
+<h2 id="protobuf-work">Protobuf Work</h2>
+
+<p>Josh told me to start with this task a while ago <a href="">Google Summer of Code 2024 Week 6: The Rush Summer: ENIGMA and Google Protobuf</a> and I decided to move on and make that change when the editor is done. Now, actually I don’t know how much time it will take to finish this task 🙂. That introduces a very important lesson: DO NOT IGNORE ANY THING THAT JOSH SAYS haha 🤣.</p>
+
+<p>Anyway, I remember talking with Josh and Robert about this task and to handle it.</p>
+
+<blockquote>
+  <p>Josh — 31/08/2024 08:10</p>
+</blockquote>
+
+<blockquote>
+  <p>I think the trouble we’re running into here is that we lack a clear separation of concerns—for a (somewhat outdated) example, model-view-controller
+these classes I’m seeing are great for adapting myriad node types to a common UI; as an example, he seems to implement stuff like get_caption so that each node type can just tell the UI what to render for the node
+that’s fine; what we want to do is take the stuff inside of those configurable objects and extract those to protos
+so we need logic to take a node message and generate the correct node subclass; that’s easy to come up with once the storage format on disk for that info is chosen
+basically, all the variables that each box needs to configure with input boxes and sliders and whatever need to be fields in a message; that FloatOpGraphNode message looks more or less fine, modulo some missing tag numbers and optionals</p>
+</blockquote>
+
+<blockquote>
+  <p>from there, I would store the appropriate message in each GraphNode; personally, I’d probably use a template to accomplish this:</p>
+</blockquote>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Proto</span><span class="p">&gt;</span> <span class="k">class</span> <span class="nc">GraphNode</span> <span class="p">{</span>
+ <span class="nl">public:</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">get_caption</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="c1">// use Qt translation routines to get the human-readable caption for our message type.</span>
+    <span class="c1">// A map would be fine for this, too. Or a custom attribute declared in the proto source.</span>
+    <span class="k">return</span> <span class="n">_T</span><span class="p">(</span><span class="n">Proto</span><span class="o">::</span><span class="n">descriptor</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">()</span> <span class="o">+</span> <span class="s">"-caption"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<blockquote>
+  <p>a custom attribute would look like this:</p>
+</blockquote>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">package</span> <span class="n">whatever_proto_package</span><span class="p">;</span>
+<span class="n">extend</span> <span class="n">google</span><span class="p">.</span><span class="n">protobuf</span><span class="p">.</span><span class="n">MessageOptions</span> <span class="p">{</span>
+  <span class="n">string</span> <span class="n">editor_caption</span> <span class="o">=</span> <span class="mi">50001</span><span class="p">;</span>  <span class="c1">// Define a custom option with a unique field number</span>
+<span class="p">}</span>
+<span class="n">message</span> <span class="n">FloatOpGraphNode</span> <span class="p">{</span>
+  <span class="n">option</span> <span class="p">(</span><span class="n">editor_caption</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Floating Point Operation"</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<blockquote>
+  <p>then the C++ would do this:</p>
+</blockquote>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="nf">get_caption</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+  <span class="c1">// Still translate it because we translate all Qt user strings</span>
+  <span class="k">return</span> <span class="n">_T</span><span class="p">(</span><span class="n">Proto</span><span class="o">::</span><span class="n">descriptor</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">options</span><span class="p">().</span><span class="n">GetExtension</span><span class="p">(</span><span class="n">whatever_proto_package</span><span class="o">::</span><span class="n">editor_caption</span><span class="p">));</span>
+<span class="p">}</span></code></pre></figure>
+
+<blockquote>
+  <p>I omitted a lot of checking for, e.g, the descriptor being null or the option missing or whatever
+I’d also advise putting our message extensions in a single proto source for the entire project
+like, anywhere we’re already extending MessageOptions, we should define any editor_caption field there
+if we’re already doing that, I apologize for the confusion 
+and so we’re clear, use whatever of that is helpful to you; I don’t care how you pull that off, protobuf is meant to be a tool to make your life easier
+it can just be serialized and written directly to disk or read directly from disk, so I’d expect your UI code to read the entire graph from one binproto/textproto dump, then generate the UI graph nodes from message pointers as we do with our other Qt models
+those Qt models are probably a good reference if they don’t confuse you to tears
+if they do, ask me</p>
+</blockquote>
+
+<blockquote>
+  <p>yeah, and storing that data is where the template comes in, though honestly, you can avoid the entirely using proto reflection if you prefer</p>
+</blockquote>
+
+<blockquote>
+  <p>R0bert — 31/08/2024 19:34</p>
+</blockquote>
+
+<blockquote>
+  <p>Josh explained, “separate your concerns”, have a GraphNode message that’s templated to take the rest of the parameters for the node
+the only reason the source you linked has 50 classes is because its make a type for each one instead of separating the node from the ui</p>
+</blockquote>
+
+<p>Yeah, so now this is the biggest problem in my project now. The thing is that ENIGMA is mainly depends on Protobuf for serialization, deserialization, and many other purposes.</p>
+
+<h2 id="noise-kernels">Noise Kernels</h2>
+
+<p>I implemented two more kernels in this period and tested them out:</p>
+
+<ul>
+  <li>Perlin Noise</li>
+  <li>Worley Noise</li>
+</ul>
+
+<h2 id="the-documentation">The Documentation</h2>
+
+<p>The documentation is done as well in this period. It wasn’t that hard because I was already adding comments to any part of the code that is complex or not clear.</p>
+
+<h2 id="final-project-structure">Final Project Structure</h2>
+
+<p>The first structure inside <a href="https://github.com/enigma-dev/enigma-dev">enigma-dev</a>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    enigma-dev
+    ├── ...
+    ├── CommandLine
+    │   ├── ...
+    │   └── testing
+    │       ├── ...
+    │       └── Tests
+    │           ├── ...
+    │           ├── visual_shader_tests.cpp
+    │           ├── visual_shader_nodes_tests.cpp
+    │           └── vs_noise_nodes_tests.cpp  
+    |
+    └── shared
+        ├── ...
+        └── ResourceTransformations
+            └── VisualShader
+                ├── README.md
+                ├── visual_shader.h
+                ├── visual_shader.cpp
+                ├── visual_shader_nodes.h
+                ├── visual_shader_nodes.cpp
+                ├── vs_noise_nodes.h
+                └── vs_noise_nodes.cpp
+</code></pre></div></div>
+
+<p>The second structure inside <a href="https://github.com/enigma-dev/RadialGM">RadialGM</a>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    RadialGM
+    ├── ...
+    ├── Editors
+    │   ├── ...
+    │   ├── VisualShaderEditor.h
+    │   └── VisualShaderEditor.cpp
+    |
+    └── Tests
+        ├── CMakeLists.txt
+        ├── tests_main.cpp
+        ├── MainWindowTests.h
+        ├── MainWindowTests.cpp
+        └── Editors
+            ├── VisualShaderEditorTests.h
+            └── VisualShaderEditorTests.cpp
+</code></pre></div></div>
+
+<h2 id="outputs-with-graphs">Outputs With Graphs</h2>
+
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2024</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+  
+  <script src="/gsoc24-blog/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/gsoc24-blog/assets/js/search.js"></script>
+  
+</body>
+
+</html>
