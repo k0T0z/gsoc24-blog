@@ -6,6 +6,10 @@ categories: blog
 ---
 My accepted proposal [Procedural Fragment Shader Generation Using Classic Machine Learning](/gsoc24-blog/assets/procedural-fragment-shader-generation-using-classic-machine-learning-GSoC-2024-proposal.pdf).
 
+> Josh — 01/05/2024 21:08
+>
+> Hey, just wanted to give congrats to this year's GSoC contributors, @Fares Atef and @Saif; welcome (back), you two!
+
 Hmmmmm ... At the time of writing this, I can't think of a way to describe my acceptance into Google Summer of Code 2024 program so let's jump into project idea's author.
 
 > my thoughts on the future are cloudy; ENIGMA hasn't really embraced ML tools, so it's heading for obsolescence
