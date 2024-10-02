@@ -56,7 +56,7 @@ Most importantly, the generator supports filters such as noise filters. The nois
 
 ## Work To Be Done
 
-As I explained in [Google Summer of Code 2024 Week 7, 8, and 9: My Boogeyperiod## Most Important Operations In The Generator](), many nodes will be modified during the Rendering and Machine Learning phases.
+As I explained in [Google Summer of Code 2024 Week 7, 8, and 9: My Boogeyperiod: Most Important Operations In The Generator](https://k0t0z.github.io/gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-8-and-9-my-boogeyperiod.html), many nodes will be modified during the Rendering and Machine Learning phases.
 
 There are a couple of tasks as well that will be nice if we had. Supporting comments in the shader code is one of them as well as loops.
 

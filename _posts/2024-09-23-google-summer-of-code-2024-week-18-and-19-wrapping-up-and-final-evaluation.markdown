@@ -7,17 +7,19 @@ categories: blog
 
 This blog post is related to my Google Summer of Code 2024 project: [Procedural Fragment Shader Generation Using Classic Machine Learning][my-google-summer-of-code-2024-project].
 
+My final evaluation report: [Procedural Fragment Shader Generation Using Classic Machine Learning Google Summer Of Code 2024 Final Report](https://docs.google.com/document/d/1ahKWo3m9fgqAfR9a3cqaIA08Sns05O68nhalpMNjDd8/edit?usp=sharing).
+
 What a project! I can say that I would be happier if I had more time to work on it. I have learned a lot of things, and I have implemented a lot of things. This is another reason for me to continue working on this project after the Google Summer of Code program. I will actaully do that. What I loved about working on this project is that I faced a couple of issues that I overcame after a hackup long time. I will walk through each one now.
 
 ## The first issue: ``test-runner`` doesn't work on Arch Linux
 
-The ``test-runner`` which will include my tests doesn't work on my main machine however, it is worked on an Ubuntu VM. That's why I moved to an Ubuntu VM for a couple of weeks. I was unsatisfied to look the other way and pretend that there are no issues so I decided to fix it. The issue first shown up before getting accepted to the Google Summer of Code program when I tried building RGM on my Ubuntu machine. I first explained it here: [Google Summer of Code 2024 Bonding Period](https://k0t0z.github.io/gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period.html). It was first appeared with the CMake build system with RGM on an Ubuntu machine. It is also appeared in week 7: [google-summer-of-code-2024-week-7-the-testing-week.html#weird-dso-linking-error](https://k0t0z.github.io/gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-the-testing-week.html#weird-dso-linking-error). I thought at first that this is because of a problem between Abseil, Protobuf, and gRPC packages. I asked my friend Fares to tell what versions he was using on his Ubuntu machine so that I use them but I found out that these versions are too old to have a CMake build system. That's why I created this solution: [absl-proto-grpc-ci](https://github.com/k0T0z/absl-proto-grpc-ci) to find the working three versions of all packages together. I graped these 3 versions and cloned, built, and installed the three packages locally to me ``/usr/local/`` but the same problem presisted.
+The ``test-runner`` which will include my tests doesn't work on my main machine however, it is worked on an Ubuntu VM. That's why I moved to an Ubuntu VM for a couple of weeks. I was unsatisfied to look the other way and pretend that there are no issues so I decided to fix it. The issue first shown up before getting accepted to the Google Summer of Code program when I tried building RGM on my Ubuntu machine. I first explained it here: [Google Summer of Code 2024 Bonding Period](https://k0t0z.github.io/gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period.html). It was first appeared with the CMake build system with RGM on an Ubuntu machine. It is also appeared in week 7: [Google Summer of Code 2024 Week 7, 8, and 9: My Boogeyperiod: Weird DSO Linking Error](https://k0t0z.github.io/gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-8-and-9-my-boogeyperiod.html#weird-dso-linking-error). I thought at first that this is because of a problem between Abseil, Protobuf, and gRPC packages. I asked my friend Fares to tell what versions he was using on his Ubuntu machine so that I use them but I found out that these versions are too old to have a CMake build system. That's why I created this solution: [absl-proto-grpc-ci](https://github.com/k0T0z/absl-proto-grpc-ci) to find the working three versions of all packages together. I graped these 3 versions and cloned, built, and installed the three packages locally to me ``/usr/local/`` but the same problem presisted.
 
-I started working on it after the midterm evaluation when it is the time to build RGM: [google-summer-of-code-2024-week-11-rgm.html](https://k0t0z.github.io/gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-rgm.html). Remember that this same problem appeared when building RGM on both Arch and Ubuntu Linux machines. I managed to solve it the week after: [google-summer-of-code-2024-week-12-rgm-season-2.html](https://k0t0z.github.io/gsoc24-blog/blog/2024/08/11/google-summer-of-code-2024-week-12-rgm-season-2.html), it was a simple missing library to the ``LD`` variable: ``-lgpr`` and ``-labseil_dll``/``-labsl_log_internal_message -labsl_log_internal_check_op``.
+I started working on it after the midterm evaluation when it is the time to build RGM: [Google Summer of Code 2024 Week 11, 12, and 13: RGM](https://k0t0z.github.io/gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-12-and-13-rgm.html). Remember that this same problem appeared when building RGM on both Arch and Ubuntu Linux machines. I managed to solve it the week after: [Google Summer of Code 2024 Week 11, 12, and 13: RGM](https://k0t0z.github.io/gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-12-and-13-rgm.html), it was a simple missing library to the ``LD`` variable: ``-lgpr`` and ``-labseil_dll``/``-labsl_log_internal_message -labsl_log_internal_check_op``.
 
 ## The second issue: RGM Runtime Error
 
-For solving this issue, I took the chance to refactor the whole RGM's CMake build system. I made a lot of improvements. This issue is explained well inside: [google-summer-of-code-2024-week-12-rgm-season-2.html#runtime-story](https://k0t0z.github.io/gsoc24-blog/blog/2024/08/11/google-summer-of-code-2024-week-12-rgm-season-2.html#runtime-story).
+For solving this issue, I took the chance to refactor the whole RGM's CMake build system. I made a lot of improvements. This issue is explained well inside: [Google Summer of Code 2024 Week 11, 12, and 13: RGM: Runtime Nightmare](https://k0t0z.github.io/gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-12-and-13-rgm.html#runtime-nightmare).
 
 ## The Renderer
 
@@ -25,7 +27,7 @@ I started implementing the Renderer while wrapping up as well. I wanted to imple
 
 In my proposal, I mentioned that the Renderer will be done after the generator is done. The thing is I need a context to render the shader on, this could be [GLFW](https://www.glfw.org/) or Qt. I decided it will be Qt so moved finishing the Renderer AFTER the ``Visual Shader Editor`` is done.
 
-Robert talked to me about that in [Google Summer of Code 2024 Week 7, 8, and 9: My Boogeyperiod]() by the way.
+Robert talked to me about that in [Google Summer of Code 2024 Week 7, 8, and 9: My Boogeyperiod](https://k0t0z.github.io/gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-8-and-9-my-boogeyperiod.html) by the way.
 
 > R0bert — 25/08/2024 18:48
 
@@ -81,9 +83,11 @@ shader_needs_update = false;
 
 See the ``#version 330 core`` line in the header, this line is not required by ENIGMA's Graphics System. This means when it comes to integrate the Renderer with ENIGMA's Graphics System, some modifications will be made for sure.
 
+if you wanna try the Renderer, you can download this Qt project: [testshaderrenderer.zip](/gsoc24-blog/assets/testshaderrenderer.zip).
+
 ## Protobuf Work
 
-Josh told me to start with this task a while ago [Google Summer of Code 2024 Week 6: The Rush Summer: ENIGMA and Google Protobuf]() and I decided to move on and make that change when the editor is done. Now, actually I don't know how much time it will take to finish this task 🙂. That introduces a very important lesson: DO NOT IGNORE ANY THING THAT JOSH SAYS haha 🤣.
+Josh told me to start with this task a while ago [Google Summer of Code 2024 Week 6: The Rush Summer: ENIGMA and Google Protobuf](https://k0t0z.github.io/gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer.html#enigma-and-google-protobuf) and I decided to move on and make that change when the editor is done. Now, actually I don't know how much time it will take to finish this task 🙂. That introduces a very important lesson: DO NOT IGNORE ANY THING THAT JOSH SAYS haha 🤣.
 
 Anyway, I remember talking with Josh and Robert about this task and to handle it.
 
@@ -206,5 +210,7 @@ The second structure inside [RadialGM](https://github.com/enigma-dev/RadialGM):
 ```
 
 ## Outputs With Graphs
+
+
 
 [my-google-summer-of-code-2024-project]: https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA
