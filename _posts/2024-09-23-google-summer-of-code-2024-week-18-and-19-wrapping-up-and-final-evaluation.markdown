@@ -211,6 +211,8 @@ The second structure inside [RadialGM](https://github.com/enigma-dev/RadialGM):
 
 ## Outputs With Graphs
 
+Note that some of these outputs are taken from [The Book Of Shaders](https://thebookofshaders.com/).
+
 
 
 [my-google-summer-of-code-2024-project]: https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA

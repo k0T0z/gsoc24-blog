@@ -208,6 +208,10 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/RadialGM/build/lib
 
 The project I used to test the integration is [qtnodestest.zip](/gsoc24-blog/assets/qtnodestest.zip).
 
+## RGM And ENIGMA
+
+RGM invokes the server (emake) using QProcess technology. This server requires the shared packages that are built by ENIGMA. I have modified the build system to move the built files to the ENIGMA submodule root. Keep this in mind while developing RGM.
+
 ## Draft - Don't bother reading this section :)
 
 > R0bert — 25/08/2024 19:29
