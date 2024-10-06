@@ -213,6 +213,37 @@ The second structure inside [RadialGM](https://github.com/enigma-dev/RadialGM):
 
 Note that some of these outputs are taken from [The Book Of Shaders](https://thebookofshaders.com/).
 
+A simple Wood texture from The Book Of Shaders:
+
+![Wood Texture](/gsoc24-blog/assets/wood-texture.png)
+
+My project's output:
+
+![ENIGMA Visual Shader Wood Texture](/gsoc24-blog/assets/ENIGMA-visual-shader-wood-texture.png)
+![ENIGMA Visual Shader Wood Texture](/gsoc24-blog/assets/ENIGMA-visual-shader-wood-texture2.png)
+
+Check out the texture demo at [https://youtu.be/9F7YYRG7MkM?si=mdgc4BBncT7IXNKa](https://youtu.be/9F7YYRG7MkM?si=mdgc4BBncT7IXNKa).
+
+---
+
+A simple Splatter texture from The Book Of Shaders:
+
+![Splatter Texture](/gsoc24-blog/assets/splatter-texture.png)
+
+My project's output:
+
+![ENIGMA Visual Shader Splatter Texture](/gsoc24-blog/assets/ENIGMA-visual-shader-splatter-texture.png)
+![ENIGMA Visual Shader Splatter Texture](/gsoc24-blog/assets/ENIGMA-visual-shader-splatter-texture2.png)
+
+Check out the texture demo at [https://youtu.be/AgsveEXKu8Y?si=G_VDLM0u-G-0w-wJ](https://youtu.be/AgsveEXKu8Y?si=G_VDLM0u-G-0w-wJ).
+
+The Splatter texture test case helped me to fix some issues related to the noise kernels. Check:
+ - [4c716895d46130ec2cf7bbd8fd95806124563977](https://github.com/enigma-dev/enigma-dev/pull/2399/commits/4c716895d46130ec2cf7bbd8fd95806124563977)
+ - [55a050609592a0b2b1cfac8a526c84c133ed6c7d](https://github.com/enigma-dev/enigma-dev/pull/2399/commits/55a050609592a0b2b1cfac8a526c84c133ed6c7d)
+ - [7a8aa69d1445c6f77895b2f6d2784104c717fbc1](https://github.com/enigma-dev/enigma-dev/pull/2399/commits/7a8aa69d1445c6f77895b2f6d2784104c717fbc1)
+
+---
+
 
 
 [my-google-summer-of-code-2024-project]: https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA

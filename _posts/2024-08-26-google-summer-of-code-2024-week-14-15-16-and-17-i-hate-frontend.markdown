@@ -14,6 +14,7 @@ After experiencing many problems with the [nodeeditor](https://github.com/k0T0z/
 1. The nodeeditor library contains the backend that I have already implemented before the midterm evaluation. It is not a fully GUI Library, it is something bigger.
 2. There are many bugs inside the library that I will waste a lot of time to fix.
 3. I tried integrating the library with my midterm evaluation code, and it was a mess. I don't even know if it is possible to integrate them together because I stopped trying after a couple of days.
+4. As mentioned in [#149](https://github.com/paceholder/nodeeditor/issues/149), the theming system is global and this won't allow creating multiple instances of the editor. The fix is inside [#172](https://github.com/paceholder/nodeeditor/pull/172), however, it is very stale.
 4. ... and many other reasons.
 
 ## Pros Of Writing My Own Code
@@ -33,6 +34,10 @@ This function is the one that is called continuously when the mouse is moving. T
 This function is called when the mouse is released. It is easy to detect if the mouse is released inside a port area or not as the port is a separate object.
 
 It took me very long to finish it by the way 🙂. I even was about to give up many times because it seemed a very big chunk of work at first.
+
+## Event System
+
+It is an simple as every widget inside the tree emits events till it hit the target widget upwards. The target widget will handle the event. This means, no child is allowed to access a parent directly.
 
 ## Visual Shader Editor Testing
 
