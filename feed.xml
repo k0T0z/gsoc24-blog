@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/" rel="alternate" type="text/html" /><updated>2024-10-04T04:04:17+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml</id><title type="html">k0T0z</title><subtitle>Just a place for me to dump my thoughts</subtitle><entry><title type="html">Google Summer of Code 2024 Week 18 and 19: Wrapping Up and Final Evaluation</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 18 and 19: Wrapping Up and Final Evaluation" /><published>2024-09-22T21:00:00+00:00</published><updated>2024-09-22T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/" rel="alternate" type="text/html" /><updated>2024-10-06T04:25:29+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml</id><title type="html">k0T0z</title><subtitle>Just a place for me to dump my thoughts</subtitle><entry><title type="html">Google Summer of Code 2024 Week 18 and 19: Wrapping Up and Final Evaluation</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 18 and 19: Wrapping Up and Final Evaluation" /><published>2024-09-22T21:00:00+00:00</published><updated>2024-09-22T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
 <p>My final evaluation report: <a href="https://docs.google.com/document/d/1ahKWo3m9fgqAfR9a3cqaIA08Sns05O68nhalpMNjDd8/edit?usp=sharing">Procedural Fragment Shader Generation Using Classic Machine Learning Google Summer Of Code 2024 Final Report</a>.</p>
 
@@ -221,7 +221,40 @@ the only reason the source you linked has 50 classes is because its make a type 
 
 <h2 id="outputs-with-graphs">Outputs With Graphs</h2>
 
-<p>Note that some of these outputs are taken from <a href="https://thebookofshaders.com/">The Book Of Shaders</a>.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 14, 15, 16, and 17: I Hate Frontend</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/25/google-summer-of-code-2024-week-14-15-16-and-17-i-hate-frontend.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 14, 15, 16, and 17: I Hate Frontend" /><published>2024-08-25T21:00:00+00:00</published><updated>2024-08-25T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/25/google-summer-of-code-2024-week-14-15-16-and-17-i-hate-frontend</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/25/google-summer-of-code-2024-week-14-15-16-and-17-i-hate-frontend.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
+<p>Note that some of these outputs are taken from <a href="https://thebookofshaders.com/">The Book Of Shaders</a>.</p>
+
+<p>A simple Wood texture from The Book Of Shaders:</p>
+
+<p><img src="/gsoc24-blog/assets/wood-texture.png" alt="Wood Texture" /></p>
+
+<p>My project’s output:</p>
+
+<p><img src="/gsoc24-blog/assets/ENIGMA-visual-shader-wood-texture.png" alt="ENIGMA Visual Shader Wood Texture" />
+<img src="/gsoc24-blog/assets/ENIGMA-visual-shader-wood-texture2.png" alt="ENIGMA Visual Shader Wood Texture" /></p>
+
+<p>Check out the texture demo at <a href="https://youtu.be/9F7YYRG7MkM?si=mdgc4BBncT7IXNKa">https://youtu.be/9F7YYRG7MkM?si=mdgc4BBncT7IXNKa</a>.</p>
+
+<hr />
+
+<p>A simple Splatter texture from The Book Of Shaders:</p>
+
+<p><img src="/gsoc24-blog/assets/splatter-texture.png" alt="Splatter Texture" /></p>
+
+<p>My project’s output:</p>
+
+<p><img src="/gsoc24-blog/assets/ENIGMA-visual-shader-splatter-texture.png" alt="ENIGMA Visual Shader Splatter Texture" />
+<img src="/gsoc24-blog/assets/ENIGMA-visual-shader-splatter-texture2.png" alt="ENIGMA Visual Shader Splatter Texture" /></p>
+
+<p>Check out the texture demo at <a href="https://youtu.be/AgsveEXKu8Y?si=G_VDLM0u-G-0w-wJ">https://youtu.be/AgsveEXKu8Y?si=G_VDLM0u-G-0w-wJ</a>.</p>
+
+<p>The Splatter texture test case helped me to fix some issues related to the noise kernels. Check:</p>
+<ul>
+  <li><a href="https://github.com/enigma-dev/enigma-dev/pull/2399/commits/4c716895d46130ec2cf7bbd8fd95806124563977">4c716895d46130ec2cf7bbd8fd95806124563977</a></li>
+  <li><a href="https://github.com/enigma-dev/enigma-dev/pull/2399/commits/55a050609592a0b2b1cfac8a526c84c133ed6c7d">55a050609592a0b2b1cfac8a526c84c133ed6c7d</a></li>
+  <li><a href="https://github.com/enigma-dev/enigma-dev/pull/2399/commits/7a8aa69d1445c6f77895b2f6d2784104c717fbc1">7a8aa69d1445c6f77895b2f6d2784104c717fbc1</a></li>
+</ul>
+
+<hr />]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 14, 15, 16, and 17: I Hate Frontend</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/25/google-summer-of-code-2024-week-14-15-16-and-17-i-hate-frontend.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 14, 15, 16, and 17: I Hate Frontend" /><published>2024-08-25T21:00:00+00:00</published><updated>2024-08-25T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/25/google-summer-of-code-2024-week-14-15-16-and-17-i-hate-frontend</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/25/google-summer-of-code-2024-week-14-15-16-and-17-i-hate-frontend.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
 <p>After experiencing many problems with the <a href="https://github.com/k0T0z/nodeeditor">nodeeditor</a> package, I have decided to write my own code. I want to make everything right because it will be very annoying to fix the bugs later. This project isn’t intended for a Visual Shader Editor annyway but for a Machine Learning approach to generate shaders.</p>
 
@@ -231,6 +264,7 @@ the only reason the source you linked has 50 classes is because its make a type 
   <li>The nodeeditor library contains the backend that I have already implemented before the midterm evaluation. It is not a fully GUI Library, it is something bigger.</li>
   <li>There are many bugs inside the library that I will waste a lot of time to fix.</li>
   <li>I tried integrating the library with my midterm evaluation code, and it was a mess. I don’t even know if it is possible to integrate them together because I stopped trying after a couple of days.</li>
+  <li>As mentioned in <a href="https://github.com/paceholder/nodeeditor/issues/149">#149</a>, the theming system is global and this won’t allow creating multiple instances of the editor. The fix is inside <a href="https://github.com/paceholder/nodeeditor/pull/172">#172</a>, however, it is very stale.</li>
   <li>… and many other reasons.</li>
 </ol>
 
@@ -251,6 +285,10 @@ the only reason the source you linked has 50 classes is because its make a type 
 <p>This function is called when the mouse is released. It is easy to detect if the mouse is released inside a port area or not as the port is a separate object.</p>
 
 <p>It took me very long to finish it by the way 🙂. I even was about to give up many times because it seemed a very big chunk of work at first.</p>
+
+<h2 id="event-system">Event System</h2>
+
+<p>It is an simple as every widget inside the tree emits events till it hit the target widget upwards. The target widget will handle the event. This means, no child is allowed to access a parent directly.</p>
 
 <h2 id="visual-shader-editor-testing">Visual Shader Editor Testing</h2>
 
