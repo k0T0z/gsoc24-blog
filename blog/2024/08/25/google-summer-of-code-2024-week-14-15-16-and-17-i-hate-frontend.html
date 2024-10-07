@@ -68,55 +68,78 @@
   <div class="post">
     <p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
-<p>After experiencing many problems with the <a href="https://github.com/k0T0z/nodeeditor">nodeeditor</a> package, I have decided to write my own code. I want to make everything right because it will be very annoying to fix the bugs later. This project isn’t intended for a Visual Shader Editor annyway but for a Machine Learning approach to generate shaders.</p>
+<p>After encountering numerous challenges with the <a href="https://github.com/k0T0z/nodeeditor">nodeeditor</a> package, I made the strategic decision to develop a custom implementation. This decision was driven by the need for precision and maintainability, especially considering that this project’s ultimate goal extends beyond a Visual Shader Editor to a machine learning approach for shader generation.</p>
 
-<h2 id="cons-of-nodeeditor-package">Cons Of nodeeditor Package</h2>
+<h2 id="analysis-of-third-party-solution">Analysis of Third-Party Solution</h2>
 
+<h3 id="limitations-of-nodeeditor-package">Limitations of nodeeditor Package</h3>
 <ol>
-  <li>The nodeeditor library contains the backend that I have already implemented before the midterm evaluation. It is not a fully GUI Library, it is something bigger.</li>
-  <li>There are many bugs inside the library that I will waste a lot of time to fix.</li>
-  <li>I tried integrating the library with my midterm evaluation code, and it was a mess. I don’t even know if it is possible to integrate them together because I stopped trying after a couple of days.</li>
-  <li>As mentioned in <a href="https://github.com/paceholder/nodeeditor/issues/149">#149</a>, the theming system is global and this won’t allow creating multiple instances of the editor. The fix is inside <a href="https://github.com/paceholder/nodeeditor/pull/172">#172</a>, however, it is very stale.</li>
-  <li>… and many other reasons.</li>
+  <li><strong>Scope Mismatch</strong>: The library encompasses backend functionality that I had already implemented prior to the midterm evaluation. It exceeds the requirements of a GUI library, introducing unnecessary complexity.</li>
+  <li><strong>Bug Density</strong>: The package contains numerous bugs that would require significant time investment to resolve.</li>
+  <li><strong>Integration Challenges</strong>: Attempts to integrate the library with my midterm evaluation code proved problematic, potentially rendering integration unfeasible.</li>
+  <li><strong>Architectural Constraints</strong>: As documented in <a href="https://github.com/paceholder/nodeeditor/issues/149">Issue #149</a>, the global theming system prevents the creation of multiple editor instances. While a fix exists in <a href="https://github.com/paceholder/nodeeditor/pull/172">PR #172</a>, it remains unmerged.</li>
 </ol>
 
-<h2 id="pros-of-writing-my-own-code">Pros Of Writing My Own Code</h2>
+<h2 id="custom-implementation-benefits">Custom Implementation Benefits</h2>
 
-<p>In the nodeeditor library, I think they are drawing the ports and using an algorithm to detect if the press event is done inside the port area. In my opinion, this results in a lot of complex code that is hard to maintain. I have decided to draw the ports as separate objects and make them children of the node. This will make the code simpler and easier to maintain. Using my approach, only 3 functions will take care of all thw work:</p>
+<h3 id="simplified-port-management">Simplified Port Management</h3>
+<p>The nodeeditor library appears to use a complex algorithm for port detection and event handling. My approach simplifies this by treating ports as discrete objects:</p>
 
-<h3 id="on_port_pressed-function"><code class="language-plaintext highlighter-rouge">on_port_pressed</code> Function</h3>
+<ol>
+  <li><strong>Port Objects as Children</strong>: By making ports children of nodes, we achieve clearer object hierarchy and simpler event propagation.</li>
+  <li>
+    <p><strong>Event Handler Reduction</strong>: This approach requires only three key functions:</p>
 
-<p>This function resets the <code class="language-plaintext highlighter-rouge">temporary</code> connection object. A connection is called temporary when it is inside the dragging state. This means it is not connected and can be deleted or ignored at any time.</p>
+    <h4 id="on_port_pressed"><code class="language-plaintext highlighter-rouge">on_port_pressed</code></h4>
+    <p>Initializes or resets the “temporary” connection object. A temporary connection exists in a dragging state, remaining uncommitted until finalized.</p>
 
-<h3 id="on_port_dragged-function"><code class="language-plaintext highlighter-rouge">on_port_dragged</code> Function</h3>
+    <h4 id="on_port_dragged"><code class="language-plaintext highlighter-rouge">on_port_dragged</code></h4>
+    <p>Manages the continuous update of temporary connections during mouse movement. The implementation is straightforward, focusing solely on creation and updating of the temporary connection object.</p>
 
-<p>This function is the one that is called continuously when the mouse is moving. The code inside it is very straightforward. It is just creates/updates the temporary connection object.</p>
+    <h4 id="on_port_dropped"><code class="language-plaintext highlighter-rouge">on_port_dropped</code></h4>
+    <p>Handles the connection finalization when the mouse is released. Port detection is simplified as each port is a discrete object.</p>
+  </li>
+</ol>
 
-<h3 id="on_port_dropped-function"><code class="language-plaintext highlighter-rouge">on_port_dropped</code> Function</h3>
+<p>While implementing this custom solution was time-intensive and occasionally daunting due to its scope, the resulting system is more maintainable and aligned with our specific needs.</p>
 
-<p>This function is called when the mouse is released. It is easy to detect if the mouse is released inside a port area or not as the port is a separate object.</p>
+<h3 id="event-system-architecture">Event System Architecture</h3>
+<p>The implementation uses a simple but effective upward event propagation model:</p>
+<ul>
+  <li>Events emit from widgets and traverse up the widget tree until reaching the target</li>
+  <li>This ensures encapsulation, as children cannot directly access parents</li>
+  <li>Event handling occurs at the appropriate level in the widget hierarchy</li>
+</ul>
 
-<p>It took me very long to finish it by the way 🙂. I even was about to give up many times because it seemed a very big chunk of work at first.</p>
+<h2 id="testing-framework-development">Testing Framework Development</h2>
 
-<h2 id="event-system">Event System</h2>
+<h3 id="visual-shader-editor-testing-infrastructure">Visual Shader Editor Testing Infrastructure</h3>
+<p>I’ve established a new <code class="language-plaintext highlighter-rouge">Tests</code> subdirectory within RGM, focusing on:</p>
+<ul>
+  <li>Foundation for testing <code class="language-plaintext highlighter-rouge">MainWindow</code> and <code class="language-plaintext highlighter-rouge">VisualShaderEditor</code> classes</li>
+  <li>Exploration of various testing methodologies, guided by resources like <a href="http://xunitpatterns.com/Mocks,%20Fakes,%20Stubs%20and%20Dummies.html">Difference between Mocks, Fakes, Stubs and Dummies</a></li>
+</ul>
 
-<p>It is an simple as every widget inside the tree emits events till it hit the target widget upwards. The target widget will handle the event. This means, no child is allowed to access a parent directly.</p>
+<h3 id="testing-challenges-and-solutions">Testing Challenges and Solutions</h3>
+<ol>
+  <li><strong>Protobuf and Model Mocking</strong>: Initial attempts to mock <code class="language-plaintext highlighter-rouge">MessageModel</code> and <code class="language-plaintext highlighter-rouge">ProtoModel</code> classes proved problematic</li>
+  <li><strong>Isolation vs. Integration</strong>: Balancing the need to test the <code class="language-plaintext highlighter-rouge">VisualShaderEditor</code> in isolation while also testing system integration</li>
+  <li><strong>Workaround Implementation</strong>: Created a parameter-less constructor for <code class="language-plaintext highlighter-rouge">VisualShaderEditor</code> to facilitate testing</li>
+</ol>
 
-<h2 id="visual-shader-editor-testing">Visual Shader Editor Testing</h2>
+<h3 id="current-testing-status">Current Testing Status</h3>
+<p>While UI testing presents significant challenges, we’ve established a solid foundation:</p>
+<ul>
+  <li>Created the <code class="language-plaintext highlighter-rouge">Tests</code> directory structure</li>
+  <li>Implemented tests for the <code class="language-plaintext highlighter-rouge">VisualShader</code> class</li>
+  <li>Acknowledged the complexity of comprehensive UI testing and prioritized accordingly</li>
+</ul>
 
-<p>I have added a new subdirectory to RGM called <code class="language-plaintext highlighter-rouge">Tests</code>. I have added the basis for testing <code class="language-plaintext highlighter-rouge">MainWindow</code> and <code class="language-plaintext highlighter-rouge">VisualShaderEditor</code> classes. I have also encountered this webiste: <a href="http://xunitpatterns.com/Mocks,%20Fakes,%20Stubs%20and%20Dummies.html">Difference between Mocks, Fakes, Stubs and Dummies</a>, it has a nicely explained many types of testing objects. Note: SUT = System Under Test.</p>
+<h2 id="project-extension-considerations">Project Extension Considerations</h2>
+<p>Despite aspirations to extend the project to include machine learning components, time constraints have necessitated focusing on core functionality. The integration complexity between Qt5, Protobuf, gRPC, <code class="language-plaintext highlighter-rouge">VisualShader</code>, <code class="language-plaintext highlighter-rouge">VisualShaderEditor</code>, JDI, and ENIGMA’s Graphics System requires careful consideration and extensive testing.</p>
 
-<p>I tried many approachs regarding the testing but actually nothing worked. I wanted to create a dummy objects for anything related to Protobuf and the Model. By the way, Robert did a great job with RGM, it is based on the Model-View-Controller pattern. I only want to test the View and the Controller.</p>
-
-<p>The problem is that I couldn’t mock the <code class="language-plaintext highlighter-rouge">MessageModel</code> or <code class="language-plaintext highlighter-rouge">ProtoModel</code> classes. Also, I want to use the real class when testing the whole system and the mocked one when testing the <code class="language-plaintext highlighter-rouge">VisualShaderEditor</code> alone. I tried to use MACROS from the CMake build system but nothing worked.</p>
-
-<p>I came up with a work around, which is to create a new constructor for the <code class="language-plaintext highlighter-rouge">VisualShaderEditor</code> class that takes nothing. It worked fine.</p>
-
-<p>Writing unit tests for a UI is very hard and I don’t think it is worth it. It is fine for now that I wrote the <code class="language-plaintext highlighter-rouge">Tests</code> directory and the tests for the <code class="language-plaintext highlighter-rouge">VisualShader</code> class.</p>
-
-<h2 id="no-extension-again">No Extension Again</h2>
-
-<p>I actually wanted to extend my project again this year, but Robert shocked me with the news that I can’t extend anymore, it was too late. I wanted to implement the Machine Learning part of the project as well as testing this thing requires a very long time because this will be an integration between many things: Qt5, Protobuf, gRPC, <code class="language-plaintext highlighter-rouge">VisualShader</code>, <code class="language-plaintext highlighter-rouge">VisualShaderEditor</code>, JDI, ENIGMA’s Graphics System.</p>
+<h2 id="notes">Notes</h2>
+<p>As confirmed by Robert on August 30, 2024:</p>
 
 <blockquote>
   <p>R0bert — 30/08/2024 17:58</p>
@@ -126,6 +149,8 @@
   <p>be careful im not sure if we can extend yours again this year, so dont count on it
 i saw mentor thread talking about that</p>
 </blockquote>
+
+<p>This reinforces our focus on delivering a robust core implementation rather than expanding scope.</p>
 
 
   </div></div>

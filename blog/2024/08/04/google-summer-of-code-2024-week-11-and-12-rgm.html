@@ -81,9 +81,11 @@
 
 <p>This error appears only on Arch linux, not Ubuntu. I guess that’s because of the differences between old and new absl. I think the new absl has new targets that we need to link as well. Anyway, I asked Fares to give me the versions of Absl, Protobuf, and gRPC that he is using on Ubuntu. I will try to use the same versions on Arch.</p>
 
-<p>Absl: 20210324.2
-Protobuf: 3.12.4
-gRPC: 1.30.2</p>
+<ul>
+  <li>Absl: 20210324.2</li>
+  <li>Protobuf: 3.12.4</li>
+  <li>gRPC: 1.30.2</li>
+</ul>
 
 <p>I cloned these versions using -b option and found out that Absl doesn’t have a CMake system yet. So let’s change plans and try to build a proper versions of Absl, Protobuf, and gRPC from scratch.</p>
 
