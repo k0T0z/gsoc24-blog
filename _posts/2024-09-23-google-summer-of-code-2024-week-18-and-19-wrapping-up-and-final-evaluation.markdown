@@ -9,21 +9,31 @@ This blog post is related to my Google Summer of Code 2024 project: [Procedural 
 
 My final evaluation report: [Procedural Fragment Shader Generation Using Classic Machine Learning Google Summer Of Code 2024 Final Report](https://docs.google.com/document/d/1ahKWo3m9fgqAfR9a3cqaIA08Sns05O68nhalpMNjDd8/edit?usp=sharing).
 
-What a project! I can say that I would be happier if I had more time to work on it. I have learned a lot of things, and I have implemented a lot of things. This is another reason for me to continue working on this project after the Google Summer of Code program. I will actaully do that. What I loved about working on this project is that I faced a couple of issues that I overcame after a hackup long time. I will walk through each one now.
+What an incredible journey this project has been! While I wish I had more time to devote to it, I'm immensely proud of what I've accomplished and the knowledge I've gained. The challenges I encountered have only fueled my determination to continue developing this project beyond the Google Summer of Code program. Let me share some of the significant hurdles I overcame and what I learned from them.
 
-## The first issue: ``test-runner`` doesn't work on Arch Linux
+## Major Challenges
 
-The ``test-runner`` which will include my tests doesn't work on my main machine however, it is worked on an Ubuntu VM. That's why I moved to an Ubuntu VM for a couple of weeks. I was unsatisfied to look the other way and pretend that there are no issues so I decided to fix it. The issue first shown up before getting accepted to the Google Summer of Code program when I tried building RGM on my Ubuntu machine. I first explained it here: [Google Summer of Code 2024 Bonding Period](https://k0t0z.github.io/gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period.html). It was first appeared with the CMake build system with RGM on an Ubuntu machine. It is also appeared in week 7: [Google Summer of Code 2024 Week 7, 8, and 9: My Boogeyperiod: Weird DSO Linking Error](https://k0t0z.github.io/gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-8-and-9-my-boogeyperiod.html#weird-dso-linking-error). I thought at first that this is because of a problem between Abseil, Protobuf, and gRPC packages. I asked my friend Fares to tell what versions he was using on his Ubuntu machine so that I use them but I found out that these versions are too old to have a CMake build system. That's why I created this solution: [absl-proto-grpc-ci](https://github.com/k0T0z/absl-proto-grpc-ci) to find the working three versions of all packages together. I graped these 3 versions and cloned, built, and installed the three packages locally to me ``/usr/local/`` but the same problem presisted.
+### 1. Test Runner Compatibility Issues
 
-I started working on it after the midterm evaluation when it is the time to build RGM: [Google Summer of Code 2024 Week 11, 12, and 13: RGM](https://k0t0z.github.io/gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-12-and-13-rgm.html). Remember that this same problem appeared when building RGM on both Arch and Ubuntu Linux machines. I managed to solve it the week after: [Google Summer of Code 2024 Week 11, 12, and 13: RGM](https://k0t0z.github.io/gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-12-and-13-rgm.html), it was a simple missing library to the ``LD`` variable: ``-lgpr`` and ``-labseil_dll``/``-labsl_log_internal_message -labsl_log_internal_check_op``.
+One of the first obstacles I faced was that the `test-runner` wouldn't function on my Arch Linux machine, though it worked fine in an Ubuntu VM. Rather than simply working around this by using the VM, I decided to tackle the issue head-on. This problem had actually first surfaced before my acceptance into the program when attempting to build RGM on Ubuntu.
 
-## The second issue: RGM Runtime Error
+The issue manifested as a linking error involving Abseil, Protobuf, and gRPC packages. My initial approach was to:
+1. Create a solution called [absl-proto-grpc-ci](https://github.com/k0T0z/absl-proto-grpc-ci) to identify compatible versions of all three packages
+2. Manually clone, build, and install these versions locally to `/usr/local/`
 
-For solving this issue, I took the chance to refactor the whole RGM's CMake build system. I made a lot of improvements. This issue is explained well inside: [Google Summer of Code 2024 Week 11, 12, and 13: RGM: Runtime Nightmare](https://k0t0z.github.io/gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-12-and-13-rgm.html#runtime-nightmare).
+Despite these efforts, the problem persisted until I discovered the root cause: missing library references. The solution was to add `-lgpr` and `-labseil_dll`/`-labsl_log_internal_message -labsl_log_internal_check_op` to the `LD` variable.
 
-## The Renderer
+### 2. RGM Runtime Error Resolution
 
-I started implementing the Renderer while wrapping up as well. I wanted to implement a simple solution because I got a very small time here. Of course the best solution will be to use ENIGMA's Graphics System and this is because the generated shader will then be used by ENIGMA's Graphics System itself so it makes very sense to preview using it. If not, I will have to generate two shader codes, one for the preview and one for the final render. This is because ENIGMA's Graphics System requires a specific format for writing shaders. This is not a good solution because it will be very hard to maintain.
+Addressing the RGM runtime error led to a complete refactoring of RGM's CMake build system. This process resulted in numerous improvements to the overall build architecture. For detailed information about this issue, I've documented it thoroughly in my blog post: [Google Summer of Code 2024 Week 11, 12, and 13: RGM: Runtime Nightmare](https://k0t0z.github.io/gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-12-and-13-rgm.html#runtime-nightmare).
+
+## Implementation Highlights
+
+### The Renderer
+
+As the project wrapped up, I implemented a simplified renderer solution. While ideally, we would have used ENIGMA's Graphics System, time constraints led to a different approach. The current implementation uses Qt and includes:
+- A standalone class for shader preview
+- Modifications to the `VisualShader` class to generate appropriate header code
 
 In my proposal, I mentioned that the Renderer will be done after the generator is done. The thing is I need a context to render the shader on, this could be [GLFW](https://www.glfw.org/) or Qt. I decided it will be Qt so moved finishing the Renderer AFTER the ``Visual Shader Editor`` is done.
 
@@ -34,9 +44,7 @@ Robert talked to me about that in [Google Summer of Code 2024 Week 7, 8, and 9: 
 > are you saying you want to have  a "Preview" window on your shader editor?
 > that might be more difficult then if you want to do a live preview of that but we can talk about it
 
-I have implemented a standalone very simple class for preiewing my shaders and modified the ``VisualShader`` class accordingly. Why I modified the ``VisualShader`` class? because I need to generate a specific lines of code for the header for the shader to be compiled.
-
-The Renderer is very simple. It has a ``void set_code(const std::string& code);`` function to set the shader code on each change in the graph. The shader code is set as follows:
+Here's a glimpse of how the shader code is set:
 
 {% highlight cpp %}
 shader_program.reset(new QOpenGLShaderProgram());
@@ -148,21 +156,17 @@ std::string get_caption() const {
 
 Yeah, so now this is the biggest problem in my project now. The thing is that ENIGMA is mainly depends on Protobuf for serialization, deserialization, and many other purposes.
 
-## Noise Kernels
+### Noise Kernels
 
-I implemented two more kernels in this period and tested them out:
-
+I successfully implemented two additional noise kernels:
 - Perlin Noise
 - Worley Noise
 
-## The Documentation
+## Project Structure
 
-The documentation is done as well in this period. It wasn't that hard because I was already adding comments to any part of the code that is complex or not clear.
+The final implementation is integrated into two main repositories:
 
-## Final Project Structure
-
-The first structure inside [enigma-dev](https://github.com/enigma-dev/enigma-dev):
-
+1. [enigma-dev](https://github.com/enigma-dev/enigma-dev)
 ```
     enigma-dev
     ├── ...
@@ -189,8 +193,7 @@ The first structure inside [enigma-dev](https://github.com/enigma-dev/enigma-dev
                 └── vs_noise_nodes.cpp
 ```
 
-The second structure inside [RadialGM](https://github.com/enigma-dev/RadialGM):
-
+2. [RadialGM](https://github.com/enigma-dev/RadialGM)
 ```
     RadialGM
     ├── ...
@@ -211,7 +214,7 @@ The second structure inside [RadialGM](https://github.com/enigma-dev/RadialGM):
 
 ## Outputs With Graphs
 
-Note that some of these outputs are taken from [The Book Of Shaders](https://thebookofshaders.com/).
+I've recreated several textures from [The Book of Shaders](https://thebookofshaders.com/), including:
 
 A simple Wood texture from The Book Of Shaders:
 
@@ -237,13 +240,11 @@ My project's output:
 
 Check out the texture demo at [https://youtu.be/AgsveEXKu8Y?si=G_VDLM0u-G-0w-wJ](https://youtu.be/AgsveEXKu8Y?si=G_VDLM0u-G-0w-wJ).
 
-The Splatter texture test case helped me to fix some issues related to the noise kernels. Check:
+The Splatter texture implementation led to several important fixes in the noise kernels, documented in these commits:
  - [4c716895d46130ec2cf7bbd8fd95806124563977](https://github.com/enigma-dev/enigma-dev/pull/2399/commits/4c716895d46130ec2cf7bbd8fd95806124563977)
  - [55a050609592a0b2b1cfac8a526c84c133ed6c7d](https://github.com/enigma-dev/enigma-dev/pull/2399/commits/55a050609592a0b2b1cfac8a526c84c133ed6c7d)
  - [7a8aa69d1445c6f77895b2f6d2784104c717fbc1](https://github.com/enigma-dev/enigma-dev/pull/2399/commits/7a8aa69d1445c6f77895b2f6d2784104c717fbc1)
 
 ---
-
-
 
 [my-google-summer-of-code-2024-project]: https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA

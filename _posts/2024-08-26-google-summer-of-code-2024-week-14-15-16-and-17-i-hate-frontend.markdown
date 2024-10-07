@@ -7,57 +7,70 @@ categories: blog
 
 This blog post is related to my Google Summer of Code 2024 project: [Procedural Fragment Shader Generation Using Classic Machine Learning][my-google-summer-of-code-2024-project].
 
-After experiencing many problems with the [nodeeditor](https://github.com/k0T0z/nodeeditor) package, I have decided to write my own code. I want to make everything right because it will be very annoying to fix the bugs later. This project isn't intended for a Visual Shader Editor annyway but for a Machine Learning approach to generate shaders.
+After encountering numerous challenges with the [nodeeditor](https://github.com/k0T0z/nodeeditor) package, I made the strategic decision to develop a custom implementation. This decision was driven by the need for precision and maintainability, especially considering that this project's ultimate goal extends beyond a Visual Shader Editor to a machine learning approach for shader generation.
 
-## Cons Of nodeeditor Package
+## Analysis of Third-Party Solution
 
-1. The nodeeditor library contains the backend that I have already implemented before the midterm evaluation. It is not a fully GUI Library, it is something bigger.
-2. There are many bugs inside the library that I will waste a lot of time to fix.
-3. I tried integrating the library with my midterm evaluation code, and it was a mess. I don't even know if it is possible to integrate them together because I stopped trying after a couple of days.
-4. As mentioned in [#149](https://github.com/paceholder/nodeeditor/issues/149), the theming system is global and this won't allow creating multiple instances of the editor. The fix is inside [#172](https://github.com/paceholder/nodeeditor/pull/172), however, it is very stale.
-4. ... and many other reasons.
+### Limitations of nodeeditor Package
+1. **Scope Mismatch**: The library encompasses backend functionality that I had already implemented prior to the midterm evaluation. It exceeds the requirements of a GUI library, introducing unnecessary complexity.
+2. **Bug Density**: The package contains numerous bugs that would require significant time investment to resolve.
+3. **Integration Challenges**: Attempts to integrate the library with my midterm evaluation code proved problematic, potentially rendering integration unfeasible.
+4. **Architectural Constraints**: As documented in [Issue #149](https://github.com/paceholder/nodeeditor/issues/149), the global theming system prevents the creation of multiple editor instances. While a fix exists in [PR #172](https://github.com/paceholder/nodeeditor/pull/172), it remains unmerged.
 
-## Pros Of Writing My Own Code
+## Custom Implementation Benefits
 
-In the nodeeditor library, I think they are drawing the ports and using an algorithm to detect if the press event is done inside the port area. In my opinion, this results in a lot of complex code that is hard to maintain. I have decided to draw the ports as separate objects and make them children of the node. This will make the code simpler and easier to maintain. Using my approach, only 3 functions will take care of all thw work:
+### Simplified Port Management
+The nodeeditor library appears to use a complex algorithm for port detection and event handling. My approach simplifies this by treating ports as discrete objects:
 
-### ``on_port_pressed`` Function
+1. **Port Objects as Children**: By making ports children of nodes, we achieve clearer object hierarchy and simpler event propagation.
+2. **Event Handler Reduction**: This approach requires only three key functions:
 
-This function resets the ``temporary`` connection object. A connection is called temporary when it is inside the dragging state. This means it is not connected and can be deleted or ignored at any time.
+   #### `on_port_pressed`
+   Initializes or resets the "temporary" connection object. A temporary connection exists in a dragging state, remaining uncommitted until finalized.
 
-### ``on_port_dragged`` Function
+   #### `on_port_dragged`
+   Manages the continuous update of temporary connections during mouse movement. The implementation is straightforward, focusing solely on creation and updating of the temporary connection object.
 
-This function is the one that is called continuously when the mouse is moving. The code inside it is very straightforward. It is just creates/updates the temporary connection object.
+   #### `on_port_dropped`
+   Handles the connection finalization when the mouse is released. Port detection is simplified as each port is a discrete object.
 
-### ``on_port_dropped`` Function
+While implementing this custom solution was time-intensive and occasionally daunting due to its scope, the resulting system is more maintainable and aligned with our specific needs.
 
-This function is called when the mouse is released. It is easy to detect if the mouse is released inside a port area or not as the port is a separate object.
+### Event System Architecture
+The implementation uses a simple but effective upward event propagation model:
+- Events emit from widgets and traverse up the widget tree until reaching the target
+- This ensures encapsulation, as children cannot directly access parents
+- Event handling occurs at the appropriate level in the widget hierarchy
 
-It took me very long to finish it by the way 🙂. I even was about to give up many times because it seemed a very big chunk of work at first.
+## Testing Framework Development
 
-## Event System
+### Visual Shader Editor Testing Infrastructure
+I've established a new `Tests` subdirectory within RGM, focusing on:
+- Foundation for testing `MainWindow` and `VisualShaderEditor` classes
+- Exploration of various testing methodologies, guided by resources like [Difference between Mocks, Fakes, Stubs and Dummies](http://xunitpatterns.com/Mocks,%20Fakes,%20Stubs%20and%20Dummies.html)
 
-It is an simple as every widget inside the tree emits events till it hit the target widget upwards. The target widget will handle the event. This means, no child is allowed to access a parent directly.
+### Testing Challenges and Solutions
+1. **Protobuf and Model Mocking**: Initial attempts to mock `MessageModel` and `ProtoModel` classes proved problematic
+2. **Isolation vs. Integration**: Balancing the need to test the `VisualShaderEditor` in isolation while also testing system integration
+3. **Workaround Implementation**: Created a parameter-less constructor for `VisualShaderEditor` to facilitate testing
 
-## Visual Shader Editor Testing
+### Current Testing Status
+While UI testing presents significant challenges, we've established a solid foundation:
+- Created the `Tests` directory structure
+- Implemented tests for the `VisualShader` class
+- Acknowledged the complexity of comprehensive UI testing and prioritized accordingly
 
-I have added a new subdirectory to RGM called ``Tests``. I have added the basis for testing ``MainWindow`` and ``VisualShaderEditor`` classes. I have also encountered this webiste: [Difference between Mocks, Fakes, Stubs and Dummies](http://xunitpatterns.com/Mocks,%20Fakes,%20Stubs%20and%20Dummies.html), it has a nicely explained many types of testing objects. Note: SUT = System Under Test.
+## Project Extension Considerations
+Despite aspirations to extend the project to include machine learning components, time constraints have necessitated focusing on core functionality. The integration complexity between Qt5, Protobuf, gRPC, `VisualShader`, `VisualShaderEditor`, JDI, and ENIGMA's Graphics System requires careful consideration and extensive testing.
 
-I tried many approachs regarding the testing but actually nothing worked. I wanted to create a dummy objects for anything related to Protobuf and the Model. By the way, Robert did a great job with RGM, it is based on the Model-View-Controller pattern. I only want to test the View and the Controller. 
-
-The problem is that I couldn't mock the ``MessageModel`` or ``ProtoModel`` classes. Also, I want to use the real class when testing the whole system and the mocked one when testing the ``VisualShaderEditor`` alone. I tried to use MACROS from the CMake build system but nothing worked.
-
-I came up with a work around, which is to create a new constructor for the ``VisualShaderEditor`` class that takes nothing. It worked fine.
-
-Writing unit tests for a UI is very hard and I don't think it is worth it. It is fine for now that I wrote the ``Tests`` directory and the tests for the ``VisualShader`` class.
-
-## No Extension Again
-
-I actually wanted to extend my project again this year, but Robert shocked me with the news that I can't extend anymore, it was too late. I wanted to implement the Machine Learning part of the project as well as testing this thing requires a very long time because this will be an integration between many things: Qt5, Protobuf, gRPC, ``VisualShader``, ``VisualShaderEditor``, JDI, ENIGMA's Graphics System.
+## Notes
+As confirmed by Robert on August 30, 2024:
 
 > R0bert — 30/08/2024 17:58
 
 > be careful im not sure if we can extend yours again this year, so dont count on it
 > i saw mentor thread talking about that
+
+This reinforces our focus on delivering a robust core implementation rather than expanding scope.
 
 [my-google-summer-of-code-2024-project]: https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA

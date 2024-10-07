@@ -21,9 +21,9 @@ As I explained in [Google Summer of Code 2024 Bonding Period](https://k0t0z.gith
 
 This error appears only on Arch linux, not Ubuntu. I guess that's because of the differences between old and new absl. I think the new absl has new targets that we need to link as well. Anyway, I asked Fares to give me the versions of Absl, Protobuf, and gRPC that he is using on Ubuntu. I will try to use the same versions on Arch.
 
-Absl: 20210324.2
-Protobuf: 3.12.4
-gRPC: 1.30.2
+ - Absl: 20210324.2
+ - Protobuf: 3.12.4
+ - gRPC: 1.30.2
 
 I cloned these versions using -b option and found out that Absl doesn't have a CMake system yet. So let's change plans and try to build a proper versions of Absl, Protobuf, and gRPC from scratch.
 
