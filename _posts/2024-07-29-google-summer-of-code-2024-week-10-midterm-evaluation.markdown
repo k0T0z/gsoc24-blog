@@ -7,7 +7,7 @@ categories: blog
 
 This blog post is related to my Google Summer of Code 2024 project: [Procedural Fragment Shader Generation Using Classic Machine Learning][my-google-summer-of-code-2024-project].
 
-As I said in my previous blog post, I am running at a low pace due to my master's preparation as well as the army service. Josh and Greg gave me a pass even though I didn't do much. Anyway, thanks to them for their understanding. Here is my midterm feedback and the work done so far and why.
+As mentioned in my previous blog post, I am currently working at a slower pace due to my preparations for my master's program and military service. Josh and Greg have kindly given me some leeway, despite my limited progress. I would like to extend my gratitude to them for their understanding. Below is my midterm feedback, an overview of the work completed so far, and the rationale behind it.
 
 ## Midterm 2024 Evaluation Feedback
 
@@ -15,56 +15,69 @@ As I said in my previous blog post, I am running at a low pace due to my master'
 
 ## Summary
 
-The midterm work exists in PR [#2397](https://github.com/enigma-dev/enigma-dev/pull/2397).
+The midterm work can be found in PR #2397.
 
-In my proposal, I said that I will make the generator ready by the midterm evaluation. It is in a good shape now. It will be refactored during the Rendering and Machine Learning phases. In these two next phases, I will make the generator more for ENIGMA's Graphics System and the Genetic Algorithm (Machine Learning) respectively. The work done in the generator can be presented as follows:
+In my proposal, I stated that I would have the generator ready by the midterm evaluation, and I’m pleased to report that it is in good shape now. The generator will undergo further refactoring during the Rendering and Machine Learning phases. In these next two phases, I plan to enhance the generator's compatibility with ENIGMA's Graphics System and integrate the Genetic Algorithm for machine learning. The work accomplished on the generator can be summarized as follows:
 
 ### Constants, Operators, and Functions
 
-All constants, operators, and functions are supported. Constants include ``float``, ``int``, ``uint``, ``vec2``, ``vec3``, and ``vec4``. Operators include arithmetic, logical, and bitwise operations. Functions include trigonometric, exponential, logarithmic, and other functions. Both scalar and vector operations are supported. Both Operations and Functions types depend on the type of the operands.
+The implementation supports all essential constants, operators, and functions. **Constants** include data types such as `float`, `int`, `uint`, `vec2`, `vec3`, and `vec4`. **Operators** encompass arithmetic, logical, and bitwise operations. **Functions** cover a range of mathematical operations, including trigonometric, exponential, logarithmic, and other relevant functions. Both scalar and vector operations are supported, with the types of operations and functions depending on the operands involved.
 
+#### Operations by Type:
 
-Operations for ``float`` types: ``+``, ``-``, ``*``, ``/``, ``mod``, ``pow``, ``max``, ``min``, ``atan``, and ``step``.
-Operations for ``int`` types: ``+``, ``-``, ``*``, ``/``, ``%``, ``max``, ``min``, ``&``, ``|``, ``^``, ``<<``, and ``>>``.
-Operations for ``uint`` types: Same as ``int`` types.
-Operations for ``vec2``, ``vec3``, and ``vec4`` types: ``+``, ``-``, ``*``, ``/``, ``mod``, ``pow``, ``max``, ``min``, ``cross``, ``atan2``, and ``reflect``. Note that ``cross`` is only for ``vec3`` types.
+- **Float Operations**: `+`, `-`, `*`, `/`, `mod`, `pow`, `max`, `min`, `atan`, and `step`.
+- **Integer Operations**: `+`, `-`, `*`, `/`, `%`, `max`, `min`, `&`, `|`, `^`, `<<`, and `>>`.
+- **Unsigned Integer Operations**: Identical to integer operations.
+- **Vector Operations** (`vec2`, `vec3`, `vec4`): `+`, `-`, `*`, `/`, `mod`, `pow`, `max`, `min`, `cross`, `atan2`, and `reflect`. Note that `cross` is applicable only for `vec3` types.
 
-Functions for ``float`` types: ``sin``, ``cos``, ``tan``, ``asin``, ``acos``, ``atan``, ``sinh``, ``cosh``, ``tanh``, ``log``, ``exp``, ``sqrt``, ``abs``, ``sign``, ``floor``, ``round``, ``ceil``, ``fract``, ``saturate``, ``negate``, ``acosh``, ``asinh``, ``atanh``, ``degrees``, ``exp2``, ``inverse_sqrt``, ``log2``, ``radians``, ``reciprocal``, ``roundeven``, ``trunc``, and ``oneminus``.
-Functions for ``int`` types: ``abs``, ``-1 *``, ``sign`` and ``~``.
-Functions for ``uint`` types: ``-1 *`` and ``~``.
-Functions for ``vec2``, ``vec3``, and ``vec4`` types: ``normalize``, ``saturate``, ``negate``, ``reciprocal``, ``abs``, ``acos``, ``acosh``, ``asin``, ``asinh``, ``atan``, ``atanh``, ``ceil``, ``cos``, ``cosh``, ``degrees``, ``exp``, ``exp2``, ``floor``, ``fract``, ``inverse_sqrt``, ``log``, ``log2``, ``radians``, ``round``, ``roundeven``, ``sign``, ``sin``, ``sinh``, ``sqrt``, ``tan``, ``tanh``, ``trunc``, and ``oneminus``.
+#### Functions by Type:
+
+- **Float Functions**: 
+  - Trigonometric: `sin`, `cos`, `tan`, `asin`, `acos`, `atan`
+  - Hyperbolic: `sinh`, `cosh`, `tanh`
+  - Logarithmic: `log`, `exp`, `sqrt`
+  - Miscellaneous: `abs`, `sign`, `floor`, `round`, `ceil`, `fract`, `saturate`, `negate`, `acosh`, `asinh`, `atanh`, `degrees`, `exp2`, `inverse_sqrt`, `log2`, `radians`, `reciprocal`, `roundeven`, `trunc`, and `oneminus`.
+
+- **Integer Functions**: `abs`, `-1 *`, `sign`, and `~`.
+  
+- **Unsigned Integer Functions**: `-1 *` and `~`.
+  
+- **Vector Functions** (`vec2`, `vec3`, `vec4`): 
+  - Common: `normalize`, `saturate`, `negate`, `reciprocal`, `abs`
+  - Trigonometric: `acos`, `acosh`, `asin`, `asinh`, `atan`, `atanh`
+  - Rounding: `ceil`, `cos`, `cosh`, `degrees`, `exp`, `exp2`, `floor`, `fract`, `inverse_sqrt`, `log`, `log2`, `radians`, `round`, `roundeven`, `sign`, `sin`, `sinh`, `sqrt`, `tan`, `tanh`, `trunc`, and `oneminus`.
 
 ### Special Nodes
 
-Some important nodes are also implemented for the AI Agent such as:
-- ``dot``: The dot product of two vectors.
-- ``length``: The length of a vector.
-- ``clamp``: Clamps a value between a minimum and maximum value.
-- ``derivative``: The derivative of a value.
-- ``step``: The step function.
-- ``smoothstep``: The smoothstep function.
-- ``distance``: The distance between two points.
-- ``mix``: Linearly interpolates between two values.
+Several important nodes have been implemented for the AI Agent, including:
+- **`dot`**: Computes the dot product of two vectors.
+- **`length`**: Calculates the length of a vector.
+- **`clamp`**: Restricts a value within a specified minimum and maximum range.
+- **`derivative`**: Computes the derivative of a value.
+- **`step`**: Implements the step function.
+- **`smoothstep`**: Implements the smoothstep function.
+- **`distance`**: Calculates the distance between two points.
+- **`mix`**: Linearly interpolates between two values.
 
 ### Logic Nodes
 
-Some logic nodes are also implemented for the AI Agent such as: ``if``, ``switch``, ``is``, and ``compare``.
+The implementation includes several logic nodes for the AI Agent, such as `if`, `switch`, `is`, and `compare`.
 
 ### Filters
 
-Most importantly, the generator supports filters such as noise filters. The noise filters include ``Value`` Noise for now.
+Most notably, the generator supports various filters, including noise filters. Currently, it includes **Value Noise** as its primary option.
 
 ## Work To Be Done
 
-As I explained in [Google Summer of Code 2024 Week 7, 8, and 9: My Boogeyperiod: Most Important Operations In The Generator](https://k0t0z.github.io/gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-8-and-9-my-boogeyperiod.html), many nodes will be modified during the Rendering and Machine Learning phases.
+As I outlined in my previous post, "[Google Summer of Code 2024 Week 7, 8, and 9: My Boogeyperiod: Most Important Operations in the Generator](https://k0t0z.github.io/gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-8-and-9-my-boogeyperiod.html)," many nodes will undergo modifications during the Rendering and Machine Learning phases. 
 
-There are a couple of tasks as well that will be nice if we had. Supporting comments in the shader code is one of them as well as loops.
+Additionally, there are several enhancements that would be beneficial for the project. One such enhancement is the support for comments within the shader code, as well as the implementation of loops. 
 
-The integration of a node editor library into RGM is also a must task to be done. This will help in creating large graphs.
+Furthermore, integrating a node editor library into RGM is an essential task. This integration will facilitate the creation of larger and more complex graphs, improving overall functionality and usability.
 
 ## Working Example
 
-I have created a working example for the Value Noise filter. This is the same example that I have used in my proposal. The graph and the generated code are as follows:
+I have developed a working example for the Value Noise filter, which is the same example I referenced in my proposal. Below are the graph representation and the generated code for this implementation:
 
 ![Godot Visual Shader Value Noise Filter Graph Example](/gsoc24-blog/assets/godot-visual-shader-value-noise-filter-graph-example.png)
 

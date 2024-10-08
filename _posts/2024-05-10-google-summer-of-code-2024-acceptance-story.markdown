@@ -27,11 +27,11 @@ Hmmmmm ... At the time of writing this, I can't think of a way to describe my ac
 > 
 > Josh — 19/01/2024 17:51
 
-After these messages, there was a long discussion about the project idea and then I decided to apply for it.
+Following these messages, there was an extensive discussion about the project idea, which ultimately led me to decide to apply for it.
 
-Anyway, I am gonna setup my development environment by installing arch linux as ENIGMA is mainly developed on it.
+Moving forward, I will set up my development environment by installing Arch Linux, as ENIGMA is primarily developed on this platform.
 
-NOTE: You can find the example game using Godot that showcases the final result of the project here: [godot_visual_shader_editor_showcase.zip](/gsoc24-blog/assets/godot_visual_shader_editor_showcase.zip).
+**Note:** You can find an example game built with Godot, showcasing the project's final outcome, here: [godot_visual_shader_editor_showcase.zip](/gsoc24-blog/assets/godot_visual_shader_editor_showcase.zip).
 
 <blockquote style="border-left: 6px solid #ff3e3e;">
     <p>

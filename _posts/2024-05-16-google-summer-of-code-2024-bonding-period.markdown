@@ -7,7 +7,7 @@ categories: blog
 
 This blog post is related to my Google Summer of Code 2024 project: [Procedural Fragment Shader Generation Using Classic Machine Learning][my-google-summer-of-code-2024-project].
 
-After installing Arch Linux, I can build RGM, just to do something in this period. Of courcse, it won't run from the first time and I am gonna leave the error here for future reference:
+After installing Arch Linux, I plan to build RGM as a productive task during this period. Naturally, it won't run successfully on the first attempt, so I'll document the error here for future reference:
     
 ```bash
     [ 76%] Linking CXX executable emake
@@ -19,15 +19,15 @@ After installing Arch Linux, I can build RGM, just to do something in this perio
     make: *** [Makefile:136: all] Error 2
 ```
 
-Before installing Arch Linux, I tried to build RGM using my Ubuntu machine but same error. That was before being accepted in GSoC.
+Before installing Arch Linux, I attempted to build RGM on my Ubuntu machine, but encountered the same error. This was before I was accepted into GSoC.
 
-In this bonding period, I didn't do much as I was busy with my final exams. 
+During the bonding period, I wasn’t able to contribute much, as I was occupied with my final exams.
 
-Late in the bonding period, specifically on May 24th, I want to start writing some code so started wondering where to put it. The whole organization of the project is still unclear.
+Later in the bonding period, specifically on May 24th, I wanted to begin writing some code but was unsure where to place it, as the overall project structure was still unclear.
 
-Anyway, The graph backend is not related to the ``Graphics_Systems``, although, it will require a system to render the generated shader. I think the most suitable location is inside ``Universal_System``. Josh was also fine with this location.
+In any case, the graph backend isn't directly related to the `Graphics_Systems`, although it will require a system for rendering the generated shaders. After some thought, I concluded that the most suitable location for it would be within the `Universal_System`, and Josh agreed with this placement.
 
-The expected structure of my files will be:
+Here’s the expected structure of my files:
     
 ```
 enigma-dev
@@ -53,7 +53,7 @@ enigma-dev
                 └── Node.h
 ```
 
-When the graph is implemented, I will start implementing the generator although I am not sure how I am gonna visualize the output shader. I will talk to my mentor about this however maybe I will have to integrate the node editor with RGM which is something I don't want to do.
+Once the graph is implemented, I will move on to developing the generator. However, I'm unsure how I will visualize the output shader. I'll discuss this with my mentor, but there's a possibility that I might need to integrate the node editor with RGM, which I would prefer to avoid.
 
 
 [my-google-summer-of-code-2024-project]: https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA

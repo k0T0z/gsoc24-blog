@@ -7,11 +7,11 @@ categories: blog
 
 This blog post is related to my Google Summer of Code 2024 project: [Procedural Fragment Shader Generation Using Classic Machine Learning][my-google-summer-of-code-2024-project].
 
-I want to note that currently, I am working with a low pace as I am very buzy with my final exams and graduation stuff.
+I should note that I am currently working at a slower pace due to being occupied with my final exams and graduation preparations.
 
-I take my inspiration from Godot Game Engine as I want to reach the Machine Learning part of the project. on 16th of June, I noticed that Godot implements the Visual Shader using the [Red-Black Tree C Code][red-black-tree-c-code] and can be found at [Godot Visual Shader H 129-132][godot-visual-shader-h-129-132]. As Josh replied, ``std::map`` is a red black tree. I didn't know it earleir.
+I draw inspiration from the Godot Game Engine, particularly as I aim to reach the machine learning phase of the project. On June 16th, I discovered that Godot implements its Visual Shader system using a [Red-Black Tree in C][red-black-tree-c-code], which can be found in the [Godot Visual Shader code (lines 129-132)][godot-visual-shader-h-129-132]. As Josh pointed out, `std::map` in C++ is also based on a red-black tree, which I hadn’t realized before.
 
-An interesting fact that I have learned is why Godot developers have their own implementation of the Red Black Trees. Actually, I made a converstation with one of them once about why they are not using the standard template library or STL.
+One interesting insight I've gained is why Godot developers created their own implementation of red-black trees. I once had a conversation with one of them about their decision not to rely on the Standard Template Library (STL).
 
 > December 29, 2023
  
@@ -66,16 +66,16 @@ An interesting fact that I have learned is why Godot developers have their own i
 > Came across a case of it some time ago when discussing this very topic but forget what it was now, but it was pretty glaring
 > Even trivial things like exception handling is weird in some libraries, see [here](https://github.com/godotengine/godot-cpp/issues/1326), where one implementation of the library on Arch Linux is broken with exceptions disabled
 
-It shouldn't be a problem for ENIGMA 🤣. Actually, unlike Godot, ENIGMA is meant to be simple to use and developed so I don't see any problem of using STL in ENIGMA. Also, I don't want to forget that in order to reach the AI part, I need to finish the whole editor as soon as possible which is a large chunk of work.
+This shouldn’t pose a problem for ENIGMA! 🤣 Unlike Godot, ENIGMA is designed to be simple to use and develop, so I don't foresee any issues with incorporating the Standard Template Library (STL). However, I must remember that to progress to the AI component, I need to complete the entire editor as quickly as possible, which is a significant undertaking.
 
-Oh by the way, I planned already to extend my project to 22 weeks. That the maximum number of weeks you can ever extend to. I want to implement the Matching Machine Learning algorithm as well.
+By the way, I have already planned to extend my project to a maximum of 22 weeks, which is the longest extension allowed. I also aim to implement the Matching Machine Learning algorithm during this time.
 
 > gfundies — 25/06/2024 21:44
 
 > @Josh @Saif https://developers.google.com/open-source/gsoc/help/project-dates what date did you want?
 > need to pick from those
 
-Now, beside the implementation of the graph, I needed to know more about the use case of this project. How the game developers are going to use it. Then I can decide what can be done. Thanks to Josh he explained it very well.
+In addition to implementing the graph, I needed to gain a better understanding of the project's use case—specifically, how game developers will utilize it. This knowledge will help me determine the next steps in the project. Fortunately, Josh provided a clear explanation that greatly assisted my understanding.
 
 > Josh — 29/06/2024 17:34
 
@@ -86,23 +86,23 @@ Now, beside the implementation of the graph, I needed to know more about the use
 
 ## Graph Lifecycle
 
-I am gonna explain more about this approach just for future contributors who will take on this project and hopefully, I am mentoring them.
+I’d like to elaborate on this approach for the benefit of future contributors who may take on this project—hopefully, I will have the opportunity to mentor them.
 
-First of all, the game developer will load a resource into the Visual Shader Editor. The game developer will have the choice between Backgrounds and Sprites. Currently, let's keep it simple and focus of Backgrounds. The game developer can now match the loaded resource using a ``Match Image`` button that will be created.
+First, the game developer will load a resource into the Visual Shader Editor, choosing between backgrounds and sprites. For now, let’s keep it simple and focus on backgrounds. Once the resource is loaded, the game developer can click a "Match Image" button that will be created.
 
-The AI Agent take over and start generating the graph and matching the best parameters according to the resource image loaded until it converge.
+At this point, the AI agent takes over, generating the graph and optimizing the parameters based on the loaded resource image until it converges.
 
-At this point, the compiler will take over and writes a resource ID to the generated shader from this graph.
+After the AI agent completes its work, the compiler will write a resource ID to the generated shader based on this graph.
 
-This is how the graph editor and the graph will be used while developing a game. The thing is that if I want to make a volcano surface for example, I will only need a volcano background image and the AI Agent will take care of all other stuff.
+This is how the graph editor and the graph will be utilized during game development. For instance, if I want to create a volcano surface, I simply need to provide a volcano background image, and the AI agent will handle the rest.
 
 ## Godot's Role
 
-In order to implement an excellent approach for the Visual Shader, I decided to work in parallel on Godot's Visual Shader Editor to improve my implementations. See [#93791](https://github.com/godotengine/godot/pull/93791), [#93988](https://github.com/godotengine/godot/pull/93988), and [#93992](https://github.com/godotengine/godot/pull/93992).
+To develop an effective approach for the Visual Shader, I decided to work in parallel with Godot's Visual Shader Editor to enhance my implementations. You can refer to the following pull requests for more details: [#93791](https://github.com/godotengine/godot/pull/93791), [#93988](https://github.com/godotengine/godot/pull/93988), and [#93992](https://github.com/godotengine/godot/pull/93992).
 
 ## Debugging ENIGMA ``emake-tests`` inside VSCode
 
-I always wanted to run the debug session from vscode instead of doing it manually and here are the task and launch objects:
+I have always wanted to run the debug session directly from Visual Studio Code instead of doing it manually. Below are the task and launch configuration objects I created for this purpose:
 
 {% highlight json %}
 // task object:

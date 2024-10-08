@@ -7,59 +7,53 @@ categories: blog
 
 This blog post is related to my Google Summer of Code 2024 project: [Procedural Fragment Shader Generation Using Classic Machine Learning][my-google-summer-of-code-2024-project].
 
-```
-Note: Before trying to build gRPC from scratch, see this: [Local Not Needed](https://k0t0z.github.io/gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-12-and-13-rgm.html#local-not-needed).
-```
+**Note:** Before attempting to build gRPC from scratch, please refer to this: [Local Not Needed](https://k0t0z.github.io/gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-12-and-13-rgm.html#local-not-needed).
 
-The Final evaluation work will be inside [#2399](https://github.com/enigma-dev/enigma-dev/pull/2399).
+The final evaluation work will be available in [#2399](https://github.com/enigma-dev/enigma-dev/pull/2399).
 
-## Back To ``test-runner`` Issue On Arch Linux
+## Addressing the `test-runner` Issue on Arch Linux
 
-Remember that I am working on my Ubuntu VM as ``test-runner`` gives a link error on Arch Linux. However, RGM gives a linking error on both Ubuntu and Arch Linux. Because of this, I have decided to make ``test-runner`` work on Arch Linux.
+As a reminder, I am currently working within my Ubuntu VM because the `test-runner` is producing a linking error on Arch Linux. However, I have also encountered linking errors with RGM on both Ubuntu and Arch Linux. Consequently, I have decided to focus on making the `test-runner` operational on Arch Linux.
 
-As I explained in [Google Summer of Code 2024 Bonding Period](https://k0t0z.github.io/gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period.html) post, the error is about linking ``emake`` failed. ``emake`` is the way to build games without a GUI as explained by Greg.
+As I previously explained in my post during the [Google Summer of Code 2024 Bonding Period](https://k0t0z.github.io/gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period.html), the linking error is associated with the failure of `emake`. `Emake` is the tool used to build games without a GUI, as described by Greg.
 
-This error appears only on Arch linux, not Ubuntu. I guess that's because of the differences between old and new absl. I think the new absl has new targets that we need to link as well. Anyway, I asked Fares to give me the versions of Absl, Protobuf, and gRPC that he is using on Ubuntu. I will try to use the same versions on Arch.
+This error only occurs on Arch Linux and not on Ubuntu. I suspect that the issue arises from the differences between the older and newer versions of Abseil. It seems that the latest Abseil has introduced new targets that we also need to link. To address this, I reached out to Fares for the versions of Abseil, Protobuf, and gRPC that he uses on Ubuntu, with the intention of using the same versions on Arch:
 
- - Absl: 20210324.2
- - Protobuf: 3.12.4
- - gRPC: 1.30.2
+- **Abseil:** 20210324.2  
+- **Protobuf:** 3.12.4  
+- **gRPC:** 1.30.2  
 
-I cloned these versions using -b option and found out that Absl doesn't have a CMake system yet. So let's change plans and try to build a proper versions of Absl, Protobuf, and gRPC from scratch.
+I cloned these specific versions using the `-b` option and discovered that Abseil does not yet support a CMake system. Therefore, I decided to pivot and build proper versions of Abseil, Protobuf, and gRPC from scratch.
 
-I created this solution to do this task for me, [absl-proto-grpc-ci](https://github.com/k0T0z/absl-proto-grpc-ci), you can get the working verions from the README file. Also, you can take the commands from the scripts and run them on your machine.
+To facilitate this task, I created a repository called [absl-proto-grpc-ci](https://github.com/k0T0z/absl-proto-grpc-ci). You can find the working versions detailed in the README file, along with the commands in the scripts, which you can run on your machine.
 
-Before installing them to your local, try to empty these dirs first:
+Before installing these libraries locally, make sure to empty the following directories:
 
 ```bash
 sudo rm -rf /usr/local/lib/*
-```
-
-```bash
 sudo rm -rf /usr/local/include/*
-```
-
-```bash
 sudo rm -rf /usr/local/bin/*
 ```
 
-This is to get rid of the old versions of the libraries (if any). If you have any locally installed libraries, be careful with the above commands.
+This step ensures the removal of any existing versions of the libraries. Please exercise caution with these commands if you have any locally installed libraries.
 
-Now, building those libraries is very easy, as well as installing them. It took me a couple of days to polish it off however, it is fine now. Maybe the only missing thing for this example is to build ``emake`` with it.
+Building and installing these libraries is straightforward, and although it took me a couple of days to finalize the process, everything is functioning well now. The only remaining task for this setup is to build `emake`.
 
-## Prioritizing local over system
+## Prioritizing Local Over System Libraries
 
-After installing all libraries to my local and build ``emake``, this warning shows up:
+After successfully installing all the libraries locally and building `emake`, I encountered the following warning:
 
 ```
 /usr/bin/ld: warning: libprotobuf.so.27.3.0, needed by /usr/local/lib/libgrpc++.so, may conflict with libprotobuf.so.27
 ```
 
-This is because the system has a version of Protobuf already installed. When trying to remove it:
+This warning arises because a version of Protobuf is already installed on the system. When I attempted to remove it using the command:
 
 ```bash
 sudo pacman -Rns protobuf
 ```
+
+I received the following error:
 
 ```
 checking dependencies...
@@ -69,7 +63,7 @@ error: failed to prepare transaction (could not satisfy dependencies)
 :: removing protobuf breaks dependency 'protobuf' required by protobuf-c
 ```
 
-I can't remove it as it is required by other packages. So I need to prioritize the local version over the system version. I did this by adding these simple lines to ``enigma-dev/Config.mk`` file:
+Since I cannot remove Protobuf without affecting other packages, I needed to prioritize the local version over the system version. To achieve this, I added the following lines to the `enigma-dev/Config.mk` file:
 
 ```makefile
 # Which search priority to use for libraries (system or local)
@@ -80,16 +74,19 @@ ifeq ($(CUSTOM_LIB_SEARCH_PRIORITY), local)
 endif
 ```
 
-Now, you can set the search priority to local by changing the value of ``CUSTOM_LIB_SEARCH_PRIORITY`` to ``local``.
+With this configuration, you can set the search priority to local by changing the value of `CUSTOM_LIB_SEARCH_PRIORITY` to `local`.
 
 ## Export Issue
 
-Other error show up that ``grpc_cpp_plugin`` is unable to load some packages.
+Another error that has emerged is that the `grpc_cpp_plugin` is unable to load certain packages:
 
 ```bash
 ldd $(which grpc_cpp_plugin)
 ```
 
+The output displays the following:
+
+```
 > linux-vdso.so.1 (0x000071154c52f000)
 > libsystemd.so.0 => /usr/lib/libsystemd.so.0 (0x000071154c3f5000)
 > <span style="color: red;">libgrpc_plugin_support.so.1.65 => not found</span>
@@ -102,19 +99,23 @@ ldd $(which grpc_cpp_plugin)
 > libc.so.6 => /usr/lib/libc.so.6 (0x000071154be14000)
 > libcap.so.2 => /usr/lib/libcap.so.2 (0x000071154c2cf000)
 > /lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x000071154c531000)
+```
 
-There are ``not found`` libraries as you can see. If you used ``which`` with any of the nof founded libs, you will find it inside ``/usr/local/lib``. The solution is to export the path to the libraries by adding this line to your ``.bashrc`` file:
+As indicated, there are several libraries marked as **not found**. If you check any of these libraries using `which`, you will find them in the `/usr/local/lib` directory. To resolve this issue, you need to export the path to these libraries by adding the following line to your `.bashrc` file:
 
 ```bash
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 ```
 
-Now, you can run the command again:
+After making this change, rerun the command:
 
 ```bash
 ldd $(which grpc_cpp_plugin)
 ```
 
+You should see an output similar to the following:
+
+```
 > linux-vdso.so.1 (0x0000765352968000)
 > libsystemd.so.0 => /usr/lib/libsystemd.so.0 (0x000076535282d000)
 > <span style="color: blue;">libgrpc_plugin_support.so.1.65 => /usr/local/lib/libgrpc_plugin_support.so.1.65 (0x00007653527a6000)</span>
@@ -128,42 +129,43 @@ ldd $(which grpc_cpp_plugin)
 > libcap.so.2 => /usr/lib/libcap.so.2 (0x00007653521c7000)
 > /lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x000076535296a000)
 > libz.so.1 => /usr/local/lib/libz.so.1 (0x00007653521a6000)
+```
 
-All fixes done above didn't solve the link issue because as I said we need to link according to new absl library.
+Despite these adjustments, the linking issue persists because we need to link to the new Abseil library. 
 
-After clean build, this error showed up:
+After performing a clean build, the following error appeared:
 
 ```
 /usr/bin/ld: .eobjs/Server.o: undefined reference to symbol 'gpr_inf_future'
 /usr/bin/ld: /usr/local/lib/libgpr.so.42: error adding symbols: DSO missing from command line
 ```
 
-It is too clear to see that the ``-lgpr`` is missing from ``LDFLAGS`` variable. After adding it, the next error is:
+This error indicates that the `-lgpr` flag is missing from the `LDFLAGS` variable. After adding this flag, I encountered another error:
 
 ```
 /usr/bin/ld: .eobjs/EnigmaPlugin.o: undefined reference to symbol '_ZN4absl12lts_2024072212log_internal15LogMessageFatalC1EPKciSt17basic_string_viewIcSt11char_traitsIcEE'
 /usr/bin/ld: /usr/local/lib/libabseil_dll.so.2407.0.0: error adding symbols: DSO missing from command line
 ```
 
-I gave too much time to this error but I realized that may be the new absl has a new target to add it to the linker as well. That new target is ``-labseil_dll``.
+I spent considerable time troubleshooting this error and realized that the new Abseil may require an additional target to be linked. This target is `-labseil_dll`.
 
-On 9th August 2024, The changes to ``enigma-dev/CommandLine/emake/Makefile`` fixed the linking issues and now my tests which I wrote on Ubuntu VM are passing on my Arch Linux machine.
+On August 9, 2024, I updated the `enigma-dev/CommandLine/emake/Makefile`, which resolved the linking issues. Consequently, the tests I wrote on my Ubuntu VM are now passing on my Arch Linux machine.
 
-## ``grpc_cpp_plugin`` path
+## Path for `grpc_cpp_plugin`
 
-If you take a look at this line here: [shared/protos/CMakeLists.txt#L30](https://github.com/enigma-dev/enigma-dev/blob/3590b681f20174ccf24156769d2bbb94b10673e3/shared/protos/CMakeLists.txt#L30), you will see that the path to ``grpc_cpp_plugin`` is hardcoded. As we installed the libraries to ``/usr/local``, we need to change this path to ``/usr/local/bin/grpc_cpp_plugin``.
+If you examine this line in the [shared/protos/CMakeLists.txt](https://github.com/enigma-dev/enigma-dev/blob/3590b681f20174ccf24156769d2bbb94b10673e3/shared/protos/CMakeLists.txt#L30), you will notice that the path to `grpc_cpp_plugin` is hardcoded. Since we installed the libraries to `/usr/local`, we need to modify this path to `/usr/local/bin/grpc_cpp_plugin`.
 
-I provided this PR [#2387](https://github.com/enigma-dev/enigma-dev/pull/2387) to fix this issue.
+I have submitted a pull request [#2387](https://github.com/enigma-dev/enigma-dev/pull/2387) to address this issue.
 
-Now you can add this line in ``RadialGM/CMakeLists.txt``:
+You can now include the following line in `RadialGM/CMakeLists.txt`:
 
 ```cmake
 set(GRPC_EXE "/usr/local/bin/grpc_cpp_plugin")
 ```
 
-## Moving To RGM
+## Transitioning to RGM
 
-The next step is RGM. RGM uses CMake build system and powered by Qt5. When running CMake, I got this error:
+The next phase involves transitioning to RGM, which utilizes the CMake build system and is powered by Qt5. While running CMake, I encountered the following error:
 
 ```
 [ 76%] Linking CXX executable emake
@@ -171,38 +173,38 @@ The next step is RGM. RGM uses CMake build system and powered by Qt5. When runni
 /usr/bin/ld: /usr/local/lib/libabseil_dll.so.2407.0.0: error adding symbols: DSO missing from command line
 ```
 
-That's the absl again. The same change I did to ``enigma-dev/CommandLine/emake/Makefile`` should be done to ``RadialGM/Submodules/enigma-dev/CommandLine/emake/CMakeLists.txt``, however, I need to do it CMake style.
+The issue again pertains to Abseil. To resolve this, I need to replicate the change I made in `enigma-dev/CommandLine/emake/Makefile` within the `RadialGM/Submodules/enigma-dev/CommandLine/emake/CMakeLists.txt` file, but in a CMake-friendly manner:
 
 ```cmake
-# Find absl
+# Find Abseil
 find_package(absl CONFIG REQUIRED)
 target_link_libraries(${CLI_TARGET} PRIVATE absl::base absl::strings absl::synchronization absl::time absl::status absl::statusor)
 ```
 
-## RGM Build
+## Building RGM
 
-Now, build and linking ``emake`` is done. I can now leave my Ubuntu VM and move back to my Arch Linux machine. The next step is to build RGM.
+With the linking of `emake` now successfully completed, I can leave my Ubuntu VM and return to my Arch Linux machine to proceed with building RGM.
 
-As Robert merged a last PR without checking the CI, there are a lot of cleanup that must be done in order for RGM to build properly. I provided this PR [#238](https://github.com/enigma-dev/RadialGM/pull/238) to fix this issue.
+However, Robert merged a recent pull request without ensuring CI checks, resulting in several clean-up tasks necessary for RGM to build correctly. I submitted pull request [#238](https://github.com/enigma-dev/RadialGM/pull/238) to address these issues.
 
-The above PR contains many changes as follows:
+This pull request includes several important changes:
 
-- Linking [nodeeditor](https://github.com/k0T0z/nodeeditor) library to RGM.
-- Multiple fixes to the Room Editor.
-- Fixed and improved the Server Plugin.
-- Multiple fixes to the CMake build system.
+- Linking the [nodeeditor](https://github.com/k0T0z/nodeeditor) library to RGM.
+- Implementing multiple fixes to the Room Editor.
+- Enhancing the Server Plugin.
+- Making various improvements to the CMake build system.
 
-On 13th August 2024, RGM can be built without any issues.
+As of August 13, 2024, RGM can now be built without any issues.
 
-## Runtime Nightmare
+## Runtime Challenges
 
-Now, RGM can be built without issues. However, life still doesn't want to surrender. When running RGM, I got this error:
+While RGM can now be built successfully, additional challenges persist. Upon attempting to run RGM, I encountered the following error:
 
 ```
 ./RadialGM: error while loading shared libraries: libEGM.so: cannot open shared object file: No such file or directory
 ```
 
-Let's see the ldd result:
+To investigate further, I ran the following command:
 
 ```bash
 ldd RadialGM
@@ -305,16 +307,14 @@ ldd RadialGM
 > libunistring.so.5 => /usr/lib/libunistring.so.5 (0x0000796330634000)
 > libblkid.so.1 => /usr/lib/libblkid.so.1 (0x00007963305fb000)
 
-
-The not found libraries are all engima-dev libraries. I need to export the path to the libraries by adding this line to my ``.bashrc`` file:
+The output indicated that the missing libraries are all related to `enigma-dev`. To rectify this, I need to export the path to these libraries by adding the following line to my `.bashrc` file:
 
 ```bash
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/RadialGM/Submodules/enigma-dev
 ```
 
-Note: Add your own path to the libraries.
+*Note: Remember to replace `/path/to` with the actual path to your libraries.*
 
-Now everything is fine:
 
 > linux-vdso.so.1 (0x000078394efc5000)
 > libpugixml.so.1 => /usr/lib/libpugixml.so.1 (0x000078394ef5f000)
@@ -415,7 +415,7 @@ Now everything is fine:
 > libunistring.so.5 => /usr/lib/libunistring.so.5 (0x0000783946db8000)
 > libblkid.so.1 => /usr/lib/libblkid.so.1 (0x0000783946d7f000)
 
-Now, another issue appeared when trying to run RGM:
+With this adjustment, everything appeared to be in order. However, another issue arose when attempting to run RGM:
 
 ```
 WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
@@ -423,7 +423,7 @@ E0000 00:00:1723829087.769865   68641 metrics.cc:49] Metric name grpc.lb.wrr.rr_
 Aborted (core dumped)
 ```
 
-The above error doesn't help much anyway. Robert suggested that not linking gRPC and proceed to work on the UI part without the engine. Of course, RGM built correctly without gRPC but I need to fix the gRPC issue to be able to send and receive messages between RGM and ``emake``.
+This error message, while not particularly helpful, indicated a deeper issue. Robert suggested that I proceed without linking gRPC and focus on developing the UI portion independently of the engine. Although RGM built successfully without gRPC, resolving this gRPC issue remains crucial for enabling communication between RGM and `emake`.
 
 ![GSoC 2024 RGM Without gRPC](/gsoc24-blog/assets/gsoc24-rgm-without-grpc.png)
 

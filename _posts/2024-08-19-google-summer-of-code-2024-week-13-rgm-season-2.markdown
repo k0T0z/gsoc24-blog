@@ -7,42 +7,42 @@ categories: blog
 
 This blog post is related to my Google Summer of Code 2024 project: [Procedural Fragment Shader Generation Using Classic Machine Learning][my-google-summer-of-code-2024-project].
 
-## Local Not Needed
+## Local Not Required
 
-That error is because of grpc not loading correctly. Anyway, I thought at first that this is due to the manually built packages so let's clean them up and use ``pacman``. I already know what to do.
+The error I encountered stemmed from gRPC not loading correctly. Initially, I suspected that this issue was due to the manually built packages, so I decided to clean them up and switch to using `pacman`. I knew the steps to take.
 
-Back to the absl link error, just like linking ``-labseil_dll`` worked, after using trail and error, I found that linking ``-labsl_log_internal_message -labsl_log_internal_check_op`` fixed the issue. Anyway, I can now run RGM with the pacman installed packages, however, the same error is still there.
+Regarding the Abseil linking error, similar to how linking `-labseil_dll` resolved a previous issue, I discovered through trial and error that adding `-labsl_log_internal_message` and `-labsl_log_internal_check_op` also fixed the problem. Consequently, I could run RGM with the packages installed via `pacman`, but unfortunately, the same error persisted.
 
-## Back To The Runtime Issue
+## Revisiting the Runtime Issue
 
-When I face a problem, I can't get it out of my brain. Although, Robert told me to continue my work and not worry about it now, I kept trying on it. On 17th August 2024, I managed to fix the runtime issue by luck (الحمدلله). Now let me explain and wrap up this whole thing.
+When I encounter a problem, it tends to occupy my thoughts until I find a solution. Despite Robert advising me to focus on my work and not dwell on the issue, I continued to investigate. By sheer luck, on August 17, 2024, I managed to resolve the runtime issue (الحمدلله). Let me explain the situation and summarize the entire process.
 
-In CMake, we have two ways for finding a package or in other words, two files to use for finding a package. The first one is ``Find<package>.cmake`` and the second one is ``<package>Config.cmake``. What I know about these files at this point is that the second one is the modern way to find a package, however, as ENIGMA is 16 years old, it finds packages using the first way.
+In CMake, there are two methods for locating a package, represented by two types of files: `Find<package>.cmake` and `<package>Config.cmake`. While the latter is considered the modern approach, ENIGMA, being 16 years old, still relies on the former method to find packages.
 
-I worked on RGM and fixed some issues inside its CMake files and one of them is the way for finding gRPC and protobuf. The thing is that I didn't check other CMakes. More specifically, I didn't check ``enigma-dev/shared/CMakeLists.txt``, ``enigma-dev/shared/protos/CMakeLists.txt``, ``enigma-dev/CommandLine/emake/CMakeLists.txt``, and ``enigma-dev/CommandLine/libEGM/CMakeLists.txt``. All these files were using the following way to find gRPC and protobuf:
+As I worked on RGM, I addressed some issues within its CMake files, particularly regarding how to locate gRPC and protobuf. However, I neglected to check other CMake files, specifically `enigma-dev/shared/CMakeLists.txt`, `enigma-dev/shared/protos/CMakeLists.txt`, `enigma-dev/CommandLine/emake/CMakeLists.txt`, and `enigma-dev/CommandLine/libEGM/CMakeLists.txt`. All of these files utilized the following method to find gRPC and protobuf:
 
 ```cmake
 include(FindProtobuf)
 target_link_libraries(${LIB_EGM} PRIVATE ${Protobuf_LIBRARY})
 ```
 
-or
+or 
 
 ```cmake
 include_directories(${Protobuf_INCLUDE_DIRS})
 target_link_libraries(${LIB_PROTO} PRIVATE ${Protobuf_LIBRARIES})
 ```
 
-I replaced these lines with the following:
+I replaced these lines with:
 
 ```cmake
 find_package(Protobuf CONFIG REQUIRED)
 target_link_libraries(${LIB_PROTO} PRIVATE protobuf::libprotobuf)
 ```
 
-The new lines are working fine if you used the system packages or the local ones.
+These new lines function correctly whether using system packages or local ones.
 
-Now, how is this related to this runtime issue? The thing is that I don't know what are the differences between these two files however, I do know that mixing them up will cause this runtime issue. This is not a predictable issue because everything was fine, linking completed successfully, nothing wrong and if you take a look at the error above, I bet that you will be able to find the issue. Even by debugging the code, take a look at the stack trace:
+So, how is this related to the runtime issue? Although I’m unsure about the exact differences between the two file types, I do know that mixing them can lead to runtime errors. This issue is particularly unpredictable because everything appeared to work fine during the linking process, which completed successfully. However, if you look at the error output, you might be able to identify the problem. Even after debugging the code and examining the stack trace:
 
 ```
 [k0t0z@archlinux build]$ gdb ./RadialGM
@@ -70,7 +70,7 @@ Program received signal SIGABRT, Aborted.
 #12 0x0000000000000000 in ?? ()
 ```
 
-Found the issue? I bet you won't and I fixed this issue by luck. Robert, Kartik, and I tried many many solutions and options but nothing worked until I fixed it on 17th August 2024. Robert gave a thumbs up to every message I posted this day. It was challenging but fun.
+Did you spot the issue? It’s challenging, and I managed to resolve it purely by chance. Robert, Kartik, and I explored numerous solutions, but nothing worked until I finally fixed it on August 17, 2024. Robert acknowledged my progress with a thumbs-up for every message I sent that day. The process was challenging yet enjoyable.
 
 > kartik — 17/08/2024 20:23
 
@@ -85,28 +85,29 @@ Found the issue? I bet you won't and I fixed this issue by luck. Robert, Kartik,
 > im giving every comment here a thumbs up because that is some good stuff!
 > now onward and upward with the project
 
-Anyway, building RGM is done now and I am ready to work on the UI part.
+Building RGM is now complete, and I am ready to focus on the UI development.
 
-By the way, I want to note that, these changes won't work on Ubuntu as Ubuntu is 1000 versions behind Arch Linux. This means you will have to build absl, protobuf, and gRPC manually if you are using Ubuntu.
+I would like to point out that the recent changes will not work on Ubuntu, as it lags significantly behind Arch Linux by about 1,000 versions. This means that if you are using Ubuntu, you will need to build Abseil, protobuf, and gRPC manually.
 
-Inside here, I have decided also to refactor the whole CMake build system. All the changes now can be found inside these two PRs:
+Additionally, I have decided to refactor the entire CMake build system. All the changes can be found in the following two pull requests:
 
 - [#238](https://github.com/enigma-dev/RadialGM/pull/238)
 - [#2399](https://github.com/enigma-dev/enigma-dev/pull/2399)
 
-Now you know why I called it [Google Summer of Code 2024 Week 7, 8, and 9: My Boogeyperiod](https://k0t0z.github.io/gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-8-and-9-my-boogeyperiod.html). This is because I spent nearly 1.5 months on this issue.
+This brings me to the reason I titled my update [Google Summer of Code 2024 Week 7, 8, and 9: My Boogeyperiod](https://k0t0z.github.io/gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-8-and-9-my-boogeyperiod.html)—I spent nearly 1.5 months tackling this issue.
 
-## Weird stuff
+## Unexpected Issues
 
-Even though we fixed emake, if we used vscode tasks to build emake, I got this error:
+Even after fixing emake, I encountered an error when trying to build emake using VSCode tasks:
 
 ```
 /usr/local/bin/grpc_cpp_plugin: error while loading shared libraries: libgrpc_plugin_support.so.1.65: cannot open shared object file: No such file or directory
 --grpc_out: protoc-gen-grpc: Plugin failed with status code 127.
 ```
 
-So weird issue because if I ran the same command from terminal, it runs without problems. I can't see anything wrong with my files:
+This issue is perplexing because the same command runs without problems when executed directly from the terminal. I do not see anything wrong with my configuration files:
 
+**launch.json**:
 ```json
 {
     // Use IntelliSense to learn about possible attributes.
@@ -119,13 +120,12 @@ So weird issue because if I ran the same command from terminal, it runs without 
           "type": "cppdbg",
           "request": "launch",
           "program": "${workspaceFolder}/test-runner",
-          "args": [ "--gtest_filter=VisualShaderTest.*" ],
+          "args": ["--gtest_filter=VisualShaderTest.*"],
           "stopAtEntry": false,
           "cwd": "${workspaceFolder}",
           "environment": [],
           "externalConsole": false,
-          "setupCommands":
-          [
+          "setupCommands": [
             {
               "description": "Enable pretty-printing for gdb",
               "text": "-enable-pretty-printing",
@@ -138,6 +138,7 @@ So weird issue because if I ran the same command from terminal, it runs without 
 }
 ```
 
+**tasks.json**:
 ```json
 {
     // See https://go.microsoft.com/fwlink/?LinkId=733558
@@ -149,7 +150,7 @@ So weird issue because if I ran the same command from terminal, it runs without 
             "group": "build",
             "type": "shell",
             "command": "make",
-            "args": [ "test-runner" ],
+            "args": ["test-runner"]
         }
     ]
 }
@@ -157,26 +158,29 @@ So weird issue because if I ran the same command from terminal, it runs without 
 
 ## Debugging RGM: [#238](https://github.com/enigma-dev/RadialGM/pull/238)
 
-Before talking about the UI integration, let's talk about how to set breakpoints in RGM. The only way I found easy is to use Microsoft Visual Studio Code's ability with CMake power. All I had to do is adding this commit [fc9a84a78f6d43e24a3edf43917bcf8054b90b16](https://github.com/enigma-dev/RadialGM/pull/238/commits/fc9a84a78f6d43e24a3edf43917bcf8054b90b16) and [ebc4031dbf0ef4b883a6de1a1835d19c0e330ce0](https://github.com/enigma-dev/RadialGM/pull/238/commits/ebc4031dbf0ef4b883a6de1a1835d19c0e330ce0), then using CMake extension from the left panel, set the build variant to `Debug` and then ``configure`` and ``build``. After the build is done, you can then debug the ``RadialGM-Debug`` executable.
+Before diving into the UI integration, let's discuss how to set breakpoints in RGM. I found it easiest to leverage Microsoft Visual Studio Code’s integration with CMake. By adding the following commits—[fc9a84a78f6d43e24a3edf43917bcf8054b90b16](https://github.com/enigma-dev/RadialGM/pull/238/commits/fc9a84a78f6d43e24a3edf43917bcf8054b90b16) and [ebc4031dbf0ef4b883a6de1a1835d19c0e330ce0](https://github.com/enigma-dev/RadialGM/pull/238/commits/ebc4031dbf0ef4b883a6de1a1835d19c0e330ce0), I was able to set the build variant to `Debug` using the CMake extension from the left panel. After configuring and building, you can debug the `RadialGM-Debug` executable.
 
 ## EMake Not Found: [#238](https://github.com/enigma-dev/RadialGM/pull/238)
 
-While working on this issue, I decided to refactor the whole CMake build system and improve it. These two commits specifically [b01c765404fb91a4d8db3dfe79195b2fc4041af0](https://github.com/enigma-dev/RadialGM/pull/238/commits/b01c765404fb91a4d8db3dfe79195b2fc4041af0) and [4774b30cc96ef7f993945fa831990b45630d7461](https://github.com/enigma-dev/enigma-dev/pull/2399/commits/4774b30cc96ef7f993945fa831990b45630d7461).
+While addressing this issue, I undertook a comprehensive refactor of the CMake build system to enhance its functionality. Two specific commits are noteworthy: [b01c765404fb91a4d8db3dfe79195b2fc4041af0](https://github.com/enigma-dev/RadialGM/pull/238/commits/b01c765404fb91a4d8db3dfe79195b2fc4041af0) and [4774b30cc96ef7f993945fa831990b45630d7461](https://github.com/enigma-dev/enigma-dev/pull/2399/commits/4774b30cc96ef7f993945fa831990b45630d7461).
 
-It is very studpid that I was trying to ``start`` a directory not an executable haha. The fix to EMake not found is provided here in this commit [5ec507b1d8ba82d763ad9e09f9ae9d93f8bff98e](https://github.com/enigma-dev/RadialGM/pull/238/commits/5ec507b1d8ba82d763ad9e09f9ae9d93f8bff98e). I just modified:
+It was rather silly of me to try to `start` a directory instead of an executable! The fix for the EMake not found issue is detailed in this commit: [5ec507b1d8ba82d763ad9e09f9ae9d93f8bff98e](https://github.com/enigma-dev/RadialGM/pull/238/commits/5ec507b1d8ba82d763ad9e09f9ae9d93f8bff98e), where I modified the code from:
+
 ```cpp
 process->start(program, arguments);
 ```
-to
+
+to:
+
 ```cpp
 process->start(emakeFileInfo.filePath(), arguments);
 ```
 
-You can try my playground project [qprocesstest.zip](/gsoc24-blog/assets/qprocesstest.zip).
+You can also explore my playground project [qprocesstest.zip](/gsoc24-blog/assets/qprocesstest.zip).
 
-I made also multiple improvements in this commit related to some memory leaks and some other issues. For example, I fixed the search paths for the emake executable and I added a little bit a hack to the build system to move all built files to ENIGMA's submodule root, as emake depends on those files. The fix for this is here: [3ef991e31893e89bfa868a259142f5502afac6fa](https://github.com/enigma-dev/RadialGM/pull/238/commits/3ef991e31893e89bfa868a259142f5502afac6fa) and by the way, i generalized it afterwords.
+Additionally, I made multiple improvements in this commit to address memory leaks and other issues. For instance, I fixed the search paths for the emake executable and introduced a workaround in the build system to relocate all built files to the root of ENIGMA's submodule, as emake relies on those files. The fix for this can be found in this commit: [3ef991e31893e89bfa868a259142f5502afac6fa](https://github.com/enigma-dev/RadialGM/pull/238/commits/3ef991e31893e89bfa868a259142f5502afac6fa), and I generalized it afterward.
 
-I tried to run a game now but it failed as expected haha. Robert just told me that he was able to build an empty game with RGM and that's true. Additionally, he told me that RGM only missing the extensions support that must be passed as a csv data to the server (emake).
+I attempted to run a game, but as expected, it failed. Robert mentioned that he successfully built an empty game with RGM, which is true. He also pointed out that RGM is currently lacking support for extensions that must be passed as CSV data to the server (emake).
 
 > R0bert — 24/08/2024 20:10
 
@@ -192,9 +196,9 @@ I tried to run a game now but it failed as expected haha. Robert just told me th
 
 ## [nodeeditor](https://github.com/k0T0z/nodeeditor) Integration: [#238](https://github.com/enigma-dev/RadialGM/pull/238)
 
-Anyway, the shader editor integration doesn't require emake to be up and running, it is all about GUI stuff. I will try to add tests to the shader editor as well, just to make sure that it is working as expected.
+The integration of the shader editor does not require emake to be operational, as it primarily involves GUI components. I also plan to add tests for the shader editor to ensure it functions as expected.
 
-I managed to integrate the ``QtNodes`` library into RGM without issues. Just to note at the time of writing this there was an issue where the path to the shared library is unknown, so keep in mind that you might need to export the path to the shared library in your ``LD_LIBRARY_PATH``:
+I successfully integrated the **QtNodes** library into RGM without any issues. However, please note that at the time of this writing, there is a known issue regarding the path to the shared library being undefined. To resolve this, you may need to export the path to the shared library in your `LD_LIBRARY_PATH` environment variable. You can do this by running the following command:
 
 ```bash
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/RadialGM/build/lib
@@ -206,11 +210,11 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/RadialGM/build/lib
 
 ![QtNodes Finally Integrated](/gsoc24-blog/assets/qtnodes-finally-integrated.png)
 
-The project I used to test the integration is [qtnodestest.zip](/gsoc24-blog/assets/qtnodestest.zip).
+I used the project [qtnodestest.zip](/gsoc24-blog/assets/qtnodestest.zip) to test the integration.
 
-## RGM And ENIGMA
+## RGM and ENIGMA
 
-RGM invokes the server (emake) using QProcess technology. This server requires the shared packages that are built by ENIGMA. I have modified the build system to move the built files to the ENIGMA submodule root. Keep this in mind while developing RGM.
+RGM utilizes QProcess technology to invoke the server (emake). This server depends on shared packages that are built by ENIGMA. To facilitate this process, I modified the build system to move the built files to the root of the ENIGMA submodule. Please keep this in mind while developing RGM.
 
 ## Draft - Don't bother reading this section :)
 

@@ -9,7 +9,7 @@ This blog post is related to my Google Summer of Code 2024 project: [Procedural 
 
 ## ENIGMA and Google Protobuf
 
-ENIGMA depends on Protobuf is many things. RGM is considered to be a MVC application or Model View Controller. Every UI component of RGM is part of a proto message. This is also how ENIGMA serializes/deserializes its project files.
+ENIGMA relies on Protobuf for various functionalities. RGM is structured as a Model-View-Controller (MVC) application, where each UI component of RGM is represented as part of a Protobuf message. This approach is also how ENIGMA handles the serialization and deserialization of its project files.
 
 > Josh — 01/07/2024 at 08:14
 
@@ -36,13 +36,13 @@ ENIGMA depends on Protobuf is many things. RGM is considered to be a MVC applica
 
 ## The AI Agent Phases
 
-When reaching the ML part, there are 3 main phases that we need to consider:
+When we reach the machine learning component, there are three main phases to consider:
 
-1. Fixed nodes, fixed connections, variable parameters (Fixed-Node layout).
-2. Fixed nodes, variable connections, variable parameters.
-3. Variable nodes, variable connections, variable parameters.
+1. **Fixed nodes, fixed connections, variable parameters** (Fixed-Node layout).
+2. **Fixed nodes, variable connections, variable parameters**.
+3. **Variable nodes, variable connections, variable parameters**.
 
-Each phase should increase the complexity of the AI agent. The first phase is the easiest one. 
+Each phase progressively increases the complexity of the AI agent, with the first phase being the simplest.
 
 > Josh — 01/07/2024 at 09:20
 
@@ -67,9 +67,9 @@ Each phase should increase the complexity of the AI agent. The first phase is th
 
 ## ``VisualShader`` Class
 
-Now enough theory, let's talk about the important class I was working on during the past weeks.
+Now that we’ve covered the theory, let’s discuss the important class I have been working on over the past few weeks.
 
-The VisualShader class contains the graph and its main functionalities. As Josh said, these main functionalities should be part of the proto message, however, I like finishing it out and then refactoring. The ``Graph`` is a simple struct as follows:
+The **VisualShader** class encompasses the graph and its core functionalities. As Josh mentioned, these primary functionalities should ideally be included in the Protobuf message; however, I prefer to complete the implementation first and then refactor as needed. The **Graph** is structured simply, as follows:
 
 {% highlight cpp %}
 struct Graph {
@@ -78,26 +78,27 @@ struct Graph {
 } graph;
 {% endhighlight %}
 
-The main functions are:
+The main functions within the **VisualShader** class are as follows:
 
- - generate_shader
- - generate_preview_shader
- - generate_shader_for_each_node
+- **generate_shader**
+- **generate_preview_shader**
+- **generate_shader_for_each_node**
 
-The ``generate_shader`` function is the main function that will be called by the user. It will contains a recursively algorithm that will go through the graph starting from the output node. The ``Output`` node is the special node in the graph as it can't be added or deleted. It has the id of 0.
+The **generate_shader** function serves as the primary entry point for users. It contains a recursive algorithm that traverses the graph, starting from the output node. The **Output** node is a special node in the graph; it cannot be added or deleted and has an ID of 0.
 
-The ``generate_preview_shader`` is a simplified version of the ``generate_shader`` function. It will be used to generate the shader for the preview window. The preview window is expected to use ENIGMA's Graphics System to render the shader. It is necessary because it can generate the shader starting from any node in the graph.
+The **generate_preview_shader** function is a simplified version of **generate_shader**. It is designed to generate the shader for the preview window, which will utilize ENIGMA's Graphics System for rendering. This function is essential because it can generate the shader starting from any node in the graph.
 
-Both functions will call the ``generate_shader_for_each_node`` function. This function will be called for each node in the graph. It will generate the shader for the node and its children.
+Both **generate_shader** and **generate_preview_shader** will call the **generate_shader_for_each_node** function. This function is invoked for each node in the graph, generating the shader for that node and its children.
 
-Now let's walk through the ``generate_shader`` function. In order to generate the shader code correctly, first we have to separate the shader code into 3 parts:
- - global code
- - global code for each node
- - local code for each node
+Now, let’s delve into the **generate_shader** function. To generate the shader code accurately, we first need to separate the code into three distinct parts:
 
-The ``global code`` must be generated once. So if we have a node that is used multiple times in the graph, we don't want to generate the code for it multiple times. The ``global code for each node`` is the code that is generated for each node in the graph. The ``local code for each node`` is the code that is generated for each node and its children.
+- **Global code**
+- **Global code for each node**
+- **Local code for each node**
 
-That's why at the start of the function I created multiple buffers to store the code and send them by reference to the recursive function.
+The **global code** must be generated only once. Therefore, if a node is used multiple times in the graph, we want to avoid generating the code for it repeatedly. The **global code for each node** pertains to the code generated for each node in the graph, while the **local code for each node** is specific to each node and its children.
+
+To facilitate this, I created multiple buffers at the start of the function to store the code and pass them by reference to the recursive function.
 
 {% highlight cpp %}
 std::string global_code;
@@ -105,7 +106,7 @@ std::string global_code_per_node;
 std::string shader_code;
 {% endhighlight %}
 
-Another important step that I need to mention is that the connections are stored inside ``std::vector``. This will increase the time complexity of the algorithm. This can be solved by the following snippet:
+Another important aspect to mention is that the connections are stored within a `std::vector`. While this approach provides flexibility, it can increase the time complexity of the algorithm. However, this issue can be addressed using the following snippet:
 
 {% highlight cpp %}
 std::map<ConnectionKey, const Connection*> input_connections;
@@ -129,11 +130,11 @@ for (const Connection& c : g->connections) {
 }
 {% endhighlight %}
 
-Now, we can call ``generate_shader_for_each_node`` function for the output node. The function will be called recursively for each node in the graph. First we check the inputs of the current node until we reach a node that has no inputs (the input node). Then we generate the code for the node and its children.
+Now, we can call the **generate_shader_for_each_node** function for the output node. This function will be executed recursively for each node in the graph. We begin by checking the inputs of the current node until we reach a node that has no inputs (the input node). Once we identify such a node, we proceed to generate the code for that node and its children.
 
-The ``generate_shader`` function took ``160 μs`` to generate the shader for the graph in the ``VisualShaderTest.Test_generate_shader`` test. I can improve this time however, as I said, I want to waste ZERO time here.
+In the **VisualShaderTest.Test_generate_shader** test, the **generate_shader** function took **160 μs** to generate the shader for the graph. While I believe there is room for improvement in this time, my priority is to ensure that no time is wasted during this process.
 
-The ``ConnectionKey`` union is defined as follows:
+The **ConnectionKey** union is defined as follows:
 
 {% highlight cpp %}
 union ConnectionKey {
@@ -148,13 +149,13 @@ union ConnectionKey {
 
 ![Connection Key Theory](/gsoc24-blog/assets/connection-key-theory.png)
 
-This union will be used as a key for each ``Connection`` object in ``std::map``. The key is a 64-bit integer that contains the node id in the first 32 bits and the port id in the second 32 bits. This will allow us to search for the connection in ``O(1)`` time complexity using only a node id and a port id.
+This union will serve as the key for each **Connection** object in a `std::map`. The key is a 64-bit integer, with the first 32 bits representing the node ID and the second 32 bits representing the port ID. This structure allows us to efficiently search for connections in constant time, **O(1)**, using just the node ID and port ID.
 
 ## Changing The Structure Of The Project
 
-After talking with Greg, I found out that anything inside ``ENIGMAsystem/`` must provide user functions. The EDL functions that the game developer will use. The ``VisualShader`` class is actually a class that will be used by RGM only. So, I moved the class to ``ENIGMAsystem/shared/ResourceTransformations/VisualShader/`` as Josh recommended.
+After discussing with Greg, I learned that anything within the `ENIGMAsystem/` directory must provide user-facing functions, specifically the EDL functions that game developers will use. Since the **VisualShader** class is intended for use by RGM only, I followed Josh's recommendation and moved the class to `ENIGMAsystem/shared/ResourceTransformations/VisualShader/`.
 
-The tests as well must be part of ``test-runner`` not ``emake-tests``. I will move them to ``CommandLine/testing/Tests/``.
+Additionally, the tests for this class should be part of the `test-runner` instead of `emake-tests`, so I will relocate them to `CommandLine/testing/Tests/`.
 
 ```
 
