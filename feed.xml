@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/" rel="alternate" type="text/html" /><updated>2024-10-07T19:15:12+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml</id><title type="html">k0T0z</title><subtitle>Just a place for me to dump my thoughts</subtitle><entry><title type="html">Google Summer of Code 2024 Week 18 and 19: Wrapping Up and Final Evaluation</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 18 and 19: Wrapping Up and Final Evaluation" /><published>2024-09-22T21:00:00+00:00</published><updated>2024-09-22T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/" rel="alternate" type="text/html" /><updated>2024-10-08T15:05:08+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml</id><title type="html">k0T0z</title><subtitle>Just a place for me to dump my thoughts</subtitle><entry><title type="html">Google Summer of Code 2024 Week 18 and 19: Wrapping Up and Final Evaluation</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 18 and 19: Wrapping Up and Final Evaluation" /><published>2024-09-22T21:00:00+00:00</published><updated>2024-09-22T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
 <p>My final evaluation report: <a href="https://docs.google.com/document/d/1ahKWo3m9fgqAfR9a3cqaIA08Sns05O68nhalpMNjDd8/edit?usp=sharing">Procedural Fragment Shader Generation Using Classic Machine Learning Google Summer Of Code 2024 Final Report</a>.</p>
 
@@ -350,19 +350,19 @@ i saw mentor thread talking about that</p>
 
 <p>This reinforces our focus on delivering a robust core implementation rather than expanding scope.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 13: RGM, Season 2</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/18/google-summer-of-code-2024-week-13-rgm-season-2.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 13: RGM, Season 2" /><published>2024-08-18T21:00:00+00:00</published><updated>2024-08-18T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/18/google-summer-of-code-2024-week-13-rgm-season-2</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/18/google-summer-of-code-2024-week-13-rgm-season-2.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
-<h2 id="local-not-needed">Local Not Needed</h2>
+<h2 id="local-not-required">Local Not Required</h2>
 
-<p>That error is because of grpc not loading correctly. Anyway, I thought at first that this is due to the manually built packages so let’s clean them up and use <code class="language-plaintext highlighter-rouge">pacman</code>. I already know what to do.</p>
+<p>The error I encountered stemmed from gRPC not loading correctly. Initially, I suspected that this issue was due to the manually built packages, so I decided to clean them up and switch to using <code class="language-plaintext highlighter-rouge">pacman</code>. I knew the steps to take.</p>
 
-<p>Back to the absl link error, just like linking <code class="language-plaintext highlighter-rouge">-labseil_dll</code> worked, after using trail and error, I found that linking <code class="language-plaintext highlighter-rouge">-labsl_log_internal_message -labsl_log_internal_check_op</code> fixed the issue. Anyway, I can now run RGM with the pacman installed packages, however, the same error is still there.</p>
+<p>Regarding the Abseil linking error, similar to how linking <code class="language-plaintext highlighter-rouge">-labseil_dll</code> resolved a previous issue, I discovered through trial and error that adding <code class="language-plaintext highlighter-rouge">-labsl_log_internal_message</code> and <code class="language-plaintext highlighter-rouge">-labsl_log_internal_check_op</code> also fixed the problem. Consequently, I could run RGM with the packages installed via <code class="language-plaintext highlighter-rouge">pacman</code>, but unfortunately, the same error persisted.</p>
 
-<h2 id="back-to-the-runtime-issue">Back To The Runtime Issue</h2>
+<h2 id="revisiting-the-runtime-issue">Revisiting the Runtime Issue</h2>
 
-<p>When I face a problem, I can’t get it out of my brain. Although, Robert told me to continue my work and not worry about it now, I kept trying on it. On 17th August 2024, I managed to fix the runtime issue by luck (الحمدلله). Now let me explain and wrap up this whole thing.</p>
+<p>When I encounter a problem, it tends to occupy my thoughts until I find a solution. Despite Robert advising me to focus on my work and not dwell on the issue, I continued to investigate. By sheer luck, on August 17, 2024, I managed to resolve the runtime issue (الحمدلله). Let me explain the situation and summarize the entire process.</p>
 
-<p>In CMake, we have two ways for finding a package or in other words, two files to use for finding a package. The first one is <code class="language-plaintext highlighter-rouge">Find&lt;package&gt;.cmake</code> and the second one is <code class="language-plaintext highlighter-rouge">&lt;package&gt;Config.cmake</code>. What I know about these files at this point is that the second one is the modern way to find a package, however, as ENIGMA is 16 years old, it finds packages using the first way.</p>
+<p>In CMake, there are two methods for locating a package, represented by two types of files: <code class="language-plaintext highlighter-rouge">Find&lt;package&gt;.cmake</code> and <code class="language-plaintext highlighter-rouge">&lt;package&gt;Config.cmake</code>. While the latter is considered the modern approach, ENIGMA, being 16 years old, still relies on the former method to find packages.</p>
 
-<p>I worked on RGM and fixed some issues inside its CMake files and one of them is the way for finding gRPC and protobuf. The thing is that I didn’t check other CMakes. More specifically, I didn’t check <code class="language-plaintext highlighter-rouge">enigma-dev/shared/CMakeLists.txt</code>, <code class="language-plaintext highlighter-rouge">enigma-dev/shared/protos/CMakeLists.txt</code>, <code class="language-plaintext highlighter-rouge">enigma-dev/CommandLine/emake/CMakeLists.txt</code>, and <code class="language-plaintext highlighter-rouge">enigma-dev/CommandLine/libEGM/CMakeLists.txt</code>. All these files were using the following way to find gRPC and protobuf:</p>
+<p>As I worked on RGM, I addressed some issues within its CMake files, particularly regarding how to locate gRPC and protobuf. However, I neglected to check other CMake files, specifically <code class="language-plaintext highlighter-rouge">enigma-dev/shared/CMakeLists.txt</code>, <code class="language-plaintext highlighter-rouge">enigma-dev/shared/protos/CMakeLists.txt</code>, <code class="language-plaintext highlighter-rouge">enigma-dev/CommandLine/emake/CMakeLists.txt</code>, and <code class="language-plaintext highlighter-rouge">enigma-dev/CommandLine/libEGM/CMakeLists.txt</code>. All of these files utilized the following method to find gRPC and protobuf:</p>
 
 <div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">include</span><span class="p">(</span>FindProtobuf<span class="p">)</span>
 <span class="nb">target_link_libraries</span><span class="p">(</span><span class="si">${</span><span class="nv">LIB_EGM</span><span class="si">}</span> PRIVATE <span class="si">${</span><span class="nv">Protobuf_LIBRARY</span><span class="si">}</span><span class="p">)</span>
@@ -374,15 +374,15 @@ i saw mentor thread talking about that</p>
 <span class="nb">target_link_libraries</span><span class="p">(</span><span class="si">${</span><span class="nv">LIB_PROTO</span><span class="si">}</span> PRIVATE <span class="si">${</span><span class="nv">Protobuf_LIBRARIES</span><span class="si">}</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>I replaced these lines with the following:</p>
+<p>I replaced these lines with:</p>
 
 <div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">find_package</span><span class="p">(</span>Protobuf CONFIG REQUIRED<span class="p">)</span>
 <span class="nb">target_link_libraries</span><span class="p">(</span><span class="si">${</span><span class="nv">LIB_PROTO</span><span class="si">}</span> PRIVATE protobuf::libprotobuf<span class="p">)</span>
 </code></pre></div></div>
 
-<p>The new lines are working fine if you used the system packages or the local ones.</p>
+<p>These new lines function correctly whether using system packages or local ones.</p>
 
-<p>Now, how is this related to this runtime issue? The thing is that I don’t know what are the differences between these two files however, I do know that mixing them up will cause this runtime issue. This is not a predictable issue because everything was fine, linking completed successfully, nothing wrong and if you take a look at the error above, I bet that you will be able to find the issue. Even by debugging the code, take a look at the stack trace:</p>
+<p>So, how is this related to the runtime issue? Although I’m unsure about the exact differences between the two file types, I do know that mixing them can lead to runtime errors. This issue is particularly unpredictable because everything appeared to work fine during the linking process, which completed successfully. However, if you look at the error output, you might be able to identify the problem. Even after debugging the code and examining the stack trace:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[k0t0z@archlinux build]$ gdb ./RadialGM
 
@@ -409,7 +409,7 @@ Program received signal SIGABRT, Aborted.
 #12 0x0000000000000000 in ?? ()
 </code></pre></div></div>
 
-<p>Found the issue? I bet you won’t and I fixed this issue by luck. Robert, Kartik, and I tried many many solutions and options but nothing worked until I fixed it on 17th August 2024. Robert gave a thumbs up to every message I posted this day. It was challenging but fun.</p>
+<p>Did you spot the issue? It’s challenging, and I managed to resolve it purely by chance. Robert, Kartik, and I explored numerous solutions, but nothing worked until I finally fixed it on August 17, 2024. Robert acknowledged my progress with a thumbs-up for every message I sent that day. The process was challenging yet enjoyable.</p>
 
 <blockquote>
   <p>kartik — 17/08/2024 20:23</p>
@@ -432,29 +432,30 @@ im giving every comment here a thumbs up because that is some good stuff!
 now onward and upward with the project</p>
 </blockquote>
 
-<p>Anyway, building RGM is done now and I am ready to work on the UI part.</p>
+<p>Building RGM is now complete, and I am ready to focus on the UI development.</p>
 
-<p>By the way, I want to note that, these changes won’t work on Ubuntu as Ubuntu is 1000 versions behind Arch Linux. This means you will have to build absl, protobuf, and gRPC manually if you are using Ubuntu.</p>
+<p>I would like to point out that the recent changes will not work on Ubuntu, as it lags significantly behind Arch Linux by about 1,000 versions. This means that if you are using Ubuntu, you will need to build Abseil, protobuf, and gRPC manually.</p>
 
-<p>Inside here, I have decided also to refactor the whole CMake build system. All the changes now can be found inside these two PRs:</p>
+<p>Additionally, I have decided to refactor the entire CMake build system. All the changes can be found in the following two pull requests:</p>
 
 <ul>
   <li><a href="https://github.com/enigma-dev/RadialGM/pull/238">#238</a></li>
   <li><a href="https://github.com/enigma-dev/enigma-dev/pull/2399">#2399</a></li>
 </ul>
 
-<p>Now you know why I called it <a href="https://k0t0z.github.io/gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-8-and-9-my-boogeyperiod.html">Google Summer of Code 2024 Week 7, 8, and 9: My Boogeyperiod</a>. This is because I spent nearly 1.5 months on this issue.</p>
+<p>This brings me to the reason I titled my update <a href="https://k0t0z.github.io/gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-8-and-9-my-boogeyperiod.html">Google Summer of Code 2024 Week 7, 8, and 9: My Boogeyperiod</a>—I spent nearly 1.5 months tackling this issue.</p>
 
-<h2 id="weird-stuff">Weird stuff</h2>
+<h2 id="unexpected-issues">Unexpected Issues</h2>
 
-<p>Even though we fixed emake, if we used vscode tasks to build emake, I got this error:</p>
+<p>Even after fixing emake, I encountered an error when trying to build emake using VSCode tasks:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/local/bin/grpc_cpp_plugin: error while loading shared libraries: libgrpc_plugin_support.so.1.65: cannot open shared object file: No such file or directory
 --grpc_out: protoc-gen-grpc: Plugin failed with status code 127.
 </code></pre></div></div>
 
-<p>So weird issue because if I ran the same command from terminal, it runs without problems. I can’t see anything wrong with my files:</p>
+<p>This issue is perplexing because the same command runs without problems when executed directly from the terminal. I do not see anything wrong with my configuration files:</p>
 
+<p><strong>launch.json</strong>:</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
     </span><span class="err">//</span><span class="w"> </span><span class="err">Use</span><span class="w"> </span><span class="err">IntelliSense</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">learn</span><span class="w"> </span><span class="err">about</span><span class="w"> </span><span class="err">possible</span><span class="w"> </span><span class="err">attributes.</span><span class="w">
     </span><span class="err">//</span><span class="w"> </span><span class="err">Hover</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">view</span><span class="w"> </span><span class="err">descriptions</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">existing</span><span class="w"> </span><span class="err">attributes.</span><span class="w">
@@ -466,13 +467,12 @@ now onward and upward with the project</p>
           </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cppdbg"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"program"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/test-runner"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"--gtest_filter=VisualShaderTest.*"</span><span class="w"> </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"--gtest_filter=VisualShaderTest.*"</span><span class="p">],</span><span class="w">
           </span><span class="nl">"stopAtEntry"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
           </span><span class="nl">"cwd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"environment"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
           </span><span class="nl">"externalConsole"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"setupCommands"</span><span class="p">:</span><span class="w">
-          </span><span class="p">[</span><span class="w">
+          </span><span class="nl">"setupCommands"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enable pretty-printing for gdb"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-enable-pretty-printing"</span><span class="p">,</span><span class="w">
@@ -485,6 +485,7 @@ now onward and upward with the project</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
+<p><strong>tasks.json</strong>:</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
     </span><span class="err">//</span><span class="w"> </span><span class="err">See</span><span class="w"> </span><span class="err">https://go.microsoft.com/fwlink/?LinkId=</span><span class="mi">733558</span><span class="w">
     </span><span class="err">//</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">documentation</span><span class="w"> </span><span class="err">about</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">tasks.json</span><span class="w"> </span><span class="err">format</span><span class="w">
@@ -495,7 +496,7 @@ now onward and upward with the project</p>
             </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shell"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"make"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"test-runner"</span><span class="w"> </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"test-runner"</span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -503,24 +504,27 @@ now onward and upward with the project</p>
 
 <h2 id="debugging-rgm-238">Debugging RGM: <a href="https://github.com/enigma-dev/RadialGM/pull/238">#238</a></h2>
 
-<p>Before talking about the UI integration, let’s talk about how to set breakpoints in RGM. The only way I found easy is to use Microsoft Visual Studio Code’s ability with CMake power. All I had to do is adding this commit <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/fc9a84a78f6d43e24a3edf43917bcf8054b90b16">fc9a84a78f6d43e24a3edf43917bcf8054b90b16</a> and <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/ebc4031dbf0ef4b883a6de1a1835d19c0e330ce0">ebc4031dbf0ef4b883a6de1a1835d19c0e330ce0</a>, then using CMake extension from the left panel, set the build variant to <code class="language-plaintext highlighter-rouge">Debug</code> and then <code class="language-plaintext highlighter-rouge">configure</code> and <code class="language-plaintext highlighter-rouge">build</code>. After the build is done, you can then debug the <code class="language-plaintext highlighter-rouge">RadialGM-Debug</code> executable.</p>
+<p>Before diving into the UI integration, let’s discuss how to set breakpoints in RGM. I found it easiest to leverage Microsoft Visual Studio Code’s integration with CMake. By adding the following commits—<a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/fc9a84a78f6d43e24a3edf43917bcf8054b90b16">fc9a84a78f6d43e24a3edf43917bcf8054b90b16</a> and <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/ebc4031dbf0ef4b883a6de1a1835d19c0e330ce0">ebc4031dbf0ef4b883a6de1a1835d19c0e330ce0</a>, I was able to set the build variant to <code class="language-plaintext highlighter-rouge">Debug</code> using the CMake extension from the left panel. After configuring and building, you can debug the <code class="language-plaintext highlighter-rouge">RadialGM-Debug</code> executable.</p>
 
 <h2 id="emake-not-found-238">EMake Not Found: <a href="https://github.com/enigma-dev/RadialGM/pull/238">#238</a></h2>
 
-<p>While working on this issue, I decided to refactor the whole CMake build system and improve it. These two commits specifically <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/b01c765404fb91a4d8db3dfe79195b2fc4041af0">b01c765404fb91a4d8db3dfe79195b2fc4041af0</a> and <a href="https://github.com/enigma-dev/enigma-dev/pull/2399/commits/4774b30cc96ef7f993945fa831990b45630d7461">4774b30cc96ef7f993945fa831990b45630d7461</a>.</p>
+<p>While addressing this issue, I undertook a comprehensive refactor of the CMake build system to enhance its functionality. Two specific commits are noteworthy: <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/b01c765404fb91a4d8db3dfe79195b2fc4041af0">b01c765404fb91a4d8db3dfe79195b2fc4041af0</a> and <a href="https://github.com/enigma-dev/enigma-dev/pull/2399/commits/4774b30cc96ef7f993945fa831990b45630d7461">4774b30cc96ef7f993945fa831990b45630d7461</a>.</p>
 
-<p>It is very studpid that I was trying to <code class="language-plaintext highlighter-rouge">start</code> a directory not an executable haha. The fix to EMake not found is provided here in this commit <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/5ec507b1d8ba82d763ad9e09f9ae9d93f8bff98e">5ec507b1d8ba82d763ad9e09f9ae9d93f8bff98e</a>. I just modified:</p>
+<p>It was rather silly of me to try to <code class="language-plaintext highlighter-rouge">start</code> a directory instead of an executable! The fix for the EMake not found issue is detailed in this commit: <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/5ec507b1d8ba82d763ad9e09f9ae9d93f8bff98e">5ec507b1d8ba82d763ad9e09f9ae9d93f8bff98e</a>, where I modified the code from:</p>
+
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">process</span><span class="o">-&gt;</span><span class="n">start</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="n">arguments</span><span class="p">);</span>
 </code></pre></div></div>
-<p>to</p>
+
+<p>to:</p>
+
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">process</span><span class="o">-&gt;</span><span class="n">start</span><span class="p">(</span><span class="n">emakeFileInfo</span><span class="p">.</span><span class="n">filePath</span><span class="p">(),</span> <span class="n">arguments</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>You can try my playground project <a href="/gsoc24-blog/assets/qprocesstest.zip">qprocesstest.zip</a>.</p>
+<p>You can also explore my playground project <a href="/gsoc24-blog/assets/qprocesstest.zip">qprocesstest.zip</a>.</p>
 
-<p>I made also multiple improvements in this commit related to some memory leaks and some other issues. For example, I fixed the search paths for the emake executable and I added a little bit a hack to the build system to move all built files to ENIGMA’s submodule root, as emake depends on those files. The fix for this is here: <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/3ef991e31893e89bfa868a259142f5502afac6fa">3ef991e31893e89bfa868a259142f5502afac6fa</a> and by the way, i generalized it afterwords.</p>
+<p>Additionally, I made multiple improvements in this commit to address memory leaks and other issues. For instance, I fixed the search paths for the emake executable and introduced a workaround in the build system to relocate all built files to the root of ENIGMA’s submodule, as emake relies on those files. The fix for this can be found in this commit: <a href="https://github.com/enigma-dev/RadialGM/pull/238/commits/3ef991e31893e89bfa868a259142f5502afac6fa">3ef991e31893e89bfa868a259142f5502afac6fa</a>, and I generalized it afterward.</p>
 
-<p>I tried to run a game now but it failed as expected haha. Robert just told me that he was able to build an empty game with RGM and that’s true. Additionally, he told me that RGM only missing the extensions support that must be passed as a csv data to the server (emake).</p>
+<p>I attempted to run a game, but as expected, it failed. Robert mentioned that he successfully built an empty game with RGM, which is true. He also pointed out that RGM is currently lacking support for extensions that must be passed as CSV data to the server (emake).</p>
 
 <blockquote>
   <p>R0bert — 24/08/2024 20:10</p>
@@ -544,9 +548,9 @@ so it’s decoupled</p>
 
 <h2 id="nodeeditor-integration-238"><a href="https://github.com/k0T0z/nodeeditor">nodeeditor</a> Integration: <a href="https://github.com/enigma-dev/RadialGM/pull/238">#238</a></h2>
 
-<p>Anyway, the shader editor integration doesn’t require emake to be up and running, it is all about GUI stuff. I will try to add tests to the shader editor as well, just to make sure that it is working as expected.</p>
+<p>The integration of the shader editor does not require emake to be operational, as it primarily involves GUI components. I also plan to add tests for the shader editor to ensure it functions as expected.</p>
 
-<p>I managed to integrate the <code class="language-plaintext highlighter-rouge">QtNodes</code> library into RGM without issues. Just to note at the time of writing this there was an issue where the path to the shared library is unknown, so keep in mind that you might need to export the path to the shared library in your <code class="language-plaintext highlighter-rouge">LD_LIBRARY_PATH</code>:</p>
+<p>I successfully integrated the <strong>QtNodes</strong> library into RGM without any issues. However, please note that at the time of this writing, there is a known issue regarding the path to the shared library being undefined. To resolve this, you may need to export the path to the shared library in your <code class="language-plaintext highlighter-rouge">LD_LIBRARY_PATH</code> environment variable. You can do this by running the following command:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/path/to/RadialGM/build/lib
 </code></pre></div></div>
@@ -561,11 +565,11 @@ so it’s decoupled</p>
 
 <p><img src="/gsoc24-blog/assets/qtnodes-finally-integrated.png" alt="QtNodes Finally Integrated" /></p>
 
-<p>The project I used to test the integration is <a href="/gsoc24-blog/assets/qtnodestest.zip">qtnodestest.zip</a>.</p>
+<p>I used the project <a href="/gsoc24-blog/assets/qtnodestest.zip">qtnodestest.zip</a> to test the integration.</p>
 
-<h2 id="rgm-and-enigma">RGM And ENIGMA</h2>
+<h2 id="rgm-and-enigma">RGM and ENIGMA</h2>
 
-<p>RGM invokes the server (emake) using QProcess technology. This server requires the shared packages that are built by ENIGMA. I have modified the build system to move the built files to the ENIGMA submodule root. Keep this in mind while developing RGM.</p>
+<p>RGM utilizes QProcess technology to invoke the server (emake). This server depends on shared packages that are built by ENIGMA. To facilitate this process, I modified the build system to move the built files to the root of the ENIGMA submodule. Please keep this in mind while developing RGM.</p>
 
 <h2 id="draft---dont-bother-reading-this-section-">Draft - Don’t bother reading this section :)</h2>
 
@@ -593,55 +597,52 @@ vectorizing them could fix a lot of problems
 but for ENIGMA, i suck at making sprites, so if there were a tool that could take my poor low-resolution handmade sprites and turn them into beautiful 3d vectors, i would USE IT</p>
 </blockquote>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 11 and 12: RGM</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-and-12-rgm.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 11 and 12: RGM" /><published>2024-08-04T21:00:00+00:00</published><updated>2024-08-04T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-and-12-rgm</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-and-12-rgm.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Note: Before trying to build gRPC from scratch, see this: [Local Not Needed](https://k0t0z.github.io/gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-12-and-13-rgm.html#local-not-needed).
-</code></pre></div></div>
+<p><strong>Note:</strong> Before attempting to build gRPC from scratch, please refer to this: <a href="https://k0t0z.github.io/gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-12-and-13-rgm.html#local-not-needed">Local Not Needed</a>.</p>
 
-<p>The Final evaluation work will be inside <a href="https://github.com/enigma-dev/enigma-dev/pull/2399">#2399</a>.</p>
+<p>The final evaluation work will be available in <a href="https://github.com/enigma-dev/enigma-dev/pull/2399">#2399</a>.</p>
 
-<h2 id="back-to-test-runner-issue-on-arch-linux">Back To <code class="language-plaintext highlighter-rouge">test-runner</code> Issue On Arch Linux</h2>
+<h2 id="addressing-the-test-runner-issue-on-arch-linux">Addressing the <code class="language-plaintext highlighter-rouge">test-runner</code> Issue on Arch Linux</h2>
 
-<p>Remember that I am working on my Ubuntu VM as <code class="language-plaintext highlighter-rouge">test-runner</code> gives a link error on Arch Linux. However, RGM gives a linking error on both Ubuntu and Arch Linux. Because of this, I have decided to make <code class="language-plaintext highlighter-rouge">test-runner</code> work on Arch Linux.</p>
+<p>As a reminder, I am currently working within my Ubuntu VM because the <code class="language-plaintext highlighter-rouge">test-runner</code> is producing a linking error on Arch Linux. However, I have also encountered linking errors with RGM on both Ubuntu and Arch Linux. Consequently, I have decided to focus on making the <code class="language-plaintext highlighter-rouge">test-runner</code> operational on Arch Linux.</p>
 
-<p>As I explained in <a href="https://k0t0z.github.io/gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period.html">Google Summer of Code 2024 Bonding Period</a> post, the error is about linking <code class="language-plaintext highlighter-rouge">emake</code> failed. <code class="language-plaintext highlighter-rouge">emake</code> is the way to build games without a GUI as explained by Greg.</p>
+<p>As I previously explained in my post during the <a href="https://k0t0z.github.io/gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period.html">Google Summer of Code 2024 Bonding Period</a>, the linking error is associated with the failure of <code class="language-plaintext highlighter-rouge">emake</code>. <code class="language-plaintext highlighter-rouge">Emake</code> is the tool used to build games without a GUI, as described by Greg.</p>
 
-<p>This error appears only on Arch linux, not Ubuntu. I guess that’s because of the differences between old and new absl. I think the new absl has new targets that we need to link as well. Anyway, I asked Fares to give me the versions of Absl, Protobuf, and gRPC that he is using on Ubuntu. I will try to use the same versions on Arch.</p>
+<p>This error only occurs on Arch Linux and not on Ubuntu. I suspect that the issue arises from the differences between the older and newer versions of Abseil. It seems that the latest Abseil has introduced new targets that we also need to link. To address this, I reached out to Fares for the versions of Abseil, Protobuf, and gRPC that he uses on Ubuntu, with the intention of using the same versions on Arch:</p>
 
 <ul>
-  <li>Absl: 20210324.2</li>
-  <li>Protobuf: 3.12.4</li>
-  <li>gRPC: 1.30.2</li>
+  <li><strong>Abseil:</strong> 20210324.2</li>
+  <li><strong>Protobuf:</strong> 3.12.4</li>
+  <li><strong>gRPC:</strong> 1.30.2</li>
 </ul>
 
-<p>I cloned these versions using -b option and found out that Absl doesn’t have a CMake system yet. So let’s change plans and try to build a proper versions of Absl, Protobuf, and gRPC from scratch.</p>
+<p>I cloned these specific versions using the <code class="language-plaintext highlighter-rouge">-b</code> option and discovered that Abseil does not yet support a CMake system. Therefore, I decided to pivot and build proper versions of Abseil, Protobuf, and gRPC from scratch.</p>
 
-<p>I created this solution to do this task for me, <a href="https://github.com/k0T0z/absl-proto-grpc-ci">absl-proto-grpc-ci</a>, you can get the working verions from the README file. Also, you can take the commands from the scripts and run them on your machine.</p>
+<p>To facilitate this task, I created a repository called <a href="https://github.com/k0T0z/absl-proto-grpc-ci">absl-proto-grpc-ci</a>. You can find the working versions detailed in the README file, along with the commands in the scripts, which you can run on your machine.</p>
 
-<p>Before installing them to your local, try to empty these dirs first:</p>
+<p>Before installing these libraries locally, make sure to empty the following directories:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> <span class="nt">-rf</span> /usr/local/lib/<span class="k">*</span>
+<span class="nb">sudo rm</span> <span class="nt">-rf</span> /usr/local/include/<span class="k">*</span>
+<span class="nb">sudo rm</span> <span class="nt">-rf</span> /usr/local/bin/<span class="k">*</span>
 </code></pre></div></div>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> <span class="nt">-rf</span> /usr/local/include/<span class="k">*</span>
-</code></pre></div></div>
+<p>This step ensures the removal of any existing versions of the libraries. Please exercise caution with these commands if you have any locally installed libraries.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> <span class="nt">-rf</span> /usr/local/bin/<span class="k">*</span>
-</code></pre></div></div>
+<p>Building and installing these libraries is straightforward, and although it took me a couple of days to finalize the process, everything is functioning well now. The only remaining task for this setup is to build <code class="language-plaintext highlighter-rouge">emake</code>.</p>
 
-<p>This is to get rid of the old versions of the libraries (if any). If you have any locally installed libraries, be careful with the above commands.</p>
+<h2 id="prioritizing-local-over-system-libraries">Prioritizing Local Over System Libraries</h2>
 
-<p>Now, building those libraries is very easy, as well as installing them. It took me a couple of days to polish it off however, it is fine now. Maybe the only missing thing for this example is to build <code class="language-plaintext highlighter-rouge">emake</code> with it.</p>
-
-<h2 id="prioritizing-local-over-system">Prioritizing local over system</h2>
-
-<p>After installing all libraries to my local and build <code class="language-plaintext highlighter-rouge">emake</code>, this warning shows up:</p>
+<p>After successfully installing all the libraries locally and building <code class="language-plaintext highlighter-rouge">emake</code>, I encountered the following warning:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ld: warning: libprotobuf.so.27.3.0, needed by /usr/local/lib/libgrpc++.so, may conflict with libprotobuf.so.27
 </code></pre></div></div>
 
-<p>This is because the system has a version of Protobuf already installed. When trying to remove it:</p>
+<p>This warning arises because a version of Protobuf is already installed on the system. When I attempted to remove it using the command:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>pacman <span class="nt">-Rns</span> protobuf
 </code></pre></div></div>
+
+<p>I received the following error:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>checking dependencies...
 error: failed to prepare transaction (could not satisfy dependencies)
@@ -650,7 +651,7 @@ error: failed to prepare transaction (could not satisfy dependencies)
 :: removing protobuf breaks dependency 'protobuf' required by protobuf-c
 </code></pre></div></div>
 
-<p>I can’t remove it as it is required by other packages. So I need to prioritize the local version over the system version. I did this by adding these simple lines to <code class="language-plaintext highlighter-rouge">enigma-dev/Config.mk</code> file:</p>
+<p>Since I cannot remove Protobuf without affecting other packages, I needed to prioritize the local version over the system version. To achieve this, I added the following lines to the <code class="language-plaintext highlighter-rouge">enigma-dev/Config.mk</code> file:</p>
 
 <div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Which search priority to use for libraries (system or local)
 </span><span class="nv">CUSTOM_LIB_SEARCH_PRIORITY</span> <span class="o">:=</span> <span class="nb">local</span>
@@ -660,126 +661,128 @@ error: failed to prepare transaction (could not satisfy dependencies)
 <span class="k">endif</span>
 </code></pre></div></div>
 
-<p>Now, you can set the search priority to local by changing the value of <code class="language-plaintext highlighter-rouge">CUSTOM_LIB_SEARCH_PRIORITY</code> to <code class="language-plaintext highlighter-rouge">local</code>.</p>
+<p>With this configuration, you can set the search priority to local by changing the value of <code class="language-plaintext highlighter-rouge">CUSTOM_LIB_SEARCH_PRIORITY</code> to <code class="language-plaintext highlighter-rouge">local</code>.</p>
 
 <h2 id="export-issue">Export Issue</h2>
 
-<p>Other error show up that <code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code> is unable to load some packages.</p>
+<p>Another error that has emerged is that the <code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code> is unable to load certain packages:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ldd <span class="si">$(</span>which grpc_cpp_plugin<span class="si">)</span>
 </code></pre></div></div>
 
-<blockquote>
-  <p>linux-vdso.so.1 (0x000071154c52f000)
-libsystemd.so.0 =&gt; /usr/lib/libsystemd.so.0 (0x000071154c3f5000)
-<span style="color: red;">libgrpc_plugin_support.so.1.65 =&gt; not found</span>
-libm.so.6 =&gt; /usr/lib/libm.so.6 (0x000071154c30a000)
-<span style="color: red;">libprotoc.so.27.3.0 =&gt; not found</span>
-<span style="color: red;">libprotobuf.so.27.3.0 =&gt; not found</span>
-<span style="color: red;">libabseil_dll.so.2407.0.0 =&gt; not found</span>
-libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0x000071154c000000)
-libgcc_s.so.1 =&gt; /usr/lib/libgcc_s.so.1 (0x000071154c2db000)
-libc.so.6 =&gt; /usr/lib/libc.so.6 (0x000071154be14000)
-libcap.so.2 =&gt; /usr/lib/libcap.so.2 (0x000071154c2cf000)
-/lib64/ld-linux-x86-64.so.2 =&gt; /usr/lib64/ld-linux-x86-64.so.2 (0x000071154c531000)</p>
-</blockquote>
+<p>The output displays the following:</p>
 
-<p>There are <code class="language-plaintext highlighter-rouge">not found</code> libraries as you can see. If you used <code class="language-plaintext highlighter-rouge">which</code> with any of the nof founded libs, you will find it inside <code class="language-plaintext highlighter-rouge">/usr/local/lib</code>. The solution is to export the path to the libraries by adding this line to your <code class="language-plaintext highlighter-rouge">.bashrc</code> file:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; linux-vdso.so.1 (0x000071154c52f000)
+&gt; libsystemd.so.0 =&gt; /usr/lib/libsystemd.so.0 (0x000071154c3f5000)
+&gt; &lt;span style="color: red;"&gt;libgrpc_plugin_support.so.1.65 =&gt; not found&lt;/span&gt;
+&gt; libm.so.6 =&gt; /usr/lib/libm.so.6 (0x000071154c30a000)
+&gt; &lt;span style="color: red;"&gt;libprotoc.so.27.3.0 =&gt; not found&lt;/span&gt;
+&gt; &lt;span style="color: red;"&gt;libprotobuf.so.27.3.0 =&gt; not found&lt;/span&gt;
+&gt; &lt;span style="color: red;"&gt;libabseil_dll.so.2407.0.0 =&gt; not found&lt;/span&gt;
+&gt; libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0x000071154c000000)
+&gt; libgcc_s.so.1 =&gt; /usr/lib/libgcc_s.so.1 (0x000071154c2db000)
+&gt; libc.so.6 =&gt; /usr/lib/libc.so.6 (0x000071154be14000)
+&gt; libcap.so.2 =&gt; /usr/lib/libcap.so.2 (0x000071154c2cf000)
+&gt; /lib64/ld-linux-x86-64.so.2 =&gt; /usr/lib64/ld-linux-x86-64.so.2 (0x000071154c531000)
+</code></pre></div></div>
+
+<p>As indicated, there are several libraries marked as <strong>not found</strong>. If you check any of these libraries using <code class="language-plaintext highlighter-rouge">which</code>, you will find them in the <code class="language-plaintext highlighter-rouge">/usr/local/lib</code> directory. To resolve this issue, you need to export the path to these libraries by adding the following line to your <code class="language-plaintext highlighter-rouge">.bashrc</code> file:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/usr/local/lib
 </code></pre></div></div>
 
-<p>Now, you can run the command again:</p>
+<p>After making this change, rerun the command:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ldd <span class="si">$(</span>which grpc_cpp_plugin<span class="si">)</span>
 </code></pre></div></div>
 
-<blockquote>
-  <p>linux-vdso.so.1 (0x0000765352968000)
-libsystemd.so.0 =&gt; /usr/lib/libsystemd.so.0 (0x000076535282d000)
-<span style="color: blue;">libgrpc_plugin_support.so.1.65 =&gt; /usr/local/lib/libgrpc_plugin_support.so.1.65 (0x00007653527a6000)</span>
-libm.so.6 =&gt; /usr/lib/libm.so.6 (0x00007653526bb000)
-<span style="color: blue;">libprotoc.so.27.3.0 =&gt; /usr/local/lib/libprotoc.so.27.3.0 (0x0000765352200000)</span>
-<span style="color: blue;">libprotobuf.so.27.3.0 =&gt; /usr/local/lib/libprotobuf.so.27.3.0 (0x0000765351e00000)</span>
-<span style="color: blue;">libabseil_dll.so.2407.0.0 =&gt; /usr/local/lib/libabseil_dll.so.2407.0.0 (0x0000765351cc7000)</span>
-libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0x0000765351a00000)
-libgcc_s.so.1 =&gt; /usr/lib/libgcc_s.so.1 (0x00007653521d3000)
-libc.so.6 =&gt; /usr/lib/libc.so.6 (0x0000765351814000)
-libcap.so.2 =&gt; /usr/lib/libcap.so.2 (0x00007653521c7000)
-/lib64/ld-linux-x86-64.so.2 =&gt; /usr/lib64/ld-linux-x86-64.so.2 (0x000076535296a000)
-libz.so.1 =&gt; /usr/local/lib/libz.so.1 (0x00007653521a6000)</p>
-</blockquote>
+<p>You should see an output similar to the following:</p>
 
-<p>All fixes done above didn’t solve the link issue because as I said we need to link according to new absl library.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; linux-vdso.so.1 (0x0000765352968000)
+&gt; libsystemd.so.0 =&gt; /usr/lib/libsystemd.so.0 (0x000076535282d000)
+&gt; &lt;span style="color: blue;"&gt;libgrpc_plugin_support.so.1.65 =&gt; /usr/local/lib/libgrpc_plugin_support.so.1.65 (0x00007653527a6000)&lt;/span&gt;
+&gt; libm.so.6 =&gt; /usr/lib/libm.so.6 (0x00007653526bb000)
+&gt; &lt;span style="color: blue;"&gt;libprotoc.so.27.3.0 =&gt; /usr/local/lib/libprotoc.so.27.3.0 (0x0000765352200000)&lt;/span&gt;
+&gt; &lt;span style="color: blue;"&gt;libprotobuf.so.27.3.0 =&gt; /usr/local/lib/libprotobuf.so.27.3.0 (0x0000765351e00000)&lt;/span&gt;
+&gt; &lt;span style="color: blue;"&gt;libabseil_dll.so.2407.0.0 =&gt; /usr/local/lib/libabseil_dll.so.2407.0.0 (0x0000765351cc7000)&lt;/span&gt;
+&gt; libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0x0000765351a00000)
+&gt; libgcc_s.so.1 =&gt; /usr/lib/libgcc_s.so.1 (0x00007653521d3000)
+&gt; libc.so.6 =&gt; /usr/lib/libc.so.6 (0x0000765351814000)
+&gt; libcap.so.2 =&gt; /usr/lib/libcap.so.2 (0x00007653521c7000)
+&gt; /lib64/ld-linux-x86-64.so.2 =&gt; /usr/lib64/ld-linux-x86-64.so.2 (0x000076535296a000)
+&gt; libz.so.1 =&gt; /usr/local/lib/libz.so.1 (0x00007653521a6000)
+</code></pre></div></div>
 
-<p>After clean build, this error showed up:</p>
+<p>Despite these adjustments, the linking issue persists because we need to link to the new Abseil library.</p>
+
+<p>After performing a clean build, the following error appeared:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ld: .eobjs/Server.o: undefined reference to symbol 'gpr_inf_future'
 /usr/bin/ld: /usr/local/lib/libgpr.so.42: error adding symbols: DSO missing from command line
 </code></pre></div></div>
 
-<p>It is too clear to see that the <code class="language-plaintext highlighter-rouge">-lgpr</code> is missing from <code class="language-plaintext highlighter-rouge">LDFLAGS</code> variable. After adding it, the next error is:</p>
+<p>This error indicates that the <code class="language-plaintext highlighter-rouge">-lgpr</code> flag is missing from the <code class="language-plaintext highlighter-rouge">LDFLAGS</code> variable. After adding this flag, I encountered another error:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ld: .eobjs/EnigmaPlugin.o: undefined reference to symbol '_ZN4absl12lts_2024072212log_internal15LogMessageFatalC1EPKciSt17basic_string_viewIcSt11char_traitsIcEE'
 /usr/bin/ld: /usr/local/lib/libabseil_dll.so.2407.0.0: error adding symbols: DSO missing from command line
 </code></pre></div></div>
 
-<p>I gave too much time to this error but I realized that may be the new absl has a new target to add it to the linker as well. That new target is <code class="language-plaintext highlighter-rouge">-labseil_dll</code>.</p>
+<p>I spent considerable time troubleshooting this error and realized that the new Abseil may require an additional target to be linked. This target is <code class="language-plaintext highlighter-rouge">-labseil_dll</code>.</p>
 
-<p>On 9th August 2024, The changes to <code class="language-plaintext highlighter-rouge">enigma-dev/CommandLine/emake/Makefile</code> fixed the linking issues and now my tests which I wrote on Ubuntu VM are passing on my Arch Linux machine.</p>
+<p>On August 9, 2024, I updated the <code class="language-plaintext highlighter-rouge">enigma-dev/CommandLine/emake/Makefile</code>, which resolved the linking issues. Consequently, the tests I wrote on my Ubuntu VM are now passing on my Arch Linux machine.</p>
 
-<h2 id="grpc_cpp_plugin-path"><code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code> path</h2>
+<h2 id="path-for-grpc_cpp_plugin">Path for <code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code></h2>
 
-<p>If you take a look at this line here: <a href="https://github.com/enigma-dev/enigma-dev/blob/3590b681f20174ccf24156769d2bbb94b10673e3/shared/protos/CMakeLists.txt#L30">shared/protos/CMakeLists.txt#L30</a>, you will see that the path to <code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code> is hardcoded. As we installed the libraries to <code class="language-plaintext highlighter-rouge">/usr/local</code>, we need to change this path to <code class="language-plaintext highlighter-rouge">/usr/local/bin/grpc_cpp_plugin</code>.</p>
+<p>If you examine this line in the <a href="https://github.com/enigma-dev/enigma-dev/blob/3590b681f20174ccf24156769d2bbb94b10673e3/shared/protos/CMakeLists.txt#L30">shared/protos/CMakeLists.txt</a>, you will notice that the path to <code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code> is hardcoded. Since we installed the libraries to <code class="language-plaintext highlighter-rouge">/usr/local</code>, we need to modify this path to <code class="language-plaintext highlighter-rouge">/usr/local/bin/grpc_cpp_plugin</code>.</p>
 
-<p>I provided this PR <a href="https://github.com/enigma-dev/enigma-dev/pull/2387">#2387</a> to fix this issue.</p>
+<p>I have submitted a pull request <a href="https://github.com/enigma-dev/enigma-dev/pull/2387">#2387</a> to address this issue.</p>
 
-<p>Now you can add this line in <code class="language-plaintext highlighter-rouge">RadialGM/CMakeLists.txt</code>:</p>
+<p>You can now include the following line in <code class="language-plaintext highlighter-rouge">RadialGM/CMakeLists.txt</code>:</p>
 
 <div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">set</span><span class="p">(</span>GRPC_EXE <span class="s2">"/usr/local/bin/grpc_cpp_plugin"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<h2 id="moving-to-rgm">Moving To RGM</h2>
+<h2 id="transitioning-to-rgm">Transitioning to RGM</h2>
 
-<p>The next step is RGM. RGM uses CMake build system and powered by Qt5. When running CMake, I got this error:</p>
+<p>The next phase involves transitioning to RGM, which utilizes the CMake build system and is powered by Qt5. While running CMake, I encountered the following error:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ 76%] Linking CXX executable emake
 /usr/bin/ld: CMakeFiles/emake.dir/EnigmaPlugin.cpp.o: undefined reference to symbol '_ZN4absl12lts_2024072212log_internal15LogMessageFatalC1EPKciSt17basic_string_viewIcSt11char_traitsIcEE'
 /usr/bin/ld: /usr/local/lib/libabseil_dll.so.2407.0.0: error adding symbols: DSO missing from command line
 </code></pre></div></div>
 
-<p>That’s the absl again. The same change I did to <code class="language-plaintext highlighter-rouge">enigma-dev/CommandLine/emake/Makefile</code> should be done to <code class="language-plaintext highlighter-rouge">RadialGM/Submodules/enigma-dev/CommandLine/emake/CMakeLists.txt</code>, however, I need to do it CMake style.</p>
+<p>The issue again pertains to Abseil. To resolve this, I need to replicate the change I made in <code class="language-plaintext highlighter-rouge">enigma-dev/CommandLine/emake/Makefile</code> within the <code class="language-plaintext highlighter-rouge">RadialGM/Submodules/enigma-dev/CommandLine/emake/CMakeLists.txt</code> file, but in a CMake-friendly manner:</p>
 
-<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Find absl</span>
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Find Abseil</span>
 <span class="nb">find_package</span><span class="p">(</span>absl CONFIG REQUIRED<span class="p">)</span>
 <span class="nb">target_link_libraries</span><span class="p">(</span><span class="si">${</span><span class="nv">CLI_TARGET</span><span class="si">}</span> PRIVATE absl::base absl::strings absl::synchronization absl::time absl::status absl::statusor<span class="p">)</span>
 </code></pre></div></div>
 
-<h2 id="rgm-build">RGM Build</h2>
+<h2 id="building-rgm">Building RGM</h2>
 
-<p>Now, build and linking <code class="language-plaintext highlighter-rouge">emake</code> is done. I can now leave my Ubuntu VM and move back to my Arch Linux machine. The next step is to build RGM.</p>
+<p>With the linking of <code class="language-plaintext highlighter-rouge">emake</code> now successfully completed, I can leave my Ubuntu VM and return to my Arch Linux machine to proceed with building RGM.</p>
 
-<p>As Robert merged a last PR without checking the CI, there are a lot of cleanup that must be done in order for RGM to build properly. I provided this PR <a href="https://github.com/enigma-dev/RadialGM/pull/238">#238</a> to fix this issue.</p>
+<p>However, Robert merged a recent pull request without ensuring CI checks, resulting in several clean-up tasks necessary for RGM to build correctly. I submitted pull request <a href="https://github.com/enigma-dev/RadialGM/pull/238">#238</a> to address these issues.</p>
 
-<p>The above PR contains many changes as follows:</p>
+<p>This pull request includes several important changes:</p>
 
 <ul>
-  <li>Linking <a href="https://github.com/k0T0z/nodeeditor">nodeeditor</a> library to RGM.</li>
-  <li>Multiple fixes to the Room Editor.</li>
-  <li>Fixed and improved the Server Plugin.</li>
-  <li>Multiple fixes to the CMake build system.</li>
+  <li>Linking the <a href="https://github.com/k0T0z/nodeeditor">nodeeditor</a> library to RGM.</li>
+  <li>Implementing multiple fixes to the Room Editor.</li>
+  <li>Enhancing the Server Plugin.</li>
+  <li>Making various improvements to the CMake build system.</li>
 </ul>
 
-<p>On 13th August 2024, RGM can be built without any issues.</p>
+<p>As of August 13, 2024, RGM can now be built without any issues.</p>
 
-<h2 id="runtime-nightmare">Runtime Nightmare</h2>
+<h2 id="runtime-challenges">Runtime Challenges</h2>
 
-<p>Now, RGM can be built without issues. However, life still doesn’t want to surrender. When running RGM, I got this error:</p>
+<p>While RGM can now be built successfully, additional challenges persist. Upon attempting to run RGM, I encountered the following error:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./RadialGM: error while loading shared libraries: libEGM.so: cannot open shared object file: No such file or directory
 </code></pre></div></div>
 
-<p>Let’s see the ldd result:</p>
+<p>To investigate further, I ran the following command:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ldd RadialGM
 </code></pre></div></div>
@@ -883,14 +886,12 @@ libunistring.so.5 =&gt; /usr/lib/libunistring.so.5 (0x0000796330634000)
 libblkid.so.1 =&gt; /usr/lib/libblkid.so.1 (0x00007963305fb000)</p>
 </blockquote>
 
-<p>The not found libraries are all engima-dev libraries. I need to export the path to the libraries by adding this line to my <code class="language-plaintext highlighter-rouge">.bashrc</code> file:</p>
+<p>The output indicated that the missing libraries are all related to <code class="language-plaintext highlighter-rouge">enigma-dev</code>. To rectify this, I need to export the path to these libraries by adding the following line to my <code class="language-plaintext highlighter-rouge">.bashrc</code> file:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/path/to/RadialGM/Submodules/enigma-dev
 </code></pre></div></div>
 
-<p>Note: Add your own path to the libraries.</p>
-
-<p>Now everything is fine:</p>
+<p><em>Note: Remember to replace <code class="language-plaintext highlighter-rouge">/path/to</code> with the actual path to your libraries.</em></p>
 
 <blockquote>
   <p>linux-vdso.so.1 (0x000078394efc5000)
@@ -993,18 +994,18 @@ libunistring.so.5 =&gt; /usr/lib/libunistring.so.5 (0x0000783946db8000)
 libblkid.so.1 =&gt; /usr/lib/libblkid.so.1 (0x0000783946d7f000)</p>
 </blockquote>
 
-<p>Now, another issue appeared when trying to run RGM:</p>
+<p>With this adjustment, everything appeared to be in order. However, another issue arose when attempting to run RGM:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
 E0000 00:00:1723829087.769865   68641 metrics.cc:49] Metric name grpc.lb.wrr.rr_fallback has already been registered.
 Aborted (core dumped)
 </code></pre></div></div>
 
-<p>The above error doesn’t help much anyway. Robert suggested that not linking gRPC and proceed to work on the UI part without the engine. Of course, RGM built correctly without gRPC but I need to fix the gRPC issue to be able to send and receive messages between RGM and <code class="language-plaintext highlighter-rouge">emake</code>.</p>
+<p>This error message, while not particularly helpful, indicated a deeper issue. Robert suggested that I proceed without linking gRPC and focus on developing the UI portion independently of the engine. Although RGM built successfully without gRPC, resolving this gRPC issue remains crucial for enabling communication between RGM and <code class="language-plaintext highlighter-rouge">emake</code>.</p>
 
 <p><img src="/gsoc24-blog/assets/gsoc24-rgm-without-grpc.png" alt="GSoC 2024 RGM Without gRPC" /></p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 10: Midterm Evaluation</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/28/google-summer-of-code-2024-week-10-midterm-evaluation.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 10: Midterm Evaluation" /><published>2024-07-28T21:00:00+00:00</published><updated>2024-07-28T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/28/google-summer-of-code-2024-week-10-midterm-evaluation</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/28/google-summer-of-code-2024-week-10-midterm-evaluation.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
-<p>As I said in my previous blog post, I am running at a low pace due to my master’s preparation as well as the army service. Josh and Greg gave me a pass even though I didn’t do much. Anyway, thanks to them for their understanding. Here is my midterm feedback and the work done so far and why.</p>
+<p>As mentioned in my previous blog post, I am currently working at a slower pace due to my preparations for my master’s program and military service. Josh and Greg have kindly given me some leeway, despite my limited progress. I would like to extend my gratitude to them for their understanding. Below is my midterm feedback, an overview of the work completed so far, and the rationale behind it.</p>
 
 <h2 id="midterm-2024-evaluation-feedback">Midterm 2024 Evaluation Feedback</h2>
 
@@ -1012,57 +1013,82 @@ Aborted (core dumped)
 
 <h2 id="summary">Summary</h2>
 
-<p>The midterm work exists in PR <a href="https://github.com/enigma-dev/enigma-dev/pull/2397">#2397</a>.</p>
+<p>The midterm work can be found in PR #2397.</p>
 
-<p>In my proposal, I said that I will make the generator ready by the midterm evaluation. It is in a good shape now. It will be refactored during the Rendering and Machine Learning phases. In these two next phases, I will make the generator more for ENIGMA’s Graphics System and the Genetic Algorithm (Machine Learning) respectively. The work done in the generator can be presented as follows:</p>
+<p>In my proposal, I stated that I would have the generator ready by the midterm evaluation, and I’m pleased to report that it is in good shape now. The generator will undergo further refactoring during the Rendering and Machine Learning phases. In these next two phases, I plan to enhance the generator’s compatibility with ENIGMA’s Graphics System and integrate the Genetic Algorithm for machine learning. The work accomplished on the generator can be summarized as follows:</p>
 
 <h3 id="constants-operators-and-functions">Constants, Operators, and Functions</h3>
 
-<p>All constants, operators, and functions are supported. Constants include <code class="language-plaintext highlighter-rouge">float</code>, <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">uint</code>, <code class="language-plaintext highlighter-rouge">vec2</code>, <code class="language-plaintext highlighter-rouge">vec3</code>, and <code class="language-plaintext highlighter-rouge">vec4</code>. Operators include arithmetic, logical, and bitwise operations. Functions include trigonometric, exponential, logarithmic, and other functions. Both scalar and vector operations are supported. Both Operations and Functions types depend on the type of the operands.</p>
+<p>The implementation supports all essential constants, operators, and functions. <strong>Constants</strong> include data types such as <code class="language-plaintext highlighter-rouge">float</code>, <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">uint</code>, <code class="language-plaintext highlighter-rouge">vec2</code>, <code class="language-plaintext highlighter-rouge">vec3</code>, and <code class="language-plaintext highlighter-rouge">vec4</code>. <strong>Operators</strong> encompass arithmetic, logical, and bitwise operations. <strong>Functions</strong> cover a range of mathematical operations, including trigonometric, exponential, logarithmic, and other relevant functions. Both scalar and vector operations are supported, with the types of operations and functions depending on the operands involved.</p>
 
-<p>Operations for <code class="language-plaintext highlighter-rouge">float</code> types: <code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">/</code>, <code class="language-plaintext highlighter-rouge">mod</code>, <code class="language-plaintext highlighter-rouge">pow</code>, <code class="language-plaintext highlighter-rouge">max</code>, <code class="language-plaintext highlighter-rouge">min</code>, <code class="language-plaintext highlighter-rouge">atan</code>, and <code class="language-plaintext highlighter-rouge">step</code>.
-Operations for <code class="language-plaintext highlighter-rouge">int</code> types: <code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">/</code>, <code class="language-plaintext highlighter-rouge">%</code>, <code class="language-plaintext highlighter-rouge">max</code>, <code class="language-plaintext highlighter-rouge">min</code>, <code class="language-plaintext highlighter-rouge">&amp;</code>, <code class="language-plaintext highlighter-rouge">|</code>, <code class="language-plaintext highlighter-rouge">^</code>, <code class="language-plaintext highlighter-rouge">&lt;&lt;</code>, and <code class="language-plaintext highlighter-rouge">&gt;&gt;</code>.
-Operations for <code class="language-plaintext highlighter-rouge">uint</code> types: Same as <code class="language-plaintext highlighter-rouge">int</code> types.
-Operations for <code class="language-plaintext highlighter-rouge">vec2</code>, <code class="language-plaintext highlighter-rouge">vec3</code>, and <code class="language-plaintext highlighter-rouge">vec4</code> types: <code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">/</code>, <code class="language-plaintext highlighter-rouge">mod</code>, <code class="language-plaintext highlighter-rouge">pow</code>, <code class="language-plaintext highlighter-rouge">max</code>, <code class="language-plaintext highlighter-rouge">min</code>, <code class="language-plaintext highlighter-rouge">cross</code>, <code class="language-plaintext highlighter-rouge">atan2</code>, and <code class="language-plaintext highlighter-rouge">reflect</code>. Note that <code class="language-plaintext highlighter-rouge">cross</code> is only for <code class="language-plaintext highlighter-rouge">vec3</code> types.</p>
+<h4 id="operations-by-type">Operations by Type:</h4>
 
-<p>Functions for <code class="language-plaintext highlighter-rouge">float</code> types: <code class="language-plaintext highlighter-rouge">sin</code>, <code class="language-plaintext highlighter-rouge">cos</code>, <code class="language-plaintext highlighter-rouge">tan</code>, <code class="language-plaintext highlighter-rouge">asin</code>, <code class="language-plaintext highlighter-rouge">acos</code>, <code class="language-plaintext highlighter-rouge">atan</code>, <code class="language-plaintext highlighter-rouge">sinh</code>, <code class="language-plaintext highlighter-rouge">cosh</code>, <code class="language-plaintext highlighter-rouge">tanh</code>, <code class="language-plaintext highlighter-rouge">log</code>, <code class="language-plaintext highlighter-rouge">exp</code>, <code class="language-plaintext highlighter-rouge">sqrt</code>, <code class="language-plaintext highlighter-rouge">abs</code>, <code class="language-plaintext highlighter-rouge">sign</code>, <code class="language-plaintext highlighter-rouge">floor</code>, <code class="language-plaintext highlighter-rouge">round</code>, <code class="language-plaintext highlighter-rouge">ceil</code>, <code class="language-plaintext highlighter-rouge">fract</code>, <code class="language-plaintext highlighter-rouge">saturate</code>, <code class="language-plaintext highlighter-rouge">negate</code>, <code class="language-plaintext highlighter-rouge">acosh</code>, <code class="language-plaintext highlighter-rouge">asinh</code>, <code class="language-plaintext highlighter-rouge">atanh</code>, <code class="language-plaintext highlighter-rouge">degrees</code>, <code class="language-plaintext highlighter-rouge">exp2</code>, <code class="language-plaintext highlighter-rouge">inverse_sqrt</code>, <code class="language-plaintext highlighter-rouge">log2</code>, <code class="language-plaintext highlighter-rouge">radians</code>, <code class="language-plaintext highlighter-rouge">reciprocal</code>, <code class="language-plaintext highlighter-rouge">roundeven</code>, <code class="language-plaintext highlighter-rouge">trunc</code>, and <code class="language-plaintext highlighter-rouge">oneminus</code>.
-Functions for <code class="language-plaintext highlighter-rouge">int</code> types: <code class="language-plaintext highlighter-rouge">abs</code>, <code class="language-plaintext highlighter-rouge">-1 *</code>, <code class="language-plaintext highlighter-rouge">sign</code> and <code class="language-plaintext highlighter-rouge">~</code>.
-Functions for <code class="language-plaintext highlighter-rouge">uint</code> types: <code class="language-plaintext highlighter-rouge">-1 *</code> and <code class="language-plaintext highlighter-rouge">~</code>.
-Functions for <code class="language-plaintext highlighter-rouge">vec2</code>, <code class="language-plaintext highlighter-rouge">vec3</code>, and <code class="language-plaintext highlighter-rouge">vec4</code> types: <code class="language-plaintext highlighter-rouge">normalize</code>, <code class="language-plaintext highlighter-rouge">saturate</code>, <code class="language-plaintext highlighter-rouge">negate</code>, <code class="language-plaintext highlighter-rouge">reciprocal</code>, <code class="language-plaintext highlighter-rouge">abs</code>, <code class="language-plaintext highlighter-rouge">acos</code>, <code class="language-plaintext highlighter-rouge">acosh</code>, <code class="language-plaintext highlighter-rouge">asin</code>, <code class="language-plaintext highlighter-rouge">asinh</code>, <code class="language-plaintext highlighter-rouge">atan</code>, <code class="language-plaintext highlighter-rouge">atanh</code>, <code class="language-plaintext highlighter-rouge">ceil</code>, <code class="language-plaintext highlighter-rouge">cos</code>, <code class="language-plaintext highlighter-rouge">cosh</code>, <code class="language-plaintext highlighter-rouge">degrees</code>, <code class="language-plaintext highlighter-rouge">exp</code>, <code class="language-plaintext highlighter-rouge">exp2</code>, <code class="language-plaintext highlighter-rouge">floor</code>, <code class="language-plaintext highlighter-rouge">fract</code>, <code class="language-plaintext highlighter-rouge">inverse_sqrt</code>, <code class="language-plaintext highlighter-rouge">log</code>, <code class="language-plaintext highlighter-rouge">log2</code>, <code class="language-plaintext highlighter-rouge">radians</code>, <code class="language-plaintext highlighter-rouge">round</code>, <code class="language-plaintext highlighter-rouge">roundeven</code>, <code class="language-plaintext highlighter-rouge">sign</code>, <code class="language-plaintext highlighter-rouge">sin</code>, <code class="language-plaintext highlighter-rouge">sinh</code>, <code class="language-plaintext highlighter-rouge">sqrt</code>, <code class="language-plaintext highlighter-rouge">tan</code>, <code class="language-plaintext highlighter-rouge">tanh</code>, <code class="language-plaintext highlighter-rouge">trunc</code>, and <code class="language-plaintext highlighter-rouge">oneminus</code>.</p>
+<ul>
+  <li><strong>Float Operations</strong>: <code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">/</code>, <code class="language-plaintext highlighter-rouge">mod</code>, <code class="language-plaintext highlighter-rouge">pow</code>, <code class="language-plaintext highlighter-rouge">max</code>, <code class="language-plaintext highlighter-rouge">min</code>, <code class="language-plaintext highlighter-rouge">atan</code>, and <code class="language-plaintext highlighter-rouge">step</code>.</li>
+  <li><strong>Integer Operations</strong>: <code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">/</code>, <code class="language-plaintext highlighter-rouge">%</code>, <code class="language-plaintext highlighter-rouge">max</code>, <code class="language-plaintext highlighter-rouge">min</code>, <code class="language-plaintext highlighter-rouge">&amp;</code>, <code class="language-plaintext highlighter-rouge">|</code>, <code class="language-plaintext highlighter-rouge">^</code>, <code class="language-plaintext highlighter-rouge">&lt;&lt;</code>, and <code class="language-plaintext highlighter-rouge">&gt;&gt;</code>.</li>
+  <li><strong>Unsigned Integer Operations</strong>: Identical to integer operations.</li>
+  <li><strong>Vector Operations</strong> (<code class="language-plaintext highlighter-rouge">vec2</code>, <code class="language-plaintext highlighter-rouge">vec3</code>, <code class="language-plaintext highlighter-rouge">vec4</code>): <code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">/</code>, <code class="language-plaintext highlighter-rouge">mod</code>, <code class="language-plaintext highlighter-rouge">pow</code>, <code class="language-plaintext highlighter-rouge">max</code>, <code class="language-plaintext highlighter-rouge">min</code>, <code class="language-plaintext highlighter-rouge">cross</code>, <code class="language-plaintext highlighter-rouge">atan2</code>, and <code class="language-plaintext highlighter-rouge">reflect</code>. Note that <code class="language-plaintext highlighter-rouge">cross</code> is applicable only for <code class="language-plaintext highlighter-rouge">vec3</code> types.</li>
+</ul>
+
+<h4 id="functions-by-type">Functions by Type:</h4>
+
+<ul>
+  <li><strong>Float Functions</strong>:
+    <ul>
+      <li>Trigonometric: <code class="language-plaintext highlighter-rouge">sin</code>, <code class="language-plaintext highlighter-rouge">cos</code>, <code class="language-plaintext highlighter-rouge">tan</code>, <code class="language-plaintext highlighter-rouge">asin</code>, <code class="language-plaintext highlighter-rouge">acos</code>, <code class="language-plaintext highlighter-rouge">atan</code></li>
+      <li>Hyperbolic: <code class="language-plaintext highlighter-rouge">sinh</code>, <code class="language-plaintext highlighter-rouge">cosh</code>, <code class="language-plaintext highlighter-rouge">tanh</code></li>
+      <li>Logarithmic: <code class="language-plaintext highlighter-rouge">log</code>, <code class="language-plaintext highlighter-rouge">exp</code>, <code class="language-plaintext highlighter-rouge">sqrt</code></li>
+      <li>Miscellaneous: <code class="language-plaintext highlighter-rouge">abs</code>, <code class="language-plaintext highlighter-rouge">sign</code>, <code class="language-plaintext highlighter-rouge">floor</code>, <code class="language-plaintext highlighter-rouge">round</code>, <code class="language-plaintext highlighter-rouge">ceil</code>, <code class="language-plaintext highlighter-rouge">fract</code>, <code class="language-plaintext highlighter-rouge">saturate</code>, <code class="language-plaintext highlighter-rouge">negate</code>, <code class="language-plaintext highlighter-rouge">acosh</code>, <code class="language-plaintext highlighter-rouge">asinh</code>, <code class="language-plaintext highlighter-rouge">atanh</code>, <code class="language-plaintext highlighter-rouge">degrees</code>, <code class="language-plaintext highlighter-rouge">exp2</code>, <code class="language-plaintext highlighter-rouge">inverse_sqrt</code>, <code class="language-plaintext highlighter-rouge">log2</code>, <code class="language-plaintext highlighter-rouge">radians</code>, <code class="language-plaintext highlighter-rouge">reciprocal</code>, <code class="language-plaintext highlighter-rouge">roundeven</code>, <code class="language-plaintext highlighter-rouge">trunc</code>, and <code class="language-plaintext highlighter-rouge">oneminus</code>.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Integer Functions</strong>: <code class="language-plaintext highlighter-rouge">abs</code>, <code class="language-plaintext highlighter-rouge">-1 *</code>, <code class="language-plaintext highlighter-rouge">sign</code>, and <code class="language-plaintext highlighter-rouge">~</code>.</p>
+  </li>
+  <li>
+    <p><strong>Unsigned Integer Functions</strong>: <code class="language-plaintext highlighter-rouge">-1 *</code> and <code class="language-plaintext highlighter-rouge">~</code>.</p>
+  </li>
+  <li><strong>Vector Functions</strong> (<code class="language-plaintext highlighter-rouge">vec2</code>, <code class="language-plaintext highlighter-rouge">vec3</code>, <code class="language-plaintext highlighter-rouge">vec4</code>):
+    <ul>
+      <li>Common: <code class="language-plaintext highlighter-rouge">normalize</code>, <code class="language-plaintext highlighter-rouge">saturate</code>, <code class="language-plaintext highlighter-rouge">negate</code>, <code class="language-plaintext highlighter-rouge">reciprocal</code>, <code class="language-plaintext highlighter-rouge">abs</code></li>
+      <li>Trigonometric: <code class="language-plaintext highlighter-rouge">acos</code>, <code class="language-plaintext highlighter-rouge">acosh</code>, <code class="language-plaintext highlighter-rouge">asin</code>, <code class="language-plaintext highlighter-rouge">asinh</code>, <code class="language-plaintext highlighter-rouge">atan</code>, <code class="language-plaintext highlighter-rouge">atanh</code></li>
+      <li>Rounding: <code class="language-plaintext highlighter-rouge">ceil</code>, <code class="language-plaintext highlighter-rouge">cos</code>, <code class="language-plaintext highlighter-rouge">cosh</code>, <code class="language-plaintext highlighter-rouge">degrees</code>, <code class="language-plaintext highlighter-rouge">exp</code>, <code class="language-plaintext highlighter-rouge">exp2</code>, <code class="language-plaintext highlighter-rouge">floor</code>, <code class="language-plaintext highlighter-rouge">fract</code>, <code class="language-plaintext highlighter-rouge">inverse_sqrt</code>, <code class="language-plaintext highlighter-rouge">log</code>, <code class="language-plaintext highlighter-rouge">log2</code>, <code class="language-plaintext highlighter-rouge">radians</code>, <code class="language-plaintext highlighter-rouge">round</code>, <code class="language-plaintext highlighter-rouge">roundeven</code>, <code class="language-plaintext highlighter-rouge">sign</code>, <code class="language-plaintext highlighter-rouge">sin</code>, <code class="language-plaintext highlighter-rouge">sinh</code>, <code class="language-plaintext highlighter-rouge">sqrt</code>, <code class="language-plaintext highlighter-rouge">tan</code>, <code class="language-plaintext highlighter-rouge">tanh</code>, <code class="language-plaintext highlighter-rouge">trunc</code>, and <code class="language-plaintext highlighter-rouge">oneminus</code>.</li>
+    </ul>
+  </li>
+</ul>
 
 <h3 id="special-nodes">Special Nodes</h3>
 
-<p>Some important nodes are also implemented for the AI Agent such as:</p>
+<p>Several important nodes have been implemented for the AI Agent, including:</p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">dot</code>: The dot product of two vectors.</li>
-  <li><code class="language-plaintext highlighter-rouge">length</code>: The length of a vector.</li>
-  <li><code class="language-plaintext highlighter-rouge">clamp</code>: Clamps a value between a minimum and maximum value.</li>
-  <li><code class="language-plaintext highlighter-rouge">derivative</code>: The derivative of a value.</li>
-  <li><code class="language-plaintext highlighter-rouge">step</code>: The step function.</li>
-  <li><code class="language-plaintext highlighter-rouge">smoothstep</code>: The smoothstep function.</li>
-  <li><code class="language-plaintext highlighter-rouge">distance</code>: The distance between two points.</li>
-  <li><code class="language-plaintext highlighter-rouge">mix</code>: Linearly interpolates between two values.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">dot</code></strong>: Computes the dot product of two vectors.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">length</code></strong>: Calculates the length of a vector.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">clamp</code></strong>: Restricts a value within a specified minimum and maximum range.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">derivative</code></strong>: Computes the derivative of a value.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">step</code></strong>: Implements the step function.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">smoothstep</code></strong>: Implements the smoothstep function.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">distance</code></strong>: Calculates the distance between two points.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">mix</code></strong>: Linearly interpolates between two values.</li>
 </ul>
 
 <h3 id="logic-nodes">Logic Nodes</h3>
 
-<p>Some logic nodes are also implemented for the AI Agent such as: <code class="language-plaintext highlighter-rouge">if</code>, <code class="language-plaintext highlighter-rouge">switch</code>, <code class="language-plaintext highlighter-rouge">is</code>, and <code class="language-plaintext highlighter-rouge">compare</code>.</p>
+<p>The implementation includes several logic nodes for the AI Agent, such as <code class="language-plaintext highlighter-rouge">if</code>, <code class="language-plaintext highlighter-rouge">switch</code>, <code class="language-plaintext highlighter-rouge">is</code>, and <code class="language-plaintext highlighter-rouge">compare</code>.</p>
 
 <h3 id="filters">Filters</h3>
 
-<p>Most importantly, the generator supports filters such as noise filters. The noise filters include <code class="language-plaintext highlighter-rouge">Value</code> Noise for now.</p>
+<p>Most notably, the generator supports various filters, including noise filters. Currently, it includes <strong>Value Noise</strong> as its primary option.</p>
 
 <h2 id="work-to-be-done">Work To Be Done</h2>
 
-<p>As I explained in <a href="https://k0t0z.github.io/gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-8-and-9-my-boogeyperiod.html">Google Summer of Code 2024 Week 7, 8, and 9: My Boogeyperiod: Most Important Operations In The Generator</a>, many nodes will be modified during the Rendering and Machine Learning phases.</p>
+<p>As I outlined in my previous post, “<a href="https://k0t0z.github.io/gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-8-and-9-my-boogeyperiod.html">Google Summer of Code 2024 Week 7, 8, and 9: My Boogeyperiod: Most Important Operations in the Generator</a>,” many nodes will undergo modifications during the Rendering and Machine Learning phases.</p>
 
-<p>There are a couple of tasks as well that will be nice if we had. Supporting comments in the shader code is one of them as well as loops.</p>
+<p>Additionally, there are several enhancements that would be beneficial for the project. One such enhancement is the support for comments within the shader code, as well as the implementation of loops.</p>
 
-<p>The integration of a node editor library into RGM is also a must task to be done. This will help in creating large graphs.</p>
+<p>Furthermore, integrating a node editor library into RGM is an essential task. This integration will facilitate the creation of larger and more complex graphs, improving overall functionality and usability.</p>
 
 <h2 id="working-example">Working Example</h2>
 
-<p>I have created a working example for the Value Noise filter. This is the same example that I have used in my proposal. The graph and the generated code are as follows:</p>
+<p>I have developed a working example for the Value Noise filter, which is the same example I referenced in my proposal. Below are the graph representation and the generated code for this implementation:</p>
 
 <p><img src="/gsoc24-blog/assets/godot-visual-shader-value-noise-filter-graph-example.png" alt="Godot Visual Shader Value Noise Filter Graph Example" /></p>
 
@@ -1183,11 +1209,11 @@ set a single threshold point at 0.5
 otherwise it works just like the heat map</p>
 </blockquote>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 7, 8, and 9: My Boogeyperiod</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-8-and-9-my-boogeyperiod.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 7, 8, and 9: My Boogeyperiod" /><published>2024-07-07T21:00:00+00:00</published><updated>2024-07-07T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-8-and-9-my-boogeyperiod</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/07/07/google-summer-of-code-2024-week-7-8-and-9-my-boogeyperiod.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
-<p>I was planning to start testing the <code class="language-plaintext highlighter-rouge">VisualShader</code> class after I reach a stable state with the generator.</p>
+<p>I planned to begin testing the <strong>VisualShader</strong> class once the generator reached a stable state.</p>
 
 <h2 id="weird-dso-linking-error">Weird DSO linking error</h2>
 
-<p>Before anything, I hate Google’s technologies including gRPC, Protobuf, Abseil because Google doesn’t care about you facing issues as long as it is working inside their pipelines. Remember the issue I faced in the bonding period (<a href="https://k0t0z.github.io/gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period.html">Google Summer of Code 2024 Bonding Period</a>) while trying to build RGM? The one that presists on my Ubuntu installation and 2 Arch installations? Well, I can’t build the <code class="language-plaintext highlighter-rouge">test-runner</code> because of it:</p>
+<p>Before anything else, I want to express my frustration with Google’s technologies like gRPC, Protobuf, and Abseil. Google doesn’t seem to prioritize user experience when issues arise, as long as everything works within their own pipelines. You may recall the issue I encountered during the bonding period (<a href="https://k0t0z.github.io/gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period.html">Google Summer of Code 2024 Bonding Period</a>) when trying to build RGM. That same issue persists across my Ubuntu installation and two Arch installations. Now, I can’t even build the <strong>test-runner</strong> because of it:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ld: .eobjs/EnigmaPlugin.o: undefined reference to symbol <span class="s1">'_ZN4absl12lts_2024011612log_internal21CheckOpMessageBuilderC1EPKc'</span>
 /usr/bin/ld: /usr/lib/libabsl_log_internal_check_op.so.2401.0.0: error adding symbols: DSO missing from <span class="nb">command </span>line
@@ -1197,7 +1223,7 @@ make[1]: Leaving directory <span class="s1">'/home/k0t0z/Desktop/gsoc24/enigma-d
 make: <span class="k">***</span> <span class="o">[</span>Makefile:51: emake] Error 2
 </code></pre></div></div>
 
-<p>This time, it is not about RGM. I made some simple research and founc out that I am not the only genius trying to work this around, it is everywhere:</p>
+<p>This time, it’s not about RGM. After some quick research, I found that I’m not the only one struggling with this. The issue is widespread:</p>
 
 <ul>
   <li>https://bbs.archlinux.org/viewtopic.php?id=289986</li>
@@ -1206,19 +1232,21 @@ make: <span class="k">***</span> <span class="o">[</span>Makefile:51: emake] Err
   <li>https://github.com/protocolbuffers/protobuf/issues/15604#issuecomment-1929929148</li>
 </ul>
 
-<p>A lot of variations from the above link error showed up on each change, however, none of these changes solve the problem.</p>
+<p>Variations of this error appeared with each attempted fix, but none of the solutions worked.</p>
 
-<p>Josh and I thought at first that it is because the linking interface between gRPC, Protobuf, and Abseil is not stable. This means in order to solve this problem, I am gonna diverge and build gRPC, Protobuf, and Abseil from scratch. I asked my mate Fares to give me the versions he is using on Ubuntu and actually these versions are too old to have even a CMake build system. This motivated my memory to remember that Ubuntu actually is a stable distro and doesn’t have the latest versions of the libraries.</p>
+<p>At first, Josh and I suspected that the linking interface between gRPC, Protobuf, and Abseil was unstable. To fix this, I would have to diverge and build gRPC, Protobuf, and Abseil from scratch. I reached out to my colleague Fares, who provided the older versions he’s using on Ubuntu. These versions were so outdated they didn’t even use CMake. This reminded me that Ubuntu, being a stable distro, often doesn’t have the latest library versions.</p>
 
-<p>At this point, I decided to move to Ubuntu for now because my Midterm Evaluation is coming and I need to show some progress.</p>
+<p>Given that my midterm evaluation is approaching and I need to show tangible progress, I’ve decided to switch to Ubuntu for now to ensure stability and meet my deadlines.</p>
 
 <h2 id="visualshader-types"><code class="language-plaintext highlighter-rouge">VisualShader</code> Types</h2>
 
-<p>In order to complete the <code class="language-plaintext highlighter-rouge">generate_shader_for_each_node</code> function, I needed some types to use. Some of these types are actually implemented inside the engine, such as <a href="https://github.com/enigma-dev/enigma-dev/blob/3590b681f20174ccf24156769d2bbb94b10673e3/ENIGMAsystem/SHELL/Universal_System/var4.h#L279">variant</a>, however, I don’t know if this possible or not because remember our <code class="language-plaintext highlighter-rouge">VisualShader</code> class is not part of the engine, it is part of the <code class="language-plaintext highlighter-rouge">shared</code> library. In which case, I created a new temporary custom type as follows:</p>
+<p>To complete the <code class="language-plaintext highlighter-rouge">generate_shader_for_each_node</code> function, I needed certain types. Some of these types are already implemented within the engine, such as <a href="https://github.com/enigma-dev/enigma-dev/blob/3590b681f20174ccf24156769d2bbb94b10673e3/ENIGMAsystem/SHELL/Universal_System/var4.h#L279">variant</a>. However, I’m unsure if I can use them, given that the <code class="language-plaintext highlighter-rouge">VisualShader</code> class is not part of the engine but rather part of the <code class="language-plaintext highlighter-rouge">shared</code> library.</p>
+
+<p>To work around this uncertainty, I created a new temporary custom type, defined as follows:</p>
 
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">using</span> <span class="n">TVariant</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">monostate</span><span class="p">,</span> <span class="kt">float</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="n">TVector2</span><span class="p">,</span> <span class="n">TVector3</span><span class="p">,</span> <span class="n">TVector4</span><span class="p">,</span> <span class="kt">bool</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">;</span></code></pre></figure>
 
-<p>The <code class="language-plaintext highlighter-rouge">T</code> in all types is for <code class="language-plaintext highlighter-rouge">Temporary</code>. Actually, the <code class="language-plaintext highlighter-rouge">VisualShader</code> class is not injected into anything yet, it is a stanalone class that can be built by a simple g++ command. The other types are also temporary and will be replaced by the engine types when they are here if they are not already.</p>
+<p>The “T” in all the types stands for “Temporary.” Currently, the <strong>VisualShader</strong> class is not integrated into any larger system; it’s a standalone class that can be built with a simple <code class="language-plaintext highlighter-rouge">g++</code> command. These temporary types will eventually be replaced with engine types once they are available or confirmed. For now, they serve as placeholders to facilitate development until the proper engine integration is complete.</p>
 
 <h2 id="most-important-operations-in-the-generator">Most Important Operations In The Generator</h2>
 
@@ -1246,9 +1274,9 @@ by matrix operations, I just mean multiplying color channels
 so basically, you have [r,g,b,a, const…] and the user specifies the matrix to multiply that by</p>
 </blockquote>
 
-<p>Let me explain the above conversation. The aim of this project is to generate some meaningful art using noise filters. This means we can’t have normal nodes like other game engines such as <code class="language-plaintext highlighter-rouge">Godot</code> or <code class="language-plaintext highlighter-rouge">Unity</code>, however, we need custom nodes that our AI Agent will be able to use. Of course the most reasonable nodes are the arthmetic operations for scalars and vectors.</p>
+<p>Let me clarify the conversation above. The goal of this project is to generate meaningful art using noise filters. Unlike traditional game engines such as <strong>Godot</strong> or <strong>Unity</strong>, we cannot rely on standard nodes. Instead, we need to create custom nodes that our AI agent can utilize. The most logical choice for these nodes are arithmetic operations for scalars and vectors.</p>
 
-<p>Beside custom nodes, we need more parameters for each node to give our AI Agent a lot of choices to pick from. For example, the <code class="language-plaintext highlighter-rouge">ValueNoise</code> node which is the first one I created, currently has <code class="language-plaintext highlighter-rouge">scale</code> parameter. This is not enough, we need more parameters such as inside this amazing application <a href="https://auburn.github.io/FastNoiseLite/">FastNoiseLite</a>.</p>
+<p>In addition to custom nodes, we must provide more parameters for each node to give our AI agent a broader range of options to select from. For instance, the <strong>ValueNoise</strong> node, which was the first one I created, currently has a <strong>scale</strong> parameter. However, this is insufficient; we need to include additional parameters, similar to those found in the impressive application <a href="https://auburn.github.io/FastNoiseLite/">FastNoiseLite</a>.</p>
 
 <blockquote>
   <p>Josh — 21/07/2024 19:38</p>
@@ -1262,15 +1290,15 @@ yeah, perlin noise is 2D, so it often has two frequencies, but I suppose if we�
 you can force the perlin noise to have a domain of 0-1 and make the user map it differently</p>
 </blockquote>
 
-<p>There will be more detailed explanation about this when I reach the AI part.</p>
+<p>I will provide a more detailed explanation of this when I reach the AI component of the project.</p>
 
 <p><img src="/gsoc24-blog/assets/fast-noise-tool.png" alt="Fast Noise Tool" /></p>
 
 <h2 id="the-renderer">The Renderer</h2>
 
-<p>Why we are implementing the <code class="language-plaintext highlighter-rouge">Visual Shader Editor</code> in the first place? Well, because in order to see how good our AI Agent perform. We will need to render the generated shader. Of course we will have an error function that will tell us how good the shader is, but we need to see it with our eyes as Josh recommended.</p>
+<p>Why are we implementing the <strong>Visual Shader Editor</strong> in the first place? The primary reason is to evaluate the performance of our AI agent. While we will have an error function to quantify the quality of the generated shader, visual inspection is essential, as Josh recommended.</p>
 
-<p>When it come for rendering and graphics, then you mean Robert. I am not ready yet for the renderer, but I like to know things in advance. I wanted to know how I am gonna apply my shader to a specific resource. For example, if I have a sprite or a background, how I am gonna apply the shader to it. Like if I want to make a disappering effect, how I am gonna apply it to a sprite. There are some built in variables that ENIGMA prepends to the shader code.</p>
+<p>When it comes to rendering and graphics, we turn to Robert. Although I’m not ready to tackle the renderer just yet, I like to familiarize myself with the necessary concepts in advance. Specifically, I want to understand how to apply my shader to a specific resource. For instance, if I have a sprite or a background, how do I apply the shader to it? If I wanted to create a disappearing effect, what would be the method to apply it to a sprite? ENIGMA has some built-in variables that it prepends to the shader code, and I aim to learn how these work.</p>
 
 <blockquote>
   <p>R0bert — 23/07/2024 19:28</p>
@@ -1326,11 +1354,11 @@ you can use surface_save and surface_get_texture if you want to do anything with
 @Saif you can dump it out or draw other objects with the effected texturealbeit i did add special texture_add functions to enigma, but ignore those ENIGMA only</p>
 </blockquote>
 
-<p>I had all this conversation with Robert because I wanted to know how I am gonna use ENIGMA’s Graphics System to render the shader. So most of these function that Robert mentioned are also part of the engine such as <code class="language-plaintext highlighter-rouge">surface_create</code>, <code class="language-plaintext highlighter-rouge">surface_set</code>, <code class="language-plaintext highlighter-rouge">shader_set</code>, <code class="language-plaintext highlighter-rouge">draw_rectangle</code>, <code class="language-plaintext highlighter-rouge">draw_background_stretched</code>, <code class="language-plaintext highlighter-rouge">surface_save</code>, and <code class="language-plaintext highlighter-rouge">surface_get_texture</code>.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 6: The Rush Summer</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 6: The Rush Summer" /><published>2024-06-30T21:00:00+00:00</published><updated>2024-06-30T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
+<p>I had this conversation with Robert to understand how to utilize ENIGMA’s Graphics System for rendering the shader. Most of the functions he mentioned are integral to the engine, including <strong>surface_create</strong>, <strong>surface_set</strong>, <strong>shader_set</strong>, <strong>draw_rectangle</strong>, <strong>draw_background_stretched</strong>, <strong>surface_save</strong>, and <strong>surface_get_texture</strong>.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 6: The Rush Summer</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 6: The Rush Summer" /><published>2024-06-30T21:00:00+00:00</published><updated>2024-06-30T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/06/30/google-summer-of-code-2024-week-6-the-rush-summer.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
 <h2 id="enigma-and-google-protobuf">ENIGMA and Google Protobuf</h2>
 
-<p>ENIGMA depends on Protobuf is many things. RGM is considered to be a MVC application or Model View Controller. Every UI component of RGM is part of a proto message. This is also how ENIGMA serializes/deserializes its project files.</p>
+<p>ENIGMA relies on Protobuf for various functionalities. RGM is structured as a Model-View-Controller (MVC) application, where each UI component of RGM is represented as part of a Protobuf message. This approach is also how ENIGMA handles the serialization and deserialization of its project files.</p>
 
 <blockquote>
   <p>Josh — 01/07/2024 at 08:14</p>
@@ -1373,15 +1401,15 @@ proto just lets you do things like serialize and deserialize, use reflection, et
 
 <h2 id="the-ai-agent-phases">The AI Agent Phases</h2>
 
-<p>When reaching the ML part, there are 3 main phases that we need to consider:</p>
+<p>When we reach the machine learning component, there are three main phases to consider:</p>
 
 <ol>
-  <li>Fixed nodes, fixed connections, variable parameters (Fixed-Node layout).</li>
-  <li>Fixed nodes, variable connections, variable parameters.</li>
-  <li>Variable nodes, variable connections, variable parameters.</li>
+  <li><strong>Fixed nodes, fixed connections, variable parameters</strong> (Fixed-Node layout).</li>
+  <li><strong>Fixed nodes, variable connections, variable parameters</strong>.</li>
+  <li><strong>Variable nodes, variable connections, variable parameters</strong>.</li>
 </ol>
 
-<p>Each phase should increase the complexity of the AI agent. The first phase is the easiest one.</p>
+<p>Each phase progressively increases the complexity of the AI agent, with the first phase being the simplest.</p>
 
 <blockquote>
   <p>Josh — 01/07/2024 at 09:20</p>
@@ -1422,45 +1450,46 @@ in particular they will become important to avoid overfitting in DNN training</p
 
 <h2 id="visualshader-class"><code class="language-plaintext highlighter-rouge">VisualShader</code> Class</h2>
 
-<p>Now enough theory, let’s talk about the important class I was working on during the past weeks.</p>
+<p>Now that we’ve covered the theory, let’s discuss the important class I have been working on over the past few weeks.</p>
 
-<p>The VisualShader class contains the graph and its main functionalities. As Josh said, these main functionalities should be part of the proto message, however, I like finishing it out and then refactoring. The <code class="language-plaintext highlighter-rouge">Graph</code> is a simple struct as follows:</p>
+<p>The <strong>VisualShader</strong> class encompasses the graph and its core functionalities. As Josh mentioned, these primary functionalities should ideally be included in the Protobuf message; however, I prefer to complete the implementation first and then refactor as needed. The <strong>Graph</strong> is structured simply, as follows:</p>
 
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">Graph</span> <span class="p">{</span>
     <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">VisualShader</span><span class="o">::</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">nodes</span><span class="p">;</span>
     <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">VisualShader</span><span class="o">::</span><span class="n">Connection</span><span class="o">&gt;</span> <span class="n">connections</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">graph</span><span class="p">;</span></code></pre></figure>
 
-<p>The main functions are:</p>
+<p>The main functions within the <strong>VisualShader</strong> class are as follows:</p>
 
 <ul>
-  <li>generate_shader</li>
-  <li>generate_preview_shader</li>
-  <li>generate_shader_for_each_node</li>
+  <li><strong>generate_shader</strong></li>
+  <li><strong>generate_preview_shader</strong></li>
+  <li><strong>generate_shader_for_each_node</strong></li>
 </ul>
 
-<p>The <code class="language-plaintext highlighter-rouge">generate_shader</code> function is the main function that will be called by the user. It will contains a recursively algorithm that will go through the graph starting from the output node. The <code class="language-plaintext highlighter-rouge">Output</code> node is the special node in the graph as it can’t be added or deleted. It has the id of 0.</p>
+<p>The <strong>generate_shader</strong> function serves as the primary entry point for users. It contains a recursive algorithm that traverses the graph, starting from the output node. The <strong>Output</strong> node is a special node in the graph; it cannot be added or deleted and has an ID of 0.</p>
 
-<p>The <code class="language-plaintext highlighter-rouge">generate_preview_shader</code> is a simplified version of the <code class="language-plaintext highlighter-rouge">generate_shader</code> function. It will be used to generate the shader for the preview window. The preview window is expected to use ENIGMA’s Graphics System to render the shader. It is necessary because it can generate the shader starting from any node in the graph.</p>
+<p>The <strong>generate_preview_shader</strong> function is a simplified version of <strong>generate_shader</strong>. It is designed to generate the shader for the preview window, which will utilize ENIGMA’s Graphics System for rendering. This function is essential because it can generate the shader starting from any node in the graph.</p>
 
-<p>Both functions will call the <code class="language-plaintext highlighter-rouge">generate_shader_for_each_node</code> function. This function will be called for each node in the graph. It will generate the shader for the node and its children.</p>
+<p>Both <strong>generate_shader</strong> and <strong>generate_preview_shader</strong> will call the <strong>generate_shader_for_each_node</strong> function. This function is invoked for each node in the graph, generating the shader for that node and its children.</p>
 
-<p>Now let’s walk through the <code class="language-plaintext highlighter-rouge">generate_shader</code> function. In order to generate the shader code correctly, first we have to separate the shader code into 3 parts:</p>
+<p>Now, let’s delve into the <strong>generate_shader</strong> function. To generate the shader code accurately, we first need to separate the code into three distinct parts:</p>
+
 <ul>
-  <li>global code</li>
-  <li>global code for each node</li>
-  <li>local code for each node</li>
+  <li><strong>Global code</strong></li>
+  <li><strong>Global code for each node</strong></li>
+  <li><strong>Local code for each node</strong></li>
 </ul>
 
-<p>The <code class="language-plaintext highlighter-rouge">global code</code> must be generated once. So if we have a node that is used multiple times in the graph, we don’t want to generate the code for it multiple times. The <code class="language-plaintext highlighter-rouge">global code for each node</code> is the code that is generated for each node in the graph. The <code class="language-plaintext highlighter-rouge">local code for each node</code> is the code that is generated for each node and its children.</p>
+<p>The <strong>global code</strong> must be generated only once. Therefore, if a node is used multiple times in the graph, we want to avoid generating the code for it repeatedly. The <strong>global code for each node</strong> pertains to the code generated for each node in the graph, while the <strong>local code for each node</strong> is specific to each node and its children.</p>
 
-<p>That’s why at the start of the function I created multiple buffers to store the code and send them by reference to the recursive function.</p>
+<p>To facilitate this, I created multiple buffers at the start of the function to store the code and pass them by reference to the recursive function.</p>
 
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">global_code</span><span class="p">;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">global_code_per_node</span><span class="p">;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">shader_code</span><span class="p">;</span></code></pre></figure>
 
-<p>Another important step that I need to mention is that the connections are stored inside <code class="language-plaintext highlighter-rouge">std::vector</code>. This will increase the time complexity of the algorithm. This can be solved by the following snippet:</p>
+<p>Another important aspect to mention is that the connections are stored within a <code class="language-plaintext highlighter-rouge">std::vector</code>. While this approach provides flexibility, it can increase the time complexity of the algorithm. However, this issue can be addressed using the following snippet:</p>
 
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">ConnectionKey</span><span class="p">,</span> <span class="k">const</span> <span class="n">Connection</span><span class="o">*&gt;</span> <span class="n">input_connections</span><span class="p">;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">ConnectionKey</span><span class="p">,</span> <span class="k">const</span> <span class="n">Connection</span><span class="o">*&gt;</span> <span class="n">output_connections</span><span class="p">;</span>
@@ -1482,11 +1511,11 @@ in particular they will become important to avoid overfitting in DNN training</p
     <span class="n">input_connections</span><span class="p">[</span><span class="n">to_key</span><span class="p">]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">;</span>
 <span class="p">}</span></code></pre></figure>
 
-<p>Now, we can call <code class="language-plaintext highlighter-rouge">generate_shader_for_each_node</code> function for the output node. The function will be called recursively for each node in the graph. First we check the inputs of the current node until we reach a node that has no inputs (the input node). Then we generate the code for the node and its children.</p>
+<p>Now, we can call the <strong>generate_shader_for_each_node</strong> function for the output node. This function will be executed recursively for each node in the graph. We begin by checking the inputs of the current node until we reach a node that has no inputs (the input node). Once we identify such a node, we proceed to generate the code for that node and its children.</p>
 
-<p>The <code class="language-plaintext highlighter-rouge">generate_shader</code> function took <code class="language-plaintext highlighter-rouge">160 μs</code> to generate the shader for the graph in the <code class="language-plaintext highlighter-rouge">VisualShaderTest.Test_generate_shader</code> test. I can improve this time however, as I said, I want to waste ZERO time here.</p>
+<p>In the <strong>VisualShaderTest.Test_generate_shader</strong> test, the <strong>generate_shader</strong> function took <strong>160 μs</strong> to generate the shader for the graph. While I believe there is room for improvement in this time, my priority is to ensure that no time is wasted during this process.</p>
 
-<p>The <code class="language-plaintext highlighter-rouge">ConnectionKey</code> union is defined as follows:</p>
+<p>The <strong>ConnectionKey</strong> union is defined as follows:</p>
 
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">union</span> <span class="n">ConnectionKey</span> <span class="p">{</span>
     <span class="k">struct</span> <span class="nc">FragmentedKey</span> <span class="p">{</span>
@@ -1499,13 +1528,13 @@ in particular they will become important to avoid overfitting in DNN training</p
 
 <p><img src="/gsoc24-blog/assets/connection-key-theory.png" alt="Connection Key Theory" /></p>
 
-<p>This union will be used as a key for each <code class="language-plaintext highlighter-rouge">Connection</code> object in <code class="language-plaintext highlighter-rouge">std::map</code>. The key is a 64-bit integer that contains the node id in the first 32 bits and the port id in the second 32 bits. This will allow us to search for the connection in <code class="language-plaintext highlighter-rouge">O(1)</code> time complexity using only a node id and a port id.</p>
+<p>This union will serve as the key for each <strong>Connection</strong> object in a <code class="language-plaintext highlighter-rouge">std::map</code>. The key is a 64-bit integer, with the first 32 bits representing the node ID and the second 32 bits representing the port ID. This structure allows us to efficiently search for connections in constant time, <strong>O(1)</strong>, using just the node ID and port ID.</p>
 
 <h2 id="changing-the-structure-of-the-project">Changing The Structure Of The Project</h2>
 
-<p>After talking with Greg, I found out that anything inside <code class="language-plaintext highlighter-rouge">ENIGMAsystem/</code> must provide user functions. The EDL functions that the game developer will use. The <code class="language-plaintext highlighter-rouge">VisualShader</code> class is actually a class that will be used by RGM only. So, I moved the class to <code class="language-plaintext highlighter-rouge">ENIGMAsystem/shared/ResourceTransformations/VisualShader/</code> as Josh recommended.</p>
+<p>After discussing with Greg, I learned that anything within the <code class="language-plaintext highlighter-rouge">ENIGMAsystem/</code> directory must provide user-facing functions, specifically the EDL functions that game developers will use. Since the <strong>VisualShader</strong> class is intended for use by RGM only, I followed Josh’s recommendation and moved the class to <code class="language-plaintext highlighter-rouge">ENIGMAsystem/shared/ResourceTransformations/VisualShader/</code>.</p>
 
-<p>The tests as well must be part of <code class="language-plaintext highlighter-rouge">test-runner</code> not <code class="language-plaintext highlighter-rouge">emake-tests</code>. I will move them to <code class="language-plaintext highlighter-rouge">CommandLine/testing/Tests/</code>.</p>
+<p>Additionally, the tests for this class should be part of the <code class="language-plaintext highlighter-rouge">test-runner</code> instead of <code class="language-plaintext highlighter-rouge">emake-tests</code>, so I will relocate them to <code class="language-plaintext highlighter-rouge">CommandLine/testing/Tests/</code>.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 enigma-dev
@@ -1530,11 +1559,11 @@ enigma-dev
 
 </code></pre></div></div>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 1, 2, 3, 4, and 5: Final Final Exams</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/26/google-summer-of-code-2024-week-1-2-3-4-and-5-final-final-exams.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 1, 2, 3, 4, and 5: Final Final Exams" /><published>2024-05-26T21:00:00+00:00</published><updated>2024-05-26T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/26/google-summer-of-code-2024-week-1-2-3-4-and-5-final-final-exams</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/26/google-summer-of-code-2024-week-1-2-3-4-and-5-final-final-exams.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
-<p>I want to note that currently, I am working with a low pace as I am very buzy with my final exams and graduation stuff.</p>
+<p>I should note that I am currently working at a slower pace due to being occupied with my final exams and graduation preparations.</p>
 
-<p>I take my inspiration from Godot Game Engine as I want to reach the Machine Learning part of the project. on 16th of June, I noticed that Godot implements the Visual Shader using the <a href="https://web.archive.org/web/20120507164830/https://web.mit.edu/~emin/www/source_code/red_black_tree/index.html">Red-Black Tree C Code</a> and can be found at <a href="https://github.com/godotengine/godot/blob/705b7a0b0bd535c95e4e8fb439f3d84b3fb4f427/scene/resources/visual_shader.h#L129-L132">Godot Visual Shader H 129-132</a>. As Josh replied, <code class="language-plaintext highlighter-rouge">std::map</code> is a red black tree. I didn’t know it earleir.</p>
+<p>I draw inspiration from the Godot Game Engine, particularly as I aim to reach the machine learning phase of the project. On June 16th, I discovered that Godot implements its Visual Shader system using a <a href="https://web.archive.org/web/20120507164830/https://web.mit.edu/~emin/www/source_code/red_black_tree/index.html">Red-Black Tree in C</a>, which can be found in the <a href="https://github.com/godotengine/godot/blob/705b7a0b0bd535c95e4e8fb439f3d84b3fb4f427/scene/resources/visual_shader.h#L129-L132">Godot Visual Shader code (lines 129-132)</a>. As Josh pointed out, <code class="language-plaintext highlighter-rouge">std::map</code> in C++ is also based on a red-black tree, which I hadn’t realized before.</p>
 
-<p>An interesting fact that I have learned is why Godot developers have their own implementation of the Red Black Trees. Actually, I made a converstation with one of them once about why they are not using the standard template library or STL.</p>
+<p>One interesting insight I’ve gained is why Godot developers created their own implementation of red-black trees. I once had a conversation with one of them about their decision not to rely on the Standard Template Library (STL).</p>
 
 <blockquote>
   <p>December 29, 2023</p>
@@ -1633,9 +1662,9 @@ Came across a case of it some time ago when discussing this very topic but forge
 Even trivial things like exception handling is weird in some libraries, see <a href="https://github.com/godotengine/godot-cpp/issues/1326">here</a>, where one implementation of the library on Arch Linux is broken with exceptions disabled</p>
 </blockquote>
 
-<p>It shouldn’t be a problem for ENIGMA 🤣. Actually, unlike Godot, ENIGMA is meant to be simple to use and developed so I don’t see any problem of using STL in ENIGMA. Also, I don’t want to forget that in order to reach the AI part, I need to finish the whole editor as soon as possible which is a large chunk of work.</p>
+<p>This shouldn’t pose a problem for ENIGMA! 🤣 Unlike Godot, ENIGMA is designed to be simple to use and develop, so I don’t foresee any issues with incorporating the Standard Template Library (STL). However, I must remember that to progress to the AI component, I need to complete the entire editor as quickly as possible, which is a significant undertaking.</p>
 
-<p>Oh by the way, I planned already to extend my project to 22 weeks. That the maximum number of weeks you can ever extend to. I want to implement the Matching Machine Learning algorithm as well.</p>
+<p>By the way, I have already planned to extend my project to a maximum of 22 weeks, which is the longest extension allowed. I also aim to implement the Matching Machine Learning algorithm during this time.</p>
 
 <blockquote>
   <p>gfundies — 25/06/2024 21:44</p>
@@ -1646,7 +1675,7 @@ Even trivial things like exception handling is weird in some libraries, see <a h
 need to pick from those</p>
 </blockquote>
 
-<p>Now, beside the implementation of the graph, I needed to know more about the use case of this project. How the game developers are going to use it. Then I can decide what can be done. Thanks to Josh he explained it very well.</p>
+<p>In addition to implementing the graph, I needed to gain a better understanding of the project’s use case—specifically, how game developers will utilize it. This knowledge will help me determine the next steps in the project. Fortunately, Josh provided a clear explanation that greatly assisted my understanding.</p>
 
 <blockquote>
   <p>Josh — 29/06/2024 17:34</p>
@@ -1661,23 +1690,23 @@ clearly the predictability remains high since you’ve literally found a mathema
 
 <h2 id="graph-lifecycle">Graph Lifecycle</h2>
 
-<p>I am gonna explain more about this approach just for future contributors who will take on this project and hopefully, I am mentoring them.</p>
+<p>I’d like to elaborate on this approach for the benefit of future contributors who may take on this project—hopefully, I will have the opportunity to mentor them.</p>
 
-<p>First of all, the game developer will load a resource into the Visual Shader Editor. The game developer will have the choice between Backgrounds and Sprites. Currently, let’s keep it simple and focus of Backgrounds. The game developer can now match the loaded resource using a <code class="language-plaintext highlighter-rouge">Match Image</code> button that will be created.</p>
+<p>First, the game developer will load a resource into the Visual Shader Editor, choosing between backgrounds and sprites. For now, let’s keep it simple and focus on backgrounds. Once the resource is loaded, the game developer can click a “Match Image” button that will be created.</p>
 
-<p>The AI Agent take over and start generating the graph and matching the best parameters according to the resource image loaded until it converge.</p>
+<p>At this point, the AI agent takes over, generating the graph and optimizing the parameters based on the loaded resource image until it converges.</p>
 
-<p>At this point, the compiler will take over and writes a resource ID to the generated shader from this graph.</p>
+<p>After the AI agent completes its work, the compiler will write a resource ID to the generated shader based on this graph.</p>
 
-<p>This is how the graph editor and the graph will be used while developing a game. The thing is that if I want to make a volcano surface for example, I will only need a volcano background image and the AI Agent will take care of all other stuff.</p>
+<p>This is how the graph editor and the graph will be utilized during game development. For instance, if I want to create a volcano surface, I simply need to provide a volcano background image, and the AI agent will handle the rest.</p>
 
 <h2 id="godots-role">Godot’s Role</h2>
 
-<p>In order to implement an excellent approach for the Visual Shader, I decided to work in parallel on Godot’s Visual Shader Editor to improve my implementations. See <a href="https://github.com/godotengine/godot/pull/93791">#93791</a>, <a href="https://github.com/godotengine/godot/pull/93988">#93988</a>, and <a href="https://github.com/godotengine/godot/pull/93992">#93992</a>.</p>
+<p>To develop an effective approach for the Visual Shader, I decided to work in parallel with Godot’s Visual Shader Editor to enhance my implementations. You can refer to the following pull requests for more details: <a href="https://github.com/godotengine/godot/pull/93791">#93791</a>, <a href="https://github.com/godotengine/godot/pull/93988">#93988</a>, and <a href="https://github.com/godotengine/godot/pull/93992">#93992</a>.</p>
 
 <h2 id="debugging-enigma-emake-tests-inside-vscode">Debugging ENIGMA <code class="language-plaintext highlighter-rouge">emake-tests</code> inside VSCode</h2>
 
-<p>I always wanted to run the debug session from vscode instead of doing it manually and here are the task and launch objects:</p>
+<p>I have always wanted to run the debug session directly from Visual Studio Code instead of doing it manually. Below are the task and launch configuration objects I created for this purpose:</p>
 
 <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="err">//</span><span class="w"> </span><span class="err">task</span><span class="w"> </span><span class="err">object:</span><span class="w">
 </span><span class="p">{</span><span class="w">
@@ -1709,7 +1738,7 @@ clearly the predictability remains high since you’ve literally found a mathema
     </span><span class="nl">"preLaunchTask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build emake-tests"</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Bonding Period</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Bonding Period" /><published>2024-05-15T21:00:00+00:00</published><updated>2024-05-15T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
-<p>After installing Arch Linux, I can build RGM, just to do something in this period. Of courcse, it won’t run from the first time and I am gonna leave the error here for future reference:</p>
+<p>After installing Arch Linux, I plan to build RGM as a productive task during this period. Naturally, it won’t run successfully on the first attempt, so I’ll document the error here for future reference:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="o">[</span> 76%] Linking CXX executable emake
     /usr/bin/ld: CMakeFiles/emake.dir/EnigmaPlugin.cpp.o: undefined reference to symbol <span class="s1">'_ZN4absl12lts_2024011612log_internal21CheckOpMessageBuilderC1EPKc'</span>
@@ -1720,15 +1749,15 @@ clearly the predictability remains high since you’ve literally found a mathema
     make: <span class="k">***</span> <span class="o">[</span>Makefile:136: all] Error 2
 </code></pre></div></div>
 
-<p>Before installing Arch Linux, I tried to build RGM using my Ubuntu machine but same error. That was before being accepted in GSoC.</p>
+<p>Before installing Arch Linux, I attempted to build RGM on my Ubuntu machine, but encountered the same error. This was before I was accepted into GSoC.</p>
 
-<p>In this bonding period, I didn’t do much as I was busy with my final exams.</p>
+<p>During the bonding period, I wasn’t able to contribute much, as I was occupied with my final exams.</p>
 
-<p>Late in the bonding period, specifically on May 24th, I want to start writing some code so started wondering where to put it. The whole organization of the project is still unclear.</p>
+<p>Later in the bonding period, specifically on May 24th, I wanted to begin writing some code but was unsure where to place it, as the overall project structure was still unclear.</p>
 
-<p>Anyway, The graph backend is not related to the <code class="language-plaintext highlighter-rouge">Graphics_Systems</code>, although, it will require a system to render the generated shader. I think the most suitable location is inside <code class="language-plaintext highlighter-rouge">Universal_System</code>. Josh was also fine with this location.</p>
+<p>In any case, the graph backend isn’t directly related to the <code class="language-plaintext highlighter-rouge">Graphics_Systems</code>, although it will require a system for rendering the generated shaders. After some thought, I concluded that the most suitable location for it would be within the <code class="language-plaintext highlighter-rouge">Universal_System</code>, and Josh agreed with this placement.</p>
 
-<p>The expected structure of my files will be:</p>
+<p>Here’s the expected structure of my files:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>enigma-dev
 ├── ...
@@ -1753,7 +1782,7 @@ clearly the predictability remains high since you’ve literally found a mathema
                 └── Node.h
 </code></pre></div></div>
 
-<p>When the graph is implemented, I will start implementing the generator although I am not sure how I am gonna visualize the output shader. I will talk to my mentor about this however maybe I will have to integrate the node editor with RGM which is something I don’t want to do.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Acceptance Story</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/14/google-summer-of-code-2024-acceptance-story.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Acceptance Story" /><published>2024-05-14T21:00:00+00:00</published><updated>2024-05-14T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/14/google-summer-of-code-2024-acceptance-story</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/14/google-summer-of-code-2024-acceptance-story.html"><![CDATA[<p>My accepted proposal <a href="/gsoc24-blog/assets/procedural-fragment-shader-generation-using-classic-machine-learning-GSoC-2024-proposal.pdf">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
+<p>Once the graph is implemented, I will move on to developing the generator. However, I’m unsure how I will visualize the output shader. I’ll discuss this with my mentor, but there’s a possibility that I might need to integrate the node editor with RGM, which I would prefer to avoid.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Acceptance Story</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/14/google-summer-of-code-2024-acceptance-story.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Acceptance Story" /><published>2024-05-14T21:00:00+00:00</published><updated>2024-05-14T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/14/google-summer-of-code-2024-acceptance-story</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/14/google-summer-of-code-2024-acceptance-story.html"><![CDATA[<p>My accepted proposal <a href="/gsoc24-blog/assets/procedural-fragment-shader-generation-using-classic-machine-learning-GSoC-2024-proposal.pdf">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
 <blockquote>
   <p>Josh — 01/05/2024 21:08</p>
@@ -1784,11 +1813,11 @@ we need a procedural texture editor; there are some open-source ones we could in
   <p>Josh — 19/01/2024 17:51</p>
 </blockquote>
 
-<p>After these messages, there was a long discussion about the project idea and then I decided to apply for it.</p>
+<p>Following these messages, there was an extensive discussion about the project idea, which ultimately led me to decide to apply for it.</p>
 
-<p>Anyway, I am gonna setup my development environment by installing arch linux as ENIGMA is mainly developed on it.</p>
+<p>Moving forward, I will set up my development environment by installing Arch Linux, as ENIGMA is primarily developed on this platform.</p>
 
-<p>NOTE: You can find the example game using Godot that showcases the final result of the project here: <a href="/gsoc24-blog/assets/godot_visual_shader_editor_showcase.zip">godot_visual_shader_editor_showcase.zip</a>.</p>
+<p><strong>Note:</strong> You can find an example game built with Godot, showcasing the project’s final outcome, here: <a href="/gsoc24-blog/assets/godot_visual_shader_editor_showcase.zip">godot_visual_shader_editor_showcase.zip</a>.</p>
 
 <blockquote style="border-left: 6px solid #ff3e3e;">
     <p>

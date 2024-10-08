@@ -68,11 +68,11 @@
   <div class="post">
     <p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
-<p>I want to note that currently, I am working with a low pace as I am very buzy with my final exams and graduation stuff.</p>
+<p>I should note that I am currently working at a slower pace due to being occupied with my final exams and graduation preparations.</p>
 
-<p>I take my inspiration from Godot Game Engine as I want to reach the Machine Learning part of the project. on 16th of June, I noticed that Godot implements the Visual Shader using the <a href="https://web.archive.org/web/20120507164830/https://web.mit.edu/~emin/www/source_code/red_black_tree/index.html">Red-Black Tree C Code</a> and can be found at <a href="https://github.com/godotengine/godot/blob/705b7a0b0bd535c95e4e8fb439f3d84b3fb4f427/scene/resources/visual_shader.h#L129-L132">Godot Visual Shader H 129-132</a>. As Josh replied, <code class="language-plaintext highlighter-rouge">std::map</code> is a red black tree. I didn’t know it earleir.</p>
+<p>I draw inspiration from the Godot Game Engine, particularly as I aim to reach the machine learning phase of the project. On June 16th, I discovered that Godot implements its Visual Shader system using a <a href="https://web.archive.org/web/20120507164830/https://web.mit.edu/~emin/www/source_code/red_black_tree/index.html">Red-Black Tree in C</a>, which can be found in the <a href="https://github.com/godotengine/godot/blob/705b7a0b0bd535c95e4e8fb439f3d84b3fb4f427/scene/resources/visual_shader.h#L129-L132">Godot Visual Shader code (lines 129-132)</a>. As Josh pointed out, <code class="language-plaintext highlighter-rouge">std::map</code> in C++ is also based on a red-black tree, which I hadn’t realized before.</p>
 
-<p>An interesting fact that I have learned is why Godot developers have their own implementation of the Red Black Trees. Actually, I made a converstation with one of them once about why they are not using the standard template library or STL.</p>
+<p>One interesting insight I’ve gained is why Godot developers created their own implementation of red-black trees. I once had a conversation with one of them about their decision not to rely on the Standard Template Library (STL).</p>
 
 <blockquote>
   <p>December 29, 2023</p>
@@ -171,9 +171,9 @@ Came across a case of it some time ago when discussing this very topic but forge
 Even trivial things like exception handling is weird in some libraries, see <a href="https://github.com/godotengine/godot-cpp/issues/1326">here</a>, where one implementation of the library on Arch Linux is broken with exceptions disabled</p>
 </blockquote>
 
-<p>It shouldn’t be a problem for ENIGMA 🤣. Actually, unlike Godot, ENIGMA is meant to be simple to use and developed so I don’t see any problem of using STL in ENIGMA. Also, I don’t want to forget that in order to reach the AI part, I need to finish the whole editor as soon as possible which is a large chunk of work.</p>
+<p>This shouldn’t pose a problem for ENIGMA! 🤣 Unlike Godot, ENIGMA is designed to be simple to use and develop, so I don’t foresee any issues with incorporating the Standard Template Library (STL). However, I must remember that to progress to the AI component, I need to complete the entire editor as quickly as possible, which is a significant undertaking.</p>
 
-<p>Oh by the way, I planned already to extend my project to 22 weeks. That the maximum number of weeks you can ever extend to. I want to implement the Matching Machine Learning algorithm as well.</p>
+<p>By the way, I have already planned to extend my project to a maximum of 22 weeks, which is the longest extension allowed. I also aim to implement the Matching Machine Learning algorithm during this time.</p>
 
 <blockquote>
   <p>gfundies — 25/06/2024 21:44</p>
@@ -184,7 +184,7 @@ Even trivial things like exception handling is weird in some libraries, see <a h
 need to pick from those</p>
 </blockquote>
 
-<p>Now, beside the implementation of the graph, I needed to know more about the use case of this project. How the game developers are going to use it. Then I can decide what can be done. Thanks to Josh he explained it very well.</p>
+<p>In addition to implementing the graph, I needed to gain a better understanding of the project’s use case—specifically, how game developers will utilize it. This knowledge will help me determine the next steps in the project. Fortunately, Josh provided a clear explanation that greatly assisted my understanding.</p>
 
 <blockquote>
   <p>Josh — 29/06/2024 17:34</p>
@@ -199,23 +199,23 @@ clearly the predictability remains high since you’ve literally found a mathema
 
 <h2 id="graph-lifecycle">Graph Lifecycle</h2>
 
-<p>I am gonna explain more about this approach just for future contributors who will take on this project and hopefully, I am mentoring them.</p>
+<p>I’d like to elaborate on this approach for the benefit of future contributors who may take on this project—hopefully, I will have the opportunity to mentor them.</p>
 
-<p>First of all, the game developer will load a resource into the Visual Shader Editor. The game developer will have the choice between Backgrounds and Sprites. Currently, let’s keep it simple and focus of Backgrounds. The game developer can now match the loaded resource using a <code class="language-plaintext highlighter-rouge">Match Image</code> button that will be created.</p>
+<p>First, the game developer will load a resource into the Visual Shader Editor, choosing between backgrounds and sprites. For now, let’s keep it simple and focus on backgrounds. Once the resource is loaded, the game developer can click a “Match Image” button that will be created.</p>
 
-<p>The AI Agent take over and start generating the graph and matching the best parameters according to the resource image loaded until it converge.</p>
+<p>At this point, the AI agent takes over, generating the graph and optimizing the parameters based on the loaded resource image until it converges.</p>
 
-<p>At this point, the compiler will take over and writes a resource ID to the generated shader from this graph.</p>
+<p>After the AI agent completes its work, the compiler will write a resource ID to the generated shader based on this graph.</p>
 
-<p>This is how the graph editor and the graph will be used while developing a game. The thing is that if I want to make a volcano surface for example, I will only need a volcano background image and the AI Agent will take care of all other stuff.</p>
+<p>This is how the graph editor and the graph will be utilized during game development. For instance, if I want to create a volcano surface, I simply need to provide a volcano background image, and the AI agent will handle the rest.</p>
 
 <h2 id="godots-role">Godot’s Role</h2>
 
-<p>In order to implement an excellent approach for the Visual Shader, I decided to work in parallel on Godot’s Visual Shader Editor to improve my implementations. See <a href="https://github.com/godotengine/godot/pull/93791">#93791</a>, <a href="https://github.com/godotengine/godot/pull/93988">#93988</a>, and <a href="https://github.com/godotengine/godot/pull/93992">#93992</a>.</p>
+<p>To develop an effective approach for the Visual Shader, I decided to work in parallel with Godot’s Visual Shader Editor to enhance my implementations. You can refer to the following pull requests for more details: <a href="https://github.com/godotengine/godot/pull/93791">#93791</a>, <a href="https://github.com/godotengine/godot/pull/93988">#93988</a>, and <a href="https://github.com/godotengine/godot/pull/93992">#93992</a>.</p>
 
 <h2 id="debugging-enigma-emake-tests-inside-vscode">Debugging ENIGMA <code class="language-plaintext highlighter-rouge">emake-tests</code> inside VSCode</h2>
 
-<p>I always wanted to run the debug session from vscode instead of doing it manually and here are the task and launch objects:</p>
+<p>I have always wanted to run the debug session directly from Visual Studio Code instead of doing it manually. Below are the task and launch configuration objects I created for this purpose:</p>
 
 <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="err">//</span><span class="w"> </span><span class="err">task</span><span class="w"> </span><span class="err">object:</span><span class="w">
 </span><span class="p">{</span><span class="w">

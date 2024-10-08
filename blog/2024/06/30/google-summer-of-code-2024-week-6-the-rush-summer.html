@@ -70,7 +70,7 @@
 
 <h2 id="enigma-and-google-protobuf">ENIGMA and Google Protobuf</h2>
 
-<p>ENIGMA depends on Protobuf is many things. RGM is considered to be a MVC application or Model View Controller. Every UI component of RGM is part of a proto message. This is also how ENIGMA serializes/deserializes its project files.</p>
+<p>ENIGMA relies on Protobuf for various functionalities. RGM is structured as a Model-View-Controller (MVC) application, where each UI component of RGM is represented as part of a Protobuf message. This approach is also how ENIGMA handles the serialization and deserialization of its project files.</p>
 
 <blockquote>
   <p>Josh — 01/07/2024 at 08:14</p>
@@ -113,15 +113,15 @@ proto just lets you do things like serialize and deserialize, use reflection, et
 
 <h2 id="the-ai-agent-phases">The AI Agent Phases</h2>
 
-<p>When reaching the ML part, there are 3 main phases that we need to consider:</p>
+<p>When we reach the machine learning component, there are three main phases to consider:</p>
 
 <ol>
-  <li>Fixed nodes, fixed connections, variable parameters (Fixed-Node layout).</li>
-  <li>Fixed nodes, variable connections, variable parameters.</li>
-  <li>Variable nodes, variable connections, variable parameters.</li>
+  <li><strong>Fixed nodes, fixed connections, variable parameters</strong> (Fixed-Node layout).</li>
+  <li><strong>Fixed nodes, variable connections, variable parameters</strong>.</li>
+  <li><strong>Variable nodes, variable connections, variable parameters</strong>.</li>
 </ol>
 
-<p>Each phase should increase the complexity of the AI agent. The first phase is the easiest one.</p>
+<p>Each phase progressively increases the complexity of the AI agent, with the first phase being the simplest.</p>
 
 <blockquote>
   <p>Josh — 01/07/2024 at 09:20</p>
@@ -162,45 +162,46 @@ in particular they will become important to avoid overfitting in DNN training</p
 
 <h2 id="visualshader-class"><code class="language-plaintext highlighter-rouge">VisualShader</code> Class</h2>
 
-<p>Now enough theory, let’s talk about the important class I was working on during the past weeks.</p>
+<p>Now that we’ve covered the theory, let’s discuss the important class I have been working on over the past few weeks.</p>
 
-<p>The VisualShader class contains the graph and its main functionalities. As Josh said, these main functionalities should be part of the proto message, however, I like finishing it out and then refactoring. The <code class="language-plaintext highlighter-rouge">Graph</code> is a simple struct as follows:</p>
+<p>The <strong>VisualShader</strong> class encompasses the graph and its core functionalities. As Josh mentioned, these primary functionalities should ideally be included in the Protobuf message; however, I prefer to complete the implementation first and then refactor as needed. The <strong>Graph</strong> is structured simply, as follows:</p>
 
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">Graph</span> <span class="p">{</span>
     <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">VisualShader</span><span class="o">::</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">nodes</span><span class="p">;</span>
     <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">VisualShader</span><span class="o">::</span><span class="n">Connection</span><span class="o">&gt;</span> <span class="n">connections</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">graph</span><span class="p">;</span></code></pre></figure>
 
-<p>The main functions are:</p>
+<p>The main functions within the <strong>VisualShader</strong> class are as follows:</p>
 
 <ul>
-  <li>generate_shader</li>
-  <li>generate_preview_shader</li>
-  <li>generate_shader_for_each_node</li>
+  <li><strong>generate_shader</strong></li>
+  <li><strong>generate_preview_shader</strong></li>
+  <li><strong>generate_shader_for_each_node</strong></li>
 </ul>
 
-<p>The <code class="language-plaintext highlighter-rouge">generate_shader</code> function is the main function that will be called by the user. It will contains a recursively algorithm that will go through the graph starting from the output node. The <code class="language-plaintext highlighter-rouge">Output</code> node is the special node in the graph as it can’t be added or deleted. It has the id of 0.</p>
+<p>The <strong>generate_shader</strong> function serves as the primary entry point for users. It contains a recursive algorithm that traverses the graph, starting from the output node. The <strong>Output</strong> node is a special node in the graph; it cannot be added or deleted and has an ID of 0.</p>
 
-<p>The <code class="language-plaintext highlighter-rouge">generate_preview_shader</code> is a simplified version of the <code class="language-plaintext highlighter-rouge">generate_shader</code> function. It will be used to generate the shader for the preview window. The preview window is expected to use ENIGMA’s Graphics System to render the shader. It is necessary because it can generate the shader starting from any node in the graph.</p>
+<p>The <strong>generate_preview_shader</strong> function is a simplified version of <strong>generate_shader</strong>. It is designed to generate the shader for the preview window, which will utilize ENIGMA’s Graphics System for rendering. This function is essential because it can generate the shader starting from any node in the graph.</p>
 
-<p>Both functions will call the <code class="language-plaintext highlighter-rouge">generate_shader_for_each_node</code> function. This function will be called for each node in the graph. It will generate the shader for the node and its children.</p>
+<p>Both <strong>generate_shader</strong> and <strong>generate_preview_shader</strong> will call the <strong>generate_shader_for_each_node</strong> function. This function is invoked for each node in the graph, generating the shader for that node and its children.</p>
 
-<p>Now let’s walk through the <code class="language-plaintext highlighter-rouge">generate_shader</code> function. In order to generate the shader code correctly, first we have to separate the shader code into 3 parts:</p>
+<p>Now, let’s delve into the <strong>generate_shader</strong> function. To generate the shader code accurately, we first need to separate the code into three distinct parts:</p>
+
 <ul>
-  <li>global code</li>
-  <li>global code for each node</li>
-  <li>local code for each node</li>
+  <li><strong>Global code</strong></li>
+  <li><strong>Global code for each node</strong></li>
+  <li><strong>Local code for each node</strong></li>
 </ul>
 
-<p>The <code class="language-plaintext highlighter-rouge">global code</code> must be generated once. So if we have a node that is used multiple times in the graph, we don’t want to generate the code for it multiple times. The <code class="language-plaintext highlighter-rouge">global code for each node</code> is the code that is generated for each node in the graph. The <code class="language-plaintext highlighter-rouge">local code for each node</code> is the code that is generated for each node and its children.</p>
+<p>The <strong>global code</strong> must be generated only once. Therefore, if a node is used multiple times in the graph, we want to avoid generating the code for it repeatedly. The <strong>global code for each node</strong> pertains to the code generated for each node in the graph, while the <strong>local code for each node</strong> is specific to each node and its children.</p>
 
-<p>That’s why at the start of the function I created multiple buffers to store the code and send them by reference to the recursive function.</p>
+<p>To facilitate this, I created multiple buffers at the start of the function to store the code and pass them by reference to the recursive function.</p>
 
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">global_code</span><span class="p">;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">global_code_per_node</span><span class="p">;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">shader_code</span><span class="p">;</span></code></pre></figure>
 
-<p>Another important step that I need to mention is that the connections are stored inside <code class="language-plaintext highlighter-rouge">std::vector</code>. This will increase the time complexity of the algorithm. This can be solved by the following snippet:</p>
+<p>Another important aspect to mention is that the connections are stored within a <code class="language-plaintext highlighter-rouge">std::vector</code>. While this approach provides flexibility, it can increase the time complexity of the algorithm. However, this issue can be addressed using the following snippet:</p>
 
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">ConnectionKey</span><span class="p">,</span> <span class="k">const</span> <span class="n">Connection</span><span class="o">*&gt;</span> <span class="n">input_connections</span><span class="p">;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">ConnectionKey</span><span class="p">,</span> <span class="k">const</span> <span class="n">Connection</span><span class="o">*&gt;</span> <span class="n">output_connections</span><span class="p">;</span>
@@ -222,11 +223,11 @@ in particular they will become important to avoid overfitting in DNN training</p
     <span class="n">input_connections</span><span class="p">[</span><span class="n">to_key</span><span class="p">]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">;</span>
 <span class="p">}</span></code></pre></figure>
 
-<p>Now, we can call <code class="language-plaintext highlighter-rouge">generate_shader_for_each_node</code> function for the output node. The function will be called recursively for each node in the graph. First we check the inputs of the current node until we reach a node that has no inputs (the input node). Then we generate the code for the node and its children.</p>
+<p>Now, we can call the <strong>generate_shader_for_each_node</strong> function for the output node. This function will be executed recursively for each node in the graph. We begin by checking the inputs of the current node until we reach a node that has no inputs (the input node). Once we identify such a node, we proceed to generate the code for that node and its children.</p>
 
-<p>The <code class="language-plaintext highlighter-rouge">generate_shader</code> function took <code class="language-plaintext highlighter-rouge">160 μs</code> to generate the shader for the graph in the <code class="language-plaintext highlighter-rouge">VisualShaderTest.Test_generate_shader</code> test. I can improve this time however, as I said, I want to waste ZERO time here.</p>
+<p>In the <strong>VisualShaderTest.Test_generate_shader</strong> test, the <strong>generate_shader</strong> function took <strong>160 μs</strong> to generate the shader for the graph. While I believe there is room for improvement in this time, my priority is to ensure that no time is wasted during this process.</p>
 
-<p>The <code class="language-plaintext highlighter-rouge">ConnectionKey</code> union is defined as follows:</p>
+<p>The <strong>ConnectionKey</strong> union is defined as follows:</p>
 
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">union</span> <span class="n">ConnectionKey</span> <span class="p">{</span>
     <span class="k">struct</span> <span class="nc">FragmentedKey</span> <span class="p">{</span>
@@ -239,13 +240,13 @@ in particular they will become important to avoid overfitting in DNN training</p
 
 <p><img src="/gsoc24-blog/assets/connection-key-theory.png" alt="Connection Key Theory" /></p>
 
-<p>This union will be used as a key for each <code class="language-plaintext highlighter-rouge">Connection</code> object in <code class="language-plaintext highlighter-rouge">std::map</code>. The key is a 64-bit integer that contains the node id in the first 32 bits and the port id in the second 32 bits. This will allow us to search for the connection in <code class="language-plaintext highlighter-rouge">O(1)</code> time complexity using only a node id and a port id.</p>
+<p>This union will serve as the key for each <strong>Connection</strong> object in a <code class="language-plaintext highlighter-rouge">std::map</code>. The key is a 64-bit integer, with the first 32 bits representing the node ID and the second 32 bits representing the port ID. This structure allows us to efficiently search for connections in constant time, <strong>O(1)</strong>, using just the node ID and port ID.</p>
 
 <h2 id="changing-the-structure-of-the-project">Changing The Structure Of The Project</h2>
 
-<p>After talking with Greg, I found out that anything inside <code class="language-plaintext highlighter-rouge">ENIGMAsystem/</code> must provide user functions. The EDL functions that the game developer will use. The <code class="language-plaintext highlighter-rouge">VisualShader</code> class is actually a class that will be used by RGM only. So, I moved the class to <code class="language-plaintext highlighter-rouge">ENIGMAsystem/shared/ResourceTransformations/VisualShader/</code> as Josh recommended.</p>
+<p>After discussing with Greg, I learned that anything within the <code class="language-plaintext highlighter-rouge">ENIGMAsystem/</code> directory must provide user-facing functions, specifically the EDL functions that game developers will use. Since the <strong>VisualShader</strong> class is intended for use by RGM only, I followed Josh’s recommendation and moved the class to <code class="language-plaintext highlighter-rouge">ENIGMAsystem/shared/ResourceTransformations/VisualShader/</code>.</p>
 
-<p>The tests as well must be part of <code class="language-plaintext highlighter-rouge">test-runner</code> not <code class="language-plaintext highlighter-rouge">emake-tests</code>. I will move them to <code class="language-plaintext highlighter-rouge">CommandLine/testing/Tests/</code>.</p>
+<p>Additionally, the tests for this class should be part of the <code class="language-plaintext highlighter-rouge">test-runner</code> instead of <code class="language-plaintext highlighter-rouge">emake-tests</code>, so I will relocate them to <code class="language-plaintext highlighter-rouge">CommandLine/testing/Tests/</code>.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 enigma-dev

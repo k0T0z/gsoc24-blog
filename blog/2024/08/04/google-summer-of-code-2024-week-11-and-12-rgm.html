@@ -68,55 +68,52 @@
   <div class="post">
     <p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Note: Before trying to build gRPC from scratch, see this: [Local Not Needed](https://k0t0z.github.io/gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-12-and-13-rgm.html#local-not-needed).
-</code></pre></div></div>
+<p><strong>Note:</strong> Before attempting to build gRPC from scratch, please refer to this: <a href="https://k0t0z.github.io/gsoc24-blog/blog/2024/08/04/google-summer-of-code-2024-week-11-12-and-13-rgm.html#local-not-needed">Local Not Needed</a>.</p>
 
-<p>The Final evaluation work will be inside <a href="https://github.com/enigma-dev/enigma-dev/pull/2399">#2399</a>.</p>
+<p>The final evaluation work will be available in <a href="https://github.com/enigma-dev/enigma-dev/pull/2399">#2399</a>.</p>
 
-<h2 id="back-to-test-runner-issue-on-arch-linux">Back To <code class="language-plaintext highlighter-rouge">test-runner</code> Issue On Arch Linux</h2>
+<h2 id="addressing-the-test-runner-issue-on-arch-linux">Addressing the <code class="language-plaintext highlighter-rouge">test-runner</code> Issue on Arch Linux</h2>
 
-<p>Remember that I am working on my Ubuntu VM as <code class="language-plaintext highlighter-rouge">test-runner</code> gives a link error on Arch Linux. However, RGM gives a linking error on both Ubuntu and Arch Linux. Because of this, I have decided to make <code class="language-plaintext highlighter-rouge">test-runner</code> work on Arch Linux.</p>
+<p>As a reminder, I am currently working within my Ubuntu VM because the <code class="language-plaintext highlighter-rouge">test-runner</code> is producing a linking error on Arch Linux. However, I have also encountered linking errors with RGM on both Ubuntu and Arch Linux. Consequently, I have decided to focus on making the <code class="language-plaintext highlighter-rouge">test-runner</code> operational on Arch Linux.</p>
 
-<p>As I explained in <a href="https://k0t0z.github.io/gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period.html">Google Summer of Code 2024 Bonding Period</a> post, the error is about linking <code class="language-plaintext highlighter-rouge">emake</code> failed. <code class="language-plaintext highlighter-rouge">emake</code> is the way to build games without a GUI as explained by Greg.</p>
+<p>As I previously explained in my post during the <a href="https://k0t0z.github.io/gsoc24-blog/blog/2024/05/15/google-summer-of-code-2024-bonding-period.html">Google Summer of Code 2024 Bonding Period</a>, the linking error is associated with the failure of <code class="language-plaintext highlighter-rouge">emake</code>. <code class="language-plaintext highlighter-rouge">Emake</code> is the tool used to build games without a GUI, as described by Greg.</p>
 
-<p>This error appears only on Arch linux, not Ubuntu. I guess that’s because of the differences between old and new absl. I think the new absl has new targets that we need to link as well. Anyway, I asked Fares to give me the versions of Absl, Protobuf, and gRPC that he is using on Ubuntu. I will try to use the same versions on Arch.</p>
+<p>This error only occurs on Arch Linux and not on Ubuntu. I suspect that the issue arises from the differences between the older and newer versions of Abseil. It seems that the latest Abseil has introduced new targets that we also need to link. To address this, I reached out to Fares for the versions of Abseil, Protobuf, and gRPC that he uses on Ubuntu, with the intention of using the same versions on Arch:</p>
 
 <ul>
-  <li>Absl: 20210324.2</li>
-  <li>Protobuf: 3.12.4</li>
-  <li>gRPC: 1.30.2</li>
+  <li><strong>Abseil:</strong> 20210324.2</li>
+  <li><strong>Protobuf:</strong> 3.12.4</li>
+  <li><strong>gRPC:</strong> 1.30.2</li>
 </ul>
 
-<p>I cloned these versions using -b option and found out that Absl doesn’t have a CMake system yet. So let’s change plans and try to build a proper versions of Absl, Protobuf, and gRPC from scratch.</p>
+<p>I cloned these specific versions using the <code class="language-plaintext highlighter-rouge">-b</code> option and discovered that Abseil does not yet support a CMake system. Therefore, I decided to pivot and build proper versions of Abseil, Protobuf, and gRPC from scratch.</p>
 
-<p>I created this solution to do this task for me, <a href="https://github.com/k0T0z/absl-proto-grpc-ci">absl-proto-grpc-ci</a>, you can get the working verions from the README file. Also, you can take the commands from the scripts and run them on your machine.</p>
+<p>To facilitate this task, I created a repository called <a href="https://github.com/k0T0z/absl-proto-grpc-ci">absl-proto-grpc-ci</a>. You can find the working versions detailed in the README file, along with the commands in the scripts, which you can run on your machine.</p>
 
-<p>Before installing them to your local, try to empty these dirs first:</p>
+<p>Before installing these libraries locally, make sure to empty the following directories:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> <span class="nt">-rf</span> /usr/local/lib/<span class="k">*</span>
+<span class="nb">sudo rm</span> <span class="nt">-rf</span> /usr/local/include/<span class="k">*</span>
+<span class="nb">sudo rm</span> <span class="nt">-rf</span> /usr/local/bin/<span class="k">*</span>
 </code></pre></div></div>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> <span class="nt">-rf</span> /usr/local/include/<span class="k">*</span>
-</code></pre></div></div>
+<p>This step ensures the removal of any existing versions of the libraries. Please exercise caution with these commands if you have any locally installed libraries.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> <span class="nt">-rf</span> /usr/local/bin/<span class="k">*</span>
-</code></pre></div></div>
+<p>Building and installing these libraries is straightforward, and although it took me a couple of days to finalize the process, everything is functioning well now. The only remaining task for this setup is to build <code class="language-plaintext highlighter-rouge">emake</code>.</p>
 
-<p>This is to get rid of the old versions of the libraries (if any). If you have any locally installed libraries, be careful with the above commands.</p>
+<h2 id="prioritizing-local-over-system-libraries">Prioritizing Local Over System Libraries</h2>
 
-<p>Now, building those libraries is very easy, as well as installing them. It took me a couple of days to polish it off however, it is fine now. Maybe the only missing thing for this example is to build <code class="language-plaintext highlighter-rouge">emake</code> with it.</p>
-
-<h2 id="prioritizing-local-over-system">Prioritizing local over system</h2>
-
-<p>After installing all libraries to my local and build <code class="language-plaintext highlighter-rouge">emake</code>, this warning shows up:</p>
+<p>After successfully installing all the libraries locally and building <code class="language-plaintext highlighter-rouge">emake</code>, I encountered the following warning:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ld: warning: libprotobuf.so.27.3.0, needed by /usr/local/lib/libgrpc++.so, may conflict with libprotobuf.so.27
 </code></pre></div></div>
 
-<p>This is because the system has a version of Protobuf already installed. When trying to remove it:</p>
+<p>This warning arises because a version of Protobuf is already installed on the system. When I attempted to remove it using the command:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>pacman <span class="nt">-Rns</span> protobuf
 </code></pre></div></div>
+
+<p>I received the following error:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>checking dependencies...
 error: failed to prepare transaction (could not satisfy dependencies)
@@ -125,7 +122,7 @@ error: failed to prepare transaction (could not satisfy dependencies)
 :: removing protobuf breaks dependency 'protobuf' required by protobuf-c
 </code></pre></div></div>
 
-<p>I can’t remove it as it is required by other packages. So I need to prioritize the local version over the system version. I did this by adding these simple lines to <code class="language-plaintext highlighter-rouge">enigma-dev/Config.mk</code> file:</p>
+<p>Since I cannot remove Protobuf without affecting other packages, I needed to prioritize the local version over the system version. To achieve this, I added the following lines to the <code class="language-plaintext highlighter-rouge">enigma-dev/Config.mk</code> file:</p>
 
 <div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Which search priority to use for libraries (system or local)
 </span><span class="nv">CUSTOM_LIB_SEARCH_PRIORITY</span> <span class="o">:=</span> <span class="nb">local</span>
@@ -135,126 +132,128 @@ error: failed to prepare transaction (could not satisfy dependencies)
 <span class="k">endif</span>
 </code></pre></div></div>
 
-<p>Now, you can set the search priority to local by changing the value of <code class="language-plaintext highlighter-rouge">CUSTOM_LIB_SEARCH_PRIORITY</code> to <code class="language-plaintext highlighter-rouge">local</code>.</p>
+<p>With this configuration, you can set the search priority to local by changing the value of <code class="language-plaintext highlighter-rouge">CUSTOM_LIB_SEARCH_PRIORITY</code> to <code class="language-plaintext highlighter-rouge">local</code>.</p>
 
 <h2 id="export-issue">Export Issue</h2>
 
-<p>Other error show up that <code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code> is unable to load some packages.</p>
+<p>Another error that has emerged is that the <code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code> is unable to load certain packages:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ldd <span class="si">$(</span>which grpc_cpp_plugin<span class="si">)</span>
 </code></pre></div></div>
 
-<blockquote>
-  <p>linux-vdso.so.1 (0x000071154c52f000)
-libsystemd.so.0 =&gt; /usr/lib/libsystemd.so.0 (0x000071154c3f5000)
-<span style="color: red;">libgrpc_plugin_support.so.1.65 =&gt; not found</span>
-libm.so.6 =&gt; /usr/lib/libm.so.6 (0x000071154c30a000)
-<span style="color: red;">libprotoc.so.27.3.0 =&gt; not found</span>
-<span style="color: red;">libprotobuf.so.27.3.0 =&gt; not found</span>
-<span style="color: red;">libabseil_dll.so.2407.0.0 =&gt; not found</span>
-libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0x000071154c000000)
-libgcc_s.so.1 =&gt; /usr/lib/libgcc_s.so.1 (0x000071154c2db000)
-libc.so.6 =&gt; /usr/lib/libc.so.6 (0x000071154be14000)
-libcap.so.2 =&gt; /usr/lib/libcap.so.2 (0x000071154c2cf000)
-/lib64/ld-linux-x86-64.so.2 =&gt; /usr/lib64/ld-linux-x86-64.so.2 (0x000071154c531000)</p>
-</blockquote>
+<p>The output displays the following:</p>
 
-<p>There are <code class="language-plaintext highlighter-rouge">not found</code> libraries as you can see. If you used <code class="language-plaintext highlighter-rouge">which</code> with any of the nof founded libs, you will find it inside <code class="language-plaintext highlighter-rouge">/usr/local/lib</code>. The solution is to export the path to the libraries by adding this line to your <code class="language-plaintext highlighter-rouge">.bashrc</code> file:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; linux-vdso.so.1 (0x000071154c52f000)
+&gt; libsystemd.so.0 =&gt; /usr/lib/libsystemd.so.0 (0x000071154c3f5000)
+&gt; &lt;span style="color: red;"&gt;libgrpc_plugin_support.so.1.65 =&gt; not found&lt;/span&gt;
+&gt; libm.so.6 =&gt; /usr/lib/libm.so.6 (0x000071154c30a000)
+&gt; &lt;span style="color: red;"&gt;libprotoc.so.27.3.0 =&gt; not found&lt;/span&gt;
+&gt; &lt;span style="color: red;"&gt;libprotobuf.so.27.3.0 =&gt; not found&lt;/span&gt;
+&gt; &lt;span style="color: red;"&gt;libabseil_dll.so.2407.0.0 =&gt; not found&lt;/span&gt;
+&gt; libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0x000071154c000000)
+&gt; libgcc_s.so.1 =&gt; /usr/lib/libgcc_s.so.1 (0x000071154c2db000)
+&gt; libc.so.6 =&gt; /usr/lib/libc.so.6 (0x000071154be14000)
+&gt; libcap.so.2 =&gt; /usr/lib/libcap.so.2 (0x000071154c2cf000)
+&gt; /lib64/ld-linux-x86-64.so.2 =&gt; /usr/lib64/ld-linux-x86-64.so.2 (0x000071154c531000)
+</code></pre></div></div>
+
+<p>As indicated, there are several libraries marked as <strong>not found</strong>. If you check any of these libraries using <code class="language-plaintext highlighter-rouge">which</code>, you will find them in the <code class="language-plaintext highlighter-rouge">/usr/local/lib</code> directory. To resolve this issue, you need to export the path to these libraries by adding the following line to your <code class="language-plaintext highlighter-rouge">.bashrc</code> file:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/usr/local/lib
 </code></pre></div></div>
 
-<p>Now, you can run the command again:</p>
+<p>After making this change, rerun the command:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ldd <span class="si">$(</span>which grpc_cpp_plugin<span class="si">)</span>
 </code></pre></div></div>
 
-<blockquote>
-  <p>linux-vdso.so.1 (0x0000765352968000)
-libsystemd.so.0 =&gt; /usr/lib/libsystemd.so.0 (0x000076535282d000)
-<span style="color: blue;">libgrpc_plugin_support.so.1.65 =&gt; /usr/local/lib/libgrpc_plugin_support.so.1.65 (0x00007653527a6000)</span>
-libm.so.6 =&gt; /usr/lib/libm.so.6 (0x00007653526bb000)
-<span style="color: blue;">libprotoc.so.27.3.0 =&gt; /usr/local/lib/libprotoc.so.27.3.0 (0x0000765352200000)</span>
-<span style="color: blue;">libprotobuf.so.27.3.0 =&gt; /usr/local/lib/libprotobuf.so.27.3.0 (0x0000765351e00000)</span>
-<span style="color: blue;">libabseil_dll.so.2407.0.0 =&gt; /usr/local/lib/libabseil_dll.so.2407.0.0 (0x0000765351cc7000)</span>
-libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0x0000765351a00000)
-libgcc_s.so.1 =&gt; /usr/lib/libgcc_s.so.1 (0x00007653521d3000)
-libc.so.6 =&gt; /usr/lib/libc.so.6 (0x0000765351814000)
-libcap.so.2 =&gt; /usr/lib/libcap.so.2 (0x00007653521c7000)
-/lib64/ld-linux-x86-64.so.2 =&gt; /usr/lib64/ld-linux-x86-64.so.2 (0x000076535296a000)
-libz.so.1 =&gt; /usr/local/lib/libz.so.1 (0x00007653521a6000)</p>
-</blockquote>
+<p>You should see an output similar to the following:</p>
 
-<p>All fixes done above didn’t solve the link issue because as I said we need to link according to new absl library.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; linux-vdso.so.1 (0x0000765352968000)
+&gt; libsystemd.so.0 =&gt; /usr/lib/libsystemd.so.0 (0x000076535282d000)
+&gt; &lt;span style="color: blue;"&gt;libgrpc_plugin_support.so.1.65 =&gt; /usr/local/lib/libgrpc_plugin_support.so.1.65 (0x00007653527a6000)&lt;/span&gt;
+&gt; libm.so.6 =&gt; /usr/lib/libm.so.6 (0x00007653526bb000)
+&gt; &lt;span style="color: blue;"&gt;libprotoc.so.27.3.0 =&gt; /usr/local/lib/libprotoc.so.27.3.0 (0x0000765352200000)&lt;/span&gt;
+&gt; &lt;span style="color: blue;"&gt;libprotobuf.so.27.3.0 =&gt; /usr/local/lib/libprotobuf.so.27.3.0 (0x0000765351e00000)&lt;/span&gt;
+&gt; &lt;span style="color: blue;"&gt;libabseil_dll.so.2407.0.0 =&gt; /usr/local/lib/libabseil_dll.so.2407.0.0 (0x0000765351cc7000)&lt;/span&gt;
+&gt; libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0x0000765351a00000)
+&gt; libgcc_s.so.1 =&gt; /usr/lib/libgcc_s.so.1 (0x00007653521d3000)
+&gt; libc.so.6 =&gt; /usr/lib/libc.so.6 (0x0000765351814000)
+&gt; libcap.so.2 =&gt; /usr/lib/libcap.so.2 (0x00007653521c7000)
+&gt; /lib64/ld-linux-x86-64.so.2 =&gt; /usr/lib64/ld-linux-x86-64.so.2 (0x000076535296a000)
+&gt; libz.so.1 =&gt; /usr/local/lib/libz.so.1 (0x00007653521a6000)
+</code></pre></div></div>
 
-<p>After clean build, this error showed up:</p>
+<p>Despite these adjustments, the linking issue persists because we need to link to the new Abseil library.</p>
+
+<p>After performing a clean build, the following error appeared:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ld: .eobjs/Server.o: undefined reference to symbol 'gpr_inf_future'
 /usr/bin/ld: /usr/local/lib/libgpr.so.42: error adding symbols: DSO missing from command line
 </code></pre></div></div>
 
-<p>It is too clear to see that the <code class="language-plaintext highlighter-rouge">-lgpr</code> is missing from <code class="language-plaintext highlighter-rouge">LDFLAGS</code> variable. After adding it, the next error is:</p>
+<p>This error indicates that the <code class="language-plaintext highlighter-rouge">-lgpr</code> flag is missing from the <code class="language-plaintext highlighter-rouge">LDFLAGS</code> variable. After adding this flag, I encountered another error:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ld: .eobjs/EnigmaPlugin.o: undefined reference to symbol '_ZN4absl12lts_2024072212log_internal15LogMessageFatalC1EPKciSt17basic_string_viewIcSt11char_traitsIcEE'
 /usr/bin/ld: /usr/local/lib/libabseil_dll.so.2407.0.0: error adding symbols: DSO missing from command line
 </code></pre></div></div>
 
-<p>I gave too much time to this error but I realized that may be the new absl has a new target to add it to the linker as well. That new target is <code class="language-plaintext highlighter-rouge">-labseil_dll</code>.</p>
+<p>I spent considerable time troubleshooting this error and realized that the new Abseil may require an additional target to be linked. This target is <code class="language-plaintext highlighter-rouge">-labseil_dll</code>.</p>
 
-<p>On 9th August 2024, The changes to <code class="language-plaintext highlighter-rouge">enigma-dev/CommandLine/emake/Makefile</code> fixed the linking issues and now my tests which I wrote on Ubuntu VM are passing on my Arch Linux machine.</p>
+<p>On August 9, 2024, I updated the <code class="language-plaintext highlighter-rouge">enigma-dev/CommandLine/emake/Makefile</code>, which resolved the linking issues. Consequently, the tests I wrote on my Ubuntu VM are now passing on my Arch Linux machine.</p>
 
-<h2 id="grpc_cpp_plugin-path"><code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code> path</h2>
+<h2 id="path-for-grpc_cpp_plugin">Path for <code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code></h2>
 
-<p>If you take a look at this line here: <a href="https://github.com/enigma-dev/enigma-dev/blob/3590b681f20174ccf24156769d2bbb94b10673e3/shared/protos/CMakeLists.txt#L30">shared/protos/CMakeLists.txt#L30</a>, you will see that the path to <code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code> is hardcoded. As we installed the libraries to <code class="language-plaintext highlighter-rouge">/usr/local</code>, we need to change this path to <code class="language-plaintext highlighter-rouge">/usr/local/bin/grpc_cpp_plugin</code>.</p>
+<p>If you examine this line in the <a href="https://github.com/enigma-dev/enigma-dev/blob/3590b681f20174ccf24156769d2bbb94b10673e3/shared/protos/CMakeLists.txt#L30">shared/protos/CMakeLists.txt</a>, you will notice that the path to <code class="language-plaintext highlighter-rouge">grpc_cpp_plugin</code> is hardcoded. Since we installed the libraries to <code class="language-plaintext highlighter-rouge">/usr/local</code>, we need to modify this path to <code class="language-plaintext highlighter-rouge">/usr/local/bin/grpc_cpp_plugin</code>.</p>
 
-<p>I provided this PR <a href="https://github.com/enigma-dev/enigma-dev/pull/2387">#2387</a> to fix this issue.</p>
+<p>I have submitted a pull request <a href="https://github.com/enigma-dev/enigma-dev/pull/2387">#2387</a> to address this issue.</p>
 
-<p>Now you can add this line in <code class="language-plaintext highlighter-rouge">RadialGM/CMakeLists.txt</code>:</p>
+<p>You can now include the following line in <code class="language-plaintext highlighter-rouge">RadialGM/CMakeLists.txt</code>:</p>
 
 <div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">set</span><span class="p">(</span>GRPC_EXE <span class="s2">"/usr/local/bin/grpc_cpp_plugin"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<h2 id="moving-to-rgm">Moving To RGM</h2>
+<h2 id="transitioning-to-rgm">Transitioning to RGM</h2>
 
-<p>The next step is RGM. RGM uses CMake build system and powered by Qt5. When running CMake, I got this error:</p>
+<p>The next phase involves transitioning to RGM, which utilizes the CMake build system and is powered by Qt5. While running CMake, I encountered the following error:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ 76%] Linking CXX executable emake
 /usr/bin/ld: CMakeFiles/emake.dir/EnigmaPlugin.cpp.o: undefined reference to symbol '_ZN4absl12lts_2024072212log_internal15LogMessageFatalC1EPKciSt17basic_string_viewIcSt11char_traitsIcEE'
 /usr/bin/ld: /usr/local/lib/libabseil_dll.so.2407.0.0: error adding symbols: DSO missing from command line
 </code></pre></div></div>
 
-<p>That’s the absl again. The same change I did to <code class="language-plaintext highlighter-rouge">enigma-dev/CommandLine/emake/Makefile</code> should be done to <code class="language-plaintext highlighter-rouge">RadialGM/Submodules/enigma-dev/CommandLine/emake/CMakeLists.txt</code>, however, I need to do it CMake style.</p>
+<p>The issue again pertains to Abseil. To resolve this, I need to replicate the change I made in <code class="language-plaintext highlighter-rouge">enigma-dev/CommandLine/emake/Makefile</code> within the <code class="language-plaintext highlighter-rouge">RadialGM/Submodules/enigma-dev/CommandLine/emake/CMakeLists.txt</code> file, but in a CMake-friendly manner:</p>
 
-<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Find absl</span>
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Find Abseil</span>
 <span class="nb">find_package</span><span class="p">(</span>absl CONFIG REQUIRED<span class="p">)</span>
 <span class="nb">target_link_libraries</span><span class="p">(</span><span class="si">${</span><span class="nv">CLI_TARGET</span><span class="si">}</span> PRIVATE absl::base absl::strings absl::synchronization absl::time absl::status absl::statusor<span class="p">)</span>
 </code></pre></div></div>
 
-<h2 id="rgm-build">RGM Build</h2>
+<h2 id="building-rgm">Building RGM</h2>
 
-<p>Now, build and linking <code class="language-plaintext highlighter-rouge">emake</code> is done. I can now leave my Ubuntu VM and move back to my Arch Linux machine. The next step is to build RGM.</p>
+<p>With the linking of <code class="language-plaintext highlighter-rouge">emake</code> now successfully completed, I can leave my Ubuntu VM and return to my Arch Linux machine to proceed with building RGM.</p>
 
-<p>As Robert merged a last PR without checking the CI, there are a lot of cleanup that must be done in order for RGM to build properly. I provided this PR <a href="https://github.com/enigma-dev/RadialGM/pull/238">#238</a> to fix this issue.</p>
+<p>However, Robert merged a recent pull request without ensuring CI checks, resulting in several clean-up tasks necessary for RGM to build correctly. I submitted pull request <a href="https://github.com/enigma-dev/RadialGM/pull/238">#238</a> to address these issues.</p>
 
-<p>The above PR contains many changes as follows:</p>
+<p>This pull request includes several important changes:</p>
 
 <ul>
-  <li>Linking <a href="https://github.com/k0T0z/nodeeditor">nodeeditor</a> library to RGM.</li>
-  <li>Multiple fixes to the Room Editor.</li>
-  <li>Fixed and improved the Server Plugin.</li>
-  <li>Multiple fixes to the CMake build system.</li>
+  <li>Linking the <a href="https://github.com/k0T0z/nodeeditor">nodeeditor</a> library to RGM.</li>
+  <li>Implementing multiple fixes to the Room Editor.</li>
+  <li>Enhancing the Server Plugin.</li>
+  <li>Making various improvements to the CMake build system.</li>
 </ul>
 
-<p>On 13th August 2024, RGM can be built without any issues.</p>
+<p>As of August 13, 2024, RGM can now be built without any issues.</p>
 
-<h2 id="runtime-nightmare">Runtime Nightmare</h2>
+<h2 id="runtime-challenges">Runtime Challenges</h2>
 
-<p>Now, RGM can be built without issues. However, life still doesn’t want to surrender. When running RGM, I got this error:</p>
+<p>While RGM can now be built successfully, additional challenges persist. Upon attempting to run RGM, I encountered the following error:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./RadialGM: error while loading shared libraries: libEGM.so: cannot open shared object file: No such file or directory
 </code></pre></div></div>
 
-<p>Let’s see the ldd result:</p>
+<p>To investigate further, I ran the following command:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ldd RadialGM
 </code></pre></div></div>
@@ -358,14 +357,12 @@ libunistring.so.5 =&gt; /usr/lib/libunistring.so.5 (0x0000796330634000)
 libblkid.so.1 =&gt; /usr/lib/libblkid.so.1 (0x00007963305fb000)</p>
 </blockquote>
 
-<p>The not found libraries are all engima-dev libraries. I need to export the path to the libraries by adding this line to my <code class="language-plaintext highlighter-rouge">.bashrc</code> file:</p>
+<p>The output indicated that the missing libraries are all related to <code class="language-plaintext highlighter-rouge">enigma-dev</code>. To rectify this, I need to export the path to these libraries by adding the following line to my <code class="language-plaintext highlighter-rouge">.bashrc</code> file:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/path/to/RadialGM/Submodules/enigma-dev
 </code></pre></div></div>
 
-<p>Note: Add your own path to the libraries.</p>
-
-<p>Now everything is fine:</p>
+<p><em>Note: Remember to replace <code class="language-plaintext highlighter-rouge">/path/to</code> with the actual path to your libraries.</em></p>
 
 <blockquote>
   <p>linux-vdso.so.1 (0x000078394efc5000)
@@ -468,14 +465,14 @@ libunistring.so.5 =&gt; /usr/lib/libunistring.so.5 (0x0000783946db8000)
 libblkid.so.1 =&gt; /usr/lib/libblkid.so.1 (0x0000783946d7f000)</p>
 </blockquote>
 
-<p>Now, another issue appeared when trying to run RGM:</p>
+<p>With this adjustment, everything appeared to be in order. However, another issue arose when attempting to run RGM:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
 E0000 00:00:1723829087.769865   68641 metrics.cc:49] Metric name grpc.lb.wrr.rr_fallback has already been registered.
 Aborted (core dumped)
 </code></pre></div></div>
 
-<p>The above error doesn’t help much anyway. Robert suggested that not linking gRPC and proceed to work on the UI part without the engine. Of course, RGM built correctly without gRPC but I need to fix the gRPC issue to be able to send and receive messages between RGM and <code class="language-plaintext highlighter-rouge">emake</code>.</p>
+<p>This error message, while not particularly helpful, indicated a deeper issue. Robert suggested that I proceed without linking gRPC and focus on developing the UI portion independently of the engine. Although RGM built successfully without gRPC, resolving this gRPC issue remains crucial for enabling communication between RGM and <code class="language-plaintext highlighter-rouge">emake</code>.</p>
 
 <p><img src="/gsoc24-blog/assets/gsoc24-rgm-without-grpc.png" alt="GSoC 2024 RGM Without gRPC" /></p>
 
