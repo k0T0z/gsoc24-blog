@@ -9,7 +9,7 @@ This blog post is related to my Google Summer of Code 2024 project: [Procedural 
 
 My final evaluation report: [Procedural Fragment Shader Generation Using Classic Machine Learning Google Summer Of Code 2024 Final Report](https://docs.google.com/document/d/1ahKWo3m9fgqAfR9a3cqaIA08Sns05O68nhalpMNjDd8/edit?usp=sharing).
 
-What an incredible journey this project has been! While I wish I had more time to devote to it, I'm immensely proud of what I've accomplished and the knowledge I've gained. The challenges I encountered have only fueled my determination to continue developing this project beyond the Google Summer of Code program. Let me share some of the significant hurdles I overcame and what I learned from them.
+What an incredible journey this project has been with more than 15k newly added lines of code! While I wish I had more time to devote to it, I'm immensely proud of what I've accomplished and the knowledge I've gained. The challenges I encountered have only fueled my determination to continue developing this project beyond the Google Summer of Code program. Let me share some of the significant hurdles I overcame and what I learned from them.
 
 ## Major Challenges
 
