@@ -212,6 +212,14 @@ The final implementation is integrated into two main repositories:
             └── VisualShaderEditorTests.cpp
 ```
 
+## Major Issues Fixed
+
+1. I changed the field numbers inside the Protobuf messages to make it look more organized and readable.
+
+This created a compatibility issue with old compileEGMf.dll plugin and old ENIGMA projects. However, due to the fact that no one is using RadialGM yet, it is fine to change it. I have added a note about that in [6af44f37d40017999acfc93e85684083e7db7f21](https://github.com/enigma-dev/enigma-dev/pull/2399/commits/6af44f37d40017999acfc93e85684083e7db7f21).
+
+---
+
 ## Outputs With Graphs
 
 I've recreated several textures from [The Book of Shaders](https://thebookofshaders.com/), including:
