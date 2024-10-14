@@ -11,6 +11,10 @@ My final evaluation report: [Procedural Fragment Shader Generation Using Classic
 
 What an incredible journey this project has been with more than 15k newly added lines of code! While I wish I had more time to devote to it, I'm immensely proud of what I've accomplished and the knowledge I've gained. The challenges I encountered have only fueled my determination to continue developing this project beyond the Google Summer of Code program. Let me share some of the significant hurdles I overcame and what I learned from them.
 
+## Final 2024 Evaluation Feedback
+
+![Final 2024 Evaluation Feedback](/gsoc24-blog/assets/final-2024-evaluation-feedback.png)
+
 ## Major Challenges
 
 ### 1. Test Runner Compatibility Issues
