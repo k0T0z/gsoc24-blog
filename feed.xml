@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/" rel="alternate" type="text/html" /><updated>2024-10-10T11:36:44+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml</id><title type="html">k0T0z</title><subtitle>Just a place for me to dump my thoughts</subtitle><entry><title type="html">Google Summer of Code 2024 Week 18 and 19: Wrapping Up and Final Evaluation</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 18 and 19: Wrapping Up and Final Evaluation" /><published>2024-09-22T21:00:00+00:00</published><updated>2024-09-22T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/" rel="alternate" type="text/html" /><updated>2024-10-14T19:04:05+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml</id><title type="html">k0T0z</title><subtitle>Just a place for me to dump my thoughts</subtitle><entry><title type="html">Google Summer of Code 2024 Week 18 and 19: Wrapping Up and Final Evaluation</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 18 and 19: Wrapping Up and Final Evaluation" /><published>2024-09-22T21:00:00+00:00</published><updated>2024-09-22T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-and-19-wrapping-up-and-final-evaluation.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
 <p>My final evaluation report: <a href="https://docs.google.com/document/d/1ahKWo3m9fgqAfR9a3cqaIA08Sns05O68nhalpMNjDd8/edit?usp=sharing">Procedural Fragment Shader Generation Using Classic Machine Learning Google Summer Of Code 2024 Final Report</a>.</p>
 
 <p>What an incredible journey this project has been with more than 15k newly added lines of code! While I wish I had more time to devote to it, I’m immensely proud of what I’ve accomplished and the knowledge I’ve gained. The challenges I encountered have only fueled my determination to continue developing this project beyond the Google Summer of Code program. Let me share some of the significant hurdles I overcame and what I learned from them.</p>
+
+<h2 id="final-2024-evaluation-feedback">Final 2024 Evaluation Feedback</h2>
+
+<p><img src="/gsoc24-blog/assets/final-2024-evaluation-feedback.png" alt="Final 2024 Evaluation Feedback" /></p>
 
 <h2 id="major-challenges">Major Challenges</h2>
 
@@ -228,6 +232,16 @@ the only reason the source you linked has 50 classes is because its make a type 
 </code></pre></div>    </div>
   </li>
 </ol>
+
+<h2 id="major-issues-fixed">Major Issues Fixed</h2>
+
+<ol>
+  <li>I changed the field numbers inside the Protobuf messages to make it look more organized and readable.</li>
+</ol>
+
+<p>This created a compatibility issue with old compileEGMf.dll plugin and old ENIGMA projects. However, due to the fact that no one is using RadialGM yet, it is fine to change it. I have added a note about that in <a href="https://github.com/enigma-dev/enigma-dev/pull/2399/commits/6af44f37d40017999acfc93e85684083e7db7f21">6af44f37d40017999acfc93e85684083e7db7f21</a>.</p>
+
+<hr />
 
 <h2 id="outputs-with-graphs">Outputs With Graphs</h2>
 
