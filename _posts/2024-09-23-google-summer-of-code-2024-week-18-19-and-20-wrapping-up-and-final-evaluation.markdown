@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Google Summer of Code 2024 Week 18 and 19: Wrapping Up and Final Evaluation"
+title:  "Google Summer of Code 2024 Week 18, 19, and 20: Wrapping Up and Final Evaluation"
 date:   2024-09-23 00:00:00 +0300
 categories: blog
 ---
