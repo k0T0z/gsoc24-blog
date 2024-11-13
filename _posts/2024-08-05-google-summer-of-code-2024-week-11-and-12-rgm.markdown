@@ -163,6 +163,14 @@ You can now include the following line in `RadialGM/CMakeLists.txt`:
 set(GRPC_EXE "/usr/local/bin/grpc_cpp_plugin")
 ```
 
+You can add this to your ``settings.json`` file:
+
+```json
+"cmake.configureArgs": [
+    "-DGRPC_EXE=/usr/local/bin/grpc_cpp_plugin"
+],
+```
+
 ## Transitioning to RGM
 
 The next phase involves transitioning to RGM, which utilizes the CMake build system and is powered by Qt5. While running CMake, I encountered the following error:
