@@ -74,6 +74,17 @@ This means ports, captions, and values should be stored in the protobuf model. T
 
 This means the VisualShader class should only be a generator. It should not store any data. It should only takes a number of nodes and connections and then generate a shader code.
 
-After working on RGM for so long, I have decided to complete this on a simpler version of RGM because RGM is really big and my CPU is crying on every build.
+After working on RGM for so long, I have decided to complete this on a simpler version of RGM because RGM is really big and my CPU is crying on every build. Also, see the pic below? This issue happens too much on RGM's codebase. It is so difficult to determine the reason. Why? Well, consider the code snippet below:
+
+{% highlight cpp %}
+const google::protobuf::FieldDescriptor* field {some_descriptor->FindFieldByNumber(some_field_number)};
+if (field == nullptr) {
+    std::cerr << "Field not found: " << field->full_name() << std::endl;
+}
+{% endhighlight %}
+
+Notice the problem? If `field` is `nullptr`, then `field->full_name()` will cause a segmentation fault. However, the issue in the pic below will show up. I have no reasonable explanation for this and this is just a simple example. RGM's codebase is considered to be legacy (in my opinion) with enough complexity that makes it difficult to determine the reason for the issue.
+
+![Protobuf Runtime Issue](/gsoc24-blog/assets/protobuf_runtime_issue.png)
 
 [my-google-summer-of-code-2024-project]: https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA
