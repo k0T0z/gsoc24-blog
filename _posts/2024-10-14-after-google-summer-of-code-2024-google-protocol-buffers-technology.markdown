@@ -87,4 +87,10 @@ Notice the problem? If `field` is `nullptr`, then `field->full_name()` will caus
 
 ![Protobuf Runtime Issue](/gsoc24-blog/assets/protobuf_runtime_issue.png)
 
+After working continuously on my mini-RGM, I can finally guess what RGM's model needs. I have created a separate model for the `oneof`s and this helps with separating the complexiness from the MessageModel class becasue according to Protobuf's syntax, `oneof`s are only allowed to be in the message scope.
+
+Of course, RGM's model is way complex than mine. RGM's model employs many - if not all - features of QAbstractItemModel such as role and also not to mention that RGM's model is made for many editors at once (not only one such as mine heh).
+
+Anyway, I have made it and now my model works fine starting from [b17ce5b](https://github.com/k0T0z/shader-gen/commit/b17ce5beff8165a9569b5260c9159e679e2a62d8).
+
 [my-google-summer-of-code-2024-project]: https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA
