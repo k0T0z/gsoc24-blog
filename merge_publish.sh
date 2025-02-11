@@ -22,6 +22,9 @@ fi
 
 chmod +x tcp.sh
 
+echo "Switching to master branch if not already..."
+git switch master
+
 echo "Commiting and pushing to master branch first..."
 ./tcp.sh "Merge master branch into master-ready branch"
 
