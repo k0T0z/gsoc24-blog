@@ -93,4 +93,92 @@ Of course, RGM's model is way complex than mine. RGM's model employs many - if n
 
 Anyway, I have made it and now my model works fine starting from [b17ce5b](https://github.com/k0T0z/shader-gen/commit/b17ce5beff8165a9569b5260c9159e679e2a62d8).
 
+## Diagnosing and Resolving Protobuf Pointer Access Crashes in Debug Mode
+
+One of the reasons I left RGM and started working on the project in a clean codebase is that while debugging RGM, crashes happens when I reach a certain point in the code. Consider the following below code snippet, when I reach step to line 11, crashes happens. I didn't know why back then because sometimes they happen and sometimes they don't.
+
+{% highlight cpp %}
+ 1: void MessageModel::RebuildSubModels() {
+ 2:   submodels_by_field_.clear();
+ 3:   submodels_by_row_.clear();
+ 4:   R_EXPECT_V(_protobuf) << "Internal protobuf null";
+ 5: 
+ 6:   const Descriptor *desc = _protobuf->GetDescriptor();
+ 7:   const Reflection *refl = _protobuf->GetReflection();
+ 8:   submodels_by_row_.resize(desc->field_count());
+ 9: 
+10:   for (int i = 0; i < desc->field_count(); i++) {
+11:     const FieldDescriptor *field = desc->field(i);
+12: 
+13:     if (field->is_repeated()) {
+14:       switch (field->cpp_type()) {
+15:         case CppType::CPPTYPE_ENUM: {
+16:           qDebug() << "ENUMs not yet handled";
+17:           break;
+18:         }
+19:         case CppType::CPPTYPE_MESSAGE: {
+20:           submodels_by_field_[field->number()] = submodels_by_row_[i] = new RepeatedMessageModel(this, _protobuf, field);
+21:           break;
+22:         }
+23:         case CppType::CPPTYPE_BOOL: {
+24:           submodels_by_field_[field->number()] = submodels_by_row_[i] = new RepeatedBoolModel(this, _protobuf, field);
+25:           break;
+26:         }
+27:         case CppType::CPPTYPE_INT32: {
+28:           submodels_by_field_[field->number()] = submodels_by_row_[i] = new RepeatedInt32Model(this, _protobuf, field);
+29:           break;
+30:         }
+31:         case CppType::CPPTYPE_INT64: {
+32:           submodels_by_field_[field->number()] = submodels_by_row_[i] = new RepeatedInt64Model(this, _protobuf, field);
+33:           break;
+34:         }
+35:         case CppType::CPPTYPE_UINT32: {
+36:           submodels_by_field_[field->number()] = submodels_by_row_[i] = new RepeatedUInt32Model(this, _protobuf, field);
+37:           break;
+38:         }
+39:         case CppType::CPPTYPE_UINT64: {
+40:           submodels_by_field_[field->number()] = submodels_by_row_[i] = new RepeatedUInt64Model(this, _protobuf, field);
+41:           break;
+42:         }
+43:         case CppType::CPPTYPE_FLOAT: {
+44:           submodels_by_field_[field->number()] = submodels_by_row_[i] = new RepeatedFloatModel(this, _protobuf, field);
+45:           break;
+46:         }
+47:         case CppType::CPPTYPE_DOUBLE: {
+48:           submodels_by_field_[field->number()] = submodels_by_row_[i] = new RepeatedDoubleModel(this, _protobuf, field);
+49:           break;
+50:         }
+51:         case CppType::CPPTYPE_STRING: {
+52:           submodels_by_field_[field->number()] = submodels_by_row_[i] = new RepeatedStringModel(this, _protobuf, field);
+53:           break;
+54:         }
+55:       }
+56:     } else if (field->cpp_type() == CppType::CPPTYPE_MESSAGE) {
+57:       // Ignore all unset oneof fields if any is set
+58:       if (IsCulledOneof_(refl, *_protobuf, field)) continue;
+59:       // Only recursively build fields if they're set
+60:       if (refl->HasField(*_protobuf, field)) {
+61:         submodels_by_field_[field->number()] = submodels_by_row_[i] =
+62:             new MessageModel(this, refl->MutableMessage(_protobuf, field), i);
+63:       } else {
+64:         submodels_by_field_[field->number()] = submodels_by_row_[i] = new MessageModel(this, field->message_type(), i);
+65:       }
+66:     } else {
+67:       submodels_by_field_[field->number()] = submodels_by_row_[i] = new PrimitiveModel(this, field);
+68:     }
+69:   }
+70: }
+{% endhighlight %}
+
+The thing is, I noticed the same problem while working with protobuf and MSVC but this time, an access to a valid pointer crashes the system. The pointer is valid because the same code works fine using GCC. The problem was that mixing debug and release libraries in MSVC causes the crash. More precisely, it depends on setting CMAKE_MSVC_RUNTIME_LIBRARY correctly.
+
+Given that the above information, I think the problem is not with RGM however, it is in how I was building protobuf, I think. Anyway, whoever reads this post, check this shell script for ubuntu [build_protobuf_ubuntu.sh](https://github.com/k0T0z/shader-gen/blob/master/CI/build_protobuf_ubuntu.sh). You can invoke it:
+
+```bash
+chmod +x ./build_protobuf_ubuntu.sh
+sudo ./build_protobuf_ubuntu.sh Debug Dynamic
+```
+
+or whatever parameters you want. This script will build protobuf in Debug mode and Dynamic linking. I hope this helps.
+
 [my-google-summer-of-code-2024-project]: https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA
