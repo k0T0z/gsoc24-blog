@@ -32,8 +32,8 @@ if [[ "$current_branch" == "master-published" ]]; then
     exit 1
 fi
 
-echo "Tracking..."
-git add .
+# echo "Tracking..."
+# git add .
 
 echo "Commiting..."
 git commit -s -m "$1"
@@ -44,7 +44,7 @@ if ! confirm_push; then
 fi
 
 echo "Pushing to $current_branch branch..."
-git push origin "$current_branch"
+git push -f origin "$current_branch"
 
 if [[ "$current_branch" != "master" ]]; then
     echo "Switching to master branch..."
