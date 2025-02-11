@@ -1,4 +1,169 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/" rel="alternate" type="text/html" /><updated>2024-10-15T11:07:09+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml</id><title type="html">k0T0z</title><subtitle>Just a place for me to dump my thoughts</subtitle><entry><title type="html">Google Summer of Code 2024 Week 18, 19, and 20: Wrapping Up and Final Evaluation</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-19-and-20-wrapping-up-and-final-evaluation.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 18, 19, and 20: Wrapping Up and Final Evaluation" /><published>2024-09-22T21:00:00+00:00</published><updated>2024-09-22T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-19-and-20-wrapping-up-and-final-evaluation</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-19-and-20-wrapping-up-and-final-evaluation.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/" rel="alternate" type="text/html" /><updated>2025-02-11T13:37:26+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/feed.xml</id><title type="html">k0T0z</title><subtitle>Just a place for me to dump my thoughts</subtitle><entry><title type="html">AFTER Google Summer of Code 2024: Google Protocol Buffers Technology</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/10/13/after-google-summer-of-code-2024-google-protocol-buffers-technology.html" rel="alternate" type="text/html" title="AFTER Google Summer of Code 2024: Google Protocol Buffers Technology" /><published>2024-10-13T21:00:00+00:00</published><updated>2024-10-13T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/10/13/after-google-summer-of-code-2024-google-protocol-buffers-technology</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/10/13/after-google-summer-of-code-2024-google-protocol-buffers-technology.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
+
+<p>I have learnt so much things including the right way to write code. I can say now that I can write code better because I don’t care about how good it looks. I care about how others can understand it.</p>
+
+<p>You know what was the problem in my work? I didn’t follow ENIGMA’s way of doing things. So in order to explain this, consider the code snippet below:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">Graph</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">VisualShader</span><span class="o">::</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">nodes</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">VisualShader</span><span class="o">::</span><span class="n">Connection</span><span class="o">&gt;</span> <span class="n">connections</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">graph</span><span class="p">;</span></code></pre></figure>
+
+<p>This is where I save my nodes and my connections. This all is being saved dynamically. However, in ENIGMA, we should be able to serialize and deserialize this data in a file called “project file”. Got it? RadialGM is an IDE that is able to load/save full projects. How ENIGMA do it? Well, they use Model-View-Controller (MVC) architecture. But that’s not everything. They also use Google Protocol Buffers as their model. This means everything you do in your project is being sent to Protobuf and then serialize this model to YAML.</p>
+
+<p>By the way, ENIGMA doesn’t use Protobuf’s built-in serialization/deserialization functions. However, ENIGMA has its own module for managing all that called <a href="https://github.com/enigma-dev/enigma-dev/tree/master/CommandLine/libEGM">libEGM</a>. This module takes a mutable message using Reflection and then serialize it to YAML. This is how ENIGMA saves its project files.</p>
+
+<p>So here is what I must do:</p>
+
+<ol>
+  <li>I need to make an integration between the Visual Shader Editor and the model.</li>
+  <li>I need to change the VisualShader class to become only a Generator.</li>
+</ol>
+
+<p>And this what Josh was trying to say to me. I have covered this in <a href="https://k0t0z.github.io/gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-19-and-20-wrapping-up-and-final-evaluation.html#protobuf-work">Google Summer of Code 2024 Week 18, 19, and 20: Wrapping Up and Final Evaluation</a>.</p>
+
+<p>Separating my concerns means NO NEED TO STORE GUI RELATED DATA IN MY BACKEND. Anything that is related to the frontend should be stored in the protobuf model. So don’t do this:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">VisualShaderNodeFloatConstant</span><span class="o">::</span><span class="n">get_caption</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="s">"FloatConstant"</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">VisualShaderNodeFloatConstant</span><span class="o">::</span><span class="n">get_input_port_count</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="n">VisualShaderNode</span><span class="o">::</span><span class="n">PortType</span> <span class="n">VisualShaderNodeFloatConstant</span><span class="o">::</span><span class="n">get_input_port_type</span><span class="p">([[</span><span class="n">maybe_unused</span><span class="p">]]</span> <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">port</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">PORT_TYPE_SCALAR</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">VisualShaderNodeFloatConstant</span><span class="o">::</span><span class="n">get_input_port_name</span><span class="p">([[</span><span class="n">maybe_unused</span><span class="p">]]</span> <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">port</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">VisualShaderNodeFloatConstant</span><span class="o">::</span><span class="n">get_output_port_count</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="n">VisualShaderNode</span><span class="o">::</span><span class="n">PortType</span> <span class="n">VisualShaderNodeFloatConstant</span><span class="o">::</span><span class="n">get_output_port_type</span><span class="p">([[</span><span class="n">maybe_unused</span><span class="p">]]</span> <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">port</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">PORT_TYPE_SCALAR</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">VisualShaderNodeFloatConstant</span><span class="o">::</span><span class="n">get_output_port_name</span><span class="p">([[</span><span class="n">maybe_unused</span><span class="p">]]</span> <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">port</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="s">""</span><span class="p">;</span> <span class="p">}</span></code></pre></figure>
+
+<p>However, do this:</p>
+
+<figure class="highlight"><pre><code class="language-proto" data-lang="proto"><span class="kd">message</span> <span class="nc">VisualShaderNodeFloatConstant</span> <span class="p">{</span>
+    <span class="k">option</span> <span class="p">(</span><span class="n">node_caption</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Float Constant"</span><span class="p">;</span>
+    <span class="k">option</span> <span class="p">(</span><span class="n">node_input_port_count</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">option</span> <span class="p">(</span><span class="n">node_input_port_type</span><span class="p">)</span> <span class="o">=</span> <span class="n">PORT_TYPE_SCALAR</span><span class="p">;</span>
+    <span class="k">option</span> <span class="p">(</span><span class="n">node_input_port_caption</span><span class="p">)</span> <span class="o">=</span> <span class="s">""</span><span class="p">;</span>
+    
+    <span class="k">option</span> <span class="p">(</span><span class="n">node_output_port_count</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">option</span> <span class="p">(</span><span class="n">node_output_port_type</span><span class="p">)</span> <span class="o">=</span> <span class="n">PORT_TYPE_SCALAR</span><span class="p">;</span>
+    <span class="k">option</span> <span class="p">(</span><span class="n">node_output_port_caption</span><span class="p">)</span> <span class="o">=</span> <span class="s">""</span><span class="p">;</span>
+
+    <span class="k">optional</span> <span class="kt">double</span> <span class="na">value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This means ports, captions, and values should be stored in the protobuf model. This is how ENIGMA does it. This is how I should do it.</p>
+
+<p>This means the VisualShader class should only be a generator. It should not store any data. It should only takes a number of nodes and connections and then generate a shader code.</p>
+
+<p>After working on RGM for so long, I have decided to complete this on a simpler version of RGM because RGM is really big and my CPU is crying on every build. Also, see the pic below? This issue happens too much on RGM’s codebase. It is so difficult to determine the reason. Why? Well, consider the code snippet below:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">const</span> <span class="n">google</span><span class="o">::</span><span class="n">protobuf</span><span class="o">::</span><span class="n">FieldDescriptor</span><span class="o">*</span> <span class="n">field</span> <span class="p">{</span><span class="n">some_descriptor</span><span class="o">-&gt;</span><span class="n">FindFieldByNumber</span><span class="p">(</span><span class="n">some_field_number</span><span class="p">)};</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">field</span> <span class="o">==</span> <span class="nb">nullptr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">"Field not found: "</span> <span class="o">&lt;&lt;</span> <span class="n">field</span><span class="o">-&gt;</span><span class="n">full_name</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Notice the problem? If <code class="language-plaintext highlighter-rouge">field</code> is <code class="language-plaintext highlighter-rouge">nullptr</code>, then <code class="language-plaintext highlighter-rouge">field-&gt;full_name()</code> will cause a segmentation fault. However, the issue in the pic below will show up. I have no reasonable explanation for this and this is just a simple example. RGM’s codebase is considered to be legacy (in my opinion) with enough complexity that makes it difficult to determine the reason for the issue.</p>
+
+<p><img src="/gsoc24-blog/assets/protobuf_runtime_issue.png" alt="Protobuf Runtime Issue" /></p>
+
+<p>After working continuously on my mini-RGM, I can finally guess what RGM’s model needs. I have created a separate model for the <code class="language-plaintext highlighter-rouge">oneof</code>s and this helps with separating the complexiness from the MessageModel class becasue according to Protobuf’s syntax, <code class="language-plaintext highlighter-rouge">oneof</code>s are only allowed to be in the message scope.</p>
+
+<p>Of course, RGM’s model is way complex than mine. RGM’s model employs many - if not all - features of QAbstractItemModel such as role and also not to mention that RGM’s model is made for many editors at once (not only one such as mine heh).</p>
+
+<p>Anyway, I have made it and now my model works fine starting from <a href="https://github.com/k0T0z/shader-gen/commit/b17ce5beff8165a9569b5260c9159e679e2a62d8">b17ce5b</a>.</p>
+
+<h2 id="diagnosing-and-resolving-protobuf-pointer-access-crashes-in-debug-mode">Diagnosing and Resolving Protobuf Pointer Access Crashes in Debug Mode</h2>
+
+<p>One of the reasons I left RGM and started working on the project in a clean codebase is that while debugging RGM, crashes happens when I reach a certain point in the code. Consider the following below code snippet, when I reach step to line 11, crashes happens. I didn’t know why back then because sometimes they happen and sometimes they don’t.</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"> <span class="mi">1</span><span class="o">:</span> <span class="kt">void</span> <span class="n">MessageModel</span><span class="o">::</span><span class="n">RebuildSubModels</span><span class="p">()</span> <span class="p">{</span>
+ <span class="mi">2</span><span class="o">:</span>   <span class="n">submodels_by_field_</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+ <span class="mi">3</span><span class="o">:</span>   <span class="n">submodels_by_row_</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+ <span class="mi">4</span><span class="o">:</span>   <span class="n">R_EXPECT_V</span><span class="p">(</span><span class="n">_protobuf</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">"Internal protobuf null"</span><span class="p">;</span>
+ <span class="mi">5</span><span class="o">:</span> 
+ <span class="mi">6</span><span class="o">:</span>   <span class="k">const</span> <span class="n">Descriptor</span> <span class="o">*</span><span class="n">desc</span> <span class="o">=</span> <span class="n">_protobuf</span><span class="o">-&gt;</span><span class="n">GetDescriptor</span><span class="p">();</span>
+ <span class="mi">7</span><span class="o">:</span>   <span class="k">const</span> <span class="n">Reflection</span> <span class="o">*</span><span class="n">refl</span> <span class="o">=</span> <span class="n">_protobuf</span><span class="o">-&gt;</span><span class="n">GetReflection</span><span class="p">();</span>
+ <span class="mi">8</span><span class="o">:</span>   <span class="n">submodels_by_row_</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">desc</span><span class="o">-&gt;</span><span class="n">field_count</span><span class="p">());</span>
+ <span class="mi">9</span><span class="o">:</span> 
+<span class="mi">10</span><span class="o">:</span>   <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">desc</span><span class="o">-&gt;</span><span class="n">field_count</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="mi">11</span><span class="o">:</span>     <span class="k">const</span> <span class="n">FieldDescriptor</span> <span class="o">*</span><span class="n">field</span> <span class="o">=</span> <span class="n">desc</span><span class="o">-&gt;</span><span class="n">field</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="mi">12</span><span class="o">:</span> 
+<span class="mi">13</span><span class="o">:</span>     <span class="k">if</span> <span class="p">(</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">is_repeated</span><span class="p">())</span> <span class="p">{</span>
+<span class="mi">14</span><span class="o">:</span>       <span class="k">switch</span> <span class="p">(</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">cpp_type</span><span class="p">())</span> <span class="p">{</span>
+<span class="mi">15</span><span class="o">:</span>         <span class="k">case</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_ENUM</span><span class="p">:</span> <span class="p">{</span>
+<span class="mi">16</span><span class="o">:</span>           <span class="n">qDebug</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">"ENUMs not yet handled"</span><span class="p">;</span>
+<span class="mi">17</span><span class="o">:</span>           <span class="k">break</span><span class="p">;</span>
+<span class="mi">18</span><span class="o">:</span>         <span class="p">}</span>
+<span class="mi">19</span><span class="o">:</span>         <span class="k">case</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_MESSAGE</span><span class="p">:</span> <span class="p">{</span>
+<span class="mi">20</span><span class="o">:</span>           <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RepeatedMessageModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">);</span>
+<span class="mi">21</span><span class="o">:</span>           <span class="k">break</span><span class="p">;</span>
+<span class="mi">22</span><span class="o">:</span>         <span class="p">}</span>
+<span class="mi">23</span><span class="o">:</span>         <span class="k">case</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_BOOL</span><span class="p">:</span> <span class="p">{</span>
+<span class="mi">24</span><span class="o">:</span>           <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RepeatedBoolModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">);</span>
+<span class="mi">25</span><span class="o">:</span>           <span class="k">break</span><span class="p">;</span>
+<span class="mi">26</span><span class="o">:</span>         <span class="p">}</span>
+<span class="mi">27</span><span class="o">:</span>         <span class="k">case</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_INT32</span><span class="p">:</span> <span class="p">{</span>
+<span class="mi">28</span><span class="o">:</span>           <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RepeatedInt32Model</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">);</span>
+<span class="mi">29</span><span class="o">:</span>           <span class="k">break</span><span class="p">;</span>
+<span class="mi">30</span><span class="o">:</span>         <span class="p">}</span>
+<span class="mi">31</span><span class="o">:</span>         <span class="k">case</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_INT64</span><span class="p">:</span> <span class="p">{</span>
+<span class="mi">32</span><span class="o">:</span>           <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RepeatedInt64Model</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">);</span>
+<span class="mi">33</span><span class="o">:</span>           <span class="k">break</span><span class="p">;</span>
+<span class="mi">34</span><span class="o">:</span>         <span class="p">}</span>
+<span class="mi">35</span><span class="o">:</span>         <span class="k">case</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_UINT32</span><span class="p">:</span> <span class="p">{</span>
+<span class="mi">36</span><span class="o">:</span>           <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RepeatedUInt32Model</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">);</span>
+<span class="mi">37</span><span class="o">:</span>           <span class="k">break</span><span class="p">;</span>
+<span class="mi">38</span><span class="o">:</span>         <span class="p">}</span>
+<span class="mi">39</span><span class="o">:</span>         <span class="k">case</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_UINT64</span><span class="p">:</span> <span class="p">{</span>
+<span class="mi">40</span><span class="o">:</span>           <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RepeatedUInt64Model</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">);</span>
+<span class="mi">41</span><span class="o">:</span>           <span class="k">break</span><span class="p">;</span>
+<span class="mi">42</span><span class="o">:</span>         <span class="p">}</span>
+<span class="mi">43</span><span class="o">:</span>         <span class="k">case</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_FLOAT</span><span class="p">:</span> <span class="p">{</span>
+<span class="mi">44</span><span class="o">:</span>           <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RepeatedFloatModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">);</span>
+<span class="mi">45</span><span class="o">:</span>           <span class="k">break</span><span class="p">;</span>
+<span class="mi">46</span><span class="o">:</span>         <span class="p">}</span>
+<span class="mi">47</span><span class="o">:</span>         <span class="k">case</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_DOUBLE</span><span class="p">:</span> <span class="p">{</span>
+<span class="mi">48</span><span class="o">:</span>           <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RepeatedDoubleModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">);</span>
+<span class="mi">49</span><span class="o">:</span>           <span class="k">break</span><span class="p">;</span>
+<span class="mi">50</span><span class="o">:</span>         <span class="p">}</span>
+<span class="mi">51</span><span class="o">:</span>         <span class="k">case</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_STRING</span><span class="p">:</span> <span class="p">{</span>
+<span class="mi">52</span><span class="o">:</span>           <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RepeatedStringModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">);</span>
+<span class="mi">53</span><span class="o">:</span>           <span class="k">break</span><span class="p">;</span>
+<span class="mi">54</span><span class="o">:</span>         <span class="p">}</span>
+<span class="mi">55</span><span class="o">:</span>       <span class="p">}</span>
+<span class="mi">56</span><span class="o">:</span>     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">cpp_type</span><span class="p">()</span> <span class="o">==</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_MESSAGE</span><span class="p">)</span> <span class="p">{</span>
+<span class="mi">57</span><span class="o">:</span>       <span class="c1">// Ignore all unset oneof fields if any is set</span>
+<span class="mi">58</span><span class="o">:</span>       <span class="k">if</span> <span class="p">(</span><span class="n">IsCulledOneof_</span><span class="p">(</span><span class="n">refl</span><span class="p">,</span> <span class="o">*</span><span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">))</span> <span class="k">continue</span><span class="p">;</span>
+<span class="mi">59</span><span class="o">:</span>       <span class="c1">// Only recursively build fields if they're set</span>
+<span class="mi">60</span><span class="o">:</span>       <span class="k">if</span> <span class="p">(</span><span class="n">refl</span><span class="o">-&gt;</span><span class="n">HasField</span><span class="p">(</span><span class="o">*</span><span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">))</span> <span class="p">{</span>
+<span class="mi">61</span><span class="o">:</span>         <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span>
+<span class="mi">62</span><span class="o">:</span>             <span class="k">new</span> <span class="n">MessageModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">refl</span><span class="o">-&gt;</span><span class="n">MutableMessage</span><span class="p">(</span><span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">),</span> <span class="n">i</span><span class="p">);</span>
+<span class="mi">63</span><span class="o">:</span>       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="mi">64</span><span class="o">:</span>         <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MessageModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">field</span><span class="o">-&gt;</span><span class="n">message_type</span><span class="p">(),</span> <span class="n">i</span><span class="p">);</span>
+<span class="mi">65</span><span class="o">:</span>       <span class="p">}</span>
+<span class="mi">66</span><span class="o">:</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="mi">67</span><span class="o">:</span>       <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PrimitiveModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">field</span><span class="p">);</span>
+<span class="mi">68</span><span class="o">:</span>     <span class="p">}</span>
+<span class="mi">69</span><span class="o">:</span>   <span class="p">}</span>
+<span class="mi">70</span><span class="o">:</span> <span class="p">}</span></code></pre></figure>
+
+<p>The thing is, I noticed the same problem while working with protobuf and MSVC but this time, an access to a valid pointer crashes the system. The pointer is valid because the same code works fine using GCC. The problem was that mixing debug and release libraries in MSVC causes the crash. More precisely, it depends on setting CMAKE_MSVC_RUNTIME_LIBRARY correctly.</p>
+
+<p>Given that the above information, I think the problem is not with RGM however, it is in how I was building protobuf, I think. Anyway, whoever reads this post, check this shell script for ubuntu <a href="https://github.com/k0T0z/shader-gen/blob/master/CI/build_protobuf_ubuntu.sh">build_protobuf_ubuntu.sh</a>. You can invoke it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x ./build_protobuf_ubuntu.sh
+<span class="nb">sudo</span> ./build_protobuf_ubuntu.sh Debug Dynamic
+</code></pre></div></div>
+
+<p>or whatever parameters you want. This script will build protobuf in Debug mode and Dynamic linking. I hope this helps.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Week 18, 19, and 20: Wrapping Up and Final Evaluation</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-19-and-20-wrapping-up-and-final-evaluation.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Week 18, 19, and 20: Wrapping Up and Final Evaluation" /><published>2024-09-22T21:00:00+00:00</published><updated>2024-09-22T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-19-and-20-wrapping-up-and-final-evaluation</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-19-and-20-wrapping-up-and-final-evaluation.html"><![CDATA[<p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
 
 <p>My final evaluation report: <a href="https://docs.google.com/document/d/1ahKWo3m9fgqAfR9a3cqaIA08Sns05O68nhalpMNjDd8/edit?usp=sharing">Procedural Fragment Shader Generation Using Classic Machine Learning Google Summer Of Code 2024 Final Report</a>.</p>
 
@@ -755,6 +920,13 @@ error: failed to prepare transaction (could not satisfy dependencies)
 
 <div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">set</span><span class="p">(</span>GRPC_EXE <span class="s2">"/usr/local/bin/grpc_cpp_plugin"</span><span class="p">)</span>
 </code></pre></div></div>
+
+<p>You can add this to your <code class="language-plaintext highlighter-rouge">settings.json</code> file:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"cmake.configureArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"-DGRPC_EXE=/usr/local/bin/grpc_cpp_plugin"</span><span class="w">
+</span><span class="p">]</span><span class="err">,</span><span class="w">
+</span></code></pre></div></div>
 
 <h2 id="transitioning-to-rgm">Transitioning to RGM</h2>
 
@@ -1956,52 +2128,4 @@ the other way to animate it is to use a 3D grid and move slowly along the Z axis
 
 <p>“Tiling” refers to a technique where, for example, in a 128×128 texture, the point at (130,130) would correspond to the same point at (2,2) by using the modulus operation to wrap the coordinates. The challenge here is that points will appear constrained to their respective grid cells, which may produce a visually artificial pattern. However, this can be mitigated with more complex mathematical techniques.</p>
 
-<p>One effective solution to improve tileability is to introduce multiple octaves of noise. By doing this, you progressively increase the freedom of point movement. For instance, 50% of the points could be restricted to their grid cell, 75% could move freely within the surrounding 8x8 cells, 87.5% within 64x64 cells, and so on. By the time you’re looking at a 512x512 region, 93.75% of the points are still bound, but the human eye would likely be unable to detect these constraints. This multi-octave approach creates a more natural and seamless texture across infinite space.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry><entry><title type="html">Google Summer of Code 2024 Acceptance Story</title><link href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/14/google-summer-of-code-2024-acceptance-story.html" rel="alternate" type="text/html" title="Google Summer of Code 2024 Acceptance Story" /><published>2024-05-14T21:00:00+00:00</published><updated>2024-05-14T21:00:00+00:00</updated><id>https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/14/google-summer-of-code-2024-acceptance-story</id><content type="html" xml:base="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/05/14/google-summer-of-code-2024-acceptance-story.html"><![CDATA[<p>My accepted proposal <a href="/gsoc24-blog/assets/procedural-fragment-shader-generation-using-classic-machine-learning-GSoC-2024-proposal.pdf">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
-
-<blockquote>
-  <p>Josh — 01/05/2024 21:08</p>
-
-  <p>Hey, just wanted to give congrats to this year’s GSoC contributors, @Fares Atef and @Saif; welcome (back), you two!</p>
-</blockquote>
-
-<p>Hmmmmm … At the time of writing this, I can’t think of a way to describe my acceptance into Google Summer of Code 2024 program so let’s jump into project idea’s author.</p>
-
-<blockquote>
-  <p>my thoughts on the future are cloudy; ENIGMA hasn’t really embraced ML tools, so it’s heading for obsolescence</p>
-
-  <p>Josh — 19/01/2024 17:21</p>
-</blockquote>
-
-<blockquote>
-  <p>do u have anything in mind?</p>
-
-  <p>Seif — 19/01/2024 17:51</p>
-</blockquote>
-
-<blockquote>
-  <p>a lot of things
-I think we really need procedural generation for placeholder graphics
-…
-we need a procedural texture editor; there are some open-source ones we could integrate</p>
-
-  <p>Josh — 19/01/2024 17:51</p>
-</blockquote>
-
-<p>Following these messages, there was an extensive discussion about the project idea, which ultimately led me to decide to apply for it.</p>
-
-<p>Moving forward, I will set up my development environment by installing Arch Linux, as ENIGMA is primarily developed on this platform.</p>
-
-<p><strong>Note:</strong> You can find an example game built with Godot, showcasing the project’s final outcome, here: <a href="/gsoc24-blog/assets/godot_visual_shader_editor_showcase.zip">godot_visual_shader_editor_showcase.zip</a>.</p>
-
-<blockquote style="border-left: 6px solid #ff3e3e;">
-    <p>
-        وَمَا بِكُم مِّن نِّعْمَةٍۢ فَمِنَ ٱللَّهِ ۖ ثُمَّ إِذَا مَسَّكُمُ ٱلضُّرُّ فَإِلَيْهِ
-        تَجْـَٔرُونَ
-    </p>
-    <p>
-        Whatever blessings you have are from Allah. Then whenever hardship touches you, to Him
-        ˹alone˺
-        you cry ˹for help˺.
-    </p>
-    <cite>The Noble Qur'an, An-Nahl 53</cite>
-</blockquote>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[My accepted proposal Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry></feed>
+<p>One effective solution to improve tileability is to introduce multiple octaves of noise. By doing this, you progressively increase the freedom of point movement. For instance, 50% of the points could be restricted to their grid cell, 75% could move freely within the surrounding 8x8 cells, 87.5% within 64x64 cells, and so on. By the time you’re looking at a 512x512 region, 93.75% of the points are still bound, but the human eye would likely be unable to detect these constraints. This multi-octave approach creates a more natural and seamless texture across infinite space.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.]]></summary></entry></feed>

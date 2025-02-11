@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/gsoc24-blog/assets/css/style.css">
+<title>AFTER Google Summer of Code 2024: Google Protocol Buffers Technology</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>AFTER Google Summer of Code 2024: Google Protocol Buffers Technology | k0T0z</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="AFTER Google Summer of Code 2024: Google Protocol Buffers Technology" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning." />
+<meta property="og:description" content="This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning." />
+<link rel="canonical" href="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/10/13/after-google-summer-of-code-2024-google-protocol-buffers-technology.html" />
+<meta property="og:url" content="https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/10/13/after-google-summer-of-code-2024-google-protocol-buffers-technology.html" />
+<meta property="og:site_name" content="k0T0z" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-10-13T21:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="AFTER Google Summer of Code 2024: Google Protocol Buffers Technology" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-10-13T21:00:00+00:00","datePublished":"2024-10-13T21:00:00+00:00","description":"This blog post is related to my Google Summer of Code 2024 project: Procedural Fragment Shader Generation Using Classic Machine Learning.","headline":"AFTER Google Summer of Code 2024: Google Protocol Buffers Technology","mainEntityOfPage":{"@type":"WebPage","@id":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/10/13/after-google-summer-of-code-2024-google-protocol-buffers-technology.html"},"url":"https://k0t0z.github.io/gsoc24-blog//gsoc24-blog/blog/2024/10/13/after-google-summer-of-code-2024-google-protocol-buffers-technology.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/gsoc24-blog/">
+        
+        <img src="/gsoc24-blog/assets/portfolio.png" alt="Saif Kandil" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/gsoc24-blog/">Saif Kandil</a>
+      </h2>
+      </div><p class="tagline">Just a place for me to dump my thoughts about my Google Summer of Code 2024 project</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2025</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/gsoc24-blog/blog/2024/10/13/after-google-summer-of-code-2024-google-protocol-buffers-technology.html">
+    <h2 class="post-title">AFTER Google Summer of Code 2024: Google Protocol Buffers Technology</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Oct 13, 2024</div><ul class="post-categories"><li>blog</li></ul></div>
+  <div class="post">
+    <p>This blog post is related to my Google Summer of Code 2024 project: <a href="https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA">Procedural Fragment Shader Generation Using Classic Machine Learning</a>.</p>
+
+<p>I have learnt so much things including the right way to write code. I can say now that I can write code better because I don’t care about how good it looks. I care about how others can understand it.</p>
+
+<p>You know what was the problem in my work? I didn’t follow ENIGMA’s way of doing things. So in order to explain this, consider the code snippet below:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">Graph</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">VisualShader</span><span class="o">::</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">nodes</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">VisualShader</span><span class="o">::</span><span class="n">Connection</span><span class="o">&gt;</span> <span class="n">connections</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">graph</span><span class="p">;</span></code></pre></figure>
+
+<p>This is where I save my nodes and my connections. This all is being saved dynamically. However, in ENIGMA, we should be able to serialize and deserialize this data in a file called “project file”. Got it? RadialGM is an IDE that is able to load/save full projects. How ENIGMA do it? Well, they use Model-View-Controller (MVC) architecture. But that’s not everything. They also use Google Protocol Buffers as their model. This means everything you do in your project is being sent to Protobuf and then serialize this model to YAML.</p>
+
+<p>By the way, ENIGMA doesn’t use Protobuf’s built-in serialization/deserialization functions. However, ENIGMA has its own module for managing all that called <a href="https://github.com/enigma-dev/enigma-dev/tree/master/CommandLine/libEGM">libEGM</a>. This module takes a mutable message using Reflection and then serialize it to YAML. This is how ENIGMA saves its project files.</p>
+
+<p>So here is what I must do:</p>
+
+<ol>
+  <li>I need to make an integration between the Visual Shader Editor and the model.</li>
+  <li>I need to change the VisualShader class to become only a Generator.</li>
+</ol>
+
+<p>And this what Josh was trying to say to me. I have covered this in <a href="https://k0t0z.github.io/gsoc24-blog/blog/2024/09/22/google-summer-of-code-2024-week-18-19-and-20-wrapping-up-and-final-evaluation.html#protobuf-work">Google Summer of Code 2024 Week 18, 19, and 20: Wrapping Up and Final Evaluation</a>.</p>
+
+<p>Separating my concerns means NO NEED TO STORE GUI RELATED DATA IN MY BACKEND. Anything that is related to the frontend should be stored in the protobuf model. So don’t do this:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">VisualShaderNodeFloatConstant</span><span class="o">::</span><span class="n">get_caption</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="s">"FloatConstant"</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">VisualShaderNodeFloatConstant</span><span class="o">::</span><span class="n">get_input_port_count</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="n">VisualShaderNode</span><span class="o">::</span><span class="n">PortType</span> <span class="n">VisualShaderNodeFloatConstant</span><span class="o">::</span><span class="n">get_input_port_type</span><span class="p">([[</span><span class="n">maybe_unused</span><span class="p">]]</span> <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">port</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">PORT_TYPE_SCALAR</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">VisualShaderNodeFloatConstant</span><span class="o">::</span><span class="n">get_input_port_name</span><span class="p">([[</span><span class="n">maybe_unused</span><span class="p">]]</span> <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">port</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">VisualShaderNodeFloatConstant</span><span class="o">::</span><span class="n">get_output_port_count</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="n">VisualShaderNode</span><span class="o">::</span><span class="n">PortType</span> <span class="n">VisualShaderNodeFloatConstant</span><span class="o">::</span><span class="n">get_output_port_type</span><span class="p">([[</span><span class="n">maybe_unused</span><span class="p">]]</span> <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">port</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">PORT_TYPE_SCALAR</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">VisualShaderNodeFloatConstant</span><span class="o">::</span><span class="n">get_output_port_name</span><span class="p">([[</span><span class="n">maybe_unused</span><span class="p">]]</span> <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">port</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="s">""</span><span class="p">;</span> <span class="p">}</span></code></pre></figure>
+
+<p>However, do this:</p>
+
+<figure class="highlight"><pre><code class="language-proto" data-lang="proto"><span class="kd">message</span> <span class="nc">VisualShaderNodeFloatConstant</span> <span class="p">{</span>
+    <span class="k">option</span> <span class="p">(</span><span class="n">node_caption</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Float Constant"</span><span class="p">;</span>
+    <span class="k">option</span> <span class="p">(</span><span class="n">node_input_port_count</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">option</span> <span class="p">(</span><span class="n">node_input_port_type</span><span class="p">)</span> <span class="o">=</span> <span class="n">PORT_TYPE_SCALAR</span><span class="p">;</span>
+    <span class="k">option</span> <span class="p">(</span><span class="n">node_input_port_caption</span><span class="p">)</span> <span class="o">=</span> <span class="s">""</span><span class="p">;</span>
+    
+    <span class="k">option</span> <span class="p">(</span><span class="n">node_output_port_count</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">option</span> <span class="p">(</span><span class="n">node_output_port_type</span><span class="p">)</span> <span class="o">=</span> <span class="n">PORT_TYPE_SCALAR</span><span class="p">;</span>
+    <span class="k">option</span> <span class="p">(</span><span class="n">node_output_port_caption</span><span class="p">)</span> <span class="o">=</span> <span class="s">""</span><span class="p">;</span>
+
+    <span class="k">optional</span> <span class="kt">double</span> <span class="na">value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This means ports, captions, and values should be stored in the protobuf model. This is how ENIGMA does it. This is how I should do it.</p>
+
+<p>This means the VisualShader class should only be a generator. It should not store any data. It should only takes a number of nodes and connections and then generate a shader code.</p>
+
+<p>After working on RGM for so long, I have decided to complete this on a simpler version of RGM because RGM is really big and my CPU is crying on every build. Also, see the pic below? This issue happens too much on RGM’s codebase. It is so difficult to determine the reason. Why? Well, consider the code snippet below:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">const</span> <span class="n">google</span><span class="o">::</span><span class="n">protobuf</span><span class="o">::</span><span class="n">FieldDescriptor</span><span class="o">*</span> <span class="n">field</span> <span class="p">{</span><span class="n">some_descriptor</span><span class="o">-&gt;</span><span class="n">FindFieldByNumber</span><span class="p">(</span><span class="n">some_field_number</span><span class="p">)};</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">field</span> <span class="o">==</span> <span class="nb">nullptr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">"Field not found: "</span> <span class="o">&lt;&lt;</span> <span class="n">field</span><span class="o">-&gt;</span><span class="n">full_name</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Notice the problem? If <code class="language-plaintext highlighter-rouge">field</code> is <code class="language-plaintext highlighter-rouge">nullptr</code>, then <code class="language-plaintext highlighter-rouge">field-&gt;full_name()</code> will cause a segmentation fault. However, the issue in the pic below will show up. I have no reasonable explanation for this and this is just a simple example. RGM’s codebase is considered to be legacy (in my opinion) with enough complexity that makes it difficult to determine the reason for the issue.</p>
+
+<p><img src="/gsoc24-blog/assets/protobuf_runtime_issue.png" alt="Protobuf Runtime Issue" /></p>
+
+<p>After working continuously on my mini-RGM, I can finally guess what RGM’s model needs. I have created a separate model for the <code class="language-plaintext highlighter-rouge">oneof</code>s and this helps with separating the complexiness from the MessageModel class becasue according to Protobuf’s syntax, <code class="language-plaintext highlighter-rouge">oneof</code>s are only allowed to be in the message scope.</p>
+
+<p>Of course, RGM’s model is way complex than mine. RGM’s model employs many - if not all - features of QAbstractItemModel such as role and also not to mention that RGM’s model is made for many editors at once (not only one such as mine heh).</p>
+
+<p>Anyway, I have made it and now my model works fine starting from <a href="https://github.com/k0T0z/shader-gen/commit/b17ce5beff8165a9569b5260c9159e679e2a62d8">b17ce5b</a>.</p>
+
+<h2 id="diagnosing-and-resolving-protobuf-pointer-access-crashes-in-debug-mode">Diagnosing and Resolving Protobuf Pointer Access Crashes in Debug Mode</h2>
+
+<p>One of the reasons I left RGM and started working on the project in a clean codebase is that while debugging RGM, crashes happens when I reach a certain point in the code. Consider the following below code snippet, when I reach step to line 11, crashes happens. I didn’t know why back then because sometimes they happen and sometimes they don’t.</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"> <span class="mi">1</span><span class="o">:</span> <span class="kt">void</span> <span class="n">MessageModel</span><span class="o">::</span><span class="n">RebuildSubModels</span><span class="p">()</span> <span class="p">{</span>
+ <span class="mi">2</span><span class="o">:</span>   <span class="n">submodels_by_field_</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+ <span class="mi">3</span><span class="o">:</span>   <span class="n">submodels_by_row_</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+ <span class="mi">4</span><span class="o">:</span>   <span class="n">R_EXPECT_V</span><span class="p">(</span><span class="n">_protobuf</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">"Internal protobuf null"</span><span class="p">;</span>
+ <span class="mi">5</span><span class="o">:</span> 
+ <span class="mi">6</span><span class="o">:</span>   <span class="k">const</span> <span class="n">Descriptor</span> <span class="o">*</span><span class="n">desc</span> <span class="o">=</span> <span class="n">_protobuf</span><span class="o">-&gt;</span><span class="n">GetDescriptor</span><span class="p">();</span>
+ <span class="mi">7</span><span class="o">:</span>   <span class="k">const</span> <span class="n">Reflection</span> <span class="o">*</span><span class="n">refl</span> <span class="o">=</span> <span class="n">_protobuf</span><span class="o">-&gt;</span><span class="n">GetReflection</span><span class="p">();</span>
+ <span class="mi">8</span><span class="o">:</span>   <span class="n">submodels_by_row_</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">desc</span><span class="o">-&gt;</span><span class="n">field_count</span><span class="p">());</span>
+ <span class="mi">9</span><span class="o">:</span> 
+<span class="mi">10</span><span class="o">:</span>   <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">desc</span><span class="o">-&gt;</span><span class="n">field_count</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="mi">11</span><span class="o">:</span>     <span class="k">const</span> <span class="n">FieldDescriptor</span> <span class="o">*</span><span class="n">field</span> <span class="o">=</span> <span class="n">desc</span><span class="o">-&gt;</span><span class="n">field</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="mi">12</span><span class="o">:</span> 
+<span class="mi">13</span><span class="o">:</span>     <span class="k">if</span> <span class="p">(</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">is_repeated</span><span class="p">())</span> <span class="p">{</span>
+<span class="mi">14</span><span class="o">:</span>       <span class="k">switch</span> <span class="p">(</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">cpp_type</span><span class="p">())</span> <span class="p">{</span>
+<span class="mi">15</span><span class="o">:</span>         <span class="k">case</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_ENUM</span><span class="p">:</span> <span class="p">{</span>
+<span class="mi">16</span><span class="o">:</span>           <span class="n">qDebug</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">"ENUMs not yet handled"</span><span class="p">;</span>
+<span class="mi">17</span><span class="o">:</span>           <span class="k">break</span><span class="p">;</span>
+<span class="mi">18</span><span class="o">:</span>         <span class="p">}</span>
+<span class="mi">19</span><span class="o">:</span>         <span class="k">case</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_MESSAGE</span><span class="p">:</span> <span class="p">{</span>
+<span class="mi">20</span><span class="o">:</span>           <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RepeatedMessageModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">);</span>
+<span class="mi">21</span><span class="o">:</span>           <span class="k">break</span><span class="p">;</span>
+<span class="mi">22</span><span class="o">:</span>         <span class="p">}</span>
+<span class="mi">23</span><span class="o">:</span>         <span class="k">case</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_BOOL</span><span class="p">:</span> <span class="p">{</span>
+<span class="mi">24</span><span class="o">:</span>           <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RepeatedBoolModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">);</span>
+<span class="mi">25</span><span class="o">:</span>           <span class="k">break</span><span class="p">;</span>
+<span class="mi">26</span><span class="o">:</span>         <span class="p">}</span>
+<span class="mi">27</span><span class="o">:</span>         <span class="k">case</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_INT32</span><span class="p">:</span> <span class="p">{</span>
+<span class="mi">28</span><span class="o">:</span>           <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RepeatedInt32Model</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">);</span>
+<span class="mi">29</span><span class="o">:</span>           <span class="k">break</span><span class="p">;</span>
+<span class="mi">30</span><span class="o">:</span>         <span class="p">}</span>
+<span class="mi">31</span><span class="o">:</span>         <span class="k">case</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_INT64</span><span class="p">:</span> <span class="p">{</span>
+<span class="mi">32</span><span class="o">:</span>           <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RepeatedInt64Model</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">);</span>
+<span class="mi">33</span><span class="o">:</span>           <span class="k">break</span><span class="p">;</span>
+<span class="mi">34</span><span class="o">:</span>         <span class="p">}</span>
+<span class="mi">35</span><span class="o">:</span>         <span class="k">case</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_UINT32</span><span class="p">:</span> <span class="p">{</span>
+<span class="mi">36</span><span class="o">:</span>           <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RepeatedUInt32Model</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">);</span>
+<span class="mi">37</span><span class="o">:</span>           <span class="k">break</span><span class="p">;</span>
+<span class="mi">38</span><span class="o">:</span>         <span class="p">}</span>
+<span class="mi">39</span><span class="o">:</span>         <span class="k">case</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_UINT64</span><span class="p">:</span> <span class="p">{</span>
+<span class="mi">40</span><span class="o">:</span>           <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RepeatedUInt64Model</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">);</span>
+<span class="mi">41</span><span class="o">:</span>           <span class="k">break</span><span class="p">;</span>
+<span class="mi">42</span><span class="o">:</span>         <span class="p">}</span>
+<span class="mi">43</span><span class="o">:</span>         <span class="k">case</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_FLOAT</span><span class="p">:</span> <span class="p">{</span>
+<span class="mi">44</span><span class="o">:</span>           <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RepeatedFloatModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">);</span>
+<span class="mi">45</span><span class="o">:</span>           <span class="k">break</span><span class="p">;</span>
+<span class="mi">46</span><span class="o">:</span>         <span class="p">}</span>
+<span class="mi">47</span><span class="o">:</span>         <span class="k">case</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_DOUBLE</span><span class="p">:</span> <span class="p">{</span>
+<span class="mi">48</span><span class="o">:</span>           <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RepeatedDoubleModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">);</span>
+<span class="mi">49</span><span class="o">:</span>           <span class="k">break</span><span class="p">;</span>
+<span class="mi">50</span><span class="o">:</span>         <span class="p">}</span>
+<span class="mi">51</span><span class="o">:</span>         <span class="k">case</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_STRING</span><span class="p">:</span> <span class="p">{</span>
+<span class="mi">52</span><span class="o">:</span>           <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RepeatedStringModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">);</span>
+<span class="mi">53</span><span class="o">:</span>           <span class="k">break</span><span class="p">;</span>
+<span class="mi">54</span><span class="o">:</span>         <span class="p">}</span>
+<span class="mi">55</span><span class="o">:</span>       <span class="p">}</span>
+<span class="mi">56</span><span class="o">:</span>     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">cpp_type</span><span class="p">()</span> <span class="o">==</span> <span class="n">CppType</span><span class="o">::</span><span class="n">CPPTYPE_MESSAGE</span><span class="p">)</span> <span class="p">{</span>
+<span class="mi">57</span><span class="o">:</span>       <span class="c1">// Ignore all unset oneof fields if any is set</span>
+<span class="mi">58</span><span class="o">:</span>       <span class="k">if</span> <span class="p">(</span><span class="n">IsCulledOneof_</span><span class="p">(</span><span class="n">refl</span><span class="p">,</span> <span class="o">*</span><span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">))</span> <span class="k">continue</span><span class="p">;</span>
+<span class="mi">59</span><span class="o">:</span>       <span class="c1">// Only recursively build fields if they're set</span>
+<span class="mi">60</span><span class="o">:</span>       <span class="k">if</span> <span class="p">(</span><span class="n">refl</span><span class="o">-&gt;</span><span class="n">HasField</span><span class="p">(</span><span class="o">*</span><span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">))</span> <span class="p">{</span>
+<span class="mi">61</span><span class="o">:</span>         <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span>
+<span class="mi">62</span><span class="o">:</span>             <span class="k">new</span> <span class="n">MessageModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">refl</span><span class="o">-&gt;</span><span class="n">MutableMessage</span><span class="p">(</span><span class="n">_protobuf</span><span class="p">,</span> <span class="n">field</span><span class="p">),</span> <span class="n">i</span><span class="p">);</span>
+<span class="mi">63</span><span class="o">:</span>       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="mi">64</span><span class="o">:</span>         <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MessageModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">field</span><span class="o">-&gt;</span><span class="n">message_type</span><span class="p">(),</span> <span class="n">i</span><span class="p">);</span>
+<span class="mi">65</span><span class="o">:</span>       <span class="p">}</span>
+<span class="mi">66</span><span class="o">:</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="mi">67</span><span class="o">:</span>       <span class="n">submodels_by_field_</span><span class="p">[</span><span class="n">field</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">()]</span> <span class="o">=</span> <span class="n">submodels_by_row_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PrimitiveModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">field</span><span class="p">);</span>
+<span class="mi">68</span><span class="o">:</span>     <span class="p">}</span>
+<span class="mi">69</span><span class="o">:</span>   <span class="p">}</span>
+<span class="mi">70</span><span class="o">:</span> <span class="p">}</span></code></pre></figure>
+
+<p>The thing is, I noticed the same problem while working with protobuf and MSVC but this time, an access to a valid pointer crashes the system. The pointer is valid because the same code works fine using GCC. The problem was that mixing debug and release libraries in MSVC causes the crash. More precisely, it depends on setting CMAKE_MSVC_RUNTIME_LIBRARY correctly.</p>
+
+<p>Given that the above information, I think the problem is not with RGM however, it is in how I was building protobuf, I think. Anyway, whoever reads this post, check this shell script for ubuntu <a href="https://github.com/k0T0z/shader-gen/blob/master/CI/build_protobuf_ubuntu.sh">build_protobuf_ubuntu.sh</a>. You can invoke it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x ./build_protobuf_ubuntu.sh
+<span class="nb">sudo</span> ./build_protobuf_ubuntu.sh Debug Dynamic
+</code></pre></div></div>
+
+<p>or whatever parameters you want. This script will build protobuf in Debug mode and Dynamic linking. I hope this helps.</p>
+
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/k0T0z" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2025</p><div class="about-footer ">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/gsoc24-blog/assets/js/darkmode.js"></script>
+  
+  <script src="/gsoc24-blog/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/gsoc24-blog/assets/js/search.js"></script>
+  
+</body>
+
+</html>
