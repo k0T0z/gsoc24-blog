@@ -259,4 +259,6 @@ The Splatter texture implementation led to several important fixes in the noise 
 
 ---
 
+## Reading Back My Proposal
+
 [my-google-summer-of-code-2024-project]: https://summerofcode.withgoogle.com/programs/2024/projects/wYTZuQbA
