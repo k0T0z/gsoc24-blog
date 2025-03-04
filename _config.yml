@@ -37,7 +37,7 @@ plugins:
 future: true # Build posts with a future date
 
 plainwhite:
-  name: Saif Kandil
+  name: Seif Kandil
   tagline: Just a place for me to dump my thoughts about my Google Summer of Code 2024 project
 
   date_format: "%b %-d, %Y"
